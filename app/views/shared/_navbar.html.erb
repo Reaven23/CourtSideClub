@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <!-- Logo et nom de l'entreprise -->
+    <a class="navbar-brand d-flex align-items-center" href="#home">
+      <div class="logo-container me-2">
+        <!-- Logo CourtSideClub -->
+        <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "navbar-logo" %>
+      </div>
+      <span class="brand-text">CourtSideClub</span>
+    </a>
+
+    <!-- Bouton hamburger pour mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu de navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <!-- Devenez membre avec dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Devenez membre
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Membership Pass</a></li>
+            <li><a class="dropdown-item" href="#">Explorer les avantages</a></li>
+            <li><a class="dropdown-item" href="#">FAQ</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">S'inscrire à la newsletter</a></li>
+          </ul>
+        </li>
+
+        <!-- Le projet -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Le projet
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Découvrir</a></li>
+            <li><a class="dropdown-item" href="#">L'équipe</a></li>
+          </ul>
+        </li>
+
+        <!-- Actualités -->
+        <li class="nav-item">
+          <a class="nav-link" href="#news">Actualités</a>
+        </li>
+      </ul>
+
+      <!-- Bouton de connexion -->
+      <div class="navbar-nav">
+        <a class="nav-link btn btn-outline-primary btn-sm" href="#connect">
+          <i class="fas fa-user me-1"></i>
+          Connect
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

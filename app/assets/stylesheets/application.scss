@@ -10,3 +10,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// Global styles
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f4ff 25%, #f0e8ff 50%, #e8dcff 75%, #e9deff 100%);
+  min-height: 100vh;
+}
