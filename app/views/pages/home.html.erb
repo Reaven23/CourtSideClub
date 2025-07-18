@@ -1,1 +1,41 @@
 <%= render 'shared/navbar' %>
+<section class="main-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Hero Section - Left on desktop, top on mobile -->
+      <div class="col-lg-6 col-12">
+        <div class="hero-section">
+          <p id="hero-intro">By hoopers for hoopers</p>
+          <h1 class="hero-title">Donnons le pouvoir aux fans</h1>
+          <h1 class="hero-title">de <span class="hero-title-highlight">Basketball</span>.</h1>
+          <p class="intro-text">Adhérez à CourtSideClub et réinventez la propriété dans le monde du basket professionnel. Libérez votre potentiel et embarquez dans une aventure épique à la conquête du basket 3X3, où nous aspirons à devenir les Mark Cuban 3.0! Notre vision pour 2024: lancer une équipe pro de basket 3X3 pour atteindre le FIBA World Tour, tout en permettant aux membres de CourtSideClub de manager la team et les joueurs. Rendons accessible à tous la propriété du sport business!</p>
+          <div class="button-hero">
+            <%= link_to "Rejoindre", root_path, class: "button-hero-link" %>
+            <%= link_to "Déjà membre ?", root_path, class: "button-hero-link-secondary" %>
+          </div>
+          <h1 class="hero-title">7K</h1>
+          <p>Membership Pass</p>
+        </div>
+      </div>
+
+      <!-- YouTube Section - Right on desktop, bottom on mobile -->
+      <div class="col-lg-6 col-12">
+        <div class="youtube-section">
+          <div class="youtube-container">
+            <div class="video-wrapper">
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/NRyKucBw7DA"
+                title="CourtSideClub - By hoopers for hoopers"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
