@@ -8,7 +8,7 @@
           <p id="hero-intro">By hoopers for hoopers</p>
           <h1 class="hero-title">Donnons le pouvoir aux fans</h1>
           <h1 class="hero-title">de <span class="hero-title-highlight">Basketball</span>.</h1>
-          <p class="intro-text">Adhérez à CourtSideClub et réinventez la propriété dans le monde du basket professionnel. Libérez votre potentiel et embarquez dans une aventure épique à la conquête du basket 3X3, où nous aspirons à devenir les Mark Cuban 3.0! Notre vision pour 2024: lancer une équipe pro de basket 3X3 pour atteindre le FIBA World Tour, tout en permettant aux membres de CourtSideClub de manager la team et les joueurs. Rendons accessible à tous la propriété du sport business!</p>
+          <p class="intro-text">Adhérez à CourtSideClub et réinventez la propriété dans le monde du basket professionnel. Libérez votre potentiel et embarquez dans une aventure épique à la conquête du basket 3X3, où nous aspirons à devenir les Mark Cuban 3.0 ! Notre vision pour 2024 : lancer une équipe pro de basket 3X3 pour atteindre le FIBA World Tour, tout en permettant aux membres de CourtSideClub de manager la team et les joueurs. Rendons accessible à tous la propriété du sport business!</p>
           <div class="button-hero">
             <%= link_to "Rejoindre", root_path, class: "button-hero-link" %>
             <%= link_to "Déjà membre ?", root_path, class: "button-hero-link-secondary" %>
@@ -22,6 +22,8 @@
       <div class="col-lg-6 col-12">
         <div class="youtube-section">
           <div class="youtube-container">
+            <h2 class="youtube-title">Découvrez CourtSideClub</h2>
+            <p class="youtube-description">Plongez dans l'univers CourtSideClub et découvrez notre vision du basket 3X3</p>
             <div class="video-wrapper">
               <iframe
                 width="100%"
@@ -38,4 +40,74 @@
       </div>
     </div>
   </div>
+</section>
+
+<section class="second-section">
+  <%= link_to root_path, class: "discover-link" do %>
+    <div class="discover-courtsideclub">
+      Découvrez <br> CourtSideClub
+    </div>
+    <div class="discover-text">
+      Chez CourtSideClub, nous visons à vous donner le pouvoir afin de participer activement à la gestion d'une équipe professionnelle de basket 3X3! Nous voulons placer les fans au cœur de l'action et réinventer le concept des socios!
+    </div>
+  <% end %>
+
+  <div class="line-image">
+    <div class="banner-container">
+      <%= image_tag "background_courtside.jpg", alt: "CourtSide Basketball Court", class: "courtside-banner-image" %>
+      <div class="banner-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<section class="advantages-section">
+  <h1><span class="hero-title-highlight">Les avantages pour les membres </span>de CourtSideClub</h1>
+  <div class="advantages-card-container">
+    <%= link_to root_path, class: "advantages-card" do %>
+      <div class="icon">
+        <i class="fas fa-crown"></i>
+      </div>
+      <h2>Deviens le boss d'une équipe pro de basket</h2>
+      <p>Les adhérents du CourtSideClub auront la possibilité d'influencer la gestion de notre équipe 3X3, grâce à leur droit de vote.</p>
+      <div class="icon-bis">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    <% end %>
+
+    <%= link_to root_path, class: "advantages-card" do %>
+      <div class="icon">
+        <i class="fas fa-ticket-alt"></i>
+      </div>
+      <h2>Gagne tes places pour des matchs</h2>
+      <p>Des billets pour les matchs de vos équipes préférées seront offerts tout au long de l'année aux membres.</p>
+      <div class="icon-bis">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    <% end %>
+
+    <%= link_to root_path, class: "advantages-card" do %>
+      <div class="icon">
+        <i class="fas fa-handshake"></i>
+      </div>
+      <h2>Rencontres privilégiées</h2>
+      <p>Les membres du CourtSideClub bénéficieront d'occasions uniques de rencontrer des joueurs professionnels et d'échanger avec eux après les matchs ou lors de visioconférences.</p>
+      <div class="icon-bis">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    <% end %>
+
+    <%= link_to root_path, class: "advantages-card" do %>
+      <div class="icon">
+        <i class="fas fa-basketball-ball"></i>
+      </div>
+      <h2>Améliore ton game</h2>
+      <p>Une plateforme vidéo exclusive dédiée au coaching sera mise à la disposition de tous les membres, afin de perfectionner leur jeu et les aider à atteindre leurs objectifs sur le terrain ou en tant qu'entraîneurs.</p>
+      <div class="icon-bis">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to root_path, class: "advantages-button" do %>
+    Découvrir les avantages <i class="fas fa-arrow-right"></i>
+  <% end %>
 </section>

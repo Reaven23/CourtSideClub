@@ -3,7 +3,7 @@
 // Main section layout
 .main-section {
   padding: 2rem 0 4rem 0; // Reduced top padding from 4rem to 2rem
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
 }
 
@@ -130,6 +130,261 @@
   margin-top: 0;
 }
 
+// Second section styling
+.second-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+// Line image container in second section
+.line-image {
+  margin-top: 3rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 500px; // Fixed height for banner
+  overflow: hidden;
+}
+
+.courtside-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+// .banner-overlay {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background: linear-gradient(135deg, rgba(238, 83, 168, 0.3) 0%, rgba(91, 54, 207, 0.3) 100%);
+//   pointer-events: none;
+// }
+
+// Advantages Section
+.advantages-section {
+  padding: 4rem 0;
+  text-align: center;
+
+  h1 {
+    font-size: $font-size-4xl;
+    font-weight: $font-bold;
+    margin-bottom: 5rem;
+    color: #333;
+    line-height: 1.3;
+  }
+}
+
+// Advantages button - Secondary style but bigger
+.advantages-button {
+  display: inline-block;
+  border-radius: 25px !important;
+  padding: 1.2rem 2rem !important; // Bigger than secondary button
+  font-weight: 600 !important;
+  font-size: $font-size-lg !important; // Bigger font size
+  transition: all 0.3s ease !important;
+  color: #333 !important;
+  background: transparent !important;
+  border: 2px solid #EE53A8 !important;
+  text-decoration: none;
+  margin-top: 6rem; // Space after cards
+
+  i {
+    color: #6A0DAD; // Violet color for arrow
+    font-size: 0.9em; // Slightly smaller than text
+    margin-left: 0.5rem; // Small space before arrow
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    background: rgba(126, 126, 126, 0.1) !important;
+    color: #EE53A8 !important;
+    transform: scale(1.05) !important;
+    text-decoration: none;
+    border-color: #EE53A8 !important;
+
+    i {
+      color: #8403d5; // Arrow becomes pink on hover
+      transform: translateX(3px); // Subtle movement on hover
+    }
+  }
+
+  &:focus {
+    background: transparent !important;
+    color: #333 !important;
+    box-shadow: none !important;
+    text-decoration: none;
+    border-color: #EE53A8 !important;
+
+    i {
+      color: #6A0DAD;
+    }
+  }
+
+  &:active {
+    background: rgba(51, 51, 51, 0.15) !important;
+    color: #EE53A8 !important;
+    text-decoration: none;
+    border-color: #EE53A8 !important;
+
+    i {
+      color: #EE53A8;
+    }
+  }
+}
+
+.advantages-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem; // Reduced gap for better fit
+  max-width: 1400px; // Increased max-width
+  margin: 0 auto; // Remove top margin
+  padding: 0 1rem;
+}
+
+.advantages-card {
+  flex: 0 1 calc(25% - 1.5rem); // Fixed width, 4 cards per row
+  max-width: 300px; // Maximum width per card
+  min-width: 250px; // Minimum width per card
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 2rem 1.5rem 4rem 1.5rem; // Added bottom padding for arrow space
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border: 2px solid transparent;
+  text-align: left; // Align everything to the left
+  position: relative; // For absolute positioning of bottom arrow
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(238, 83, 168, 0.2);
+    border-color: #EE53A8;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:focus {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  h2 {
+    font-size: $font-size-xl;
+    font-weight: $font-semibold;
+    color: #333;
+    margin: 1.5rem 0 1rem 0;
+    line-height: 1.4;
+    text-align: left; // Left align title
+  }
+
+  p {
+    font-size: $font-size-base;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: justify; // Keep justified text
+  }
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #EE53A8 0%, #6A0DAD 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+  margin: 0 0 1.5rem 0; // Left aligned with bottom margin
+}
+
+.icon-bis {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: auto; // Remove fixed width
+  height: auto; // Remove fixed height
+  background: none; // Remove background
+  border-radius: 0; // Remove border radius
+  margin: 0; // Remove margins
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #6A0DAD; // Violet color
+}
+
+// Discover link - Make entire section clickable
+.discover-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 2rem;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.discover-courtsideclub {
+  text-align: center;
+  font-size: $font-size-6xl; // Much larger - 60px
+  font-weight: $font-bold;
+  background: linear-gradient(to left, #FF69B4 0%, #E6007E 25%, #B83DBA 50%, #6A0DAD 75%, #2E0854 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(to right, #FF69B4 0%, #E6007E 25%, #B83DBA 50%, #6A0DAD 75%, #2E0854 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 100%;
+    animation: gradientSlideHover 1.5s ease-in-out;
+  }
+}
+
+// Animation for hover effect - left to right
+@keyframes gradientSlideHover {
+  0% {
+    background-position: -100% 50%; // Start from left
+  }
+  100% {
+    background-position: 100% 50%; // Move to right
+  }
+}
+
+.discover-text {
+  font-size: $font-size-lg;
+  color: #666;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 // YouTube Section
 .youtube-section {
   padding: 2rem 0;
@@ -200,6 +455,51 @@
   .youtube-section {
     padding: 1rem 0;
   }
+
+  .discover-courtsideclub {
+    font-size: $font-size-5xl; // 48px for tablet
+  }
+
+  .discover-text {
+    font-size: $font-size-base;
+  }
+
+  .second-section {
+    padding: 1.5rem 0;
+  }
+
+  .line-image {
+    margin-top: 2rem;
+  }
+
+  .banner-container {
+    height: 200px; // Smaller height on tablet
+  }
+
+  // Advantages responsive - Tablet: 2 cards per row
+  .advantages-section {
+    padding: 3rem 0;
+
+    h1 {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  .advantages-button {
+    padding: 1rem 1.5rem !important;
+    font-size: $font-size-base !important;
+    margin-top: 2rem; // Space after cards on tablet
+  }
+
+  .advantages-card-container {
+    gap: 1.5rem;
+  }
+
+  .advantages-card {
+    flex: 0 1 calc(50% - 1.5rem); // 2 cards per row on tablet
+    min-width: 280px;
+    max-width: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -214,6 +514,68 @@
   .youtube-description {
     font-size: $font-size-base;
   }
+
+  .discover-courtsideclub {
+    font-size: $font-size-4xl; // 36px for mobile
+  }
+
+  .second-section {
+    padding: 1rem 0;
+  }
+
+  .line-image {
+    margin-top: 1.5rem;
+  }
+
+  .banner-container {
+    height: 150px; // Smaller height on mobile
+  }
+
+  // Advantages responsive - Mobile: 1 card per row
+  .advantages-section {
+    padding: 2rem 0;
+
+    h1 {
+      font-size: $font-size-2xl;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .advantages-button {
+    padding: 0.9rem 1.3rem !important;
+    font-size: $font-size-sm !important;
+    margin-top: 1.5rem; // Space after cards on mobile
+  }
+
+  .advantages-card-container {
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .advantages-card {
+    flex: 1 1 100%; // 1 card per row on mobile
+    min-width: auto;
+    padding: 1.5rem 1rem 3.5rem 1rem; // Adjusted padding for mobile
+
+    h2 {
+      font-size: $font-size-lg;
+    }
+
+    p {
+      font-size: $font-size-sm;
+    }
+  }
+
+  .icon, .icon-bis {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-bis {
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -223,5 +585,42 @@
 
   .youtube-description {
     font-size: $font-size-sm;
+  }
+
+  .discover-courtsideclub {
+    font-size: $font-size-3xl; // 30px for small mobile
+  }
+
+  .discover-text {
+    font-size: $font-size-sm;
+  }
+
+  .line-image {
+    margin-top: 1rem;
+  }
+
+  .banner-container {
+    height: 120px; // Even smaller on very small screens
+  }
+
+  .advantages-section {
+    padding: 1.5rem 0;
+
+    h1 {
+      font-size: $font-size-xl;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .advantages-card {
+    padding: 1rem 0.8rem;
+
+    h2 {
+      font-size: $font-size-base;
+    }
+
+    p {
+      font-size: $font-size-xs;
+    }
   }
 }
