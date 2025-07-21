@@ -38,22 +38,9 @@ class User < ApplicationRecord
   end
 
   def remove_points(amount)
-    decrement!(:points, [amount, points].min) # Ne peut pas descendre en dessous de 0
+    decrement!(:points, [amount, points].min)
   end
 
-  def has_voted_for?(player)
-    votes.exists?(player: player)
-  end
-
-  def vote_for!(player)
-    return false if has_voted_for?(player)
-
-    votes.create!(player: player)
-    add_points(10) # Récompense de 10 points pour un vote
-    true
-  rescue ActiveRecord::RecordInvalid
-    false
-  end
 
   def current_level_name
     level&.name || "🆕 Nouveau"
