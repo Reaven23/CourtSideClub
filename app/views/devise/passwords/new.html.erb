@@ -1,0 +1,50 @@
+<div class="auth-container">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-lg-5 col-md-7 col-sm-9">
+        <div class="auth-card">
+          <div class="auth-header">
+            <%= link_to root_path, class: "auth-logo-link" do %>
+              <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "auth-logo" %>
+              <span class="auth-brand-text">CourtSideClub</span>
+            <% end %>
+            <h2 class="auth-title">Mot de passe oublié ?</h2>
+            <p class="auth-subtitle">Saisissez votre email pour recevoir un lien de réinitialisation</p>
+          </div>
+
+          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "auth-form" }) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true,
+                          label: "Email",
+                          placeholder: "votre@email.com",
+                          wrapper_class: "auth-input-wrapper",
+                          input_html: {
+                            autocomplete: "email",
+                            class: "auth-input"
+                          } %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Envoyer le lien", class: "auth-btn-primary" %>
+            </div>
+          <% end %>
+
+          <div class="auth-divider">
+            <span>ou</span>
+          </div>
+
+          <div class="auth-links">
+            <p class="auth-signup-text">
+              Vous vous souvenez de votre mot de passe ?
+              <%= link_to "Se connecter", new_session_path(resource_name), class: "auth-signup-link" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
