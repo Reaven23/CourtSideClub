@@ -3,7 +3,7 @@
 // Main section layout
 .main-section {
   padding: 2rem 0 4rem 0; // Back to original padding
-  min-height: 85vh; // Each section takes 85vh (15vh navbar + 85vh = 100vh)
+  min-height: 88vh; // Each section takes 88vh (12vh navbar + 88vh = 100vh)
   display: flex;
 }
 
@@ -134,7 +134,7 @@
 .second-section {
   text-align: center;
   padding: 2rem 0;
-  min-height: 85vh; // Each section takes 85vh
+  min-height: 88vh; // Each section takes 88vh
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -177,7 +177,7 @@
 .advantages-section {
   padding: 4rem 0;
   text-align: center;
-  min-height: 85vh; // Each section takes 85vh
+  min-height: 88vh; // Each section takes 88vh
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -453,7 +453,7 @@
 @media (max-width: 991px) {
   .main-section {
     padding: 1rem 0 2rem 0; // Back to original mobile padding
-    min-height: 85vh; // Slightly more space on mobile to compensate for smaller navbar (auto height)
+    min-height: 88vh; // Keep consistent with desktop
   }
 
   .hero-section {
@@ -475,7 +475,7 @@
   }
 
   .second-section {
-    min-height: 85vh; // Adjust for mobile
+    min-height: 88vh; // Keep consistent
   }
 
   .line-image {
@@ -488,7 +488,7 @@
 
   // Advantages responsive - Tablet: 2 cards per row
   .advantages-section {
-    min-height: 85vh; // Adjust for mobile
+    min-height: 88vh; // Keep consistent
     padding: 3rem 0;
 
     h1 {

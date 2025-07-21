@@ -3,7 +3,7 @@
 // Dashboard container
 .dashboard-container {
   background: linear-gradient(135deg, #ffffff 0%, #f8f4ff 25%, #f0e8ff 50%, #e8dcff 75%, #e9deff 100%);
-  min-height: 85vh; // Adjust to match section height (85vh)
+  min-height: 88vh; // Adjust to match section height (88vh)
   padding: 3rem 0; // Reduced padding since navbar provides the spacing
 }
 
@@ -377,7 +377,7 @@
 
 @media (max-width: 480px) {
   .dashboard-container {
-    min-height: 85vh; // Match mobile section height
+    min-height: 88vh; // Keep consistent with new proportions
     padding: 2rem 0;
   }
 
