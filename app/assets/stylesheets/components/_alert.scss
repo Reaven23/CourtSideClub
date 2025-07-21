@@ -1,0 +1,30 @@
+// Alert positioning - CourtSideClub
+
+.alert {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  max-width: 400px;
+  z-index: 1050;
+  margin: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .alert {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .alert {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+  }
+}

@@ -2,8 +2,8 @@
 
 // Main section layout
 .main-section {
-  padding: 2rem 0 4rem 0; // Reduced top padding from 4rem to 2rem
-  min-height: 80vh;
+  padding: 2rem 0 4rem 0; // Back to original padding
+  min-height: 85vh; // Each section takes 85vh (15vh navbar + 85vh = 100vh)
   display: flex;
 }
 
@@ -134,6 +134,10 @@
 .second-section {
   text-align: center;
   padding: 2rem 0;
+  min-height: 85vh; // Each section takes 85vh
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 // Line image container in second section
@@ -173,6 +177,10 @@
 .advantages-section {
   padding: 4rem 0;
   text-align: center;
+  min-height: 85vh; // Each section takes 85vh
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   h1 {
     font-size: $font-size-4xl;
@@ -196,6 +204,7 @@
   border: 2px solid #EE53A8 !important;
   text-decoration: none;
   margin-top: 6rem; // Space after cards
+  align-self: center; // Center the button in the flex container
 
   i {
     color: #6A0DAD; // Violet color for arrow
@@ -443,7 +452,8 @@
 // Responsive design
 @media (max-width: 991px) {
   .main-section {
-    padding: 1rem 0 2rem 0; // Further reduced for mobile
+    padding: 1rem 0 2rem 0; // Back to original mobile padding
+    min-height: 85vh; // Slightly more space on mobile to compensate for smaller navbar (auto height)
   }
 
   .hero-section {
@@ -465,7 +475,7 @@
   }
 
   .second-section {
-    padding: 1.5rem 0;
+    min-height: 85vh; // Adjust for mobile
   }
 
   .line-image {
@@ -478,6 +488,7 @@
 
   // Advantages responsive - Tablet: 2 cards per row
   .advantages-section {
+    min-height: 85vh; // Adjust for mobile
     padding: 3rem 0;
 
     h1 {

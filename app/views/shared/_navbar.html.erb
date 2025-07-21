@@ -1,21 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
-    <!-- Logo et nom de l'entreprise -->
-    <a class="navbar-brand d-flex align-items-center" href="#home">
-      <div class="logo-container me-2">
-        <!-- Logo CourtSideClub -->
-        <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "navbar-logo" %>
-      </div>
+    <!-- Logo et nom -->
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+      <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "navbar-logo" %>
       <span class="brand-text">CourtSideClub</span>
-    </a>
+    <% end %>
 
-    <!-- Bouton hamburger pour mobile -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <!-- Bouton mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon">
+        <i class="fas fa-bars"></i>
+      </span>
     </button>
 
-    <!-- Menu de navigation -->
+    <!-- Menu principal -->
     <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Navigation principale -->
       <ul class="navbar-nav mx-auto">
         <!-- Devenez membre avec dropdown -->
         <li class="nav-item dropdown">
@@ -48,13 +48,49 @@
         </li>
       </ul>
 
-      <!-- Bouton de connexion -->
-      <div class="navbar-nav">
-        <%= link_to new_user_session_path, class: "nav-link btn btn-outline-primary btn-sm" do %>
-          <i class="fas fa-user me-1"></i>
-          Connect
-        <% end %>
-      </div>
+      <!-- Section utilisateur -->
+      <% if user_signed_in? %>
+        <!-- Utilisateur connecté -->
+        <div class="navbar-nav">
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center user-menu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="user-name me-2"><%= current_user.full_name %></span>
+              <div class="user-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end user-dropdown">
+              <li>
+                <%= link_to dashboard_path, class: "dropdown-item" do %>
+                  <i class="fas fa-tachometer-alt me-2"></i>
+                  Dashboard
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+                  <i class="fas fa-user-edit me-2"></i>
+                  Mon profil
+                <% end %>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item text-danger" do %>
+                  <i class="fas fa-sign-out-alt me-2"></i>
+                  Déconnexion
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <% else %>
+        <!-- Utilisateur non connecté -->
+        <div class="navbar-nav">
+          <%= link_to new_user_session_path, class: "nav-link btn btn-outline-primary btn-sm" do %>
+            <i class="fas fa-user me-1"></i>
+            Connect
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </nav>

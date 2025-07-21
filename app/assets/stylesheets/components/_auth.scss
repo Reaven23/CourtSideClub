@@ -245,6 +245,109 @@
   font-size: $font-size-sm;
 }
 
+// Profile edit specific styles
+.auth-info-message {
+  background: rgba(13, 202, 240, 0.1);
+  border: 1px solid rgba(13, 202, 240, 0.2);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  color: #0dcaf0;
+  font-size: $font-size-sm;
+  display: flex;
+  align-items: center;
+}
+
+.auth-password-section {
+  background: rgba(248, 249, 250, 0.5);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid rgba(238, 83, 168, 0.1);
+}
+
+.auth-section-title {
+  font-size: $font-size-lg;
+  font-weight: $font-semibold;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.auth-section-subtitle {
+  color: #666;
+  font-size: $font-size-sm;
+  margin-bottom: 1.5rem;
+}
+
+// Danger zone
+.auth-danger-zone {
+  background: rgba(220, 53, 69, 0.05);
+  border: 1px solid rgba(220, 53, 69, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-danger-title {
+  font-size: $font-size-base;
+  font-weight: $font-semibold;
+  color: #dc3545;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.auth-danger-text {
+  color: #666;
+  font-size: $font-size-sm;
+  margin-bottom: 1rem;
+}
+
+.auth-btn-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-size: $font-size-sm;
+  font-weight: $font-semibold;
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+    background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  }
+}
+
+// Back button
+.auth-back-link {
+  margin-top: 1rem;
+}
+
+.auth-back-btn {
+  color: #666;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  font-weight: $font-medium;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+
+  &:hover {
+    color: #EE53A8;
+    text-decoration: none;
+    transform: translateX(-2px);
+  }
+}
+
 // Responsive design
 @media (max-width: 768px) {
   .auth-card {
@@ -269,6 +372,14 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+
+  .auth-password-section {
+    padding: 1rem;
+  }
+
+  .auth-danger-zone {
+    padding: 1rem;
   }
 }
 
