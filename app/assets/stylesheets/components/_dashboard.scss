@@ -9,21 +9,56 @@
 
 // Dashboard header
 .dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-left {
+  flex: 0 0 350px;
+}
+
+.dashboard-right {
+  flex: 1;
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.dashboard-stats-column,
+.dashboard-actions-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+// Action icon pour "Gagner des points" avec couleur différente
+.action-card-header:last-child .action-icon {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+// Welcome + Badge card combinée
+.welcome-badge-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 2rem;
-  margin-bottom: 2rem;
   box-shadow: 0 10px 30px rgba(238, 83, 168, 0.1);
+  border: 1px solid rgba(238, 83, 168, 0.1);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
 }
 
+// Welcome section (dans la carte combinée)
 .welcome-section {
-  flex: 1;
+  text-align: left;
 }
 
 .dashboard-title {
@@ -43,55 +78,56 @@
   margin-bottom: 0;
 }
 
-// Level badge
+// Level badge (dans la carte combinée)
 .level-badge {
   background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
   color: white;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 15px;
   text-align: center;
-  min-width: 200px;
+  box-shadow: 0 8px 25px rgba(238, 83, 168, 0.2);
 }
 
 .level-info {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .level-name {
   font-weight: $font-bold;
-  font-size: $font-size-lg;
+  font-size: $font-size-xl;
 }
 
 .level-points {
-  font-size: $font-size-sm;
+  font-size: $font-size-base;
   opacity: 0.9;
 }
 
 .progress-bar {
   background: rgba(255, 255, 255, 0.2);
-  height: 8px;
-  border-radius: 4px;
+  height: 10px;
+  border-radius: 5px;
   overflow: hidden;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .progress-fill {
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
   transition: width 0.3s ease;
 }
 
 .progress-text {
-  font-size: $font-size-xs;
+  font-size: $font-size-sm;
   opacity: 0.8;
 }
 
-// Stat cards
-.stat-card {
+// Stat cards et action cards avec hauteur flexible
+.stat-card-header,
+.action-card-header {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 15px;
@@ -102,23 +138,41 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex: 1;
+  min-height: 80px;
+}
+
+// Stat cards (header)
+.stat-card-header {
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(238, 83, 168, 0.15);
+  }
+}
+
+// Action cards (header)
+.action-card-header {
+  cursor: pointer;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(238, 83, 168, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(238, 83, 168, 0.15);
+    border-color: rgba(238, 83, 168, 0.2);
   }
 }
 
 .stat-icon {
   background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
   color: white;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: $font-size-xl;
+  font-size: $font-size-lg;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(238, 83, 168, 0.3);
 }
 
 .stat-content {
@@ -130,22 +184,59 @@
   font-weight: $font-bold;
   color: #333;
   margin-bottom: 0.25rem;
+  line-height: 1;
 }
 
 .stat-label {
   color: #666;
   font-size: $font-size-sm;
   margin-bottom: 0;
+  line-height: 1;
 }
 
-// Section titles
-.section-title {
-  font-size: $font-size-xl;
-  font-weight: $font-bold;
-  color: #333;
-  margin-bottom: 1.5rem;
+.action-icon {
+  background: linear-gradient(135deg, #8a2be2 0%, #4a90e2 100%);
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  font-size: $font-size-lg;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.action-content {
+  flex: 1;
+}
+
+.action-title {
+  font-size: $font-size-lg;
+  font-weight: $font-bold;
+  color: #333;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+// Ajustement pour le texte plus long
+.action-subtitle {
+  color: #666;
+  font-size: $font-size-xs;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+
+.action-arrow {
+  color: #999;
+  font-size: $font-size-sm;
+  transition: all 0.3s ease;
+}
+
+.action-card-header:hover .action-arrow {
+  color: #EE53A8;
+  transform: translateX(3px);
 }
 
 // Votes section
@@ -351,15 +442,61 @@
 }
 
 // Responsive design
+@media (max-width: 1024px) {
+  .dashboard-header {
+    gap: 2rem;
+  }
+
+  .dashboard-left {
+    flex: 0 0 300px;
+  }
+
+  .dashboard-right {
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .dashboard-header {
     flex-direction: column;
-    text-align: center;
+    gap: 2rem;
+  }
+
+  .dashboard-left {
+    flex: none;
+    width: 100%;
+  }
+
+  .dashboard-right {
+    width: 100%;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .dashboard-stats-column,
+  .dashboard-actions-column {
+    width: 100%;
+  }
+
+  // Masquer les stats en mobile
+  .dashboard-stats-column {
+    display: none;
+  }
+
+  .welcome-badge-card {
+    gap: 1.5rem;
   }
 
   .level-badge {
-    min-width: auto;
-    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .dashboard-title {
+    font-size: $font-size-2xl;
+  }
+
+  .level-name {
+    font-size: $font-size-lg;
   }
 
   .votes-grid {
@@ -376,18 +513,36 @@
 }
 
 @media (max-width: 480px) {
-  .dashboard-container {
-    min-height: 88vh; // Keep consistent with new proportions
-    padding: 2rem 0;
+  .dashboard-header {
+    gap: 1.5rem;
   }
 
-  .dashboard-header,
-  .votes-section,
-  .quick-actions {
+  .welcome-badge-card {
     padding: 1.5rem;
+    gap: 1.25rem;
   }
 
-  .actions-grid {
-    grid-template-columns: 1fr;
+  .level-badge {
+    padding: 1.25rem;
+  }
+
+  .stat-card-header,
+  .action-card-header {
+    padding: 1.25rem;
+  }
+
+  .stat-icon,
+  .action-icon {
+    width: 45px;
+    height: 45px;
+    font-size: $font-size-base;
+  }
+
+  .action-title {
+    font-size: $font-size-base;
+  }
+
+  .stat-number {
+    font-size: $font-size-xl;
   }
 }

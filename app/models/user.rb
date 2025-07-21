@@ -43,7 +43,7 @@ class User < ApplicationRecord
 
 
   def current_level_name
-    level&.name || "🆕 Nouveau"
+    level&.name || Level.find_by(number: 1)&.name || "🏀 Rookie 1"
   end
 
   def progress_to_next_level

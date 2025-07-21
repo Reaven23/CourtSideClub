@@ -11,7 +11,8 @@ class Level < ApplicationRecord
 
   # Class methods
   def self.for_points(user_points)
-    where('points <= ?', user_points).order(points: :desc).first
+    level = where('points <= ?', user_points).order(points: :desc).first
+    level || find_by(number: 1) # Return level 1 as fallback
   end
 
   # Instance methods
