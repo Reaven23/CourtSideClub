@@ -1,0 +1,72 @@
+<div class="auth-container">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-lg-5 col-md-7 col-sm-9">
+        <div class="auth-card">
+          <div class="auth-header">
+            <%= link_to root_path, class: "auth-logo-link" do %>
+              <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "auth-logo" %>
+              <span class="auth-brand-text">CourtSideClub</span>
+            <% end %>
+            <h2 class="auth-title">Connexion</h2>
+            <p class="auth-subtitle">Accédez à votre espace membre</p>
+          </div>
+
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f| %>
+            <%= f.error_notification message: "Email ou mot de passe incorrect", class: "auth-error" %>
+
+            <div class="form-inputs">
+              <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          label: "Email",
+                          placeholder: "votre@email.com",
+                          wrapper_class: "auth-input-wrapper",
+                          input_html: {
+                            autocomplete: "email",
+                            class: "auth-input"
+                          } %>
+
+              <%= f.input :password,
+                          required: false,
+                          label: "Mot de passe",
+                          placeholder: "••••••••",
+                          wrapper_class: "auth-input-wrapper",
+                          input_html: {
+                            autocomplete: "current-password",
+                            class: "auth-input"
+                          } %>
+
+              <div class="auth-remember-forgot">
+                <% if devise_mapping.rememberable? %>
+                  <%= f.input :remember_me,
+                              as: :boolean,
+                              label: "Se souvenir de moi",
+                              wrapper_class: "auth-checkbox-wrapper",
+                              input_html: { class: "auth-checkbox" } %>
+                <% end %>
+
+                <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "auth-forgot-link" %>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Se connecter", class: "auth-btn-primary" %>
+            </div>
+          <% end %>
+
+          <div class="auth-divider">
+            <span>ou</span>
+          </div>
+
+          <div class="auth-links">
+            <p class="auth-signup-text">
+              Pas encore membre ?
+              <%= link_to "Rejoindre CourtSideClub", new_registration_path(resource_name), class: "auth-signup-link" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -50,10 +50,10 @@
 
       <!-- Bouton de connexion -->
       <div class="navbar-nav">
-        <a class="nav-link btn btn-outline-primary btn-sm" href="#connect">
+        <%= link_to new_user_session_path, class: "nav-link btn btn-outline-primary btn-sm" do %>
           <i class="fas fa-user me-1"></i>
           Connect
-        </a>
+        <% end %>
       </div>
     </div>
   </div>
