@@ -1,35 +1,160 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="auth-container">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="auth-card">
+          <div class="auth-header">
+            <%= link_to root_path, class: "auth-logo-link" do %>
+              <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "auth-logo" %>
+              <span class="auth-brand-text">CourtSideClub</span>
+            <% end %>
+            <h2 class="auth-title">Mon profil</h2>
+            <p class="auth-subtitle">Modifiez vos informations personnelles</p>
+          </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "auth-form" }) do |f| %>
+            <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+            <div class="form-inputs">
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :first_name,
+                              required: true,
+                              autofocus: true,
+                              label: "Prénom",
+                              placeholder: "Votre prénom",
+                              wrapper_class: "auth-input-wrapper",
+                              input_html: {
+                                autocomplete: "given-name",
+                                class: "auth-input"
+                              }%>
+                </div>
+                <div class="col-md-6">
+                  <%= f.input :last_name,
+                              required: true,
+                              label: "Nom",
+                              placeholder: "Votre nom",
+                              wrapper_class: "auth-input-wrapper",
+                              input_html: {
+                                autocomplete: "family-name",
+                                class: "auth-input"
+                              }%>
+                </div>
+              </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+              <%= f.input :email,
+                          required: true,
+                          label: "Email",
+                          placeholder: "votre@email.com",
+                          wrapper_class: "auth-input-wrapper",
+                          input_html: {
+                            autocomplete: "email",
+                            class: "auth-input"
+                          }%>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div class="auth-info-message">
+                  <i class="fas fa-clock me-2"></i>
+                  En attente de confirmation pour : <strong><%= resource.unconfirmed_email %></strong>
+                </div>
+              <% end %>
+
+              <%= f.input :birthdate,
+                          required: true,
+                          label: "Date de naissance",
+                          as: :date,
+                          start_year: Date.current.year - 80,
+                          end_year: Date.current.year - 13,
+                          order: [:day, :month, :year],
+                          wrapper_class: "auth-input-wrapper",
+                          input_html: {
+                            autocomplete: "bday",
+                            class: "auth-input"
+                          }%>
+
+              <div class="auth-password-section">
+                <h4 class="auth-section-title">
+                  <i class="fas fa-lock me-2"></i>
+                  Changer le mot de passe
+                </h4>
+                <p class="auth-section-subtitle">Laissez vide si vous ne souhaitez pas le modifier</p>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.input :password,
+                                required: false,
+                                label: "Nouveau mot de passe",
+                                placeholder: "••••••••",
+                                hint: "Laissez vide pour ne pas changer",
+                                wrapper_class: "auth-input-wrapper",
+                                input_html: {
+                                  autocomplete: "new-password",
+                                  class: "auth-input"
+                                } %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.input :password_confirmation,
+                                required: false,
+                                label: "Confirmer le mot de passe",
+                                placeholder: "••••••••",
+                                wrapper_class: "auth-input-wrapper",
+                                input_html: {
+                                  autocomplete: "new-password",
+                                  class: "auth-input"
+                                } %>
+                  </div>
+                </div>
+
+                <%= f.input :current_password,
+                            required: true,
+                            label: "Mot de passe actuel",
+                            placeholder: "••••••••",
+                            hint: "Requis pour confirmer les modifications",
+                            wrapper_class: "auth-input-wrapper",
+                            input_html: {
+                              autocomplete: "current-password",
+                              class: "auth-input"
+                            } %>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Mettre à jour", class: "auth-btn-primary" %>
+            </div>
+          <% end %>
+
+          <div class="auth-divider">
+            <span>ou</span>
+          </div>
+
+          <div class="auth-links">
+            <div class="auth-danger-zone">
+              <h4 class="auth-danger-title">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                Zone de danger
+              </h4>
+              <p class="auth-danger-text">
+                Cette action est irréversible et supprimera définitivement votre compte.
+              </p>
+              <%= button_to "Supprimer mon compte",
+                            registration_path(resource_name),
+                            method: :delete,
+                            class: "auth-btn-danger",
+                            data: {
+                              confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.",
+                              turbo_confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible."
+                            } %>
+            </div>
+
+            <div class="auth-back-link">
+              <%= link_to dashboard_path, class: "auth-back-btn" do %>
+                <i class="fas fa-arrow-left me-2"></i>
+                Retour au dashboard
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>

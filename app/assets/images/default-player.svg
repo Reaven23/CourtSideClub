@@ -1,0 +1,33 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <defs>
+    <linearGradient id="playerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EE53A8;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#d555d3;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#8a2be2;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="100" fill="url(#playerGradient)"/>
+
+  <!-- Player silhouette -->
+  <g transform="translate(50, 30)">
+    <!-- Head -->
+    <circle cx="50" cy="40" r="25" fill="rgba(255,255,255,0.9)"/>
+
+    <!-- Body -->
+    <ellipse cx="50" cy="100" rx="35" ry="45" fill="rgba(255,255,255,0.9)"/>
+
+    <!-- Jersey number placeholder -->
+    <text x="50" y="110" text-anchor="middle" fill="#EE53A8" font-family="Arial, sans-serif" font-size="24" font-weight="bold">?</text>
+  </g>
+
+  <!-- Basketball icon -->
+  <g transform="translate(140, 140)">
+    <circle cx="25" cy="25" r="20" fill="#ff6b35" stroke="#d63384" stroke-width="2"/>
+    <path d="M10 25 Q25 15 40 25" stroke="#d63384" stroke-width="2" fill="none"/>
+    <path d="M25 10 Q35 25 25 40" stroke="#d63384" stroke-width="2" fill="none"/>
+    <path d="M25 10 Q15 25 25 40" stroke="#d63384" stroke-width="2" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,143 @@
+<%= render 'shared/navbar' %>
+
+<div class="dashboard-container">
+  <div class="container">
+    <div class="row">
+      <!-- Header du dashboard -->
+      <div class="col-12">
+        <div class="dashboard-header">
+          <div class="welcome-section">
+            <h1 class="dashboard-title">
+              Salut <%= @user.first_name %> ! 🏀
+            </h1>
+            <p class="dashboard-subtitle">
+              Bienvenue sur ton dashboard CourtSideClub
+            </p>
+          </div>
+
+          <div class="level-badge">
+            <div class="level-info">
+              <span class="level-name"><%= @user.current_level_name %></span>
+              <span class="level-points"><%= @user.points %> points</span>
+            </div>
+            <% if @next_level %>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: <%= @user.progress_to_next_level %>%"></div>
+              </div>
+              <small class="progress-text">
+                <%= @user.points_to_next_level %> points pour <%= @next_level.name %>
+              </small>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Statistiques -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="stat-content">
+            <h3 class="stat-number"><%= @user.points %></h3>
+            <p class="stat-label">Points totaux</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-vote-yea"></i>
+          </div>
+          <div class="stat-content">
+            <h3 class="stat-number"><%= @votes_count %></h3>
+            <p class="stat-label">Votes MVP</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="stat-content">
+            <h3 class="stat-number"><%= @current_level&.number || 0 %></h3>
+            <p class="stat-label">Niveau actuel</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mes votes -->
+    <% if @user_votes.any? %>
+      <div class="row">
+        <div class="col-12">
+          <div class="votes-section">
+            <h2 class="section-title">
+              <i class="fas fa-heart me-2"></i>
+              Mes votes MVP
+            </h2>
+
+            <div class="votes-grid">
+              <% @user_votes.each do |vote| %>
+                <div class="vote-card">
+                  <div class="player-photo">
+                    <%= image_tag vote.player.photo_url, alt: vote.player.full_name, class: "player-image" %>
+                  </div>
+                  <div class="player-info">
+                    <h4 class="player-name"><%= vote.player.full_name %></h4>
+                    <p class="player-stats"><%= vote.player.tournament_played %> tournois</p>
+                    <small class="vote-date">
+                      Voté le <%= l(vote.created_at, format: :short) %>
+                    </small>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="row">
+        <div class="col-12">
+          <div class="empty-state">
+            <i class="fas fa-vote-yea empty-icon"></i>
+            <h3>Aucun vote pour le moment</h3>
+            <p>Commence à voter pour tes joueurs préférés et gagne des points !</p>
+            <%= link_to "Voter maintenant", root_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Actions rapides -->
+    <div class="row">
+      <div class="col-12">
+        <div class="quick-actions">
+          <h2 class="section-title">Actions rapides</h2>
+          <div class="actions-grid">
+            <%= link_to root_path, class: "action-card" do %>
+              <i class="fas fa-vote-yea"></i>
+              <span>Voter MVP</span>
+            <% end %>
+
+            <%= link_to edit_user_registration_path, class: "action-card" do %>
+              <i class="fas fa-user-edit"></i>
+              <span>Mon profil</span>
+            <% end %>
+
+            <div class="action-card disabled">
+              <i class="fas fa-gamepad"></i>
+              <span>Mini-jeux</span>
+              <small>Bientôt disponible</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

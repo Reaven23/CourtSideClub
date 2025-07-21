@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Associations
+  belongs_to :level, optional: true
+  has_many :votes, dependent: :destroy
+  has_many :voted_players, through: :votes, source: :player
+
+  # Callbacks
+  before_save :update_level_if_needed
+  after_create :assign_initial_level
+
   # Validations
   validates :first_name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :last_name, presence: true, length: { minimum: 2, maximum: 50 }
@@ -32,6 +41,47 @@ class User < ApplicationRecord
     decrement!(:points, [amount, points].min) # Ne peut pas descendre en dessous de 0
   end
 
+  def has_voted_for?(player)
+    votes.exists?(player: player)
+  end
+
+  def vote_for!(player)
+    return false if has_voted_for?(player)
+
+    votes.create!(player: player)
+    add_points(10) # Récompense de 10 points pour un vote
+    true
+  rescue ActiveRecord::RecordInvalid
+    false
+  end
+
+  def current_level_name
+    level&.name || "🆕 Nouveau"
+  end
+
+  def progress_to_next_level
+    return 100 if level.nil?
+
+    next_level = level.next_level
+    return 100 unless next_level
+
+    current_level_points = level.points
+    next_level_points = next_level.points
+    points_needed = next_level_points - current_level_points
+    user_progress = [points - current_level_points, 0].max
+
+    [(user_progress.to_f / points_needed * 100).round, 100].min
+  end
+
+  def points_to_next_level
+    return 0 if level.nil?
+
+    next_level = level.next_level
+    return 0 unless next_level
+
+    [next_level.points - points, 0].max
+  end
+
   private
 
   def birthdate_cannot_be_in_future
@@ -47,5 +97,16 @@ class User < ApplicationRecord
     if birthdate > min_age.years.ago.to_date
       errors.add(:birthdate, "vous devez avoir au moins #{min_age} ans")
     end
+  end
+
+  def update_level_if_needed
+    return unless points_changed?
+
+    appropriate_level = Level.for_points(points)
+    self.level = appropriate_level if appropriate_level != level
+  end
+
+  def assign_initial_level
+    self.update(level: Level.for_points(points))
   end
 end
