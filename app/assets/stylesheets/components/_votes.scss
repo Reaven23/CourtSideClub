@@ -1,0 +1,564 @@
+// Vote Campaigns Styles
+
+// Container
+.vote-campaigns-container,
+.vote-campaign-container {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 85vh;
+  padding: 2rem 0;
+}
+
+// Header
+.campaigns-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.campaigns-title {
+  font-size: $font-size-4xl;
+  font-weight: $font-bold;
+  background: linear-gradient(135deg, #E6007E 0%, #8a2be2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.campaigns-subtitle {
+  font-size: $font-size-lg;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// Section titles
+.section-title {
+  font-size: $font-size-2xl;
+  font-weight: $font-bold;
+  color: #333;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+// Campaigns grid
+.campaigns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+// Campaign cards
+.campaign-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(238, 83, 168, 0.1);
+  border: 1px solid rgba(238, 83, 168, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(238, 83, 168, 0.15);
+  }
+
+  &.active {
+    border-color: rgba(238, 83, 168, 0.3);
+  }
+
+  &.upcoming {
+    border-color: rgba(255, 193, 7, 0.3);
+  }
+
+  &.past {
+    border-color: rgba(108, 117, 125, 0.3);
+    opacity: 0.8;
+  }
+}
+
+.campaign-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.campaign-title {
+  font-size: $font-size-xl;
+  font-weight: $font-bold;
+  color: #333;
+  margin-bottom: 0;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.campaign-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: $font-size-sm;
+  font-weight: $font-semibold;
+  white-space: nowrap;
+
+  &.active {
+    background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+    color: white;
+  }
+
+  &.upcoming {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    color: white;
+  }
+
+  &.past {
+    background: #6c757d;
+    color: white;
+  }
+}
+
+.campaign-description {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.campaign-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: $font-size-sm;
+  color: #666;
+
+  i {
+    color: #EE53A8;
+  }
+}
+
+.campaign-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.voted-badge {
+  background: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: $font-size-sm;
+  font-weight: $font-semibold;
+}
+
+// Campaign Show Page
+.campaign-show-header {
+  margin-bottom: 2rem;
+}
+
+.campaign-breadcrumb {
+  margin-bottom: 1rem;
+}
+
+.breadcrumb-link {
+  color: #666;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #EE53A8;
+  }
+}
+
+.campaign-show-title {
+  font-size: $font-size-4xl;
+  font-weight: $font-bold;
+  background: linear-gradient(135deg, #E6007E 0%, #8a2be2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.campaign-meta {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.campaign-dates {
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+// Description card
+.campaign-description-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(238, 83, 168, 0.1);
+  border: 1px solid rgba(238, 83, 168, 0.1);
+}
+
+.campaign-description-text {
+  font-size: $font-size-lg;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 0;
+}
+
+// Vote stat cards
+.vote-stat-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 25px rgba(238, 83, 168, 0.1);
+  border: 1px solid rgba(238, 83, 168, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(238, 83, 168, 0.15);
+  }
+
+  .stat-icon {
+    background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-xl;
+    margin: 0 auto 1rem;
+    box-shadow: 0 4px 15px rgba(238, 83, 168, 0.3);
+  }
+
+  h3 {
+    font-size: $font-size-2xl;
+    font-weight: $font-bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 0;
+  }
+}
+
+// Vote status cards
+.vote-status-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(238, 83, 168, 0.1);
+  border: 1px solid rgba(238, 83, 168, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  &.voted {
+    border-color: rgba(40, 167, 69, 0.3);
+    background: rgba(40, 167, 69, 0.05);
+  }
+
+  &.active {
+    border-color: rgba(238, 83, 168, 0.3);
+    background: rgba(238, 83, 168, 0.05);
+  }
+
+  &.login-required {
+    border-color: rgba(255, 193, 7, 0.3);
+    background: rgba(255, 193, 7, 0.05);
+  }
+}
+
+.vote-status-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-xl;
+  flex-shrink: 0;
+
+  .voted & {
+    background: #28a745;
+    color: white;
+  }
+
+  .active & {
+    background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+    color: white;
+  }
+
+  .login-required & {
+    background: #ffc107;
+    color: white;
+  }
+}
+
+.vote-status-content {
+  flex: 1;
+
+  h4 {
+    font-size: $font-size-xl;
+    font-weight: $font-bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 0;
+  }
+}
+
+// Players section
+.players-section-title {
+  font-size: $font-size-2xl;
+  font-weight: $font-bold;
+  color: #333;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+// Player vote cards
+.player-vote-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(238, 83, 168, 0.1);
+  border: 1px solid rgba(238, 83, 168, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(238, 83, 168, 0.15);
+  }
+
+  &.voted {
+    border-color: rgba(40, 167, 69, 0.5);
+    background: rgba(40, 167, 69, 0.05);
+  }
+}
+
+.player-photo {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.player-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(238, 83, 168, 0.2);
+  transition: all 0.3s ease;
+
+  .player-vote-card:hover & {
+    border-color: rgba(238, 83, 168, 0.5);
+  }
+
+  .voted & {
+    border-color: #28a745;
+  }
+}
+
+.vote-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #28a745;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-lg;
+  border: 3px solid white;
+  box-shadow: 0 2px 10px rgba(40, 167, 69, 0.3);
+}
+
+.player-name {
+  font-size: $font-size-xl;
+  font-weight: $font-bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.player-stats {
+  color: #666;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  i {
+    color: #EE53A8;
+  }
+}
+
+.vote-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+
+  i {
+    color: #EE53A8;
+  }
+}
+
+.player-actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.btn-vote {
+  background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-weight: $font-semibold;
+  text-decoration: none;
+  display: inline-block;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(238, 83, 168, 0.3);
+    color: white;
+  }
+
+  i {
+    margin-right: 0.5rem;
+  }
+}
+
+.vote-confirmed {
+  color: #28a745;
+  font-weight: $font-semibold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.vote-results {
+  text-align: center;
+}
+
+.vote-percentage {
+  font-size: $font-size-2xl;
+  font-weight: $font-bold;
+  color: #EE53A8;
+}
+
+// Empty state
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+
+  i {
+    font-size: 4rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: $font-size-2xl;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #999;
+    margin-bottom: 2rem;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .campaigns-grid,
+  .players-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .campaign-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .vote-status-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .campaign-stats {
+    justify-content: center;
+  }
+
+  .campaigns-title,
+  .campaign-show-title {
+    font-size: $font-size-2xl;
+  }
+}
+
+@media (max-width: 480px) {
+  .vote-campaigns-container,
+  .vote-campaign-container {
+    padding: 1rem 0;
+  }
+
+  .campaign-card,
+  .player-vote-card,
+  .vote-stat-card,
+  .campaign-description-card,
+  .vote-status-card {
+    padding: 1.5rem;
+  }
+
+  .campaigns-header {
+    margin-bottom: 2rem;
+  }
+}

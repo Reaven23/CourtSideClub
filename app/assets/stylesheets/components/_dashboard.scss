@@ -441,6 +441,87 @@
   }
 }
 
+// Vote campaign alert in dashboard
+.vote-campaign-alert {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(238, 83, 168, 0.1);
+  border: 1px solid rgba(238, 83, 168, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(238, 83, 168, 0.15);
+  }
+
+  &.active {
+    border-color: rgba(238, 83, 168, 0.3);
+    background: rgba(238, 83, 168, 0.05);
+  }
+
+  &.voted {
+    border-color: rgba(40, 167, 69, 0.3);
+    background: rgba(40, 167, 69, 0.05);
+  }
+
+  &.inactive {
+    border-color: rgba(108, 117, 125, 0.3);
+    background: rgba(108, 117, 125, 0.05);
+  }
+}
+
+.vote-alert-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-xl;
+  flex-shrink: 0;
+
+  .active & {
+    background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+    color: white;
+  }
+
+  .voted & {
+    background: #28a745;
+    color: white;
+  }
+
+  .inactive & {
+    background: #6c757d;
+    color: white;
+  }
+}
+
+.vote-alert-content {
+  flex: 1;
+
+  h4 {
+    font-size: $font-size-xl;
+    font-weight: $font-bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+}
+
+.vote-alert-actions {
+  flex-shrink: 0;
+}
+
 // Responsive design
 @media (max-width: 1024px) {
   .dashboard-header {
@@ -497,6 +578,12 @@
 
   .level-name {
     font-size: $font-size-lg;
+  }
+
+  .vote-campaign-alert {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
   }
 
   .votes-grid {

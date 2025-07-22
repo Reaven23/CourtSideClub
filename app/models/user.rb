@@ -1,13 +1,18 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   # Associations
   belongs_to :level, optional: true
+
+  # Anciennes associations (à conserver pour compatibilité)
   has_many :votes, dependent: :destroy
   has_many :voted_players, through: :votes, source: :player
+
+  # Nouvelles associations pour les campagnes
+  has_many :user_votes, dependent: :destroy
+  has_many :vote_campaigns, through: :user_votes
+  has_many :voted_campaign_players, through: :user_votes, source: :player
 
   # Callbacks
   before_save :update_level_if_needed
@@ -28,45 +33,54 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def age
-    return nil unless birthdate
-    ((Date.current - birthdate) / 365.25).floor
+  # Anciennes méthodes (à conserver)
+  def has_voted_for?(player)
+    votes.exists?(player: player)
   end
 
-  def add_points(amount)
-    increment!(:points, amount)
+  def vote_for!(player)
+    return false if has_voted_for?(player)
+
+    votes.create!(player: player)
+    increment!(:points, 10)
+    true
   end
 
-  def remove_points(amount)
-    decrement!(:points, [amount, points].min)
+  # Nouvelles méthodes pour les campagnes
+  def has_voted_in_campaign?(vote_campaign)
+    user_votes.exists?(vote_campaign: vote_campaign)
   end
 
+  def vote_in_campaign!(vote_campaign, player)
+    return false if has_voted_in_campaign?(vote_campaign)
+    return false unless vote_campaign.players.include?(player)
 
+    user_votes.create!(vote_campaign: vote_campaign, player: player)
+    true
+  end
+
+  def vote_in_campaign(vote_campaign)
+    user_votes.find_by(vote_campaign: vote_campaign)
+  end
+
+  # Level system methods
   def current_level_name
-    level&.name || Level.find_by(number: 1)&.name || "🏀 Rookie 1"
+    level&.name || "🏀 Rookie 1"
   end
 
   def progress_to_next_level
-    return 100 if level.nil?
+    return 0 unless level&.next_level
 
-    next_level = level.next_level
-    return 100 unless next_level
+    current_progress = points - level.points
+    points_needed = level.next_level.points - level.points
 
-    current_level_points = level.points
-    next_level_points = next_level.points
-    points_needed = next_level_points - current_level_points
-    user_progress = [points - current_level_points, 0].max
-
-    [(user_progress.to_f / points_needed * 100).round, 100].min
+    [(current_progress.to_f / points_needed * 100).round, 100].min
   end
 
   def points_to_next_level
-    return 0 if level.nil?
+    return 0 unless level&.next_level
 
-    next_level = level.next_level
-    return 0 unless next_level
-
-    [next_level.points - points, 0].max
+    [level.next_level.points - points, 0].max
   end
 
   private
@@ -89,11 +103,11 @@ class User < ApplicationRecord
   def update_level_if_needed
     return unless points_changed?
 
-    appropriate_level = Level.for_points(points)
-    self.level = appropriate_level if appropriate_level != level
+    new_level = Level.for_points(points)
+    self.level = new_level if new_level != level
   end
 
   def assign_initial_level
-    self.update(level: Level.for_points(points))
+    self.update(level: Level.for_points(points || 0))
   end
 end

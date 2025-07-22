@@ -1,7 +1,9 @@
-// Import your components CSS files here.
+// Import component-specific SCSS files
+@import "/config/bootstrap_variables";
 @import "alert";
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
 @import "auth";
 @import "dashboard";
+@import "votes";
