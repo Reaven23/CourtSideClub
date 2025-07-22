@@ -52,33 +52,34 @@
       <% if user_signed_in? %>
         <!-- Utilisateur connecté -->
         <div class="navbar-nav">
-          <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle d-flex align-items-center user-menu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="user-name me-2"><%= current_user.full_name %></span>
-              <div class="user-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end user-dropdown">
-              <li>
-                <%= link_to dashboard_path, class: "dropdown-item" do %>
-                  <i class="fas fa-tachometer-alt me-2"></i>
-                  Mon vestiaire
-                <% end %>
-              </li>
-              <li>
-                <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-                  <i class="fas fa-user-edit me-2"></i>
-                  Mon profil
-                <% end %>
-              </li>
+          <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle user-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user.full_name %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><%= link_to "Mon vestiaire", dashboard_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Mon profil", edit_user_registration_path, class: "dropdown-item" %></li>
               <li><hr class="dropdown-divider"></li>
-              <li>
-                <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item text-danger" do %>
-                  <i class="fas fa-sign-out-alt me-2"></i>
-                  Déconnexion
+              <% current_votes = VoteCampaign.active.current %>
+              <% if current_votes.any? %>
+                <% current_votes.each do |vote_campaign| %>
+                  <li>
+                    <%= link_to vote_campaign, class: "dropdown-item vote-link" do %>
+                      <i class="fas fa-vote-yea me-2"></i>
+                      <%= vote_campaign.title %>
+                      <% if vote_campaign.user_voted?(current_user) %>
+                        <span class="voted-indicator">✅</span>
+                      <% else %>
+                        <span class="new-badge">Nouveau</span>
+                      <% end %>
+                    <% end %>
+                  </li>
                 <% end %>
-              </li>
+              <% else %>
+                <li><%= link_to "Votes", vote_campaigns_path, class: "dropdown-item" %></li>
+              <% end %>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
             </ul>
           </div>
         </div>

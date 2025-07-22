@@ -56,15 +56,30 @@
                 </div>
               </div>
 
-              <div class="stat-card-header">
-                <div class="stat-icon">
-                  <i class="fas fa-vote-yea"></i>
+              <% if @has_pending_votes %>
+                <%= link_to vote_campaigns_path, class: "vote-status-card pending" do %>
+                  <div class="vote-status-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                  </div>
+                  <div class="vote-status-content">
+                    <h4 class="vote-status-title">Votes en attente</h4>
+                    <p class="vote-status-text">Vous avez des votes en cours</p>
+                  </div>
+                  <div class="vote-status-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="vote-status-card inactive">
+                  <div class="vote-status-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="vote-status-content">
+                    <h4 class="vote-status-title">Votes à jour</h4>
+                    <p class="vote-status-text">Aucun vote en cours</p>
+                  </div>
                 </div>
-                <div class="stat-content">
-                  <h3 class="stat-number"><%= @votes_count %></h3>
-                  <p class="stat-label">Votes MVP</p>
-                </div>
-              </div>
+              <% end %>
             </div>
 
             <div class="dashboard-actions-column">
@@ -138,5 +153,10 @@
         </div>
       </div>
     </div>
+
+    
+
+    <!-- Mes votes -->
+
   </div>
 </div>

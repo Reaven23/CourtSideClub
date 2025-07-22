@@ -1,0 +1,147 @@
+<%= render 'shared/navbar' %>
+
+<div class="vote-campaigns-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="campaigns-header">
+          <h1 class="campaigns-title">🗳️ Campagnes de Vote</h1>
+          <p class="campaigns-subtitle">Participez aux votes de la communauté CourtSideClub et gagnez des points !</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Campagnes en cours -->
+    <% if @active_campaigns.any? %>
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2 class="section-title">
+            <i class="fas fa-fire me-2"></i>
+            Votes en cours
+          </h2>
+          <div class="campaigns-grid">
+            <% @active_campaigns.each do |campaign| %>
+              <div class="campaign-card active">
+                <div class="campaign-header">
+                  <h3 class="campaign-title"><%= campaign.title %></h3>
+                  <span class="campaign-status active">🔥 En cours</span>
+                </div>
+                <p class="campaign-description"><%= truncate(campaign.description, length: 120) %></p>
+                <div class="campaign-stats">
+                  <div class="stat">
+                    <i class="fas fa-users"></i>
+                    <span><%= campaign.players.count %> joueurs</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-vote-yea"></i>
+                    <span><%= campaign.vote_count %> votes</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-clock"></i>
+                    <span>Jusqu'au <%= campaign.end_date.strftime("%d/%m/%Y") %></span>
+                  </div>
+                </div>
+                <div class="campaign-actions">
+                  <%= link_to "Voir et voter", campaign, class: "button-hero-link" %>
+                  <% if user_signed_in? && campaign.user_voted?(current_user) %>
+                    <span class="voted-badge">✅ Vous avez voté</span>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Campagnes à venir -->
+    <% if @upcoming_campaigns.any? %>
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2 class="section-title">
+            <i class="fas fa-calendar-alt me-2"></i>
+            Votes à venir
+          </h2>
+          <div class="campaigns-grid">
+            <% @upcoming_campaigns.each do |campaign| %>
+              <div class="campaign-card upcoming">
+                <div class="campaign-header">
+                  <h3 class="campaign-title"><%= campaign.title %></h3>
+                  <span class="campaign-status upcoming">🟡 Bientôt</span>
+                </div>
+                <p class="campaign-description"><%= truncate(campaign.description, length: 120) %></p>
+                <div class="campaign-stats">
+                  <div class="stat">
+                    <i class="fas fa-users"></i>
+                    <span><%= campaign.players.count %> joueurs</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-calendar-start"></i>
+                    <span>Débute le <%= campaign.start_date.strftime("%d/%m/%Y") %></span>
+                  </div>
+                </div>
+                <div class="campaign-actions">
+                  <%= link_to "Voir les détails", campaign, class: "button-hero-link-secondary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Campagnes passées -->
+    <% if @past_campaigns.any? %>
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-title">
+            <i class="fas fa-history me-2"></i>
+            Votes terminés
+          </h2>
+          <div class="campaigns-grid">
+            <% @past_campaigns.each do |campaign| %>
+              <div class="campaign-card past">
+                <div class="campaign-header">
+                  <h3 class="campaign-title"><%= campaign.title %></h3>
+                  <span class="campaign-status past">🔴 Terminé</span>
+                </div>
+                <p class="campaign-description"><%= truncate(campaign.description, length: 120) %></p>
+                <div class="campaign-stats">
+                  <div class="stat">
+                    <i class="fas fa-users"></i>
+                    <span><%= campaign.players.count %> joueurs</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-vote-yea"></i>
+                    <span><%= campaign.vote_count %> votes</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-calendar-times"></i>
+                    <span>Terminé le <%= campaign.end_date.strftime("%d/%m/%Y") %></span>
+                  </div>
+                </div>
+                <div class="campaign-actions">
+                  <%= link_to "Voir les résultats", campaign, class: "button-hero-link-secondary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- État vide -->
+    <% if @active_campaigns.empty? && @upcoming_campaigns.empty? && @past_campaigns.empty? %>
+      <div class="row">
+        <div class="col-12">
+          <div class="empty-state">
+            <i class="fas fa-vote-yea"></i>
+            <h3>Aucune campagne de vote</h3>
+            <p>Il n'y a actuellement aucune campagne de vote disponible.</p>
+            <%= link_to "Retour au dashboard", dashboard_path, class: "button-hero-link-secondary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

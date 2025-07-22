@@ -256,3 +256,23 @@
     margin-left: 0.25rem;
   }
 }
+
+// Vote link styles
+.vote-link {
+  position: relative;
+
+  .voted-indicator {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+
+  .new-badge {
+    background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    margin-left: 0.5rem;
+    font-weight: bold;
+  }
+}

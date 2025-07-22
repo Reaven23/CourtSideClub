@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_21_094745) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_22_075508) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_21_094745) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "vote_campaign_id", null: false
+    t.bigint "player_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_user_votes_on_player_id"
+    t.index ["user_id", "vote_campaign_id"], name: "index_user_votes_unique", unique: true
+    t.index ["user_id"], name: "index_user_votes_on_user_id"
+    t.index ["vote_campaign_id"], name: "index_user_votes_on_vote_campaign_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -75,6 +87,29 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_21_094745) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vote_campaign_players", force: :cascade do |t|
+    t.bigint "vote_campaign_id", null: false
+    t.bigint "player_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_vote_campaign_players_on_player_id"
+    t.index ["vote_campaign_id", "player_id"], name: "index_vote_campaign_players_unique", unique: true
+    t.index ["vote_campaign_id"], name: "index_vote_campaign_players_on_vote_campaign_id"
+  end
+
+  create_table "vote_campaigns", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.boolean "active", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_vote_campaigns_on_active"
+    t.index ["end_date"], name: "index_vote_campaigns_on_end_date"
+    t.index ["start_date"], name: "index_vote_campaigns_on_start_date"
+  end
+
   create_table "votes", force: :cascade do |t|
     t.bigint "player_id", null: false
     t.bigint "user_id", null: false
@@ -87,7 +122,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_21_094745) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "user_votes", "players"
+  add_foreign_key "user_votes", "users"
+  add_foreign_key "user_votes", "vote_campaigns"
   add_foreign_key "users", "levels"
+  add_foreign_key "vote_campaign_players", "players"
+  add_foreign_key "vote_campaign_players", "vote_campaigns"
   add_foreign_key "votes", "players"
   add_foreign_key "votes", "users"
 end
