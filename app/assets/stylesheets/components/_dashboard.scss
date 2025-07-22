@@ -127,7 +127,8 @@
 
 // Stat cards et action cards avec hauteur flexible
 .stat-card-header,
-.action-card-header {
+.action-card-header,
+.vote-status-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 15px;
@@ -139,7 +140,7 @@
   align-items: center;
   gap: 1rem;
   flex: 1;
-  min-height: 80px;
+  min-height: 100px;
 }
 
 // Stat cards (header)
@@ -161,7 +162,9 @@
   }
 }
 
-.stat-icon {
+.stat-icon,
+.action-icon,
+.vote-status-icon {
   background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
   color: white;
   width: 55px;
@@ -173,59 +176,33 @@
   font-size: $font-size-lg;
   flex-shrink: 0;
   box-shadow: 0 4px 15px rgba(238, 83, 168, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
-.stat-content {
+.stat-content,
+.action-content,
+.vote-status-content {
   flex: 1;
 }
 
-.stat-number {
-  font-size: $font-size-2xl;
+.stat-number,
+.action-title,
+.vote-status-title {
+  font-size: $font-size-xl;
   font-weight: $font-bold;
   color: #333;
   margin-bottom: 0.25rem;
   line-height: 1;
 }
 
-.stat-label {
+.stat-label,
+.action-subtitle,
+.vote-status-text {
   color: #666;
   font-size: $font-size-sm;
   margin-bottom: 0;
   line-height: 1;
-}
-
-.action-icon {
-  background: linear-gradient(135deg, #8a2be2 0%, #4a90e2 100%);
-  color: white;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: $font-size-lg;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
-}
-
-.action-content {
-  flex: 1;
-}
-
-.action-title {
-  font-size: $font-size-lg;
-  font-weight: $font-bold;
-  color: #333;
-  margin-bottom: 0.25rem;
-  line-height: 1;
-}
-
-// Ajustement pour le texte plus long
-.action-subtitle {
-  color: #666;
-  font-size: $font-size-xs;
-  margin-bottom: 0;
-  line-height: 1.3;
 }
 
 .action-arrow {
@@ -524,18 +501,6 @@
 
 // Vote status cards (in stats column)
 .vote-status-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 1.5rem;
-  box-shadow: 0 8px 25px rgba(238, 83, 168, 0.1);
-  border: 1px solid rgba(238, 83, 168, 0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex: 1;
-  min-height: 80px;
   text-decoration: none;
   color: inherit;
   position: relative;
@@ -638,27 +603,8 @@
 }
 
 .vote-status-icon {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: $font-size-lg;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(238, 83, 168, 0.3);
-  position: relative;
-  z-index: 1;
-
   .pending & {
-    background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
-    color: white;
     animation: iconPulse 1.5s ease-in-out infinite alternate;
-  }
-
-  .inactive & {
-    background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
-    color: white;
   }
 }
 
