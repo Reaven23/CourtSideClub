@@ -29,9 +29,19 @@ class VoteCampaignsController < ApplicationController
       return
     end
 
-    # Créer le vote
+    # Créer le vote et vérifier le changement de niveau
+    old_level = current_user.level
+
     if current_user.vote_in_campaign!(@vote_campaign, @player)
-      redirect_to @vote_campaign, notice: "Merci pour votre vote ! Vous avez gagné 10 points."
+      # Recharger l'utilisateur pour avoir le niveau à jour
+      current_user.reload
+      new_level = current_user.level
+
+      if new_level && old_level && new_level.number > old_level.number
+        redirect_to @vote_campaign, notice: "🎉 Félicitations ! Vous avez voté pour #{@player.full_name} et êtes passé au #{new_level.name} ! (+10 points)"
+      else
+        redirect_to @vote_campaign, notice: "Merci pour votre vote ! Vous avez gagné 10 points."
+      end
     else
       redirect_to @vote_campaign, alert: "Une erreur s'est produite lors du vote."
     end

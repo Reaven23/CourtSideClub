@@ -44,6 +44,68 @@
       </div>
     </div>
 
+    <!-- Joueurs -->
+    <div class="row">
+      <div class="col-12">
+        <h2 class="players-section-title">
+          <i class="fas fa-basketball-ball me-2"></i>
+          Joueurs disponibles
+        </h2>
+        <div class="players-grid">
+          <% @players.each do |player| %>
+            <div class="player-vote-card <%= 'voted' if @user_vote&.player == player %>">
+              <div class="player-photo">
+                <%= image_tag player.photo_url, alt: player.full_name, class: "player-image" %>
+                <% if @user_vote&.player == player %>
+                  <div class="vote-badge">
+                    <i class="fas fa-check"></i>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="player-info">
+                <h4 class="player-name"><%= player.full_name %></h4>
+                <p class="player-stats">
+                  <i class="fas fa-trophy"></i>
+                  <%= player.tournament_played %> tournois
+                </p>
+
+                <div class="vote-count">
+                  <i class="fas fa-vote-yea"></i>
+                  <span><%= @vote_counts[player.id] || 0 %> votes</span>
+                </div>
+              </div>
+
+              <div class="player-actions">
+                <% if user_signed_in? && @vote_campaign.current? && !@user_vote %>
+                  <%= link_to vote_vote_campaign_path(@vote_campaign, player_id: player.id),
+                      class: "btn-vote",
+                      data: {
+                        confirm: "Êtes-vous sûr de vouloir voter pour #{player.full_name} ? Ce choix est définitif.",
+                        turbo_method: :post
+                      } do %>
+                    <i class="fas fa-hand-point-up"></i>
+                    Voter
+                  <% end %>
+                <% elsif @user_vote&.player == player %>
+                  <span class="vote-confirmed">
+                    <i class="fas fa-check-circle"></i>
+                    Votre choix
+                  </span>
+                <% elsif @vote_campaign.past? %>
+                  <div class="vote-results">
+                    <div class="vote-percentage">
+                      <%= (@vote_campaign.vote_count > 0 ? ((@vote_counts[player.id] || 0).to_f / @vote_campaign.vote_count * 100).round(1) : 0) %>%
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
     <!-- Statistiques -->
     <div class="row mb-4">
       <div class="col-md-4">
@@ -135,66 +197,6 @@
       </div>
     <% end %>
 
-    <!-- Joueurs -->
-    <div class="row">
-      <div class="col-12">
-        <h2 class="players-section-title">
-          <i class="fas fa-basketball-ball me-2"></i>
-          Joueurs disponibles
-        </h2>
-        <div class="players-grid">
-          <% @players.each do |player| %>
-            <div class="player-vote-card <%= 'voted' if @user_vote&.player == player %>">
-              <div class="player-photo">
-                <%= image_tag player.photo_url, alt: player.full_name, class: "player-image" %>
-                <% if @user_vote&.player == player %>
-                  <div class="vote-badge">
-                    <i class="fas fa-check"></i>
-                  </div>
-                <% end %>
-              </div>
 
-              <div class="player-info">
-                <h4 class="player-name"><%= player.full_name %></h4>
-                <p class="player-stats">
-                  <i class="fas fa-trophy"></i>
-                  <%= player.tournament_played %> tournois
-                </p>
-
-                <div class="vote-count">
-                  <i class="fas fa-vote-yea"></i>
-                  <span><%= @vote_counts[player.id] || 0 %> votes</span>
-                </div>
-              </div>
-
-              <div class="player-actions">
-                <% if user_signed_in? && @vote_campaign.current? && !@user_vote %>
-                  <%= link_to vote_vote_campaign_path(@vote_campaign, player_id: player.id),
-                      class: "btn-vote",
-                      data: {
-                        confirm: "Êtes-vous sûr de vouloir voter pour #{player.full_name} ? Ce choix est définitif.",
-                        turbo_method: :post
-                      } do %>
-                    <i class="fas fa-hand-point-up"></i>
-                    Voter
-                  <% end %>
-                <% elsif @user_vote&.player == player %>
-                  <span class="vote-confirmed">
-                    <i class="fas fa-check-circle"></i>
-                    Votre choix
-                  </span>
-                <% elsif @vote_campaign.past? %>
-                  <div class="vote-results">
-                    <div class="vote-percentage">
-                      <%= (@vote_campaign.vote_count > 0 ? ((@vote_counts[player.id] || 0).to_f / @vote_campaign.vote_count * 100).round(1) : 0) %>%
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

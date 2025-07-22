@@ -84,3 +84,44 @@ puts "✅ Campagne créée: #{open_france_campaign.title}"
 puts "📅 Du #{open_france_campaign.start_date.strftime('%d/%m/%Y')} au #{open_france_campaign.end_date.strftime('%d/%m/%Y')}"
 puts "🏀 #{open_france_campaign.players.count} joueurs disponibles:"
 open_france_campaign.players.each { |p| puts "   - #{p.full_name} (#{p.tournament_played} tournois)" }
+
+puts "\n🗳️ Création de la deuxième campagne de vote..."
+
+interview_campaign = VoteCampaign.create!(
+  title: "Interview du mois d'Août",
+  description: "Comme tous les mois, vous pouvez choisir le joueur de notre CourtSideClub squad que vous souhaitez avoir en interview. À vos votes et n'hésitez pas à nous laisser en commentaire les des questions que vous voudriez poser!",
+  start_date: Date.new(2025, 7, 1),
+  end_date: 1.week.from_now,
+  active: true
+)
+
+# Ajouter tous les joueurs CourtSideClub à la campagne interview
+Player.all.each do |player|
+  interview_campaign.vote_campaign_players.create!(player: player)
+end
+
+puts "✅ Campagne créée: #{interview_campaign.title}"
+puts "📅 Du #{interview_campaign.start_date.strftime('%d/%m/%Y')} au #{interview_campaign.end_date.strftime('%d/%m/%Y')}"
+puts "🏀 #{interview_campaign.players.count} joueurs disponibles:"
+interview_campaign.players.each { |p| puts "   - #{p.full_name} (#{p.tournament_played} tournois)" }
+
+# Création de la deuxième campagne "Interview du mois d'Août"
+puts "\n🗳️ Création de la troisième campagne de vote..."
+
+interview_campaign = VoteCampaign.create!(
+  title: "Interview du mois de Septembre",
+  description: "Comme tous les mois, vous pouvez choisir le joueur de notre CourtSideClub squad que vous souhaitez avoir en interview. À vos votes et n'hésitez pas à nous laisser en commentaire les des questions que vous voudriez poser!",
+  start_date: 1.week.from_now,
+  end_date: 3.weeks.from_now,
+  active: true
+)
+
+# Ajouter tous les joueurs CourtSideClub à la campagne interview
+Player.all.each do |player|
+  interview_campaign.vote_campaign_players.create!(player: player)
+end
+
+puts "✅ Campagne créée: #{interview_campaign.title}"
+puts "📅 Du #{interview_campaign.start_date.strftime('%d/%m/%Y')} au #{interview_campaign.end_date.strftime('%d/%m/%Y')}"
+puts "🏀 #{interview_campaign.players.count} joueurs disponibles:"
+interview_campaign.players.each { |p| puts "   - #{p.full_name} (#{p.tournament_played} tournois)" }

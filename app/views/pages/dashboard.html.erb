@@ -56,15 +56,30 @@
                 </div>
               </div>
 
-              <div class="stat-card-header">
-                <div class="stat-icon">
-                  <i class="fas fa-vote-yea"></i>
+              <% if @has_pending_votes %>
+                <%= link_to vote_campaigns_path, class: "vote-status-card pending" do %>
+                  <div class="vote-status-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                  </div>
+                  <div class="vote-status-content">
+                    <h4 class="vote-status-title">Votes en attente</h4>
+                    <p class="vote-status-text">Vous avez des votes en cours</p>
+                  </div>
+                  <div class="vote-status-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="vote-status-card inactive">
+                  <div class="vote-status-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="vote-status-content">
+                    <h4 class="vote-status-title">Votes à jour</h4>
+                    <p class="vote-status-text">Aucun vote en cours</p>
+                  </div>
                 </div>
-                <div class="stat-content">
-                  <h3 class="stat-number"><%= @votes_count %></h3>
-                  <p class="stat-label">Votes MVP</p>
-                </div>
-              </div>
+              <% end %>
             </div>
 
             <div class="dashboard-actions-column">
@@ -139,58 +154,7 @@
       </div>
     </div>
 
-    <!-- Section vote en cours -->
-    <div class="row mb-4">
-      <div class="col-12">
-        <% if @current_vote_campaign %>
-          <div class="vote-campaign-alert <%= @user_vote_in_current_campaign ? 'voted' : 'active' %>">
-            <div class="vote-alert-icon">
-              <% if @user_vote_in_current_campaign %>
-                <i class="fas fa-check-circle"></i>
-              <% else %>
-                <i class="fas fa-fire"></i>
-              <% end %>
-            </div>
-            <div class="vote-alert-content">
-              <% if @user_vote_in_current_campaign %>
-                <h4>Merci pour votre vote !</h4>
-                <p>Vous avez voté pour <strong><%= @user_vote_in_current_campaign.player.full_name %></strong> dans "<%= @current_vote_campaign.title %>"</p>
-              <% else %>
-                <h4>🔥 Vote en cours : <%= @current_vote_campaign.title %></h4>
-                <p><%= truncate(@current_vote_campaign.description, length: 100) %></p>
-              <% end %>
-            </div>
-            <div class="vote-alert-actions">
-              <%= link_to @current_vote_campaign, class: "btn #{ @user_vote_in_current_campaign ? 'btn-outline-success' : 'btn-primary' }" do %>
-                <% if @user_vote_in_current_campaign %>
-                  <i class="fas fa-eye"></i>
-                  Voir les résultats
-                <% else %>
-                  <i class="fas fa-vote-yea"></i>
-                  Voter maintenant
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        <% else %>
-          <div class="vote-campaign-alert inactive">
-            <div class="vote-alert-icon">
-              <i class="fas fa-calendar-times"></i>
-            </div>
-            <div class="vote-alert-content">
-              <h4>Aucun vote en cours</h4>
-              <p>Il n'y a actuellement aucune campagne de vote active. Revenez bientôt !</p>
-            </div>
-            <div class="vote-alert-actions">
-              <%= link_to vote_campaigns_path, class: "btn btn-outline-secondary" do %>
-                <i class="fas fa-history"></i>
-                Voir l'historique
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    
 
     <!-- Mes votes -->
 

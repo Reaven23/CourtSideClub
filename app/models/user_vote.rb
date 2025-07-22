@@ -22,6 +22,6 @@ class UserVote < ApplicationRecord
   end
 
   def award_points_to_user
-    user.increment!(:points, 10) # 10 points par vote
+    user.add_points!(10) # 10 points par vote
   end
 end

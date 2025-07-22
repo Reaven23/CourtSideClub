@@ -42,7 +42,7 @@ class User < ApplicationRecord
     return false if has_voted_for?(player)
 
     votes.create!(player: player)
-    increment!(:points, 10)
+    add_points!(10)
     true
   end
 
@@ -61,6 +61,16 @@ class User < ApplicationRecord
 
   def vote_in_campaign(vote_campaign)
     user_votes.find_by(vote_campaign: vote_campaign)
+  end
+
+  # Points management
+  def add_points!(amount)
+    old_level = level
+    self.points = (points || 0) + amount
+    save!
+
+    # Retourner true si le niveau a changé
+    reload.level != old_level
   end
 
   # Level system methods
