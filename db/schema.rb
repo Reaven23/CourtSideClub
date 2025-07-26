@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_22_075508) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_26_080741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_22_075508) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "answers", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.string "content", null: false
+    t.boolean "correct", default: false, null: false
+    t.integer "order", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id", "order"], name: "index_answers_on_question_id_and_order", unique: true
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
   create_table "levels", force: :cascade do |t|
     t.integer "number"
     t.bigint "points"
@@ -55,6 +66,53 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_22_075508) do
     t.integer "tournament_played"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "quiz_game_id", null: false
+    t.text "content", null: false
+    t.integer "order", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_game_id", "order"], name: "index_questions_on_quiz_game_id_and_order", unique: true
+    t.index ["quiz_game_id"], name: "index_questions_on_quiz_game_id"
+  end
+
+  create_table "quiz_games", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.integer "score", null: false
+    t.integer "points", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_question_answers", force: :cascade do |t|
+    t.bigint "user_quiz_game_id", null: false
+    t.bigint "question_id", null: false
+    t.bigint "answer_id", null: false
+    t.boolean "correct", default: false, null: false
+    t.datetime "answered_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_user_question_answers_on_answer_id"
+    t.index ["question_id"], name: "index_user_question_answers_on_question_id"
+    t.index ["user_quiz_game_id", "question_id"], name: "index_user_question_answers_unique", unique: true
+    t.index ["user_quiz_game_id"], name: "index_user_question_answers_on_user_quiz_game_id"
+  end
+
+  create_table "user_quiz_games", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "quiz_game_id", null: false
+    t.integer "score", default: 0
+    t.boolean "completed", default: false, null: false
+    t.integer "points_earned", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_game_id"], name: "index_user_quiz_games_on_quiz_game_id"
+    t.index ["user_id", "completed"], name: "index_user_quiz_games_on_user_id_and_completed"
+    t.index ["user_id"], name: "index_user_quiz_games_on_user_id"
   end
 
   create_table "user_votes", force: :cascade do |t|
@@ -122,6 +180,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_22_075508) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "questions", "quiz_games"
+  add_foreign_key "user_question_answers", "answers"
+  add_foreign_key "user_question_answers", "questions"
+  add_foreign_key "user_question_answers", "user_quiz_games"
+  add_foreign_key "user_quiz_games", "quiz_games"
+  add_foreign_key "user_quiz_games", "users"
   add_foreign_key "user_votes", "players"
   add_foreign_key "user_votes", "users"
   add_foreign_key "user_votes", "vote_campaigns"

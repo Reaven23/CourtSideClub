@@ -27,7 +27,7 @@
                     <div class="progress-fill" style="width: <%= @user.progress_to_next_level %>%"></div>
                   </div>
                   <small class="progress-text">
-                    <%= @user.points_to_next_level %> points pour <%= @next_level.name %>
+                    Encore <strong><%= @user.points_to_next_level %></strong> points avant le niveau <strong><%= @next_level.name %></strong>
                   </small>
                 <% end %>
               </div>
@@ -134,9 +134,9 @@
         <div class="quick-actions">
           <h2 class="section-title">Actions rapides</h2>
           <div class="actions-grid">
-            <%= link_to root_path, class: "action-card" do %>
+            <%= link_to vote_campaigns_path, class: "action-card" do %>
               <i class="fas fa-vote-yea"></i>
-              <span>Voter MVP</span>
+              <span>Votes pour votre communauté</span>
             <% end %>
 
             <%= link_to edit_user_registration_path, class: "action-card" do %>
@@ -154,7 +154,7 @@
       </div>
     </div>
 
-    
+
 
     <!-- Mes votes -->
 
