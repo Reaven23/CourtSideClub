@@ -125,3 +125,9 @@ puts "✅ Campagne créée: #{interview_campaign.title}"
 puts "📅 Du #{interview_campaign.start_date.strftime('%d/%m/%Y')} au #{interview_campaign.end_date.strftime('%d/%m/%Y')}"
 puts "🏀 #{interview_campaign.players.count} joueurs disponibles:"
 interview_campaign.players.each { |p| puts "   - #{p.full_name} (#{p.tournament_played} tournois)" }
+
+# Chargement des QuizGames depuis le fichier séparé
+puts "\n" + "="*50
+puts "🎮 CHARGEMENT DES QUIZGAMES..."
+puts "="*50
+load Rails.root.join('db', 'seeds_quiz_games.rb')
