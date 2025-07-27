@@ -1,0 +1,196 @@
+<div class="quiz-container" data-controller="quiz" data-quiz-quiz-id-value="<%= @quiz_game.id %>">
+  <%= render 'shared/navbar' %>
+
+  <!-- Quiz Header -->
+  <div class="quiz-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <%= link_to "Mon vestiaire", dashboard_path, class: "breadcrumb-link" %>
+        <i class="fas fa-chevron-right"></i>
+        <%= link_to "Mini-jeux", mini_games_path, class: "breadcrumb-link" %>
+        <i class="fas fa-chevron-right"></i>
+        <span><%= @quiz_game.title %></span>
+      </div>
+
+      <div class="quiz-title-section">
+        <h1 class="quiz-title"><%= @quiz_game.title %></h1>
+        <p class="quiz-description"><%= @quiz_game.description %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Quiz Start Screen -->
+    <div class="quiz-start-screen" data-quiz-target="startScreen">
+      <div class="start-card">
+        <div class="start-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+
+        <h2>Prêt à commencer ?</h2>
+
+        <div class="quiz-info-grid">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="info-content">
+              <h4><%= @selected_questions_count %> questions</h4>
+              <p>Sélectionnées aléatoirement</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="info-content">
+              <h4>24 secondes</h4>
+              <p>Par question (possession basket)</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="info-content">
+              <h4><%= @quiz_game.points %> points</h4>
+              <p>Maximum possible</p>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="btn-start-quiz" data-action="click->quiz#startQuiz">
+          <i class="fas fa-play"></i>
+          Commencer le Quiz
+        </button>
+      </div>
+    </div>
+
+    <!-- Quiz Game Screen -->
+    <div class="quiz-game-screen" data-quiz-target="gameScreen" style="display: none;">
+      <button class="quiz-close-btn" data-action="click->quiz#closeGame">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="quiz-game-content">
+        <!-- Progress Bar -->
+      <div class="quiz-progress">
+        <div class="progress-info">
+          <span class="question-counter">
+            Question <span data-quiz-target="currentQuestion">1</span> sur <span data-quiz-target="totalQuestions">10</span>
+          </span>
+          <span class="score-display">
+            Score: <span data-quiz-target="currentScore">0</span> pts
+          </span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" data-quiz-target="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- Timer -->
+      <div class="quiz-timer">
+        <div class="timer-circle">
+          <div class="timer-text" data-quiz-target="timerText">24</div>
+        </div>
+        <div class="timer-label">secondes restantes</div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="question-card" data-quiz-target="questionCard">
+        <div class="question-image">
+          <img data-quiz-target="questionImage" src="" alt="Question" />
+        </div>
+
+        <div class="question-content">
+          <h3 class="question-text" data-quiz-target="questionText">
+            <!-- Question text will be inserted here -->
+          </h3>
+        </div>
+
+        <div class="answers-grid" data-quiz-target="answersGrid">
+          <!-- Answers will be inserted here dynamically -->
+        </div>
+      </div>
+
+      <!-- Feedback Modal -->
+      <div class="feedback-modal" data-quiz-target="feedbackModal" style="display: none;">
+        <div class="feedback-content">
+          <div class="feedback-icon" data-quiz-target="feedbackIcon">
+            <!-- Icon will be set dynamically -->
+          </div>
+          <h3 class="feedback-title" data-quiz-target="feedbackTitle">
+            <!-- Title will be set dynamically -->
+          </h3>
+          <p class="feedback-text" data-quiz-target="feedbackText">
+            <!-- Feedback text will be set dynamically -->
+          </p>
+          <div class="feedback-points" data-quiz-target="feedbackPoints">
+            <!-- Points earned will be shown here -->
+          </div>
+        </div>
+      </div>
+      </div> <!-- Fermeture quiz-game-content -->
+    </div>
+
+    <!-- Quiz Results Screen -->
+    <div class="quiz-results-screen" data-quiz-target="resultsScreen" style="display: none;">
+      <div class="results-card">
+        <div class="results-header">
+          <div class="results-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h2>Quiz Terminé !</h2>
+        </div>
+
+        <div class="results-stats">
+          <div class="stat-item">
+            <div class="stat-number" data-quiz-target="finalScore">0</div>
+            <div class="stat-label">Points gagnés</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number" data-quiz-target="correctAnswers">0</div>
+            <div class="stat-label">Bonnes réponses</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number" data-quiz-target="totalAnswered">0</div>
+            <div class="stat-label">Questions</div>
+          </div>
+        </div>
+
+        <!-- Level Up Notification -->
+        <div class="level-up-notification" data-quiz-target="levelUpNotification" style="display: none;">
+          <div class="level-up-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Félicitations !</h3>
+          <p>Vous êtes passé au niveau <span data-quiz-target="newLevel">0</span> !</p>
+        </div>
+
+        <div class="results-actions">
+          <%= link_to mini_games_path, class: "btn-secondary" do %>
+            <i class="fas fa-arrow-left"></i>
+            Retour aux Mini-jeux
+          <% end %>
+
+          <%= link_to dashboard_path, class: "btn-primary" do %>
+            <i class="fas fa-home"></i>
+            Mon Vestiaire
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="quiz-loading" data-quiz-target="loadingScreen" style="display: none;">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+      </div>
+      <p>Préparation du quiz...</p>
+    </div>
+  </div>
+</div>

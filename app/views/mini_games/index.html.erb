@@ -83,7 +83,7 @@
                       | Points gagnés: <%= user_completed.points_earned %>
                     </small>
                   <% else %>
-                    <%= link_to "#", class: "btn-game play" do %>
+                    <%= link_to quiz_game_path(quiz_game), class: "btn-game play" do %>
                       <i class="fas fa-play"></i>
                       Jouer maintenant
                     <% end %>

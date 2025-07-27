@@ -6,6 +6,15 @@ Rails.application.routes.draw do
   # Mini-jeux
   get "mini-jeux", to: "mini_games#index", as: :mini_games
 
+  # Quiz Games
+  resources :quiz_games, only: [:show] do
+    member do
+      post :start    # Démarre une session de quiz
+      post :answer   # Soumet une réponse
+      post :complete # Finalise le quiz
+    end
+  end
+
   # Vote campaigns
   resources :vote_campaigns, only: [:index, :show] do
     member do
