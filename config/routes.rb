@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root "pages#home"
   get "dashboard", to: "pages#dashboard"
 
+  # Mini-jeux
+  get "mini-jeux", to: "mini_games#index", as: :mini_games
+
   # Vote campaigns
   resources :vote_campaigns, only: [:index, :show] do
     member do

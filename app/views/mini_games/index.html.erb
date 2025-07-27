@@ -1,0 +1,149 @@
+<div class="mini-games-container">
+  <%= render 'shared/navbar' %>
+
+  <div class="mini-games-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <%= link_to "Mon vestiaire", dashboard_path, class: "breadcrumb-link" %>
+        <i class="fas fa-chevron-right"></i>
+        <span>Mini-jeux</span>
+      </div>
+
+      <div class="mini-games-title-section">
+        <h1 class="mini-games-title">Mini-jeux CourtSideClub</h1>
+        <p class="mini-games-subtitle">
+          Participez à nos mini-jeux et gagnez des points pour avancer dans la communauté CourtSideClub! Vous pourrez ici découvrir des jeux en partenariat avec nos sponsors et en apprendre un peu plus sur votre club, son histoire, ses joueurs, ses soutiens et bien plus encore!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="mini-games-content">
+      <!-- Section QuizGames -->
+      <div class="games-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-question-circle"></i>
+            Quiz disponibles
+          </h2>
+          <p class="section-subtitle">
+            <%= pluralize(@quiz_games.count, 'quiz') %> disponible<%= 's' if @quiz_games.count > 1 %>
+          </p>
+        </div>
+
+        <% if @quiz_games.any? %>
+          <div class="games-grid">
+            <% @quiz_games.each do |quiz_game| %>
+              <% user_completed = @user_completed_games.find { |ug| ug.quiz_game_id == quiz_game.id } %>
+
+              <div class="game-card <%= 'completed' if user_completed %>">
+                <div class="game-card-header">
+                  <div class="game-icon">
+                    <i class="fas fa-brain"></i>
+                  </div>
+                  <% if user_completed %>
+                    <div class="completed-badge">
+                      <i class="fas fa-check"></i>
+                      Terminé
+                    </div>
+                  <% end %>
+                </div>
+
+                <div class="game-card-content">
+                  <h3 class="game-title"><%= quiz_game.title %></h3>
+                  <p class="game-description"><%= quiz_game.description %></p>
+
+                  <div class="game-stats">
+                    <div class="stat">
+                      <i class="fas fa-question"></i>
+                      <span><%= pluralize(quiz_game.questions.count, 'question') %></span>
+                    </div>
+                    <div class="stat">
+                      <i class="fas fa-trophy"></i>
+                      <span><%= quiz_game.points %> points max</span>
+                    </div>
+                    <% if user_completed %>
+                      <div class="stat">
+                        <i class="fas fa-star"></i>
+                        <span><%= user_completed.score %>/<%= quiz_game.score %> pts</span>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+
+                <div class="game-card-actions">
+                  <% if user_completed %>
+                    <button class="btn-game completed" disabled>
+                      <i class="fas fa-check"></i>
+                      Déjà joué
+                    </button>
+                    <small class="replay-text">
+                      Score: <%= user_completed.score %>/<%= quiz_game.score %>
+                      | Points gagnés: <%= user_completed.points_earned %>
+                    </small>
+                  <% else %>
+                    <%= link_to "#", class: "btn-game play" do %>
+                      <i class="fas fa-play"></i>
+                      Jouer maintenant
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="empty-state">
+            <div class="empty-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <h3>Aucun jeu disponible</h3>
+            <p>Les mini-jeux seront bientôt disponibles !</p>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Section Future Games -->
+      <div class="games-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-rocket"></i>
+            Prochainement
+          </h2>
+          <p class="section-subtitle">
+            D'autres mini-jeux arrivent bientôt !
+          </p>
+        </div>
+
+        <div class="coming-soon-grid">
+          <div class="coming-soon-card">
+            <div class="coming-soon-icon">
+              <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <h4>Puzzle CourtSideClub</h4>
+            <p>Reconstituez les photos des joueurs</p>
+            <span class="coming-soon-badge">Bientôt</span>
+          </div>
+
+          <div class="coming-soon-card">
+            <div class="coming-soon-icon">
+              <i class="fas fa-stopwatch"></i>
+            </div>
+            <h4>Quiz Chrono</h4>
+            <p>Répondez le plus vite possible</p>
+            <span class="coming-soon-badge">Bientôt</span>
+          </div>
+
+          <div class="coming-soon-card">
+            <div class="coming-soon-icon">
+              <i class="fas fa-basketball-ball"></i>
+            </div>
+            <h4>Shoot Challenge</h4>
+            <p>Visez et marquez des paniers</p>
+            <span class="coming-soon-badge">Bientôt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
