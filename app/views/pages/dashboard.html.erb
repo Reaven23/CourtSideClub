@@ -2,6 +2,12 @@
 
 <div class="dashboard-container">
   <div class="container">
+    <div class="breadcrumb">
+      <%= link_to "Accueil", root_path, class: "breadcrumb-link" %>
+      <i class="fas fa-chevron-right"></i>
+      <span>Mon vestiaire</span>
+    </div>
+
     <div class="row">
       <!-- Header du dashboard -->
       <div class="col-12">
@@ -144,11 +150,10 @@
               <span>Mon profil</span>
             <% end %>
 
-            <div class="action-card disabled">
+            <%= link_to mini_games_path, class: "action-card" do %>
               <i class="fas fa-gamepad"></i>
               <span>Mini-jeux</span>
-              <small>Bientôt disponible</small>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
