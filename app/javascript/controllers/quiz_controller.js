@@ -281,7 +281,7 @@ export default class extends Controller {
     }
 
     // Afficher l'écran de résultats
-    this.resultsScreenTarget.style.display = 'block'
+    this.resultsScreenTarget.style.display = 'flex'
   }
 
   startTimer() {
@@ -371,7 +371,7 @@ export default class extends Controller {
     if (confirm('Êtes-vous sûr de vouloir quitter le quiz ? Votre progression sera perdue.')) {
       this.clearTimer()
       this.gameScreenTarget.style.display = 'none'
-      this.startScreenTarget.style.display = 'block'
+      this.startScreenTarget.style.display = 'flex'
 
       // Reset des variables
       this.currentQuestionIndex = 0
