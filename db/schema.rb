@@ -53,6 +53,30 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_26_080741) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
+  create_table "article_tags", force: :cascade do |t|
+    t.bigint "article_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id", "tag_id"], name: "index_article_tags_on_article_id_and_tag_id", unique: true
+    t.index ["article_id"], name: "index_article_tags_on_article_id"
+    t.index ["tag_id"], name: "index_article_tags_on_tag_id"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.text "content"
+    t.string "youtube_embed"
+    t.string "instagram_embed"
+    t.datetime "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["published_at"], name: "index_articles_on_published_at"
+    t.index ["user_id", "published_at"], name: "index_articles_on_user_id_and_published_at"
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
   create_table "levels", force: :cascade do |t|
     t.integer "number"
     t.bigint "points"
@@ -86,6 +110,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_26_080741) do
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "color", default: "#ee53a8"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "user_question_answers", force: :cascade do |t|
@@ -181,6 +214,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_26_080741) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
+  add_foreign_key "article_tags", "articles"
+  add_foreign_key "article_tags", "tags"
+  add_foreign_key "articles", "users"
   add_foreign_key "questions", "quiz_games"
   add_foreign_key "user_question_answers", "answers"
   add_foreign_key "user_question_answers", "questions"

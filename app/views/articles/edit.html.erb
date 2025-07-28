@@ -1,0 +1,158 @@
+<%= render 'shared/navbar' %>
+
+<% content_for :title, "Modifier l'article" %>
+
+<div class="article-new">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Header -->
+        <div class="page-header mb-4">
+          <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><%= link_to "Accueil", root_path %></li>
+              <li class="breadcrumb-item"><%= link_to "Articles", articles_path %></li>
+              <li class="breadcrumb-item"><%= link_to @article.title, @article %></li>
+              <li class="breadcrumb-item active" aria-current="page">Modifier</li>
+            </ol>
+          </nav>
+
+          <h1 class="page-title">
+            <i class="fas fa-edit me-3"></i>Modifier l'article
+          </h1>
+          <p class="text-muted">Modifiez votre article "<%= truncate(@article.title, length: 50) %>"</p>
+        </div>
+
+        <!-- Formulaire -->
+        <div class="article-form-card">
+          <%= simple_form_for @article, local: true, multipart: true, html: { class: "article-form" } do |form| %>
+            <!-- Gestion des erreurs -->
+            <% if @article.errors.any? %>
+              <div class="alert alert-danger" role="alert">
+                <h5><i class="fas fa-exclamation-triangle me-2"></i>Erreurs détectées :</h5>
+                <ul class="mb-0">
+                  <% @article.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <!-- Titre -->
+            <div class="form-section mb-4">
+              <h4 class="form-section-title">
+                <i class="fas fa-heading me-2"></i>Informations principales
+              </h4>
+
+              <%= form.input :title,
+                  label: "Titre de l'article",
+                  required: true,
+                  input_html: { class: "form-control-lg" } %>
+
+              <%= form.input :content,
+                  as: :text,
+                  label: "Contenu",
+                  required: true,
+                  input_html: { rows: 10 } %>
+            </div>
+
+            <!-- Tags -->
+            <div class="form-section mb-4">
+              <h4 class="form-section-title">
+                <i class="fas fa-tags me-2"></i>Tags
+              </h4>
+
+              <%= form.input :tag_names,
+                  as: :string,
+                  label: "Tags",
+                  input_html: {
+                    value: @article.tag_names.join(', '),
+                    placeholder: "basketball, match, victoire, paris"
+                  } do %>
+                <div class="form-text">
+                  Tags actuels :
+                  <% @article.tags.each do |tag| %>
+                    <span class="badge me-1" style="background-color: <%= tag.color %>;">
+                      <%= tag.name %>
+                    </span>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+
+            <!-- Médias -->
+            <div class="form-section mb-4">
+              <h4 class="form-section-title">
+                <i class="fas fa-photo-video me-2"></i>Médias
+              </h4>
+
+              <!-- Photo actuelle -->
+              <% if @article.photo.attached? %>
+                <div class="mb-3">
+                  <label class="form-label">Photo actuelle</label>
+                  <div class="current-photo">
+                    <%= image_tag @article.photo, class: "img-thumbnail", style: "max-height: 150px;" %>
+                  </div>
+                </div>
+              <% end %>
+
+              <%= form.input :photo,
+                  as: :file,
+                  label: "Nouvelle photo (optionnel)",
+                  input_html: { accept: "image/*" } %>
+
+              <%= form.input :youtube_embed,
+                  as: :url,
+                  label: "Vidéo YouTube" %>
+
+              <%= form.input :instagram_embed,
+                  as: :url,
+                  label: "Post Instagram" %>
+            </div>
+
+            <!-- Actions -->
+            <div class="form-actions d-flex justify-content-between align-items-center">
+              <div>
+                <%= link_to @article, class: "btn btn-outline-secondary" do %>
+                  <i class="fas fa-times me-2"></i>Annuler
+                <% end %>
+              </div>
+
+              <div class="d-flex gap-2">
+                <% if @article.published? %>
+                  <%= form.button :submit, "Remettre en brouillon",
+                      class: "btn btn-outline-warning",
+                      name: "commit",
+                      value: "draft" do %>
+                    <i class="fas fa-edit me-2"></i>Remettre en brouillon
+                  <% end %>
+
+                  <%= form.button :submit, "Republier",
+                      class: "btn btn-primary btn-lg",
+                      name: "commit",
+                      value: "publish" do %>
+                    <i class="fas fa-sync me-2"></i>Republier
+                  <% end %>
+                <% else %>
+                  <%= form.button :submit, "Enregistrer en brouillon",
+                      class: "btn btn-outline-primary",
+                      name: "commit",
+                      value: "draft" do %>
+                    <i class="fas fa-save me-2"></i>Enregistrer en brouillon
+                  <% end %>
+
+                  <%= form.button :submit, "Publier l'article",
+                      class: "btn btn-primary btn-lg",
+                      name: "commit",
+                      value: "publish" do %>
+                    <i class="fas fa-paper-plane me-2"></i>Publier l'article
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_many :user_quiz_games, dependent: :destroy
   has_many :quiz_games, through: :user_quiz_games
 
+  # Associations pour les articles
+  has_many :articles, dependent: :destroy
+
   # Callbacks
   before_save :update_level_if_needed
   after_create :assign_initial_level
