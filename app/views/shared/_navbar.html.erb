@@ -44,7 +44,7 @@
 
         <!-- Actualités -->
         <li class="nav-item">
-          <a class="nav-link" href="#news">Actualités</a>
+          <%= link_to "Actualités", articles_path, class: "nav-link" %>
         </li>
       </ul>
 
@@ -59,6 +59,7 @@
             <ul class="dropdown-menu dropdown-menu-end">
               <li><%= link_to "Mon vestiaire", dashboard_path, class: "dropdown-item" %></li>
               <li><%= link_to "Mon profil", edit_user_registration_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Écrire un article", new_article_path, class: "dropdown-item" %></li>
               <li><hr class="dropdown-divider"></li>
               <% current_votes = VoteCampaign.active.current %>
               <% if current_votes.any? %>

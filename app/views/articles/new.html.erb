@@ -1,0 +1,147 @@
+<%= render 'shared/navbar' %>
+
+<% content_for :title, "Nouvel article" %>
+
+<div class="article-new">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Header -->
+        <div class="page-header mb-4">
+          <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><%= link_to "Accueil", root_path %></li>
+              <li class="breadcrumb-item active" aria-current="page">Nouvel article</li>
+            </ol>
+          </nav>
+
+          <h1 class="page-title">
+            <i class="fas fa-edit me-3"></i>Créer un nouvel article
+          </h1>
+          <p class="text-muted">Partagez vos actualités avec la communauté CourtSideClub</p>
+        </div>
+
+        <!-- Formulaire -->
+        <div class="article-form-card">
+          <%= simple_form_for @article, local: true, multipart: true, html: { class: "article-form" } do |form| %>
+            <!-- Gestion des erreurs -->
+            <% if @article.errors.any? %>
+              <div class="alert alert-danger" role="alert">
+                <h5><i class="fas fa-exclamation-triangle me-2"></i>Erreurs détectées :</h5>
+                <ul class="mb-0">
+                  <% @article.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <!-- Titre -->
+            <div class="form-section mb-4">
+              <h4 class="form-section-title">
+                <i class="fas fa-heading me-2"></i>Informations principales
+              </h4>
+
+              <%= form.input :title,
+                  label: "Titre de l'article",
+                  required: true,
+                  input_html: { class: "form-control-lg", placeholder: "Ex: 🏆 Victoire écrasante contre les Lions de Paris !" },
+                  hint: "Le titre doit être accrocheur et informatif (5-200 caractères)" %>
+
+              <%= form.input :content,
+                  as: :text,
+                  label: "Contenu",
+                  required: true,
+                  input_html: { rows: 10, placeholder: "Rédigez le contenu de votre article..." },
+                  hint: "Décrivez en détail le sujet de votre article (minimum 10 caractères)" %>
+            </div>
+
+            <!-- Tags -->
+            <div class="form-section mb-4">
+              <h4 class="form-section-title">
+                <i class="fas fa-tags me-2"></i>Tags
+              </h4>
+
+              <%= form.input :tag_names,
+                  as: :string,
+                  label: "Tags",
+                  input_html: {
+                    placeholder: "basketball, match, victoire, paris",
+                    data: { tags: @available_tags.pluck(:name).to_json }
+                  } do %>
+                <div class="form-text">
+                  Séparez les tags par des virgules.
+                  <% if @available_tags.any? %>
+                    <br>Tags existants :
+                    <div class="mt-1">
+                      <% @available_tags.limit(10).each do |tag| %>
+                        <span class="badge me-1 mb-1" style="background-color: <%= tag.color %>;">
+                          <%= tag.name %>
+                        </span>
+                      <% end %>
+                      <% if @available_tags.count > 10 %>
+                        <span class="text-muted">et <%= @available_tags.count - 10 %> autres...</span>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <br><em>Aucun tag existant. Créez-en de nouveaux en les tapant dans le champ !</em>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+
+            <!-- Médias -->
+            <div class="form-section mb-4">
+              <h4 class="form-section-title">
+                <i class="fas fa-photo-video me-2"></i>Médias
+              </h4>
+
+              <%= form.input :photo,
+                  as: :file,
+                  label: "Photo",
+                  input_html: { accept: "image/*" },
+                  hint: "Ajoutez une image pour illustrer votre article (optionnel)" %>
+
+              <%= form.input :youtube_embed,
+                  as: :url,
+                  label: "Vidéo YouTube",
+                  placeholder: "https://www.youtube.com/watch?v=...",
+                  hint: "Lien vers une vidéo YouTube (optionnel)" %>
+
+              <%= form.input :instagram_embed,
+                  as: :url,
+                  label: "Post Instagram",
+                  placeholder: "https://www.instagram.com/p/...",
+                  hint: "Lien vers un post Instagram (optionnel)" %>
+            </div>
+
+            <!-- Actions -->
+            <div class="form-actions d-flex justify-content-between align-items-center">
+              <div>
+                <%= link_to root_path, class: "btn btn-outline-secondary" do %>
+                  <i class="fas fa-times me-2"></i>Annuler
+                <% end %>
+              </div>
+
+              <div class="d-flex gap-2">
+                <%= form.button :submit, "Enregistrer en brouillon",
+                    class: "btn btn-outline-primary",
+                    name: "commit",
+                    value: "draft" do %>
+                  <i class="fas fa-save me-2"></i>Enregistrer en brouillon
+                <% end %>
+
+                <%= form.button :submit, "Publier l'article",
+                    class: "btn btn-primary btn-lg",
+                    name: "commit",
+                    value: "publish" do %>
+                  <i class="fas fa-paper-plane me-2"></i>Publier l'article
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
