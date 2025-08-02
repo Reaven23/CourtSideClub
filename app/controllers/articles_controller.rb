@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_article, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :publish]
+  before_action :set_article, only: [:show, :edit, :update, :publish]
 
   def index
     if user_signed_in?
@@ -74,17 +74,6 @@ class ArticlesController < ApplicationController
       return
     end
 
-    # Publication rapide depuis l'index
-    if params[:commit] == 'publish' && request.patch?
-      if @article.content.present? && @article.title.present?
-        @article.publish!
-        redirect_to articles_path, notice: 'Article publié avec succès !'
-      else
-        redirect_to edit_article_path(@article), alert: 'Veuillez compléter le titre et le contenu avant de publier.'
-      end
-      return
-    end
-
     # Modification normale via formulaire
     if params[:commit] == 'draft'
       # Enregistrer en brouillon sans validations strictes
@@ -107,6 +96,26 @@ class ArticlesController < ApplicationController
         @available_tags = Tag.alphabetical
         render :edit, status: :unprocessable_entity
       end
+    end
+  end
+
+  def publish
+    unless @article.user == current_user
+      redirect_to articles_path, alert: "Vous ne pouvez pas publier cet article."
+      return
+    end
+
+    # Vérifier que l'article a le minimum requis
+    if @article.title.blank? || @article.content.blank?
+      redirect_to edit_article_path(@article), alert: 'Veuillez compléter le titre et le contenu avant de publier.'
+      return
+    end
+
+    # Publier l'article
+    if @article.publish!
+      redirect_to article_path(@article), notice: 'Article publié avec succès !'
+    else
+      redirect_to articles_path, alert: 'Erreur lors de la publication de l\'article.'
     end
   end
 

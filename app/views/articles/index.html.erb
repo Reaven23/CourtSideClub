@@ -2,158 +2,47 @@
 
 <% content_for :title, "Tous les articles" %>
 
-<div class="articles-index">
+<div class="articles-index-page">
   <div class="container">
     <!-- Header -->
-    <div class="page-header text-center mb-5">
+    <div class="page-header mb-4">
       <nav aria-label="breadcrumb" class="mb-3">
-        <ol class="breadcrumb justify-content-center">
+        <ol class="breadcrumb">
           <li class="breadcrumb-item"><%= link_to "Accueil", root_path %></li>
           <li class="breadcrumb-item active" aria-current="page">Articles</li>
         </ol>
       </nav>
 
-      <h1 class="page-title">
-        <i class="fas fa-newspaper me-3"></i>Actualités CourtSideClub
-      </h1>
-      <p class="text-muted">Découvrez toutes les actualités de votre club de basket préféré</p>
-
-      <% if user_signed_in? %>
-        <div class="mt-3">
-          <%= link_to new_article_path, class: "btn btn-primary" do %>
-            <i class="fas fa-plus me-2"></i>Écrire un article
-          <% end %>
+      <div class="d-flex justify-content-center align-items-center flex-wrap">
+        <div>
+          <h1 class="page-title mb-1 ">
+            <i class="fas fa-newspaper me-2"></i>Actualités CourtSideClub
+          </h1>
+          <p class="text-muted mb-0 ">Découvrez toutes les actualités de votre club de basket préféré</p>
         </div>
-      <% end %>
+
+      </div>
     </div>
 
     <!-- Articles Grid -->
     <% if @published_articles.any? || @draft_articles.any? %>
 
-      <!-- Section : Mes articles en construction -->
-      <% if user_signed_in? && @draft_articles.any? %>
-        <div class="drafts-section mb-5">
-          <div class="section-header mb-4">
-            <h2 class="section-title">
-              <i class="fas fa-hammer me-2"></i>Mes articles en construction
-              <span class="badge bg-warning text-dark ms-2"><%= @draft_articles.count %></span>
-            </h2>
-            <p class="section-subtitle text-muted">
-              Vos brouillons en cours de rédaction
-            </p>
-          </div>
 
-          <div class="row g-4">
-            <% @draft_articles.each do |article| %>
-              <div class="col-lg-4 col-md-6">
-                <div class="article-card h-100 draft-card">
-                  <!-- Image -->
-                  <div class="article-card-image">
-                    <% if article.photo.attached? %>
-                      <%= image_tag article.photo, class: "card-img-top", alt: article.title %>
-                    <% elsif article.youtube_embed.present? %>
-                      <div class="video-thumbnail">
-                        <i class="fab fa-youtube"></i>
-                        <span>Vidéo</span>
-                      </div>
-                    <% elsif article.instagram_embed.present? %>
-                      <div class="instagram-thumbnail">
-                        <i class="fab fa-instagram"></i>
-                        <span>Instagram</span>
-                      </div>
-                    <% else %>
-                      <div class="default-thumbnail">
-                        <i class="fas fa-newspaper"></i>
-                        <span>Article</span>
-                      </div>
-                    <% end %>
-
-                    <!-- Draft overlay -->
-                    <div class="draft-overlay">
-                      <i class="fas fa-edit"></i>
-                      <span>Brouillon</span>
-                    </div>
-                  </div>
-
-                  <!-- Content -->
-                  <div class="card-body d-flex flex-column">
-                    <!-- Tags -->
-                    <% if article.tags.any? %>
-                      <div class="article-tags mb-2">
-                        <% article.tags.limit(3).each do |tag| %>
-                          <span class="badge tag-badge me-1" style="background-color: <%= tag.color %>;">
-                            <%= tag.name %>
-                          </span>
-                        <% end %>
-                        <% if article.tags.count > 3 %>
-                          <span class="text-muted small">+<%= article.tags.count - 3 %></span>
-                        <% end %>
-                      </div>
-                    <% end %>
-
-                    <!-- Title -->
-                    <h5 class="card-title">
-                      <%= link_to article.title, article, class: "text-decoration-none" %>
-                    </h5>
-
-                    <!-- Excerpt -->
-                    <p class="card-text text-muted small flex-grow-1">
-                      <%= truncate(strip_tags(article.content), length: 120) %>
-                    </p>
-
-                    <!-- Meta -->
-                    <div class="article-meta mt-auto">
-                      <div class="d-flex justify-content-between align-items-center mb-2">
-                        <small class="text-muted">
-                          <i class="fas fa-calendar me-1"></i>
-                          Créé le <%= article.created_at.strftime('%d/%m/%Y') %>
-                        </small>
-                      </div>
-
-                      <!-- Actions pour l'auteur -->
-                      <div class="author-actions">
-                        <div class="d-flex gap-2">
-                          <%= link_to edit_article_path(article), class: "btn btn-outline-primary btn-sm flex-fill" do %>
-                            <i class="fas fa-edit me-1"></i>Continuer la rédaction
-                          <% end %>
-
-                          <%= link_to article_path(article),
-                              method: :patch,
-                              params: { commit: 'publish' },
-                              data: {
-                                confirm: "Êtes-vous sûr de vouloir publier cet article ?"
-                              },
-                              class: "btn btn-success btn-sm flex-fill" do %>
-                            <i class="fas fa-paper-plane me-1"></i>Publier
-                          <% end %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
 
       <!-- Section : Articles publiés -->
       <% if @published_articles.any? %>
         <div class="published-section">
-          <div class="section-header mb-4">
-            <h2 class="section-title">
+          <div class="section-header mb-3">
+            <h3 class="section-title">
               <i class="fas fa-newspaper me-2"></i>Articles publiés
               <span class="badge bg-success ms-2"><%= @published_articles.count %></span>
-            </h2>
-            <p class="section-subtitle text-muted">
-              Toutes les actualités de la communauté CourtSideClub
-            </p>
+            </h3>
           </div>
 
-          <div class="row g-4">
+          <div class="row g-3">
             <% @published_articles.each do |article| %>
-              <div class="col-lg-4 col-md-6">
-                <div class="article-card h-100">
+                <div class="col-lg-3 col-md-6">
+                  <div class="article-card h-100">
                   <!-- Image -->
                   <div class="article-card-image">
                     <% if article.photo.attached? %>
@@ -208,7 +97,7 @@
                         <div class="author-info">
                           <small class="text-muted">
                             <i class="fas fa-user me-1"></i>
-                            <%= article.user.first_name %> <%= article.user.last_name %>
+                            <strong>CourtSideClub</strong>
                           </small>
                         </div>
                         <div class="date-info">
@@ -218,31 +107,7 @@
                           </small>
                         </div>
                       </div>
-
-                      <!-- Actions pour l'auteur -->
-                      <% if user_signed_in? && article.user == current_user %>
-                        <div class="author-actions mt-2 pt-2 border-top">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                              <%= link_to edit_article_path(article), class: "btn btn-outline-primary btn-sm" do %>
-                                <i class="fas fa-edit me-1"></i>Modifier
-                              <% end %>
-                            </div>
-
-                            <div>
-                              <span class="badge bg-info">Votre article</span>
-                            </div>
-                          </div>
-                        </div>
-                      <% end %>
                     </div>
-                  </div>
-
-                  <!-- Read More Button -->
-                  <div class="card-footer bg-transparent border-0 pt-0">
-                    <%= link_to article, class: "btn btn-outline-secondary btn-sm w-100" do %>
-                      <i class="fas fa-arrow-right me-2"></i>Lire la suite
-                    <% end %>
                   </div>
                 </div>
               </div>
@@ -256,9 +121,6 @@
         <p class="text-muted">
           <i class="fas fa-info-circle me-2"></i>
           <%= pluralize(@published_articles.count, 'article publié', 'articles publiés') %>
-          <% if user_signed_in? && @draft_articles.any? %>
-            • <%= pluralize(@draft_articles.count, 'brouillon', 'brouillons') %>
-          <% end %>
         </p>
       </div>
     <% else %>
