@@ -16,6 +16,7 @@ class Admin::QuestionsController < ApplicationController
   def create
     @question = @quiz_game.questions.new(question_params)
     set_correct_answer_from_index
+    assign_next_order
     if @question.save
       redirect_to admin_quiz_game_questions_path(@quiz_game), notice: 'Question créée.'
     else
@@ -63,7 +64,7 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:content, :order, :image, answers_attributes: [:id, :content, :order, :correct, :_destroy])
+    params.require(:question).permit(:content, :image, answers_attributes: [:id, :content, :order, :correct, :_destroy])
   end
 
   def set_correct_answer_from_index
@@ -75,5 +76,11 @@ class Admin::QuestionsController < ApplicationController
     # Mark the selected as correct (index is 0-based in form)
     selected = @question.answers[index.to_i]
     selected.correct = true if selected
+  end
+
+  def assign_next_order
+    return if @question.order.present?
+    next_order = (@quiz_game.questions.maximum(:order) || 0) + 1
+    @question.order = next_order
   end
 end

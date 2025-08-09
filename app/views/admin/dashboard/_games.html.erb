@@ -8,7 +8,7 @@
           <%= f.input :description, as: :text, label: 'Description', input_html: { rows: 3 } %>
           <%= f.input :points_per_question, as: :integer, label: 'Points par bonne réponse', input_html: { min: 1, value: 1 } %>
           <div class="form-check form-switch mb-3">
-            <%= f.input :active, as: :boolean, label: 'Actif', input_html: { class: 'form-check-input', role: 'switch' } %>
+            <%= f.input :active, as: :boolean, label: 'Actif', input_html: { class: 'form-check-input', role: 'switch', checked: false } %>
           </div>
           <%= f.button :submit, 'Créer', class: 'btn btn-primary' %>
         <% end %>
