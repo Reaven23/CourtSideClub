@@ -1,0 +1,15 @@
+<div class="container py-3">
+  <h1 class="h4 mb-3">Nouvelle question — <%= @quiz_game.title %></h1>
+  <%= form_with model: [ :admin, @quiz_game, @question ] do |f| %>
+    <div class="mb-2">
+      <%= f.label :content, 'Contenu' %>
+      <%= f.text_area :content, class: 'form-control', required: true, rows: 3 %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :order, 'Ordre' %>
+      <%= f.number_field :order, class: 'form-control', required: true, min: 1 %>
+    </div>
+    <%= f.submit 'Créer', class: 'btn btn-primary' %>
+    <%= link_to 'Annuler', admin_quiz_game_questions_path(@quiz_game), class: 'btn btn-outline-secondary' %>
+  <% end %>
+</div>

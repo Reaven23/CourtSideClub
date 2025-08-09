@@ -1,0 +1,25 @@
+<%= turbo_frame_tag 'admin_content' do %>
+  <div class="container py-3">
+    <h1 class="h4 mb-3">Modifier l'article</h1>
+    <%= simple_form_for [:admin, @article] do |f| %>
+      <%= f.input :title, label: 'Titre' %>
+      <%= f.input :content, as: :text, label: 'Contenu', input_html: { rows: 6 } %>
+      <%= f.input :tag_names, as: :string, label: 'Tags (séparés par des virgules)', input_html: { value: @article.tag_names.join(', '), placeholder: 'basketball, match, victoire' } %>
+      <div class="row g-2 mb-2">
+        <div class="col">
+          <%= f.input :youtube_embed, label: false, placeholder: 'URL YouTube' %>
+        </div>
+        <div class="col">
+          <%= f.input :instagram_embed, label: false, placeholder: 'URL Instagram' %>
+        </div>
+      </div>
+      <%= f.input :photo, as: :file, label: 'Photo' %>
+      <div class="d-flex gap-2">
+        <%= f.button :submit, 'Enregistrer (brouillon)', name: 'commit', value: 'draft', class: 'btn btn-outline-secondary' %>
+        <%= f.button :submit, 'Publier', name: 'commit', value: 'publish', class: 'btn btn-primary' %>
+        <%= link_to 'Retour', admin_dashboard_path(tab: 'articles'), class: 'btn btn-light' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+

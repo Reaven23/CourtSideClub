@@ -2,7 +2,26 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
+    # Dashboard
     get 'dashboard/index'
+    get 'dashboard', to: 'dashboard#index', as: :dashboard
+
+    # Admin actions
+    patch 'dashboard/users/:id/toggle_admin', to: 'dashboard#toggle_user_admin', as: :toggle_user_admin
+
+    # Quiz games management
+    resources :quiz_games do
+      resources :questions do
+        resources :answers
+      end
+    end
+
+    # Articles management in dashboard
+    resources :articles, only: [:create, :edit, :update] do
+      member do
+        patch :publish
+      end
+    end
   end
 
   root "pages#home"

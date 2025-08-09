@@ -1,0 +1,48 @@
+<div class="row g-3">
+  <div class="col-12 col-lg-5">
+    <div class="card h-100">
+      <div class="card-header fw-semibold">Nouveau jeu (Quiz)</div>
+      <div class="card-body">
+        <%= simple_form_for new_quiz_game, url: admin_quiz_games_path, html: { data: { turbo_frame: 'admin_content' } } do |f| %>
+          <%= f.input :title, label: 'Titre', required: true %>
+          <%= f.input :description, as: :text, label: 'Description', input_html: { rows: 3 } %>
+          <%= f.input :points_per_question, as: :integer, label: 'Points par bonne réponse', input_html: { min: 1, value: 1 } %>
+          <div class="form-check form-switch mb-3">
+            <%= f.input :active, as: :boolean, label: 'Actif', input_html: { class: 'form-check-input', role: 'switch' } %>
+          </div>
+          <%= f.button :submit, 'Créer', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-7">
+    <div class="card h-100">
+      <div class="card-header fw-semibold d-flex justify-content-between align-items-center">
+        <span>Jeux existants</span>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% quiz_games.each do |game| %>
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <div class="fw-semibold"><%= game.title %></div>
+                <div class="text-muted small">Points/réponse: <%= game.points_per_question %> • <%= game.active? ? 'Actif' : 'Inactif' %></div>
+                <% if game.description.present? %>
+                  <div class="small mt-1 text-muted"><%= truncate(game.description, length: 120) %></div>
+                <% end %>
+              </div>
+              <div class="d-flex gap-2">
+                <%= link_to 'Questions', admin_quiz_game_questions_path(game), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: '_top' } %>
+                <%= link_to 'Modifier', edit_admin_quiz_game_path(game), class: 'btn btn-outline-primary btn-sm', data: { turbo_frame: '_top' } %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+        <% if quiz_games.blank? %>
+          <li class="list-group-item text-muted">Aucun jeu</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

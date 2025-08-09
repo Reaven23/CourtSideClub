@@ -53,7 +53,8 @@ class QuizGamesController < ApplicationController
       end,
       quiz_info: {
         title: @quiz_game.title,
-        points_per_question: (@quiz_game.points / 10.0).round,
+        description: @quiz_game.description,
+        points_per_question: @quiz_game.points_per_question,
         total_questions: selected_questions.count,
         time_per_question: 24
       }
@@ -88,9 +89,7 @@ class QuizGamesController < ApplicationController
     # Calculer les points gagnés pour cette question
     points_earned = 0
     if answer.correct?
-      points_earned = (@quiz_game.points / 10.0).round
-
-      # Mettre à jour le score total
+      points_earned = @quiz_game.points_per_question
       @user_quiz_game.increment!(:score, points_earned)
     end
 
