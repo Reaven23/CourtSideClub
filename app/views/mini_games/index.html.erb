@@ -61,12 +61,12 @@
                     </div>
                     <div class="stat">
                       <i class="fas fa-trophy"></i>
-                      <span><%= quiz_game.points %> points max</span>
+                      <span><%= quiz_game.points_per_question * quiz_game.questions.count %> points max</span>
                     </div>
                     <% if user_completed %>
                       <div class="stat">
                         <i class="fas fa-star"></i>
-                        <span><%= user_completed.score %>/<%= quiz_game.score %> pts</span>
+                        <span><%= user_completed.score %>/<%= quiz_game.points_per_question * quiz_game.questions.count %> pts</span>
                       </div>
                     <% end %>
                   </div>
@@ -79,8 +79,8 @@
                       Déjà joué
                     </button>
                     <small class="replay-text">
-                      Score: <%= user_completed.score %>/<%= quiz_game.score %>
-                      | Points gagnés: <%= user_completed.points_earned %>
+                      Points gagnés: <%= user_completed.score %>/<%= quiz_game.points_per_question * quiz_game.questions.count %>
+                      
                     </small>
                   <% else %>
                     <%= link_to quiz_game_path(quiz_game), class: "btn-game play" do %>

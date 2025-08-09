@@ -54,7 +54,7 @@
             </div>
             <div class="d-flex gap-2">
               <%= link_to 'Modifier', edit_admin_article_path(article), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: 'admin_content' } %>
-              <%= button_to 'Publier', publish_admin_article_path(article), method: :patch, class: 'btn btn-primary btn-sm', form: { data: { turbo_frame: 'admin_content' } } %>
+              <%= link_to 'Publier', publish_admin_article_path(article), data: { turbo_method: :patch, turbo_frame: 'admin_content' }, class: 'btn btn-primary btn-sm' %>
             </div>
           </li>
         <% end %>

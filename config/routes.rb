@@ -11,9 +11,7 @@ Rails.application.routes.draw do
 
     # Quiz games management
     resources :quiz_games do
-      resources :questions do
-        resources :answers
-      end
+      resources :questions
     end
 
     # Articles management in dashboard

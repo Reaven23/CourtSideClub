@@ -4,6 +4,8 @@ class Question < ApplicationRecord
   has_many :user_question_answers, dependent: :destroy
   has_one_attached :image
 
+  accepts_nested_attributes_for :answers, allow_destroy: true
+
   validates :content, presence: true
   validates :order, presence: true, numericality: { greater_than: 0 }
   validates :order, uniqueness: { scope: :quiz_game_id }

@@ -1,6 +1,6 @@
 <div class="container py-3">
   <h1 class="h4 mb-3">Questions — <%= @quiz_game.title %></h1>
-  <div class="mb-3">
+  <div class="mb-3 d-flex gap-2">
     <%= link_to 'Nouvelle question', new_admin_quiz_game_question_path(@quiz_game), class: 'btn btn-primary btn-sm' %>
     <%= link_to 'Retour Dashboard', admin_dashboard_path(tab: 'games'), class: 'btn btn-outline-secondary btn-sm' %>
   </div>
@@ -12,8 +12,8 @@
           <div class="small text-muted"><%= pluralize(q.answers.count, 'réponse') %></div>
         </div>
         <div class="d-flex gap-2">
-          <%= link_to 'Réponses', admin_quiz_game_question_answers_path(@quiz_game, q), class: 'btn btn-outline-secondary btn-sm' %>
           <%= link_to 'Modifier', edit_admin_quiz_game_question_path(@quiz_game, q), class: 'btn btn-outline-primary btn-sm' %>
+          <%= link_to 'Supprimer', admin_quiz_game_question_path(@quiz_game, q), data: { turbo_method: :delete, turbo_confirm: 'Supprimer cette question ?' }, class: 'btn btn-danger btn-sm' %>
         </div>
       </div>
     <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_02_170249) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_09_121000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,11 +105,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_02_170249) do
   create_table "quiz_games", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
-    t.integer "score", null: false
-    t.integer "points", null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "points_per_question", default: 1, null: false
   end
 
   create_table "tags", force: :cascade do |t|
