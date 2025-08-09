@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 
 # Authentication
 gem "devise"
+gem "pundit"
 
 gem "bootstrap", "~> 5.3"
 gem "autoprefixer-rails"

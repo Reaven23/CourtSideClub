@@ -4,8 +4,7 @@ class QuizGame < ApplicationRecord
   has_many :users, through: :user_quiz_games
 
   validates :title, presence: true
-  validates :score, presence: true, numericality: { greater_than: 0 }
-  validates :points, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :points_per_question, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   scope :active, -> { where(active: true) }
 end

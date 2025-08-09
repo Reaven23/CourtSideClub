@@ -100,6 +100,10 @@ class User < ApplicationRecord
     [level.next_level.points - points, 0].max
   end
 
+  def admin?
+    admin == true
+  end
+
   private
 
   def birthdate_cannot_be_in_future

@@ -13,13 +13,18 @@
       </span>
     </button>
 
+
     <!-- Menu principal -->
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNav" data-controller="navbar">
       <!-- Navigation principale -->
       <ul class="navbar-nav mx-auto">
         <!-- Devenez membre avec dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle"
+             href="#" role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false">
+
             Devenez membre
           </a>
           <ul class="dropdown-menu">
@@ -32,7 +37,10 @@
 
         <!-- Le projet -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle"
+             href="#" role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false">
             Le projet
           </a>
           <ul class="dropdown-menu">
@@ -56,6 +64,15 @@
               <%= current_user.full_name %>
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
+              <% if current_user.admin? %>
+                <li>
+                  <%= link_to admin_dashboard_path, class: "dropdown-item d-flex align-items-center" do %>
+                    <i class="fas fa-user-shield me-2"></i>
+                    <span class="badge rounded-pill text-bg-primary">Admin</span>
+                  <% end %>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+              <% end %>
               <li><%= link_to "Mon vestiaire", dashboard_path, class: "dropdown-item" %></li>
               <li><%= link_to "Mon profil", edit_user_registration_path, class: "dropdown-item" %></li>
               <li><%= link_to "Écrire un article", new_article_path, class: "dropdown-item" %></li>

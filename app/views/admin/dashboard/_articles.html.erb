@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="h5 mb-0">Articles</h2>
+  <div class="d-flex gap-2">
+    <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#admin_new_article_form">Nouvel article</button>
+  </div>
+  </div>
+
+<div class="row g-3">
+  <div class="col-12 col-lg-6">
+    <div class="card h-100">
+      <div class="card-header fw-semibold">Brouillons (vous)</div>
+      <div id="admin_new_article_form" class="collapse border-bottom">
+        <div class="card-body">
+          <%= simple_form_for @new_article, url: admin_articles_path, html: { data: { turbo_frame: 'admin_content' } } do |f| %>
+            <%= f.input :title, label: 'Titre' %>
+            <%= f.input :content, as: :text, label: 'Contenu', input_html: { rows: 4 } %>
+            <%= f.input :tag_names, as: :string, label: 'Tags (séparés par des virgules)', input_html: { placeholder: 'basketball, match, victoire', data: { tags: @available_tags.pluck(:name).to_json } } %>
+            <div class="form-text">
+              <% if @available_tags.any? %>
+                Tags existants :
+                <div class="mt-1">
+                  <% @available_tags.limit(10).each do |tag| %>
+                    <span class="badge me-1 mb-1" style="background-color: <%= tag.color %>;"><%= tag.name %></span>
+                  <% end %>
+                  <% if @available_tags.count > 10 %>
+                    <span class="text-muted">et <%= @available_tags.count - 10 %> autres...</span>
+                  <% end %>
+                </div>
+              <% else %>
+                <em>Aucun tag existant. Créez-en de nouveaux en les tapant.</em>
+              <% end %>
+            </div>
+            <div class="row g-2">
+              <div class="col">
+                <%= f.input :youtube_embed, label: false, placeholder: 'URL YouTube' %>
+              </div>
+              <div class="col">
+                <%= f.input :instagram_embed, label: false, placeholder: 'URL Instagram' %>
+              </div>
+            </div>
+            <div class="mt-2 d-flex gap-2">
+              <%= f.button :submit, 'Enregistrer (brouillon)', name: 'commit', value: 'draft', class: 'btn btn-outline-secondary btn-sm' %>
+              <%= f.button :submit, 'Publier', name: 'commit', value: 'publish', class: 'btn btn-primary btn-sm' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% draft_articles.each do |article| %>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div>
+              <div class="fw-semibold"><%= article.title.presence || '(Sans titre)' %></div>
+              <div class="text-muted small">Créé le <%= l(article.created_at, format: :short) %></div>
+            </div>
+            <div class="d-flex gap-2">
+              <%= link_to 'Modifier', edit_admin_article_path(article), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: 'admin_content' } %>
+              <%= button_to 'Publier', publish_admin_article_path(article), method: :patch, class: 'btn btn-primary btn-sm', form: { data: { turbo_frame: 'admin_content' } } %>
+            </div>
+          </li>
+        <% end %>
+        <% if draft_articles.blank? %>
+          <li class="list-group-item text-muted">Aucun brouillon</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-6">
+    <div class="card h-100">
+      <div class="card-header fw-semibold">Articles publiés</div>
+      <ul class="list-group list-group-flush">
+        <% published_articles.each do |article| %>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div>
+              <div class="fw-semibold"><%= article.title %></div>
+              <div class="text-muted small">Publié le <%= l(article.published_at, format: :short) %> — par <%= article.user.full_name %></div>
+            </div>
+            <div class="d-flex gap-2">
+              <% if article.user == current_user %>
+                <%= link_to 'Modifier', edit_admin_article_path(article), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: 'admin_content' } %>
+              <% end %>
+              <%= link_to 'Voir', article_path(article), class: 'btn btn-outline-primary btn-sm', data: { turbo_frame: '_top' } %>
+            </div>
+          </li>
+        <% end %>
+        <% if published_articles.blank? %>
+          <li class="list-group-item text-muted">Aucun article publié</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -88,7 +88,7 @@
 
 // Dropdown styles - Desktop hover only
 @media (min-width: 992px) {
-  .dropdown:hover .dropdown-menu {
+  .dropdown:hover .dropdown-menu:not(.dropdown-menu-end) {
     display: block !important;
     animation: fadeInDown 0.3s ease;
   }

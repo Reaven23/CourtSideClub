@@ -1,0 +1,15 @@
+<div class="container py-3">
+  <h1 class="h4 mb-3">Modifier le jeu</h1>
+  <%= simple_form_for [:admin, @quiz_game] do |f| %>
+    <%= f.input :title, label: 'Titre', required: true %>
+    <%= f.input :description, as: :text, label: 'Description', input_html: { rows: 4 } %>
+    <%= f.input :points_per_question, as: :integer, label: 'Points par bonne réponse', input_html: { min: 1 } %>
+    <div class="form-check form-switch mb-3">
+      <%= f.input :active, as: :boolean, label: 'Actif', input_html: { class: 'form-check-input', role: 'switch' } %>
+    </div>
+    <div class="d-flex gap-2">
+      <%= f.button :submit, 'Enregistrer', class: 'btn btn-primary' %>
+      <%= link_to 'Retour', admin_dashboard_path(tab: 'games'), class: 'btn btn-light' %>
+    </div>
+  <% end %>
+</div>
