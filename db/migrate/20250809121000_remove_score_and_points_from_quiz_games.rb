@@ -9,4 +9,3 @@ class RemoveScoreAndPointsFromQuizGames < ActiveRecord::Migration[7.1]
     add_column :quiz_games, :points, :integer, null: false, default: 10 unless column_exists?(:quiz_games, :points)
   end
 end
-
