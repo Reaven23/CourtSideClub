@@ -2,7 +2,7 @@
   <h1 class="h4 mb-3">Nouvelle question — <%= @quiz_game.title %></h1>
   <%= simple_form_for [:admin, @quiz_game, @question] do |f| %>
     <%= f.input :content, as: :text, label: 'Contenu de la question', input_html: { rows: 3 } %>
-    <%= f.input :order, as: :integer, label: 'Ordre', input_html: { min: 1 } %>
+    <!-- order calculé côté contrôleur -->
 
     <div class="mt-3">
       <label class="form-label">Réponses (4)</label>
@@ -19,9 +19,7 @@
               <div class="col">
                 <%= af.input :content, label: false, placeholder: "Réponse ##{af.index + 1}" %>
               </div>
-              <div class="col-auto" style="width: 120px;">
-                <%= af.input :order, as: :integer, label: false, input_html: { min: 1, value: af.index + 1 } %>
-              </div>
+              <%= af.input :order, as: :hidden, input_html: { value: af.index + 1 } %>
             </div>
           </div>
         <% end %>
