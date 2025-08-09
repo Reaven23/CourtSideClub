@@ -28,7 +28,7 @@
               <% end %>
             </td>
             <td class="text-end">
-              <%= button_to 'Basculer Admin', admin_toggle_user_admin_path(user), method: :patch, class: 'btn btn-sm btn-outline-primary', form: { data: { turbo_frame: 'admin_content' } } %>
+              <%= link_to 'Basculer Admin', admin_toggle_user_admin_path(user), data: { turbo_method: :patch, turbo_frame: 'admin_content' }, class: 'btn btn-sm btn-outline-primary' %>
             </td>
           </tr>
         <% end %>

@@ -35,6 +35,7 @@
               <div class="d-flex gap-2">
                 <%= link_to 'Questions', admin_quiz_game_questions_path(game), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: '_top' } %>
                 <%= link_to 'Modifier', edit_admin_quiz_game_path(game), class: 'btn btn-outline-primary btn-sm', data: { turbo_frame: '_top' } %>
+                <%= link_to 'Supprimer', admin_quiz_game_path(game), data: { turbo_method: :delete, turbo_confirm: 'Supprimer ce jeu ?' }, class: 'btn btn-danger btn-sm' %>
               </div>
             </div>
           </li>

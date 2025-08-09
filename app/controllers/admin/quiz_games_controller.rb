@@ -1,7 +1,7 @@
 class Admin::QuizGamesController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_admin!
-  before_action :set_quiz_game, only: [:edit, :update]
+  before_action :set_quiz_game, only: [:edit, :update, :destroy]
 
   def index
     redirect_to admin_dashboard_path(tab: 'games')
@@ -26,6 +26,11 @@ class Admin::QuizGamesController < ApplicationController
       flash.now[:alert] = @quiz_game.errors.full_messages.to_sentence
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @quiz_game.destroy
+    redirect_to admin_dashboard_path(tab: 'games'), notice: 'Jeu supprimé.'
   end
 
   private
