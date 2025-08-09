@@ -1,15 +1,16 @@
+<%= render 'shared/navbar' %>
 <div class="container py-4">
   <h1 class="h3 mb-4">Dashboard Admin</h1>
 
-  <ul class="nav nav-pills gap-2 mb-4">
-    <li class="nav-item"><%= link_to 'Utilisateurs', admin_dashboard_path(tab: 'users'), class: "nav-link #{'active' if @tab == 'users'}", data: { turbo_frame: 'admin_content' } %></li>
-    <li class="nav-item"><%= link_to 'Articles', admin_dashboard_path(tab: 'articles'), class: "nav-link #{'active' if @tab == 'articles'}", data: { turbo_frame: 'admin_content' } %></li>
-    <li class="nav-item"><%= link_to 'Jeux', admin_dashboard_path(tab: 'games'), class: "nav-link #{'active' if @tab == 'games'}", data: { turbo_frame: 'admin_content' } %></li>
-    <li class="nav-item"><%= link_to 'Récompenses', admin_dashboard_path(tab: 'rewards'), class: "nav-link #{'active' if @tab == 'rewards'}", data: { turbo_frame: 'admin_content' } %></li>
-    <li class="nav-item"><%= link_to 'Notifications', admin_dashboard_path(tab: 'notifications'), class: "nav-link #{'active' if @tab == 'notifications'}", data: { turbo_frame: 'admin_content' } %></li>
-  </ul>
-
   <%= turbo_frame_tag 'admin_content' do %>
+    <ul class="nav nav-pills gap-2 mb-4">
+      <li class="nav-item"><%= link_to 'Utilisateurs', admin_dashboard_path(tab: 'users'), class: "nav-link #{'active' if @tab == 'users'}", data: { turbo_frame: 'admin_content' } %></li>
+      <li class="nav-item"><%= link_to 'Articles', admin_dashboard_path(tab: 'articles'), class: "nav-link #{'active' if @tab == 'articles'}", data: { turbo_frame: 'admin_content' } %></li>
+      <li class="nav-item"><%= link_to 'Jeux', admin_dashboard_path(tab: 'games'), class: "nav-link #{'active' if @tab == 'games'}", data: { turbo_frame: 'admin_content' } %></li>
+      <li class="nav-item"><%= link_to 'Récompenses', admin_dashboard_path(tab: 'rewards'), class: "nav-link #{'active' if @tab == 'rewards'}", data: { turbo_frame: 'admin_content' } %></li>
+      <li class="nav-item"><%= link_to 'Notifications', admin_dashboard_path(tab: 'notifications'), class: "nav-link #{'active' if @tab == 'notifications'}", data: { turbo_frame: 'admin_content' } %></li>
+    </ul>
+
     <% case @tab
        when 'users' %>
       <%= render partial: 'admin/dashboard/users', locals: { users: @users } %>

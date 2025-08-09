@@ -15,7 +15,7 @@ module Admin
 
     def load_quiz_games
       @quiz_games = QuizGame.order(created_at: :desc)
-      @new_quiz_game = QuizGame.new
+      @new_quiz_game = QuizGame.new(active: false)
     end
   end
 end
