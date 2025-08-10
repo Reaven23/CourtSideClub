@@ -1,0 +1,79 @@
+.site-footer {
+  padding: 3rem 0 2rem 0;
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.06);
+
+  .footer-logo {
+    width: auto;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .brand-text {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #111;
+  }
+
+  .footer-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-links a {
+    color: #4a4a4a;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: #EE53A8;
+  }
+
+  .newsletter-form .form-control {
+    border-radius: 10px;
+  }
+
+  .newsletter-form .btn {
+    border-radius: 10px;
+    background: #EE53A8;
+    border: none;
+  }
+
+  .footer-bottom {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .social-link {
+    color: #6c757d;
+    font-size: 1.1rem;
+  }
+
+  .social-link:hover {
+    color: #EE53A8;
+  }
+
+  /* Simple flag placeholders */
+  .flag {
+    display: inline-block;
+    width: 22px;
+    height: 14px;
+    border-radius: 2px;
+    background: #ccc;
+  }
+  .flag-fr { background: linear-gradient(90deg, #002395 33%, #fff 33%, #fff 66%, #ED2939 66%); }
+  .flag-uk { background: linear-gradient(90deg, #00247d, #cf142b); opacity: 0.85; }
+
+  @media (max-width: 768px) {
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form .btn { margin-left: 0 !important; margin-top: 0.5rem; }
+  }
+}
