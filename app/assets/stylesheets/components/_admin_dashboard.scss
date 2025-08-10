@@ -1,0 +1,20 @@
+// Admin Dashboard specific overrides
+
+// Tabs: override Bootstrap nav-pills to only color text, no blue background
+.nav.nav-pills .nav-link {
+  color: #333;
+  background: transparent;
+  border-radius: 999px;
+}
+
+.nav.nav-pills .nav-link:hover {
+  color: #EE53A8;
+  background: rgba(238, 83, 168, 0.08);
+}
+
+.nav.nav-pills .nav-link.active,
+.nav.nav-pills .show > .nav-link {
+  color: #EE53A8 !important;
+  background: transparent !important;
+  box-shadow: none;
+}
