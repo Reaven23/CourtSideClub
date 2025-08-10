@@ -46,6 +46,8 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Découvrir</a></li>
             <li><a class="dropdown-item" href="#">L'équipe</a></li>
+            <li><%= link_to "Les votes", vote_campaigns_path, class: "dropdown-item" %></li>
+
           </ul>
         </li>
 
@@ -75,7 +77,6 @@
               <% end %>
               <li><%= link_to "Mon vestiaire", dashboard_path, class: "dropdown-item" %></li>
               <li><%= link_to "Mon profil", edit_user_registration_path, class: "dropdown-item" %></li>
-              <li><%= link_to "Écrire un article", new_article_path, class: "dropdown-item" %></li>
               <li><hr class="dropdown-divider"></li>
               <% current_votes = VoteCampaign.active.current %>
               <% if current_votes.any? %>

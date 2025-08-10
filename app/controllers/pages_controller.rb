@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
 
   def home
+    @latest_articles = Article.published.order(published_at: :desc).limit(4)
   end
 
   def dashboard
