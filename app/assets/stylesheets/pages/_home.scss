@@ -250,6 +250,102 @@
   }
 }
 
+// News section
+.news-section {
+  padding: 3rem 0;
+  min-height: 88vh;
+
+  // Reuse the article card look from articles index
+  .article-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(238, 83, 168, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 350px; // Uniform height
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(238, 83, 168, 0.2);
+      border-color: #EE53A8;
+      border-width: 2px;
+    }
+
+    .article-card-image {
+      height: 150px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img { transform: scale(1.05); }
+
+      .video-thumbnail,
+      .instagram-thumbnail,
+      .default-thumbnail {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+
+        i { font-size: 2rem; margin-bottom: 0.3rem; }
+      }
+
+      .video-thumbnail { background: linear-gradient(135deg, #ff0000, #cc0000); }
+      .instagram-thumbnail { background: linear-gradient(135deg, #e4405f, #833ab4); }
+      .default-thumbnail { background: linear-gradient(135deg, #667eea, #764ba2); }
+    }
+
+    .card-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+
+      .article-tags {
+        margin-bottom: 0.5rem;
+
+        .tag-badge {
+          font-size: 0.65rem;
+          padding: 0.2rem 0.5rem;
+          border-radius: 10px;
+          color: white;
+          font-weight: 500;
+          margin-right: 0.3rem;
+        }
+      }
+
+      // Title link color and hover
+      .card-title a {
+        color: #111;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .card-title a:hover {
+        color: #EE53A8;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
 .advantages-card-container {
   display: flex;
   flex-wrap: wrap;
@@ -353,6 +449,7 @@
     color: inherit;
   }
 }
+
 
 .discover-courtsideclub {
   text-align: center;
