@@ -20,4 +20,7 @@ class PagesController < ApplicationController
     @current_vote_campaigns = VoteCampaign.active.current
     @has_pending_votes = @current_vote_campaigns.any? { |campaign| !campaign.user_voted?(@user) }
   end
+
+  def basket
+  end
 end
