@@ -132,8 +132,4 @@ puts "🎮 CHARGEMENT DES QUIZGAMES..."
 puts "="*50
 load Rails.root.join('db', 'seeds_quiz_games.rb')
 
-# Chargement des Articles depuis le fichier séparé
-puts "\n" + "="*50
-puts "📝 CHARGEMENT DES ARTICLES..."
-puts "="*50
-load Rails.root.join('db', 'seeds_articles.rb')
+

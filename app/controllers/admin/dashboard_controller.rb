@@ -16,6 +16,10 @@ class Admin::DashboardController < ApplicationController
       # placeholders
     when 'notifications'
       # placeholders
+    when 'votes'
+      load_votes
+    when 'players'
+      load_players
     else
       # default tab
       @tab = 'users'
@@ -36,7 +40,7 @@ class Admin::DashboardController < ApplicationController
   end
 
   def permitted_tab
-    allowed = %w[users articles games rewards notifications]
+    allowed = %w[users articles games rewards notifications votes players]
     tab = params[:tab].to_s
     allowed.include?(tab) ? tab : 'users'
   end

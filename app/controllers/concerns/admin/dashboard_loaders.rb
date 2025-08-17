@@ -17,5 +17,13 @@ module Admin
       @quiz_games = QuizGame.order(created_at: :desc)
       @new_quiz_game = QuizGame.new(active: false)
     end
+
+    def load_votes
+      @vote_campaigns = VoteCampaign.order(created_at: :desc)
+    end
+
+    def load_players
+      @players = Player.order(created_at: :desc)
+    end
   end
 end
