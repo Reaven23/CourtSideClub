@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="h5 mb-0">Campagnes de Vote</h2>
+  <div class="d-flex gap-2">
+    <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#admin_new_vote_campaign_form">Nouvelle campagne</button>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-12 col-lg-6">
+    <div class="card h-100">
+      <div class="card-header fw-semibold">Nouvelle campagne de vote</div>
+      <div id="admin_new_vote_campaign_form" class="collapse border-bottom">
+        <div class="card-body">
+          <%= simple_form_for VoteCampaign.new, url: admin_vote_campaigns_path, html: { data: { turbo_frame: 'admin_content' } } do |f| %>
+            <%= f.input :title, label: 'Titre', required: true %>
+            <%= f.input :description, as: :text, label: 'Description', input_html: { rows: 3 }, required: true %>
+            <div class="row g-2">
+              <div class="col">
+                <%= f.input :start_date, as: :date, label: 'Date de début', required: true %>
+              </div>
+              <div class="col">
+                <%= f.input :end_date, as: :date, label: 'Date de fin', required: true %>
+              </div>
+            </div>
+            <div class="form-check form-switch mb-3">
+              <%= f.input :active, as: :boolean, label: 'Actif', input_html: { class: 'form-check-input', role: 'switch', checked: false } %>
+            </div>
+            <div class="field mb-3" data-controller="player-selection">
+              <%= f.label :player_ids, 'Joueurs à inclure dans le vote' %>
+              <div class="form-text mb-2">Cliquez sur les joueurs que vous voulez inclure dans cette campagne de vote</div>
+              <div class="mb-2">
+                <span class="badge bg-info" data-player-selection-target="counter">0 joueur(s) sélectionné(s)</span>
+              </div>
+              <div class="row g-2">
+                <% Player.all.each do |player| %>
+                  <div class="col-6 col-md-4">
+                    <div class="card player-card"
+                         data-player-selection-target="card"
+                         data-player-id="<%= player.id %>"
+                         data-action="click->player-selection#togglePlayer"
+                         style="cursor: pointer; padding: 10px; text-align: center; border: 1px solid #dee2e6;">
+                      <div class="fw-semibold"><%= player.full_name %></div>
+                      <div class="text-muted small"><%= player.tournament_played %> tournois</div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+              <%= f.hidden_field :player_ids, data: { player_selection_target: "hiddenField" } %>
+            </div>
+            <%= f.button :submit, 'Créer la campagne', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-6">
+    <div class="card h-100">
+      <div class="card-header fw-semibold">Campagnes existantes</div>
+      <ul class="list-group list-group-flush">
+        <% vote_campaigns.each do |campaign| %>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div>
+              <div class="fw-semibold">
+                <%= campaign.title %>
+                <% if campaign.players.any? %>
+                  <span class="badge bg-success ms-2"><%= campaign.players.count %> joueur<%= 's' if campaign.players.count > 1 %></span>
+                <% else %>
+                  <span class="badge bg-warning ms-2">Aucun joueur</span>
+                <% end %>
+              </div>
+              <div class="text-muted small">
+                <%= campaign.start_date&.strftime('%d/%m/%Y') %> - <%= campaign.end_date&.strftime('%d/%m/%Y') %>
+                • <%= campaign.active? ? 'Actif' : 'Inactif' %>
+              </div>
+              <% if campaign.description.present? %>
+                <div class="small mt-1 text-muted"><%= truncate(campaign.description, length: 80) %></div>
+              <% end %>
+              <% if campaign.players.any? %>
+                <div class="small mt-1">
+                  <strong>Joueurs :</strong> <%= campaign.players.map(&:full_name).join(', ') %>
+                </div>
+              <% end %>
+            </div>
+            <div class="d-flex gap-2">
+              <%= link_to 'Voir détails', admin_vote_campaign_path(campaign), class: 'btn btn-outline-info btn-sm', data: { turbo_frame: 'admin_content' } %>
+              <%= link_to 'Modifier', edit_admin_vote_campaign_path(campaign), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: 'admin_content' } %>
+              <%= link_to 'Supprimer', admin_vote_campaign_path(campaign), data: { turbo_method: :delete, turbo_confirm: 'Supprimer cette campagne ?' }, class: 'btn btn-danger btn-sm' %>
+            </div>
+          </li>
+        <% end %>
+        <% if vote_campaigns.blank? %>
+          <li class="list-group-item text-muted">Aucune campagne de vote</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

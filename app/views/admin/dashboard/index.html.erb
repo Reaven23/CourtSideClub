@@ -9,6 +9,8 @@
       <li class="nav-item"><%= link_to 'Jeux', admin_dashboard_path(tab: 'games'), class: "nav-link #{'active' if @tab == 'games'}", data: { turbo_frame: 'admin_content' } %></li>
       <li class="nav-item"><%= link_to 'Récompenses', admin_dashboard_path(tab: 'rewards'), class: "nav-link #{'active' if @tab == 'rewards'}", data: { turbo_frame: 'admin_content' } %></li>
       <li class="nav-item"><%= link_to 'Notifications', admin_dashboard_path(tab: 'notifications'), class: "nav-link #{'active' if @tab == 'notifications'}", data: { turbo_frame: 'admin_content' } %></li>
+      <li class="nav-item"><%= link_to 'Votes', admin_dashboard_path(tab: 'votes'), class: "nav-link #{'active' if @tab == 'votes'}", data: { turbo_frame: 'admin_content' } %></li>
+      <li class="nav-item"><%= link_to 'Joueurs', admin_dashboard_path(tab: 'players'), class: "nav-link #{'active' if @tab == 'players'}", data: { turbo_frame: 'admin_content' } %></li>
     </ul>
 
     <% case @tab
@@ -22,6 +24,10 @@
       <%= render partial: 'admin/dashboard/rewards' %>
     <% when 'notifications' %>
       <%= render partial: 'admin/dashboard/notifications' %>
+    <% when 'votes' %>
+      <%= render partial: 'admin/dashboard/votes', locals: { vote_campaigns: @vote_campaigns } %>
+    <% when 'players' %>
+      <%= render partial: 'admin/dashboard/players', locals: { players: @players } %>
     <% end %>
   <% end %>
 </div>

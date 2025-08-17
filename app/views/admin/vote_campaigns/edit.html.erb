@@ -1,0 +1,53 @@
+<%= turbo_frame_tag 'admin_content' do %>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="h5 mb-0">Modifier la campagne de vote</h2>
+    <%= link_to '← Retour au dashboard', admin_dashboard_path(tab: 'votes'), class: 'btn btn-outline-secondary btn-sm' %>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <%= simple_form_for [:admin, @vote_campaign], html: { data: { turbo: false } } do |f| %>
+        <%= hidden_field_tag :_method, 'patch' %>
+        <%= f.input :title, label: 'Titre', required: true %>
+        <%= f.input :description, as: :text, label: 'Description', input_html: { rows: 3 }, required: true %>
+        <div class="row g-2">
+          <div class="col">
+            <%= f.input :start_date, as: :date, label: 'Date de début', required: true %>
+          </div>
+          <div class="col">
+            <%= f.input :end_date, as: :date, label: 'Date de fin', required: true %>
+          </div>
+        </div>
+        <div class="form-check form-switch mb-3">
+          <%= f.input :active, as: :boolean, label: 'Actif', input_html: { class: 'form-check-input', role: 'switch' } %>
+        </div>
+        <div class="field mb-3" data-controller="player-selection">
+          <%= f.label :player_ids, 'Joueurs à inclure dans le vote' %>
+          <div class="form-text mb-2">Cliquez sur les joueurs que vous voulez inclure dans cette campagne de vote</div>
+          <div class="mb-2">
+            <span class="badge bg-info" data-player-selection-target="counter"><%= @vote_campaign.players.count %> joueur(s) sélectionné(s)</span>
+          </div>
+          <div class="row g-2">
+            <% Player.all.each do |player| %>
+              <div class="col-6 col-md-4">
+                <div class="card player-card <%= 'selected' if @vote_campaign.players.include?(player) %>"
+                     data-player-selection-target="card"
+                     data-player-id="<%= player.id %>"
+                     data-action="click->player-selection#togglePlayer"
+                     style="cursor: pointer; padding: 10px; text-align: center; border: 1px solid #dee2e6; <%= 'border: 2px solid #0d6efd; background-color: #f8f9fa;' if @vote_campaign.players.include?(player) %>">
+                  <div class="fw-semibold"><%= player.full_name %></div>
+                  <div class="text-muted small"><%= player.tournament_played %> tournois</div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div data-player-selection-target="hiddenField"></div>
+        </div>
+        <div class="d-flex gap-2">
+          <%= f.button :submit, 'Mettre à jour', class: 'btn btn-primary' %>
+          <%= link_to 'Annuler', admin_dashboard_path(tab: 'votes'), class: 'btn btn-outline-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

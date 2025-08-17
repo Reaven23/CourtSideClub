@@ -20,6 +20,13 @@ Rails.application.routes.draw do
         patch :publish
       end
     end
+
+    resources :vote_campaigns, only: [:show, :new, :create, :edit, :update, :destroy] do
+      get :test, on: :collection
+      patch :update, on: :member
+      post :update, on: :member
+    end
+    resources :players, only: [:new, :create, :edit, :update, :destroy]
   end
 
   root "pages#home"

@@ -1,0 +1,31 @@
+<%= turbo_frame_tag 'admin_content' do %>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="h5 mb-0">Modifier le joueur</h2>
+    <%= link_to '← Retour au dashboard', admin_dashboard_path(tab: 'players'), class: 'btn btn-outline-secondary btn-sm' %>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <%= simple_form_for [:admin, @player], html: { data: { turbo_frame: 'admin_content' } } do |f| %>
+        <%= f.input :first_name, label: 'Prénom', required: true %>
+        <%= f.input :last_name, label: 'Nom', required: true %>
+        <%= f.input :tournaments_played, as: :integer, label: 'Tournois joués', input_html: { min: 0 }, required: true %>
+        <%= f.input :photo, as: :file, label: 'Photo', input_html: { accept: 'image/*' } %>
+
+        <% if @player.photo.attached? %>
+          <div class="mb-3">
+            <label class="form-label">Photo actuelle</label>
+            <div>
+              <%= image_tag @player.photo, class: 'rounded', style: 'max-width: 200px; max-height: 200px;' %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="d-flex gap-2">
+          <%= f.button :submit, 'Mettre à jour', class: 'btn btn-primary' %>
+          <%= link_to 'Annuler', admin_dashboard_path(tab: 'players'), class: 'btn btn-outline-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
