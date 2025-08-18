@@ -11,6 +11,7 @@ class VoteCampaign < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :end_date_after_start_date
+  validate :at_least_one_player
 
   # Scopes
   scope :active, -> { where(active: true) }
@@ -49,5 +50,11 @@ class VoteCampaign < ApplicationRecord
     return unless start_date && end_date
 
     errors.add(:end_date, "doit être après la date de début") if end_date <= start_date
+  end
+
+  def at_least_one_player
+    if players.empty?
+      errors.add(:players, "doit inclure au moins un joueur")
+    end
   end
 end
