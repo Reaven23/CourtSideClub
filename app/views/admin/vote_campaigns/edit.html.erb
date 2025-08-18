@@ -21,11 +21,14 @@
           <%= f.input :active, as: :boolean, label: 'Actif', input_html: { class: 'form-check-input', role: 'switch' } %>
         </div>
 
-        <div class="field mb-3 player-selection-form">
+        <div class="field mb-3 player-selection-form" data-controller="player-selection">
           <%= f.label :player_ids, 'Joueurs à inclure dans le vote', class: 'form-label' %>
           <div class="form-text mb-2">Cochez les joueurs que vous voulez inclure dans cette campagne de vote</div>
+          <div class="mb-2">
+            <span class="badge bg-info" data-player-selection-target="counter"><%= @vote_campaign.players.count %> joueur(s) sélectionné(s)</span>
+          </div>
 
-          <div class="row g-2">
+          <div class="row g-2" data-action="click->player-selection#togglePlayer">
             <% Player.all.each do |player| %>
               <div class="col-6 col-md-4">
                 <div class="card h-100">
@@ -33,7 +36,8 @@
                     <div class="form-check">
                       <%= check_box_tag 'vote_campaign[player_ids][]', player.id, @vote_campaign.players.include?(player),
                           class: 'form-check-input',
-                          id: "player_#{player.id}" %>
+                          id: "player_#{player.id}",
+                          data: { player_selection_target: "checkbox", action: "change->player-selection#updateCounter" } %>
                       <label class="form-check-label" for="player_<%= player.id %>">
                         <div class="fw-semibold"><%= player.full_name %></div>
                         <div class="text-muted small"><%= player.tournament_played %> tournois</div>
