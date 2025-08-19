@@ -10,8 +10,8 @@
           <h1 class="hero-title">de <span class="hero-title-highlight">Basketball</span>.</h1>
           <p class="intro-text">Adhérez à CourtSideClub et réinventez la propriété dans le monde du basket professionnel. Libérez votre potentiel et embarquez dans une aventure épique à la conquête du basket 3X3, où nous aspirons à devenir les Mark Cuban 3.0 ! Notre vision pour 2024 : lancer une équipe pro de basket 3X3 pour atteindre le FIBA World Tour, tout en permettant aux membres de CourtSideClub de manager la team et les joueurs. Rendons accessible à tous la propriété du sport business!</p>
           <div class="button-hero">
-            <%= link_to "Rejoindre", root_path, class: "button-hero-link" %>
-            <%= link_to "Déjà membre ?", root_path, class: "button-hero-link-secondary" %>
+            <%= link_to "Rejoindre", new_user_registration_path, class: "button-hero-link" %>
+            <%= link_to "Déjà membre ?", new_user_session_path, class: "button-hero-link-secondary" %>
           </div>
         </div>
       </div>
@@ -191,4 +191,3 @@
     <% end %>
   </div>
 </section>
-
