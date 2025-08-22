@@ -23,4 +23,7 @@ class PagesController < ApplicationController
 
   def basket
   end
+
+  def discover
+  end
 end

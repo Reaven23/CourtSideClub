@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   root "pages#home"
   get "dashboard", to: "pages#dashboard"
+  get "decouvrir", to: "pages#discover", as: :discover
 
   get "mini-jeux", to: "mini_games#index", as: :mini_games
 
