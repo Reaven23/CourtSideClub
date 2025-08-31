@@ -266,6 +266,8 @@
     height: 350px; // Uniform height
     display: flex;
     flex-direction: column;
+    // Use clip-path as backup for more reliable rounded corners
+    clip-path: inset(0 0 0 0 round 12px);
 
     &:hover {
       transform: translateY(-10px);
@@ -273,6 +275,8 @@
       border-color: #EE53A8;
       border-width: 2px;
       border-radius: 12px; // Explicitly maintain border-radius on hover
+      // Ensure clip-path is maintained on hover
+      clip-path: inset(0 0 0 0 round 12px);
     }
 
     .article-card-image {
@@ -825,6 +829,17 @@
 
     p {
       font-size: $font-size-xs;
+    }
+  }
+}
+
+// Home news section - specific styles to avoid conflicts
+.home-news-section {
+  .article-card {
+    border-radius: 12px !important;
+
+    &:hover {
+      border-radius: 12px !important;
     }
   }
 }
