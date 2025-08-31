@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
 
     # Articles management in dashboard
-    resources :articles, only: [:create, :edit, :update] do
+    resources :articles, only: [:create, :edit, :update, :destroy] do
       member do
         patch :publish
       end

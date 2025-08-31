@@ -1,7 +1,7 @@
 class Admin::ArticlesController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_admin!
-  before_action :set_article, only: [:edit, :update, :publish]
+  before_action :set_article, only: [:edit, :update, :publish, :destroy]
 
   def create
     @article = current_user.articles.build(article_params)
@@ -13,7 +13,7 @@ class Admin::ArticlesController < ApplicationController
       redirect_to admin_dashboard_path(tab: 'articles'), notice: 'Article enregistré.'
     else
       flash[:alert] = @article.errors.full_messages.to_sentence
-      redirect_to admin_dashboard_path(tab: 'articles')
+      redirect_to admin_dashboard_path(tab: 'articles'), status: :unprocessable_entity
     end
   end
 
@@ -43,6 +43,15 @@ class Admin::ArticlesController < ApplicationController
     redirect_to admin_dashboard_path(tab: 'articles'), notice: 'Article publié avec succès !'
   end
 
+  def destroy
+    article_title = @article.title.presence || 'Article sans titre'
+
+    if @article.destroy
+      redirect_to admin_dashboard_path(tab: 'articles'), notice: "L'article '#{article_title}' a été supprimé avec succès."
+    else
+      redirect_to admin_dashboard_path(tab: 'articles'), alert: "Erreur lors de la suppression de l'article."
+    end
+  end
 
   private
 

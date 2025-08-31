@@ -55,6 +55,14 @@
             <div class="d-flex gap-2">
               <%= link_to 'Modifier', edit_admin_article_path(article), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: 'admin_content' } %>
               <%= link_to 'Publier', publish_admin_article_path(article), data: { turbo_method: :patch, turbo_frame: 'admin_content' }, class: 'btn btn-primary btn-sm' %>
+              <%= link_to 'Supprimer', admin_article_path(article),
+
+                  class: 'btn btn-outline-danger btn-sm',
+                  data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Êtes-vous sûr de vouloir supprimer cet article ? Cette action est irréversible.",
+                    turbo_frame: 'admin_content'
+                  } %>
             </div>
           </li>
         <% end %>
@@ -80,6 +88,13 @@
                 <%= link_to 'Modifier', edit_admin_article_path(article), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: 'admin_content' } %>
               <% end %>
               <%= link_to 'Voir', article_path(article), class: 'btn btn-outline-primary btn-sm', data: { turbo_frame: '_top' } %>
+              <%= link_to 'Supprimer', admin_article_path(article),
+                  class: 'btn btn-outline-danger btn-sm',
+                  data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Êtes-vous sûr de vouloir supprimer cet article ? Cette action est irréversible.",
+                    turbo_frame: 'admin_content'
+                  } %>
             </div>
           </li>
         <% end %>

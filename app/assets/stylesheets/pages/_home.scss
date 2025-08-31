@@ -272,6 +272,7 @@
       box-shadow: 0 20px 40px rgba(238, 83, 168, 0.2);
       border-color: #EE53A8;
       border-width: 2px;
+      border-radius: 12px; // Explicitly maintain border-radius on hover
     }
 
     .article-card-image {
@@ -408,6 +409,34 @@
           background-color: rgba(238, 83, 168, 0.6);
           border-color: #EE53A8;
         }
+      }
+    }
+
+    // Responsive article cards
+    .article-card {
+      // Keep original styling, only add minimal responsive adjustments
+
+      // Mobile: slightly larger height for better readability
+      @media (max-width: 767px) {
+        height: 380px; // Slightly larger than original 350px
+
+        .card-title {
+          font-size: 1rem; // Keep original size
+        }
+
+        .card-text {
+          font-size: 0.8rem; // Keep original size
+        }
+      }
+
+      // Tablet: original height
+      @media (min-width: 768px) and (max-width: 991px) {
+        height: 350px; // Keep original height
+      }
+
+      // Desktop: original height
+      @media (min-width: 992px) {
+        height: 350px; // Keep original height
       }
     }
   }
