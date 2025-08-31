@@ -43,6 +43,7 @@ class Admin::ArticlesController < ApplicationController
     redirect_to admin_dashboard_path(tab: 'articles'), notice: 'Article publié avec succès !'
   end
 
+
   private
 
   def ensure_admin!

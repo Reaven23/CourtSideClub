@@ -344,6 +344,73 @@
       }
     }
   }
+
+  // Carousel specific styles
+  #newsCarousel {
+    position: relative;
+
+    .carousel-inner {
+      padding: 0 1rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 50px;
+      height: 50px;
+      background: rgba(238, 83, 168, 0.8);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(238, 83, 168, 1);
+        opacity: 1;
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .carousel-control-prev {
+      left: -25px;
+    }
+
+    .carousel-control-next {
+      right: -25px;
+    }
+
+    .carousel-indicators {
+      bottom: -40px;
+
+      button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(238, 83, 168, 0.3);
+        border: 2px solid rgba(238, 83, 168, 0.5);
+        margin: 0 4px;
+        transition: all 0.3s ease;
+
+        &.active {
+          background-color: #EE53A8;
+          border-color: #EE53A8;
+          transform: scale(1.2);
+        }
+
+        &:hover {
+          background-color: rgba(238, 83, 168, 0.6);
+          border-color: #EE53A8;
+        }
+      }
+    }
+  }
 }
 
 .advantages-card-container {

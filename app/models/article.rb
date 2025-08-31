@@ -49,7 +49,13 @@ class Article < ApplicationRecord
   end
 
   def tag_names=(names)
-    self.tags = names.map do |name|
+    tag_array = if names.is_a?(String)
+      names.split(',').map(&:strip).reject(&:blank?)
+    else
+      Array(names).compact
+    end
+
+    self.tags = tag_array.map do |name|
       Tag.find_or_create_by(name: name.strip.downcase)
     end
   end
