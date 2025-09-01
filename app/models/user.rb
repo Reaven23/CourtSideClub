@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :vote_campaigns, through: :user_votes
   has_many :voted_campaign_players, through: :user_votes, source: :player
 
+  # Associations pour les notifications
+  has_many :notifications, dependent: :destroy
+
   # Associations pour les quiz games
   has_many :user_quiz_games, dependent: :destroy
   has_many :quiz_games, through: :user_quiz_games
