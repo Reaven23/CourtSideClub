@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/create'
   devise_for :users
 
   namespace :admin do
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   end
 
   root "pages#home"
+  get "contact", to: "pages#contact", as: :contact
   get "dashboard", to: "pages#dashboard"
   get "decouvrir", to: "pages#discover", as: :discover
 
@@ -42,6 +44,8 @@ Rails.application.routes.draw do
       post :complete
     end
   end
+
+  resources :notifications, only: [:create]
 
   resources :vote_campaigns, only: [:index, :show] do
     member do

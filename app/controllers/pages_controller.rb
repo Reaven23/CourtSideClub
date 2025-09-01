@@ -21,7 +21,9 @@ class PagesController < ApplicationController
     @has_pending_votes = @current_vote_campaigns.any? { |campaign| !campaign.user_voted?(@user) }
   end
 
-  def basket
+  def contact
+    @notification = Notification.new
+
   end
 
   def discover

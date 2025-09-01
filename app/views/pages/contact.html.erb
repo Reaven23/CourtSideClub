@@ -1,0 +1,12 @@
+<%= render "shared/navbar" %>
+<section class="contact-section">
+  <div class="container">
+    <h1>Contactez-nous</h1>
+    <%= simple_form_for @notification do |f| %>
+      <%= f.input :object, label: "Objet de votre message" %>
+      <%= f.input :content, label: "Contenu de votre message" %>
+      <%= f.submit "Envoyer", class: "button-hero-link" %>
+    <% end %>
+  </div>
+</section>
+
