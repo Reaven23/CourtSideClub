@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get "faq", to: "pages#faq", as: :faq
   get "partenariat", to: "pages#partenariat", as: :partenariat
   get "nos-partenaires", to: "pages#nos_partenaires", as: :nos_partenaires
+  get "equipe", to: "pages#equipe", as: :equipe
   get "dashboard", to: "pages#dashboard"
   get "decouvrir", to: "pages#discover", as: :discover
 

@@ -8,15 +8,24 @@ class NotificationsController < ApplicationController
       @notification.user = current_user
     end
 
+    if @notification.object == 'news'
+      @notification.content = "A user has subscribed to the newsletter: #{@notification.email} "
+    end
+
     @notification.status = false
 
-    if @notification.save
+    if @notification.save!
       redirect_path = determine_redirect_path
       redirect_to redirect_path, notice: "Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais."
     else
       flash.now[:alert] = "Erreur lors de l'envoi du message. Veuillez vérifier vos informations."
       render_page = determine_render_page
-      render render_page, status: :unprocessable_entity
+
+      if render_page.nil?
+        redirect_to(request.referer || root_path, alert: "Erreur lors de l'inscription à la newsletter. Veuillez vérifier votre email.")
+      else
+        render render_page, status: :unprocessable_entity
+      end
     end
   end
 
@@ -24,15 +33,18 @@ class NotificationsController < ApplicationController
 
   def guest_notification?
     # Permettre les notifications sans authentification pour certains types
-    %w[contact partnership].include?(params[:notification][:object])
+    %w[partnership news].include?(params[:notification][:object])
   end
 
   def determine_redirect_path
     case @notification.object
     when 'partnership'
       partenariat_path
-    else
+    when 'news'
+      request.referer || root_path
+    when 'contact'
       contact_path
+    else      root_path
     end
   end
 
@@ -40,6 +52,10 @@ class NotificationsController < ApplicationController
     case @notification.object
     when 'partnership'
       'pages/partenariat'
+    when 'news'
+      nil
+    when 'contact'
+      'pages/contact'
     else
       'pages/contact'
     end
