@@ -23,12 +23,13 @@
         </ul>
       </div>
 
-      <div class="col-6 col-lg-2">
-        <h6 class="footer-title">Mon compte</h6>
-        <ul class="list-unstyled footer-links">
-          <li><%= link_to 'Mon profil', user_signed_in? ? edit_user_registration_path : new_user_session_path %></li>
-          <li><%= link_to 'Mon vestiaire', dashboard_path %></li>
-          <li><%= link_to 'Mes avantages', advantages_path %></li>
+      <div class="col-md-3">
+        <h5>Mon compte</h5>
+        <ul class="list-unstyled">
+          <li><%= link_to "Mon vestiaire", dashboard_path %></li>
+          <li><%= link_to "Mes avantages", advantages_path %></li>
+          <li><%= link_to "Mon historique", historique_path %></li>
+          <li><%= link_to "Contact", contact_path %></li>
         </ul>
       </div>
 

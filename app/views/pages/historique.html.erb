@@ -1,0 +1,191 @@
+<% content_for :title, "Mon historique" %>
+
+<div class="historique-page">
+  <div class="container">
+    <!-- Header -->
+    <div class="page-header mb-4">
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Mon vestiaire", dashboard_path, class: "breadcrumb-link" %></li>
+          <li class="breadcrumb-item active" aria-current="page">Historique</li>
+        </ol>
+      </nav>
+
+      <div class="d-flex justify-content-center align-items-center flex-wrap">
+        <div>
+          <h1 class="page-title mb-1">
+            <i class="fas fa-history me-3"></i>Mon Historique
+          </h1>
+          <p class="text-muted mb-0">Retracez toutes vos interactions avec la communauté CourtSideClub</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistiques rapides -->
+    <div class="row mb-4">
+      <div class="col-md-4 mb-3">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-vote-yea "></i>
+          </div>
+          <div class="stat-content">
+            <h3 class="stat-number"><%= @user_votes.count %></h3>
+            <p class="stat-label">Votes effectués</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="stat-content">
+            <h3 class="stat-number"><%= @user_quiz_games.count %></h3>
+            <p class="stat-label">Quiz complétés</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="stat-content">
+            <h3 class="stat-number"><%= @activities.sum { |a| a[:points] } %></h3>
+            <p class="stat-label">Points gagnés</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Liste des activités -->
+    <div class="activities-section">
+      <% if @activities.any? %>
+        <div class="timeline">
+          <% @activities.each_with_index do |activity, index| %>
+            <div class="timeline-item" data-type="<%= activity[:type] %>" data-search="<%= activity[:title].downcase %> <%= activity[:description].downcase %>">
+              <div class="timeline-marker">
+                <div class="timeline-icon <%= activity[:color] %>">
+                  <i class="<%= activity[:icon] %>"></i>
+                </div>
+                <% if index < @activities.length - 1 %>
+                  <div class="timeline-line"></div>
+                <% end %>
+              </div>
+
+              <div class="timeline-content">
+                <div class="activity-card">
+                  <div class="activity-header">
+                    <h4 class="activity-title"><%= activity[:title] %></h4>
+                    <div class="activity-meta">
+                      <span class="activity-date">
+                        <i class="fas fa-calendar me-1"></i>
+                        <%= activity[:date].strftime("%d/%m/%Y à %H:%M") %>
+                      </span>
+                      <span class="activity-points">
+                        <i class="fas fa-star me-1"></i>
+                        +<%= activity[:points] %> points
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="activity-description">
+                    <p class="mb-0"><%= activity[:description] %></p>
+                  </div>
+
+                  <div class="activity-footer">
+                    <span class="activity-type-badge <%= activity[:type] %>">
+                      <% if activity[:type] == 'vote' %>
+                        <i class="fas fa-vote-yea me-1"></i>Vote
+                      <% else %>
+                        <i class="fas fa-brain me-1"></i>Quiz
+                      <% end %>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="empty-state">
+          <div class="empty-icon">
+            <i class="fas fa-history"></i>
+          </div>
+          <h3>Aucune activité pour le moment</h3>
+          <p class="text-muted">Commencez à interagir avec la communauté pour voir votre historique se remplir !</p>
+          <div class="empty-actions">
+            <%= link_to vote_campaigns_path, class: "btn btn-primary me-3" do %>
+              <i class="fas fa-vote-yea me-2"></i>Participer aux votes
+            <% end %>
+            <%= link_to mini_games_path, class: "btn btn-success" do %>
+              <i class="fas fa-gamepad me-2"></i>Jouer aux mini-jeux
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Pagination (si nécessaire) -->
+    <% if @activities.length > 20 %>
+      <div class="pagination-section text-center mt-5">
+        <nav aria-label="Navigation de l'historique">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <span class="page-link">Précédent</span>
+            </li>
+            <li class="page-item active"><span class="page-link">1</span></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Suivant</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- JavaScript pour les filtres et la recherche -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('searchInput');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const timelineItems = document.querySelectorAll('.timeline-item');
+
+  // Fonction de recherche
+  function filterActivities() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+    timelineItems.forEach(item => {
+      const searchText = item.dataset.search;
+      const itemType = item.dataset.type;
+      const matchesSearch = searchText.includes(searchTerm);
+      const matchesFilter = activeFilter === 'all' || itemType === activeFilter;
+
+      if (matchesSearch && matchesFilter) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  // Événements de recherche
+  searchInput.addEventListener('input', filterActivities);
+
+  // Événements de filtres
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      filterActivities();
+    });
+  });
+});
+</script>

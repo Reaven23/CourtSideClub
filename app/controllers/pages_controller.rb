@@ -28,6 +28,41 @@ class PagesController < ApplicationController
   def advantages
   end
 
+  def historique
+    @user_votes = current_user.user_votes.includes(:vote_campaign, :player).order(created_at: :desc)
+    @user_quiz_games = current_user.user_quiz_games.includes(:quiz_game).order(created_at: :desc)
+
+    # Combiner et trier toutes les activités par date
+    @activities = []
+
+    @user_votes.each do |vote|
+      @activities << {
+        type: 'vote',
+        date: vote.created_at,
+        title: "Vote pour #{vote.player.full_name}",
+        description: "Campagne: #{vote.vote_campaign.title}",
+        points: 10,
+        icon: 'fas fa-vote-yea',
+        color: 'primary'
+      }
+    end
+
+    @user_quiz_games.each do |quiz|
+      @activities << {
+        type: 'quiz',
+        date: quiz.created_at,
+        title: "Quiz: #{quiz.quiz_game.title}",
+        description: "Score: #{quiz.score}/#{quiz.quiz_game.questions.count}",
+        points: quiz.points_earned,
+        icon: 'fas fa-brain',
+        color: 'success'
+      }
+    end
+
+    # Trier par date décroissante
+    @activities.sort_by! { |activity| activity[:date] }.reverse!
+  end
+
   def discover
   end
 end
