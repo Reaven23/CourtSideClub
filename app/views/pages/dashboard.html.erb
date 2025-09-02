@@ -1,9 +1,11 @@
-<%= render 'shared/navbar' %>
-
 <div class="dashboard-container">
   <div class="container">
+    <!-- Breadcrumb -->
     <div class="breadcrumb">
-      <%= link_to "Accueil", root_path, class: "breadcrumb-link" %>
+      <%= link_to root_path, class: "breadcrumb-link" do %>
+        <i class="fas fa-home"></i>
+        Accueil
+      <% end %>
       <i class="fas fa-chevron-right"></i>
       <span>Mon vestiaire</span>
     </div>
@@ -106,10 +108,12 @@
                 <div class="action-icon">
                   <i class="fas fa-gift"></i>
                 </div>
-                <div class="action-content">
-                  <h4 class="action-title">Récompenses</h4>
-                  <p class="action-subtitle">Mes avantages disponibles</p>
-                </div>
+                <%= link_to "#{advantages_path}#recompenses-exclusives", class: "action-content-link" do %>
+                  <div class="action-content">
+                    <h4 class="action-title">Récompenses</h4>
+                    <p class="action-subtitle">Mes avantages disponibles</p>
+                  </div>
+                <% end %>
                 <div class="action-arrow">
                   <i class="fas fa-chevron-right"></i>
                 </div>
@@ -119,10 +123,12 @@
                 <div class="action-icon">
                   <i class="fas fa-coins"></i>
                 </div>
-                <div class="action-content">
-                  <h4 class="action-title">Gagner des points</h4>
-                  <p class="action-subtitle">S'investir dans la communauté CourtSideClub et gagner des points !</p>
-                </div>
+                <%= link_to "#{advantages_path}#comment-gagner-points", class: "action-content-link" do %>
+                  <div class="action-content">
+                    <h4 class="action-title">Gagner des points</h4>
+                    <p class="action-subtitle">S'investir dans la communauté CourtSideClub et gagner des points !</p>
+                  </div>
+                <% end %>
                 <div class="action-arrow">
                   <i class="fas fa-chevron-right"></i>
                 </div>

@@ -1,0 +1,74 @@
+// Quick Navigation Styles
+
+.quick-nav-section {
+  padding: 2rem 0;
+  background: #fff;
+  border-bottom: 1px solid rgba(238, 83, 168, 0.1);
+
+  .quick-nav-container {
+    text-align: center;
+  }
+
+  .quick-nav-title {
+    font-size: $font-size-xl;
+    font-weight: $font-semibold;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+
+  .quick-nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .quick-nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    min-width: 150px;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(238, 83, 168, 0.15);
+      border-color: #EE53A8;
+      text-decoration: none;
+      color: #333;
+    }
+
+    i {
+      font-size: 1.5rem;
+      color: #EE53A8;
+      margin-bottom: 0.5rem;
+    }
+
+    span {
+      font-size: $font-size-sm;
+      font-weight: $font-medium;
+      text-align: center;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .quick-nav-section {
+    .quick-nav-links {
+      gap: 1rem;
+    }
+
+    .quick-nav-link {
+      min-width: 120px;
+      padding: 0.75rem 1rem;
+    }
+  }
+}

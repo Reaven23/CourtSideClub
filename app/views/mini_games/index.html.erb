@@ -1,5 +1,4 @@
 <div class="mini-games-container">
-  <%= render 'shared/navbar' %>
 
   <div class="mini-games-header">
     <div class="container">
@@ -80,7 +79,7 @@
                     </button>
                     <small class="replay-text">
                       Points gagnés: <%= user_completed.score %>/<%= quiz_game.points_per_question * quiz_game.questions.count %>
-                      
+
                     </small>
                   <% else %>
                     <%= link_to quiz_game_path(quiz_game), class: "btn-game play" do %>

@@ -23,7 +23,9 @@ class PagesController < ApplicationController
 
   def contact
     @notification = Notification.new
+  end
 
+  def advantages
   end
 
   def discover

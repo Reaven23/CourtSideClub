@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   root "pages#home"
   get "contact", to: "pages#contact", as: :contact
+  get "avantages", to: "pages#advantages", as: :advantages
   get "dashboard", to: "pages#dashboard"
   get "decouvrir", to: "pages#discover", as: :discover
 
