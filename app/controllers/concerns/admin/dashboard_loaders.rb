@@ -25,5 +25,9 @@ module Admin
     def load_players
       @players = Player.order(created_at: :desc)
     end
+
+    def load_notifications
+      @notifications = Notification.includes(:user).order(created_at: :desc)
+    end
   end
 end

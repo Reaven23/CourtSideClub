@@ -1,12 +1,83 @@
 <%= render "shared/navbar" %>
+
 <section class="contact-section">
   <div class="container">
-    <h1>Contactez-nous</h1>
-    <%= simple_form_for @notification do |f| %>
-      <%= f.input :object, label: "Objet de votre message" %>
-      <%= f.input :content, label: "Contenu de votre message" %>
-      <%= f.submit "Envoyer", class: "button-hero-link" %>
+    <div class="contact-header text-center mb-5">
+      <h1 class="contact-title">Contactez-nous</h1>
+      <p class="contact-subtitle">Une question, un problème ?</p>
+    </div>
+
+    <% if user_signed_in? %>
+      <!-- Formulaire de contact pour utilisateurs connectés -->
+      <div class="contact-form-container">
+        <div class="contact-form-card">
+          <h3 class="form-title">Envoyez-nous un message</h3>
+          <p class="form-description">Nous vous répondrons dans les plus brefs délais.</p>
+
+          <%= simple_form_for @notification, html: { class: "contact-form" } do |f| %>
+            <div class="form-group">
+              <%= f.input :object,
+                          label: "Objet de votre message",
+                          input_html: { class: "form-control contact-input" },
+                          wrapper: false %>
+            </div>
+
+            <div class="form-group">
+              <%= f.input :content,
+                          label: "Contenu de votre message",
+                          input_html: { class: "form-control contact-textarea", rows: 6 },
+                          wrapper: false %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.submit "Envoyer le message", class: "button-hero-link contact-submit" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <!-- Informations de contact pour visiteurs non connectés -->
+      <div class="contact-info-container">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="contact-info-card">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h4 class="contact-info-title">Email</h4>
+              <p class="contact-info-text">
+                <a href="mailto:contact@courtsideclub.io" class="contact-link">
+                  contact@courtsideclub.io
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="contact-info-card">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h4 class="contact-info-title">Adresse</h4>
+              <p class="contact-info-text">
+                60 rue François 1er<br>
+                75008 Paris
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-cta text-center mt-5">
+          <h4>Besoin d'aide supplémentaire ?</h4>
+          <p class="text-muted mb-4">Connectez-vous pour nous envoyer un message directement</p>
+          <%= link_to new_user_session_path, class: "button-hero-link" do %>
+            <i class="fas fa-user me-2"></i>
+            Se connecter
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
 </section>
 
+<%= render "shared/footer" %>

@@ -58,10 +58,106 @@
 // Amélioration de l'apparence des checkboxes
 .form-check-input:checked {
   background-color: #0d6efd;
-  border-color: #0d6efd;
+  border-color: #0d0d0d;
 }
 
 .form-check-input:focus {
   border-color: #86b7fe;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+// Styles pour la gestion des notifications
+.notifications-admin {
+  .notifications-stats {
+    .badge {
+      font-size: 0.875rem;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+
+  .table {
+    th {
+      font-weight: 600;
+      color: #333;
+      border-bottom: 2px solid #dee2e6;
+    }
+
+    td {
+      vertical-align: middle;
+      padding: 1rem 0.75rem;
+    }
+
+    .table-warning {
+      background-color: rgba(255, 193, 7, 0.1);
+    }
+  }
+
+  .user-info {
+    strong {
+      color: #333;
+      font-weight: 600;
+    }
+  }
+
+  .content-preview {
+    max-width: 300px;
+
+    .btn-link {
+      color: #EE53A8;
+      text-decoration: none;
+      padding: 0;
+      font-size: 0.875rem;
+
+      &:hover {
+        color: #8a2be2;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .btn-group {
+    .btn {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+}
+
+// Modal des notifications
+.notification-details {
+  .content-text {
+    background: #f8f9fa;
+    border-left: 4px solid #EE53A8;
+    font-family: inherit;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+}
+
+// Responsive pour les notifications
+@media (max-width: 768px) {
+  .notifications-admin {
+    .table-responsive {
+      font-size: 0.875rem;
+    }
+
+    .btn-group {
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .btn {
+        width: 100%;
+        margin: 0;
+      }
+    }
+
+    .content-preview {
+      max-width: 200px;
+    }
+  }
 }
