@@ -63,6 +63,9 @@ class PagesController < ApplicationController
     @activities.sort_by! { |activity| activity[:date] }.reverse!
   end
 
+  def faq
+  end
+
   def discover
   end
 end

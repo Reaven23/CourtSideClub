@@ -4,6 +4,7 @@ class NotificationsController < ApplicationController
   def create
     @notification = Notification.new(notification_params)
     @notification.user = current_user
+    @notification.object = params[:notification][:object]
     @notification.status = false
 
     if @notification.save
