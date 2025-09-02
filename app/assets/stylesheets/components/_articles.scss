@@ -13,6 +13,25 @@
 // ========================================
 // ARTICLES INDEX - NOUVEAU DESIGN
 // ========================================
+
+
+
+// Style global pour tous les titres d'articles - ULTRA SIMPLE
+.article-title a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+// Hover sur la carte entière pour les titres
+.article-card:hover .article-title a {
+  color: #EE53A8;
+}
+
+.related-article-card:hover .related-article-title {
+  color: #EE53A8;
+}
+
 .articles-index-page {
   padding-top: 2rem;
   min-height: 100vh;
@@ -214,23 +233,14 @@
         }
       }
 
-      .card-title {
+                  .article-title {
         font-size: 0.95rem;
         font-weight: 600;
         line-height: 1.3;
         margin-bottom: 0.5rem;
         flex-shrink: 0; // Le titre ne se réduit pas
-
-        a {
-          color: #333;
-          text-decoration: none;
-          transition: color 0.3s ease;
-
-          &:hover {
-            color: #EE53A8;
-          }
-        }
       }
+
 
       .card-text {
         font-size: 0.8rem;
@@ -634,13 +644,18 @@
           .related-article-content {
             padding: 0.75rem;
 
-            .related-article-title {
-              color: #333;
-              font-size: 0.9rem;
-              font-weight: 600;
-              line-height: 1.3;
-              margin-bottom: 0.3rem;
-            }
+                      .related-article-title {
+            color: #333 !important;
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.3rem;
+          }
+
+          // Le titre devient rose au hover de la carte entière
+          &:hover .related-article-title {
+            color: #EE53A8 !important;
+          }
 
             small {
               color: #6c757d;
