@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   get "avantages", to: "pages#advantages", as: :advantages
   get "historique", to: "pages#historique", as: :historique
   get "faq", to: "pages#faq", as: :faq
+  get "partenariat", to: "pages#partenariat", as: :partenariat
+  get "nos-partenaires", to: "pages#nos_partenaires", as: :nos_partenaires
   get "dashboard", to: "pages#dashboard"
   get "decouvrir", to: "pages#discover", as: :discover
 

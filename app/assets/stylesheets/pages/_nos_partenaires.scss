@@ -1,0 +1,174 @@
+.nos-partenaires-page {
+  padding: 2rem 0;
+
+  // Hero Section
+  .partners-hero-section {
+    padding: 3rem 0;
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #7f8c8d;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  // Partners Grid Section
+  .partners-grid-section {
+    .section-header {
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: #7f8c8d;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .partner-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(238, 83, 168, 0.1);
+
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 48px rgba(238, 83, 168, 0.15);
+        border-color: rgba(238, 83, 168, 0.2);
+      }
+
+      .partner-logo {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #ee53a8, #ff6b9d);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          font-size: 2rem;
+          color: #fff;
+        }
+      }
+
+      .partner-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+
+      .partner-category {
+        font-size: 0.9rem;
+        color: #ee53a8;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 1rem;
+      }
+
+      .partner-description {
+        color: #7f8c8d;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        min-height: 4.8rem;
+      }
+
+      .partner-since {
+        .badge {
+          font-size: 0.8rem;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+        }
+      }
+    }
+  }
+
+  // Become Partner CTA Section
+  .become-partner-section {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+
+    .cta-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .cta-subtitle {
+      font-size: 1.1rem;
+      color: #7f8c8d;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-actions {
+      .btn {
+        padding: 0.75rem 2rem;
+        font-weight: 500;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+      }
+
+      @media (max-width: 576px) {
+        .btn {
+          display: block;
+          width: 100%;
+          margin-bottom: 1rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
