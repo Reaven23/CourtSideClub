@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   # Associations
   belongs_to :level, optional: true
+  has_one_attached :photo
 
   # Anciennes associations (à conserver pour compatibilité)
   has_many :votes, dependent: :destroy
@@ -105,6 +106,14 @@ class User < ApplicationRecord
 
   def admin?
     admin == true
+  end
+
+  def profile_photo
+    if photo.attached?
+      photo
+    else
+      nil # Retourner nil pour utiliser une icône par défaut
+    end
   end
 
   private

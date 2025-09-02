@@ -10,139 +10,127 @@
       <span>Mon vestiaire</span>
     </div>
 
-    <div class="row">
-      <!-- Header du dashboard -->
-      <div class="col-12">
-        <div class="dashboard-header">
-          <div class="dashboard-left">
-            <div class="welcome-badge-card">
-              <div class="welcome-section">
-                <h1 class="dashboard-title">
-                  Salut <%= @user.first_name %> !
-                </h1>
-                <p class="dashboard-subtitle">
-                  Bienvenue sur ton dashboard CourtSideClub
-                </p>
-              </div>
-
-              <div class="level-badge">
-                <div class="level-info">
-                  <span class="level-name"><%= @user.current_level_name %></span>
-                  <span class="level-points"><%= @user.points %> points</span>
-                </div>
-                <% if @next_level %>
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: <%= @user.progress_to_next_level %>%"></div>
-                  </div>
-                  <small class="progress-text">
-                    Encore <strong><%= @user.points_to_next_level %></strong> points avant le niveau <strong><%= @next_level.name %></strong>
-                  </small>
+    <!-- Dashboard Grid -->
+    <div class="row g-4 mb-4">
+      <!-- Header du dashboard - Grande colonne -->
+      <div class="col-lg-8 col-md-12">
+        <div class="welcome-badge-card h-100">
+          <div class="welcome-section">
+            <div class="user-profile-header text-center mb-4">
+              <div class="user-avatar-large mb-3">
+                <% if @user.profile_photo %>
+                  <%= image_tag @user.profile_photo, class: "avatar-img-large", alt: @user.full_name %>
+                <% else %>
+                  <i class="fas fa-user-circle avatar-icon-large"></i>
                 <% end %>
               </div>
+              <h1 class="dashboard-title">
+                Salut <%= @user.first_name %> !
+              </h1>
+              <p class="dashboard-subtitle">
+                Bienvenue sur ton dashboard CourtSideClub
+              </p>
             </div>
           </div>
 
-          <div class="dashboard-right">
-            <div class="dashboard-stats-column">
-              <div class="stat-card-header">
-                <div class="stat-icon">
-                  <i class="fas fa-trophy"></i>
-                </div>
-                <div class="stat-content">
-                  <h3 class="stat-number"><%= @user.points %></h3>
-                  <p class="stat-label">Points totaux</p>
-                </div>
-              </div>
-
-              <div class="stat-card-header">
-                <div class="stat-icon">
-                  <i class="fas fa-star"></i>
-                </div>
-                <div class="stat-content">
-                  <h3 class="stat-number"><%= @current_level&.number || 1 %></h3>
-                  <p class="stat-label">Niveau actuel</p>
-                </div>
-              </div>
-
-              <% if @has_pending_votes %>
-                <%= link_to vote_campaigns_path, class: "vote-status-card pending" do %>
-                  <div class="vote-status-icon">
-                    <i class="fas fa-exclamation-circle"></i>
-                  </div>
-                  <div class="vote-status-content">
-                    <h4 class="vote-status-title">Votes en attente</h4>
-                    <p class="vote-status-text">Vous avez des votes en cours</p>
-                  </div>
-                  <div class="vote-status-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                  </div>
-                <% end %>
-              <% else %>
-                <div class="vote-status-card inactive">
-                  <div class="vote-status-icon">
-                    <i class="fas fa-check-circle"></i>
-                  </div>
-                  <div class="vote-status-content">
-                    <h4 class="vote-status-title">Votes à jour</h4>
-                    <p class="vote-status-text">Aucun vote en cours</p>
-                  </div>
-                </div>
-              <% end %>
+          <div class="level-badge">
+            <div class="level-info">
+              <span class="level-name"><%= @user.current_level_name %></span>
+              <span class="level-points"><%= @user.points %> points</span>
             </div>
-
-            <div class="dashboard-actions-column">
-              <%= link_to historique_path, class: "action-content-link" do %>
-                <div class="action-card-header">
-                  <div class="action-icon">
-                    <i class="fas fa-history"></i>
-                  </div>
-                  <div class="action-content">
-                    <h4 class="action-title">Historique</h4>
-                    <p class="action-subtitle">Mes engagements CourtSide</p>
-                  </div>
-                  <div class="action-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                  </div>
-                </div>
-              <% end %>
-
-              <div class="action-card-header">
-                <div class="action-icon">
-                  <i class="fas fa-gift"></i>
-                </div>
-                <%= link_to "#{advantages_path}#recompenses-exclusives", class: "action-content-link" do %>
-                  <div class="action-content">
-                    <h4 class="action-title">Récompenses</h4>
-                    <p class="action-subtitle">Mes avantages disponibles</p>
-                  </div>
-                <% end %>
-                <div class="action-arrow">
-                  <i class="fas fa-chevron-right"></i>
-                </div>
+            <% if @next_level %>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: <%= @user.progress_to_next_level %>%"></div>
               </div>
-
-              <div class="action-card-header">
-                <div class="action-icon">
-                  <i class="fas fa-coins"></i>
-                </div>
-                <%= link_to "#{advantages_path}#comment-gagner-points", class: "action-content-link" do %>
-                  <div class="action-content">
-                    <h4 class="action-title">Gagner des points</h4>
-                    <p class="action-subtitle">S'investir dans la communauté CourtSideClub et gagner des points !</p>
-                  </div>
-                <% end %>
-                <div class="action-arrow">
-                  <i class="fas fa-chevron-right"></i>
-                </div>
-              </div>
-            </div>
+              <small class="progress-text">
+                Encore <strong><%= @user.points_to_next_level %></strong> points avant le niveau <strong><%= @next_level.name %></strong>
+              </small>
+            <% end %>
           </div>
+        </div>
+      </div>
+
+      <!-- Actions - Colonne droite -->
+      <div class="col-lg-4 col-md-12">
+        <div class="d-flex flex-column h-100 gap-3">
+          <!-- Votes en attente -->
+          <% if @has_pending_votes %>
+            <%= link_to vote_campaigns_path, class: "vote-status-card pending flex-fill" do %>
+              <div class="vote-status-icon">
+                <i class="fas fa-exclamation-circle"></i>
+              </div>
+              <div class="vote-status-content">
+                <h4 class="vote-status-title">Votes en attente</h4>
+                <p class="vote-status-text">Vous avez des votes en cours</p>
+              </div>
+              <div class="vote-status-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="vote-status-card inactive flex-fill">
+              <div class="vote-status-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="vote-status-content">
+                <h4 class="vote-status-title">Votes à jour</h4>
+                <p class="vote-status-text">Aucun vote en cours</p>
+              </div>
+            </div>
+          <% end %>
+
+          <!-- Historique -->
+          <%= link_to historique_path, class: "action-content-link flex-fill" do %>
+            <div class="action-card-header h-100">
+              <div class="action-icon">
+                <i class="fas fa-history"></i>
+              </div>
+              <div class="action-content">
+                <h4 class="action-title">Historique</h4>
+                <p class="action-subtitle">Mes engagements CourtSide</p>
+              </div>
+              <div class="action-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </div>
+          <% end %>
+
+          <!-- Gagner des points -->
+          <%= link_to "#{advantages_path}#comment-gagner-points", class: "action-content-link flex-fill" do %>
+            <div class="action-card-header h-100">
+              <div class="action-icon">
+                <i class="fas fa-coins"></i>
+              </div>
+              <div class="action-content">
+                <h4 class="action-title">Gagner des points</h4>
+                <p class="action-subtitle">S'investir dans la communauté CourtSideClub et gagner des points !</p>
+              </div>
+              <div class="action-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </div>
+          <% end %>
+
+          <!-- Récompenses -->
+          <%= link_to "#{advantages_path}#recompenses-exclusives", class: "action-content-link flex-fill" do %>
+            <div class="action-card-header h-100">
+              <div class="action-icon">
+                <i class="fas fa-gift"></i>
+              </div>
+              <div class="action-content">
+                <h4 class="action-title">Récompenses</h4>
+                <p class="action-subtitle">Mes avantages disponibles</p>
+              </div>
+              <div class="action-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
 
-
-    <!-- Actions rapides -->
+    <!-- Actions rapides - Pleine largeur -->
     <div class="row">
       <div class="col-12">
         <div class="quick-actions">

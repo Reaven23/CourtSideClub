@@ -2,7 +2,6 @@
 
 // Dashboard container
 .dashboard-container {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f4ff 25%, #f0e8ff 50%, #e8dcff 75%, #e9deff 100%);
   min-height: 88vh; // Adjust to match section height (88vh)
   padding: 3rem 0; // Reduced padding since navbar provides the spacing
 
@@ -35,34 +34,7 @@
   }
 }
 
-// Dashboard header
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.dashboard-left {
-  flex: 0 0 350px;
-}
-
-.dashboard-right {
-  flex: 1;
-  display: flex;
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-.dashboard-stats-column,
-.dashboard-actions-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
-}
+// Dashboard grid - Bootstrap classes handle the layout
 
 // Action icon pour "Gagner des points" avec couleur différente
 .action-card-header:last-child .action-icon {
@@ -82,11 +54,66 @@
   flex-direction: column;
   gap: 2rem;
   height: 100%;
+  min-height: 280px;
 }
 
 // Welcome section (dans la carte combinée)
 .welcome-section {
-  text-align: left;
+  text-align: center;
+}
+
+// User profile header avec avatar
+.user-profile-header {
+  .user-avatar-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ee53a8, #ff6b9d);
+    box-shadow: 0 6px 20px rgba(238, 83, 168, 0.3);
+    margin: 0 auto;
+    position: relative;
+
+    .avatar-img-large {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    // Overlay pour améliorer la visibilité
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(238, 83, 168, 0.2), rgba(255, 107, 157, 0.1));
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      .avatar-img-large {
+        transform: scale(1.05);
+      }
+
+      &::after {
+        background: linear-gradient(135deg, rgba(238, 83, 168, 0.1), rgba(255, 107, 157, 0.05));
+      }
+    }
+
+    .avatar-icon-large {
+      font-size: 4rem;
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
+  }
 }
 
 .dashboard-title {
@@ -153,31 +180,23 @@
   opacity: 0.8;
 }
 
-// Stat cards et action cards avec hauteur flexible
-.stat-card-header,
+// Action cards et vote status cards
 .action-card-header,
 .vote-status-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  padding: 1.5rem;
+  padding: 1.25rem;
   box-shadow: 0 8px 25px rgba(238, 83, 168, 0.1);
   border: 1px solid rgba(238, 83, 168, 0.1);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 1rem;
-  flex: 1;
   min-height: 100px;
 }
 
-// Stat cards (header)
-.stat-card-header {
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(238, 83, 168, 0.15);
-  }
-}
+
 
 // Action cards (header)
 .action-card-header {
@@ -190,18 +209,17 @@
   }
 }
 
-.stat-icon,
 .action-icon,
 .vote-status-icon {
   background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
   color: white;
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: $font-size-lg;
+  font-size: $font-size-base;
   flex-shrink: 0;
   box-shadow: 0 4px 15px rgba(238, 83, 168, 0.3);
   position: relative;
@@ -685,47 +703,7 @@
 }
 
 // Responsive design
-@media (max-width: 1024px) {
-  .dashboard-header {
-    gap: 2rem;
-  }
-
-  .dashboard-left {
-    flex: 0 0 300px;
-  }
-
-  .dashboard-right {
-    gap: 1.5rem;
-  }
-}
-
 @media (max-width: 768px) {
-  .dashboard-header {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .dashboard-left {
-    flex: none;
-    width: 100%;
-  }
-
-  .dashboard-right {
-    width: 100%;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .dashboard-stats-column,
-  .dashboard-actions-column {
-    width: 100%;
-  }
-
-  // Masquer les stats en mobile
-  .dashboard-stats-column {
-    display: none;
-  }
-
   .welcome-badge-card {
     gap: 1.5rem;
   }
@@ -742,30 +720,12 @@
     font-size: $font-size-lg;
   }
 
-  .vote-campaign-alert {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-  }
-
-  .votes-grid {
-    grid-template-columns: 1fr;
-  }
-
   .actions-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .user-name {
-    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .dashboard-header {
-    gap: 1.5rem;
-  }
-
   .welcome-badge-card {
     padding: 1.5rem;
     gap: 1.25rem;
@@ -775,13 +735,14 @@
     padding: 1.25rem;
   }
 
-  .stat-card-header,
-  .action-card-header {
+  .action-card-header,
+  .vote-status-card {
     padding: 1.25rem;
+    min-height: 100px;
   }
 
-  .stat-icon,
-  .action-icon {
+  .action-icon,
+  .vote-status-icon {
     width: 45px;
     height: 45px;
     font-size: $font-size-base;
@@ -789,9 +750,5 @@
 
   .action-title {
     font-size: $font-size-base;
-  }
-
-  .stat-number {
-    font-size: $font-size-xl;
   }
 }

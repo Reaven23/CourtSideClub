@@ -65,6 +65,16 @@
                             class: "auth-input"
                           }%>
 
+              <%= f.input :photo,
+                          required: false,
+                          label: "Photo de profil",
+                          hint: "Format JPG, PNG ou GIF (max 5MB)",
+                          wrapper_class: "auth-input-wrapper",
+                          input_html: {
+                            class: "auth-input",
+                            accept: "image/*"
+                          }%>
+
               <div class="row">
                 <div class="col-md-6">
                   <%= f.input :password,
