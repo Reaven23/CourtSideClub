@@ -1,0 +1,391 @@
+// Partenariat page styles - CourtSideClub
+
+.partenariat-page {
+  padding: 2rem 0 4rem 0;
+  min-height: 88vh;
+}
+
+// Page header
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+
+    i {
+      color: #EE53A8;
+    }
+  }
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+// Section header
+.section-header {
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+// Avantages section
+.avantages-section {
+  .avantage-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(238, 83, 168, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    text-align: center;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(238, 83, 168, 0.15);
+      border-color: #EE53A8;
+    }
+
+    .avantage-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      margin: 0 auto 1.5rem auto;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+// Process section
+.process-section {
+  .process-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+
+    .process-step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 2;
+
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+        text-align: right;
+
+        .step-content {
+          margin-right: 2rem;
+          margin-left: 0;
+        }
+      }
+
+      &:nth-child(odd) .step-content {
+        margin-left: 2rem;
+      }
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(238, 83, 168, 0.3);
+      }
+
+      .step-content {
+        flex: 1;
+
+        h3 {
+          font-size: 1.4rem;
+          font-weight: 600;
+          color: #333;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          color: #666;
+          line-height: 1.6;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+// Partners section
+.partners-section {
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .partner-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(238, 83, 168, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(238, 83, 168, 0.15);
+      border-color: #EE53A8;
+    }
+
+    .partner-logo {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .partner-category {
+      color: #EE53A8;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .partner-description {
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+  }
+
+  .partners-cta {
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #666;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// Contact section
+.contact-section {
+  .contact-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(238, 83, 168, 0.1);
+  }
+
+  .contact-header {
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: #666;
+      font-size: 1.1rem;
+    }
+  }
+
+  .contact-form-wrapper {
+    .partnership-form {
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+        padding: 0.75rem;
+        transition: all 0.3s ease;
+
+        &:focus {
+          border-color: #EE53A8;
+          box-shadow: 0 0 0 0.2rem rgba(238, 83, 168, 0.25);
+        }
+      }
+
+      .form-actions {
+        margin-top: 2rem;
+
+        .btn {
+          background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+          border: none;
+          border-radius: 15px;
+          padding: 1rem 2rem;
+          font-weight: 500;
+          font-size: 1.1rem;
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(238, 83, 168, 0.3);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .partenariat-page {
+    padding: 1rem 0 2rem 0;
+  }
+
+  .page-title {
+    font-size: 2.5rem !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+  }
+
+  .process-timeline {
+    &::before {
+      display: none;
+    }
+
+    .process-step {
+      flex-direction: column !important;
+      text-align: center !important;
+      margin-bottom: 2rem;
+
+      .step-content {
+        margin: 1rem 0 0 0 !important;
+        text-align: center;
+      }
+    }
+  }
+
+  .partners-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-container {
+    padding: 2rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-title {
+    font-size: 2rem !important;
+  }
+
+  .section-title {
+    font-size: 1.8rem !important;
+  }
+
+  .avantage-card,
+  .partner-card {
+    padding: 1.5rem;
+  }
+
+  .contact-container {
+    padding: 1.5rem !important;
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.avantages-section,
+.process-section,
+.partners-section,
+.contact-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.avantage-card,
+.process-step,
+.partner-card {
+  animation: fadeInUp 0.4s ease-out;
+}

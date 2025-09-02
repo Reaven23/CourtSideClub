@@ -66,6 +66,13 @@ class PagesController < ApplicationController
   def faq
   end
 
+  def partenariat
+    @notification = Notification.new
+  end
+
+  def nos_partenaires
+  end
+
   def discover
   end
 end
