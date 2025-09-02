@@ -1,0 +1,358 @@
+// FAQ page styles - CourtSideClub
+
+.faq-page {
+  padding: 2rem 0 4rem 0;
+  min-height: 88vh;
+}
+
+// Page header
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+
+    i {
+      color: #EE53A8;
+    }
+  }
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+// Navigation rapide
+.quick-nav-section {
+  .quick-nav-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(238, 83, 168, 0.1);
+
+    .quick-nav-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .quick-nav-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .quick-nav-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 15px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(238, 83, 168, 0.3);
+          color: white;
+        }
+
+        i {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+// Sections FAQ
+.faq-section {
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 1rem;
+
+      i {
+        color: #EE53A8;
+      }
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+// Accordéon Bootstrap personnalisé
+.accordion {
+  .accordion-item {
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(238, 83, 168, 0.15);
+    }
+
+    .accordion-header {
+      .accordion-button {
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        padding: 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+
+        &:not(.collapsed) {
+          background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+          color: white;
+          box-shadow: 0 4px 15px rgba(238, 83, 168, 0.3);
+
+          &::after {
+            filter: brightness(0) invert(1);
+          }
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 0.25rem rgba(238, 83, 168, 0.25);
+        }
+
+        i {
+          margin-right: 0.5rem;
+          transition: all 0.3s ease;
+        }
+
+        &:hover {
+          background: rgba(238, 83, 168, 0.1);
+          color: #EE53A8;
+        }
+      }
+    }
+
+    .accordion-collapse {
+      .accordion-body {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1.5rem;
+        border-top: 1px solid rgba(238, 83, 168, 0.1);
+
+        p {
+          color: #555;
+          line-height: 1.6;
+          margin-bottom: 1rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        ul, ol {
+          color: #555;
+          line-height: 1.6;
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+
+          li {
+            margin-bottom: 0.5rem;
+
+            strong {
+              color: #333;
+              font-weight: 600;
+            }
+          }
+        }
+
+        a {
+          color: #EE53A8;
+          text-decoration: none;
+          font-weight: 500;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Section contact
+.faq-contact-section {
+  margin-top: 4rem;
+
+  .contact-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(238, 83, 168, 0.1);
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    .contact-actions {
+      margin-top: 2rem;
+
+      .btn {
+        border-radius: 15px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+
+        &.btn-primary {
+          background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+          border: none;
+
+          &:hover {
+            box-shadow: 0 8px 25px rgba(238, 83, 168, 0.3);
+          }
+        }
+
+        &.btn-outline-primary {
+          border-color: #EE53A8;
+          color: #EE53A8;
+
+          &:hover {
+            background: #EE53A8;
+            border-color: #EE53A8;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .faq-page {
+    padding: 1rem 0 2rem 0;
+  }
+
+  .page-title {
+    font-size: 2.5rem !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+  }
+
+  .quick-nav-links {
+    flex-direction: column;
+    align-items: center;
+
+    .quick-nav-link {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+  }
+
+  .accordion-button {
+    padding: 1rem !important;
+    font-size: 1rem !important;
+  }
+
+  .contact-card {
+    padding: 2rem !important;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+    gap: 1rem;
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .page-title {
+    font-size: 2rem !important;
+  }
+
+  .section-title {
+    font-size: 1.8rem !important;
+  }
+
+  .quick-nav-container {
+    padding: 1.5rem !important;
+  }
+
+  .accordion-button {
+    padding: 0.75rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .accordion-body {
+    padding: 1rem !important;
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faq-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.accordion-item {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+// Smooth scrolling pour les ancres
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 12vh;
+}

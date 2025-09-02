@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get "contact", to: "pages#contact", as: :contact
   get "avantages", to: "pages#advantages", as: :advantages
   get "historique", to: "pages#historique", as: :historique
+  get "faq", to: "pages#faq", as: :faq
   get "dashboard", to: "pages#dashboard"
   get "decouvrir", to: "pages#discover", as: :discover
 
