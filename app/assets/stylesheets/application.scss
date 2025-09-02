@@ -18,10 +18,16 @@ body {
   font-size: $font-size-base;
   line-height: 1.6;
   color: #333;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f4ff 25%, #f0e8ff 50%, #e8dcff 75%, #e9deff 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+// Main content wrapper
+.main-content {
+  min-height: 88vh; // 100vh - 12vh (navbar height)
+  padding-top: 0; // Remove top padding since navbar is now global
 }
 
 // Typography improvements

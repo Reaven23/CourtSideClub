@@ -214,6 +214,24 @@
   flex: 1;
 }
 
+.action-content-link {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:focus {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+  }
+}
+
 .stat-number,
 .action-title,
 .vote-status-title {
