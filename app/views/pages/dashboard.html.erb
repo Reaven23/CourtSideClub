@@ -91,18 +91,20 @@
             </div>
 
             <div class="dashboard-actions-column">
-              <div class="action-card-header">
-                <div class="action-icon">
-                  <i class="fas fa-history"></i>
+              <%= link_to historique_path, class: "action-content-link" do %>
+                <div class="action-card-header">
+                  <div class="action-icon">
+                    <i class="fas fa-history"></i>
+                  </div>
+                  <div class="action-content">
+                    <h4 class="action-title">Historique</h4>
+                    <p class="action-subtitle">Mes engagements CourtSide</p>
+                  </div>
+                  <div class="action-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
                 </div>
-                <div class="action-content">
-                  <h4 class="action-title">Historique</h4>
-                  <p class="action-subtitle">Mes engagements CourtSide</p>
-                </div>
-                <div class="action-arrow">
-                  <i class="fas fa-chevron-right"></i>
-                </div>
-              </div>
+              <% end %>
 
               <div class="action-card-header">
                 <div class="action-icon">

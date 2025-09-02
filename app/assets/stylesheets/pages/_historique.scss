@@ -1,0 +1,391 @@
+// Historique page styles - CourtSideClub
+
+.historique-page {
+  padding: 2rem 0 4rem 0;
+  min-height: 88vh;
+}
+
+// Page header
+.page-header {
+  text-align: center;
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+
+    i {
+      color: #EE53A8;
+    }
+  }
+
+  .text-muted {
+    font-size: 1.1rem;
+  }
+}
+
+// Statistiques
+.stat-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(238, 83, 168, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(238, 83, 168, 0.15);
+    border-color: #EE53A8;
+  }
+
+  .stat-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0 auto 1rem auto;
+  }
+
+  .stat-content {
+    text-align: center;
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #666;
+      font-size: 1rem;
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+}
+
+// Filtres et recherche
+.filters-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(238, 83, 168, 0.1);
+}
+
+.search-box {
+  position: relative;
+
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    z-index: 10;
+  }
+
+  .search-input {
+    padding-left: 3rem;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: #EE53A8;
+      box-shadow: 0 0 0 0.2rem rgba(238, 83, 168, 0.25);
+    }
+  }
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
+  .filter-btn {
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      background: #EE53A8;
+      border-color: #EE53A8;
+      color: white;
+    }
+  }
+}
+
+// Timeline des activités
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.timeline-marker {
+  position: relative;
+  margin-right: 2rem;
+  flex-shrink: 0;
+
+  .timeline-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    position: relative;
+    z-index: 2;
+
+    &.primary {
+      background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    }
+
+    &.success {
+      background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+    }
+
+    &.warning {
+      background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+    }
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    bottom: -2rem;
+    width: 3px;
+    background: linear-gradient(180deg, #EE53A8 0%, #8a2be2 100%);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(238, 83, 168, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateX(5px);
+    box-shadow: 0 12px 30px rgba(238, 83, 168, 0.15);
+    border-color: #EE53A8;
+  }
+
+  .activity-header {
+    margin-bottom: 1rem;
+
+    .activity-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .activity-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      span {
+        font-size: 0.9rem;
+        color: #666;
+        display: flex;
+        align-items: center;
+
+        i {
+          margin-right: 0.5rem;
+          color: #EE53A8;
+        }
+      }
+    }
+  }
+
+  .activity-description {
+    margin-bottom: 1rem;
+
+    p {
+      color: #555;
+      line-height: 1.5;
+    }
+  }
+
+  .activity-footer {
+    .activity-type-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      font-size: 0.875rem;
+      font-weight: 500;
+
+      &.vote {
+        background: rgba(0, 123, 255, 0.1);
+        color: #007bff;
+      }
+
+      &.quiz {
+        background: rgba(40, 167, 69, 0.1);
+        color: #28a745;
+      }
+    }
+  }
+}
+
+// État vide
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+
+  .empty-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    margin: 0 auto 2rem auto;
+  }
+
+  h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .empty-actions {
+    .btn {
+      border-radius: 15px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+// Pagination
+.pagination-section {
+  .pagination {
+    .page-link {
+      border-radius: 10px;
+      margin: 0 0.25rem;
+      border: 2px solid #e9ecef;
+      color: #666;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #EE53A8;
+        color: #EE53A8;
+      }
+    }
+
+    .page-item.active .page-link {
+      background: #EE53A8;
+      border-color: #EE53A8;
+      color: white;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .historique-page {
+    padding: 1rem 0 2rem 0;
+  }
+
+  .page-title {
+    font-size: 2rem !important;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+
+    .timeline-marker {
+      margin-right: 0;
+      margin-bottom: 1rem;
+      align-self: center;
+
+      .timeline-line {
+        display: none;
+      }
+    }
+  }
+
+  .filter-buttons {
+    justify-content: center;
+  }
+
+  .activity-meta {
+    flex-direction: column;
+    gap: 0.5rem !important;
+  }
+
+  .stat-card {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-header {
+    .page-title {
+      font-size: 1.8rem !important;
+    }
+  }
+
+  .stat-card {
+    .stat-number {
+      font-size: 2rem !important;
+    }
+  }
+
+  .activity-card {
+    padding: 1rem;
+  }
+}
