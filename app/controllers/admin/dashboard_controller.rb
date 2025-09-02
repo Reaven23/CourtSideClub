@@ -5,6 +5,8 @@ class Admin::DashboardController < ApplicationController
 
   def index
     @tab = permitted_tab
+    @unread_notifications_count = Notification.where(status: false).count
+
     case @tab
     when 'users'
       load_users

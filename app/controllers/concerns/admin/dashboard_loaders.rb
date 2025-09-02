@@ -28,6 +28,7 @@ module Admin
 
     def load_notifications
       @notifications = Notification.includes(:user).order(created_at: :desc)
+      @unread_notifications_count = Notification.where(status: false).count
     end
   end
 end

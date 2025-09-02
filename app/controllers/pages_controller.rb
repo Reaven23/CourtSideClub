@@ -73,6 +73,9 @@ class PagesController < ApplicationController
   def nos_partenaires
   end
 
+  def equipe
+  end
+
   def discover
   end
 end

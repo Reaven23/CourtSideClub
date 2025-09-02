@@ -9,17 +9,22 @@
         <p class="text-muted mb-4">Donnons le pouvoir aux fans de basket!</p>
 
         <h6 class="mb-2">Recevoir les dernières informations</h6>
-        <form class="newsletter-form d-flex">
-          <input type="email" class="form-control" placeholder="Adresse email" aria-label="Adresse email">
-          <button type="button" class="btn btn-primary ms-2">S'inscrire</button>
-        </form>
+        <%= simple_form_for Notification.new, url: notifications_path, html: { class: "newsletter-form d-flex" } do |f| %>
+          <%= f.hidden_field :object, value: "news" %>
+          <%= f.input :email,
+              label: false,
+              placeholder: "Adresse email",
+              input_html: { class: "form-control", "aria-label": "Adresse email" },
+              wrapper: false %>
+          <%= f.submit "S'inscrire", class: "btn btn-primary ms-2" %>
+        <% end %>
       </div>
 
       <div class="col-6 col-lg-2">
         <h6 class="footer-title">CourtSideClub.io</h6>
         <ul class="list-unstyled footer-links">
           <li><%= link_to 'Le projet', discover_path %></li>
-          <li><a class="dropdown-item" href="#">L'équipe</a></li>
+          <li><%= link_to 'L\'équipe', equipe_path %></li>
           <li><%= link_to 'Devenir partenaire', partenariat_path %></li>
         </ul>
       </div>

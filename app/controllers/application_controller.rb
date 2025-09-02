@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  include Pundit::Authorization 
+  before_action :set_unread_notifications_count, if: :user_signed_in?
+  include Pundit::Authorization
 
   private
 
@@ -10,5 +11,9 @@ class ApplicationController < ActionController::Base
 
     # Paramètres autorisés pour la mise à jour du compte
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :birthdate])
+  end
+
+  def set_unread_notifications_count
+    @unread_notifications_count = Notification.where(status: false).count
   end
 end
