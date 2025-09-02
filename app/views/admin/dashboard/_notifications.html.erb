@@ -1,1 +1,179 @@
-<div class="text-center text-muted py-5">Notifications — à venir</div>
+<div class="notifications-admin">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="mb-0">Notifications de contact</h4>
+    <div class="notifications-stats">
+      <span class="badge bg-primary me-2">
+        Total: <%= @notifications&.count || 0 %>
+      </span>
+      <span class="badge bg-warning me-2">
+        Non lues: <%= @notifications&.where(status: false)&.count || 0 %>
+      </span>
+    </div>
+  </div>
+
+  <% if @notifications&.any? %>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>Date</th>
+            <th>Utilisateur</th>
+            <th>Objet</th>
+            <th>Contenu</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @notifications.each do |notification| %>
+            <tr class="<%= 'table-warning' if !notification.status %>">
+              <td>
+                <small class="text-muted">
+                  <%= notification.created_at.strftime("%d/%m/%Y") %><br>
+                  <%= notification.created_at.strftime("%H:%M") %>
+                </small>
+              </td>
+              <td>
+                <div class="user-info">
+                  <strong><%= notification.user.full_name %></strong><br>
+                  <small class="text-muted"><%= notification.user.email %></small>
+                </div>
+              </td>
+              <td>
+                <strong><%= notification.object %></strong>
+              </td>
+              <td>
+                <div class="content-preview">
+                  <%= truncate(notification.content, length: 100) %>
+                  <% if notification.content.length > 100 %>
+                    <button class="btn btn-sm btn-link p-0 ms-1"
+                            data-bs-toggle="modal"
+                            data-bs-target="#notificationModal<%= notification.id %>">
+                      Voir plus
+                    </button>
+                  <% end %>
+                </div>
+              </td>
+              <td>
+                <% if notification.status %>
+                  <span class="badge bg-success">Lue</span>
+                <% else %>
+                  <span class="badge bg-warning">Non lue</span>
+                <% end %>
+              </td>
+              <td>
+                <div class="btn-group" role="group">
+                  <% unless notification.status %>
+                    <%= button_to admin_dashboard_path,
+                                method: :patch,
+                                params: {
+                                  action: 'mark_notification_read',
+                                  notification_id: notification.id
+                                },
+                                class: "btn btn-sm btn-outline-success",
+                                title: "Marquer comme lue" do %>
+                      <i class="fas fa-check"></i>
+                    <% end %>
+                  <% end %>
+
+                  <button class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#notificationModal<%= notification.id %>"
+                          title="Voir détails">
+                    <i class="fas fa-eye"></i>
+                  </button>
+
+                  <%= button_to admin_dashboard_path,
+                              method: :delete,
+                              params: {
+                                action: 'delete_notification',
+                                notification_id: notification.id
+                              },
+                              class: "btn btn-sm btn-outline-danger",
+                              title: "Supprimer",
+                              data: {
+                                confirm: "Êtes-vous sûr de vouloir supprimer cette notification ?"
+                              } do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="text-center text-muted py-5">
+      <i class="fas fa-inbox fa-3x mb-3"></i>
+      <h5>Aucune notification</h5>
+      <p>Les utilisateurs n'ont pas encore envoyé de messages de contact.</p>
+    </div>
+  <% end %>
+</div>
+
+<!-- Modals pour afficher le contenu complet -->
+<% if @notifications&.any? %>
+  <% @notifications.each do |notification| %>
+    <div class="modal fade" id="notificationModal<%= notification.id %>" tabindex="-1" aria-labelledby="notificationModalLabel<%= notification.id %>" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="notificationModalLabel<%= notification.id %>">
+              <%= notification.object %>
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="notification-details">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <strong>De :</strong> <%= notification.user.full_name %>
+                </div>
+                <div class="col-md-6">
+                  <strong>Email :</strong> <%= notification.user.email %>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <strong>Date :</strong> <%= notification.created_at.strftime("%d/%m/%Y à %H:%M") %>
+                </div>
+                <div class="col-md-6">
+                  <strong>Statut :</strong>
+                  <% if notification.status %>
+                    <span class="badge bg-success">Lue</span>
+                  <% else %>
+                    <span class="badge bg-warning">Non lue</span>
+                  <% end %>
+                </div>
+              </div>
+              <hr>
+              <div class="notification-content">
+                <strong>Message :</strong>
+                <div class="content-text mt-2 p-3 bg-light rounded">
+                  <%= simple_format(notification.content) %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <% unless notification.status %>
+              <%= button_to admin_dashboard_path,
+                          method: :patch,
+                          params: {
+                            action: 'mark_notification_read',
+                            notification_id: notification.id
+                          },
+                          class: "btn btn-success",
+                          data: { bs_dismiss: "modal" } do %>
+                <i class="fas fa-check me-2"></i>
+                Marquer comme lue
+              <% end %>
+            <% end %>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

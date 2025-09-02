@@ -1,0 +1,250 @@
+// Contact page styles
+
+.contact-section {
+  padding: 2rem 0 4rem 0;
+  min-height: 88vh;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f4ff 25%, #f0e8ff 50%, #e8dcff 75%, #e9deff 100%);
+}
+
+// Header de la page contact
+.contact-header {
+  margin-bottom: 3rem;
+}
+
+.contact-title {
+  font-size: $font-size-4xl;
+  font-weight: $font-bold;
+  color: #333;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #E6007E 0%, #d85299 25%, #d555d3 50%, #8a2be2 75%, #4b0082 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-subtitle {
+  font-size: $font-size-lg;
+  color: #666;
+  font-weight: $font-medium;
+}
+
+// Container du formulaire de contact
+.contact-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(238, 83, 168, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(238, 83, 168, 0.15);
+  }
+}
+
+.form-title {
+  font-size: $font-size-2xl;
+  font-weight: $font-semibold;
+  color: #333;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.form-description {
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+// Formulaire de contact
+.contact-form {
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    font-weight: $font-semibold;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .contact-input,
+  .contact-textarea {
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    padding: 1rem 1.2rem;
+    font-size: $font-size-base;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+
+    &:focus {
+      border-color: #EE53A8;
+      box-shadow: 0 0 0 0.2rem rgba(238, 83, 168, 0.25);
+      background: #fff;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #adb5bd;
+    }
+  }
+
+  .contact-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+
+// Bouton d'envoi
+.contact-submit {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem 2rem !important;
+  font-size: $font-size-lg;
+  border-radius: 25px !important;
+}
+
+// Container des informations de contact
+.contact-info-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-info-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(238, 83, 168, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(238, 83, 168, 0.12);
+  }
+}
+
+.contact-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #EE53A8 0%, #8a2be2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  transition: all 0.3s ease;
+
+  i {
+    font-size: 2rem;
+    color: #fff;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(238, 83, 168, 0.3);
+  }
+}
+
+.contact-info-title {
+  font-size: $font-size-xl;
+  font-weight: $font-semibold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.contact-info-text {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.contact-link {
+  color: #EE53A8;
+  text-decoration: none;
+  font-weight: $font-medium;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #8a2be2;
+    text-decoration: underline;
+  }
+}
+
+// Call-to-action pour les non-connectés
+.contact-cta {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(238, 83, 168, 0.1);
+
+  h4 {
+    color: #333;
+    font-weight: $font-semibold;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 1rem 0 2rem 0;
+  }
+
+  .contact-title {
+    font-size: $font-size-3xl;
+  }
+
+  .contact-form-card {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+
+  .contact-info-card {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
+
+  .contact-cta {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-form-card {
+    padding: 1rem;
+  }
+
+  .contact-info-card {
+    padding: 1rem;
+  }
+
+  .contact-cta {
+    padding: 1rem;
+  }
+}

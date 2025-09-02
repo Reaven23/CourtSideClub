@@ -15,7 +15,7 @@ class Admin::DashboardController < ApplicationController
     when 'rewards'
       # placeholders
     when 'notifications'
-      # placeholders
+      load_notifications
     when 'votes'
       load_votes
     when 'players'
@@ -31,6 +31,18 @@ class Admin::DashboardController < ApplicationController
     user = User.find(params[:id])
     user.update!(admin: !user.admin?)
     redirect_to admin_dashboard_path(tab: 'users'), notice: 'Statut admin mis à jour.'
+  end
+
+  def mark_notification_read
+    notification = Notification.find(params[:notification_id])
+    notification.update!(status: true)
+    redirect_to admin_dashboard_path(tab: 'notifications'), notice: 'Notification marquée comme lue.'
+  end
+
+  def delete_notification
+    notification = Notification.find(params[:notification_id])
+    notification.destroy!
+    redirect_to admin_dashboard_path(tab: 'notifications'), notice: 'Notification supprimée.'
   end
 
   private

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
     # Admin actions
     patch 'dashboard/users/:id/toggle_admin', to: 'dashboard#toggle_user_admin', as: :toggle_user_admin
+    patch 'dashboard', to: 'dashboard#mark_notification_read', as: :mark_notification_read
+    delete 'dashboard', to: 'dashboard#delete_notification', as: :delete_notification
 
     # Quiz games management
     resources :quiz_games do
