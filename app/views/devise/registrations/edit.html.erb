@@ -72,6 +72,39 @@
                             class: "auth-input"
                           }%>
 
+              <div class="auth-photo-section">
+                <h4 class="auth-section-title">
+                  <i class="fas fa-camera me-2"></i>
+                  Photo de profil
+                </h4>
+                <p class="auth-section-subtitle">Ajoutez une photo pour personnaliser votre profil</p>
+
+                <% if resource.photo.attached? %>
+                  <div class="current-photo mb-3">
+                    <p class="current-photo-label">Photo actuelle :</p>
+                    <%= image_tag resource.photo, class: "current-photo-img", alt: "Photo de profil actuelle" %>
+                  </div>
+                <% else %>
+                  <div class="current-photo mb-3">
+                    <p class="current-photo-label">Aucune photo de profil</p>
+                    <div class="no-photo-placeholder">
+                      <i class="fas fa-user-circle"></i>
+                      <span>Aucune photo</span>
+                    </div>
+                  </div>
+                <% end %>
+
+                <%= f.input :photo,
+                            required: false,
+                            label: "Changer la photo",
+                            hint: "Format JPG, PNG ou GIF (max 5MB). Laissez vide pour conserver l'actuelle.",
+                            wrapper_class: "auth-input-wrapper",
+                            input_html: {
+                              class: "auth-input",
+                              accept: "image/*"
+                            }%>
+              </div>
+
               <div class="auth-password-section">
                 <h4 class="auth-section-title">
                   <i class="fas fa-lock me-2"></i>

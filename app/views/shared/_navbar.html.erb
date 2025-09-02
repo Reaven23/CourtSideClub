@@ -63,7 +63,14 @@
         <!-- Utilisateur connecté -->
         <div class="navbar-nav">
           <div class="dropdown">
-            <button class="btn btn-outline-primary dropdown-toggle user-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-outline-primary dropdown-toggle user-dropdown d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="user-avatar me-2">
+                <% if current_user.profile_photo %>
+                  <%= image_tag current_user.profile_photo, class: "avatar-img", alt: current_user.full_name %>
+                <% else %>
+                  <i class="fas fa-user-circle avatar-icon"></i>
+                <% end %>
+              </div>
               <%= current_user.full_name %>
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
