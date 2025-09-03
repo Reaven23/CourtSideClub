@@ -28,7 +28,11 @@
               <% end %>
             </td>
             <td class="text-end">
-              <%= link_to 'Basculer Admin', admin_toggle_user_admin_path(user), data: { turbo_method: :patch, turbo_frame: 'admin_content' }, class: 'btn btn-sm btn-outline-primary' %>
+              <% if user.admin? %>
+                <%= link_to 'Retirer Admin', admin_toggle_user_admin_path(user), data: { turbo_method: :patch, turbo_frame: 'admin_content' }, class: 'btn btn-sm btn-outline-warning' %>
+              <% else %>
+                <%= link_to 'Basculer Admin', admin_toggle_user_admin_path(user), data: { turbo_method: :patch, turbo_frame: 'admin_content' }, class: 'btn btn-sm btn-outline-success' %>
+              <% end %>
             </td>
           </tr>
         <% end %>
