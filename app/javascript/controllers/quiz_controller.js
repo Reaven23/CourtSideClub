@@ -11,7 +11,8 @@ export default class extends Controller {
   ]
 
   static values = {
-    quizId: Number
+    quizId: Number,
+    logoPath: String
   }
 
       connect() {
@@ -93,7 +94,7 @@ export default class extends Controller {
 
     // Mettre à jour l'interface
     this.currentQuestionTarget.textContent = index + 1
-    this.questionImageTarget.src = question.image_url || '/assets/logo.png'
+    this.questionImageTarget.src = question.image_url || this.logoPathValue
     this.questionTextTarget.textContent = question.content
 
     // Mettre à jour la barre de progression

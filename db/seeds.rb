@@ -2,26 +2,26 @@
 
 # Nettoyage des données existantes
 puts "🧹 Nettoyage des données existantes..."
-Player.destroy_all
-Level.destroy_all
-VoteCampaign.destroy_all
+# Player.destroy_all
+# Level.destroy_all
+
 
 # Création des niveaux
-puts "🏆 Création des niveaux..."
-base_points = 50
-multiplier = 1.2
+# puts "🏆 Création des niveaux..."
+# base_points = 50
+# multiplier = 1.2
 
-# Niveau 1 : 0 points
-Level.create!(number: 1, points: 0)
+# # Niveau 1 : 0 points
+# Level.create!(number: 1, points: 0)
 
-# Niveaux 2 à 100 avec progression exponentielle
-(2..100).each do |level_number|
-  points = (base_points * (multiplier ** (level_number - 2))).round
-  Level.create!(number: level_number, points: points)
-  puts "Niveau #{level_number}: #{points} points" if level_number <= 10 || level_number % 10 == 0
-end
+# # Niveaux 2 à 100 avec progression exponentielle
+# (2..100).each do |level_number|
+#   points = (base_points * (multiplier ** (level_number - 2))).round
+#   Level.create!(number: level_number, points: points)
+#   puts "Niveau #{level_number}: #{points} points" if level_number <= 10 || level_number % 10 == 0
+# end
 
-puts "✅ #{Level.count} niveaux créés!"
+# puts "✅ #{Level.count} niveaux créés!"
 
 # Création des joueurs
 # puts "🏀 Création des joueurs..."
@@ -64,7 +64,7 @@ puts "✅ #{Level.count} niveaux créés!"
 # puts "🎯 #{Player.count} joueurs créés au total!"
 # puts "🏀 Données de test prêtes pour les votes MVP!"
 
-# # Création de la campagne "Vote pour l'Open de France"
+# Création de la campagne "Vote pour l'Open de France"
 # puts "🗳️ Création de la campagne de vote..."
 
 # open_france_campaign = VoteCampaign.create!(
@@ -74,6 +74,8 @@ puts "✅ #{Level.count} niveaux créés!"
 #   end_date: 2.weeks.from_now,
 #   active: true
 # )
+
+# puts "🏀 #{Player.count} joueurs disponibles:"
 
 # # Ajouter tous les joueurs CourtSideClub à la campagne
 # Player.all.each do |player|
@@ -126,8 +128,8 @@ puts "✅ #{Level.count} niveaux créés!"
 # puts "🏀 #{interview_campaign.players.count} joueurs disponibles:"
 # interview_campaign.players.each { |p| puts "   - #{p.full_name} (#{p.tournament_played} tournois)" }
 
-# # Chargement des QuizGames depuis le fichier séparé
-# puts "\n" + "="*50
-# puts "🎮 CHARGEMENT DES QUIZGAMES..."
-# puts "="*50
-# load Rails.root.join('db', 'seeds_quiz_games.rb')
+# Chargement des QuizGames depuis le fichier séparé
+puts "\n" + "="*50
+puts "🎮 CHARGEMENT DES QUIZGAMES..."
+puts "="*50
+load Rails.root.join('db', 'seeds_quiz_games.rb')
