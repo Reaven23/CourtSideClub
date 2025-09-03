@@ -16,7 +16,11 @@
           <div class="mb-3">
             <label class="form-label">Photo actuelle</label>
             <div>
-              <%= image_tag @player.photo, class: 'rounded', style: 'max-width: 200px; max-height: 200px;' %>
+              <% if Rails.env.production? %>
+                <%= cl_image_tag @player.photo.key, class: 'rounded', style: 'max-width: 200px; max-height: 200px;', width: 200, height: 200, crop: :fill, gravity: :face %>
+              <% else %>
+                <%= image_tag @player.photo, class: 'rounded', style: 'max-width: 200px; max-height: 200px;' %>
+              <% end %>
             </div>
           </div>
         <% end %>

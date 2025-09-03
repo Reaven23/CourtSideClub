@@ -53,8 +53,12 @@
                     <!-- Image -->
                     <%= link_to article, class: "text-decoration-none" do %>
                     <div class="article-card-image">
-                      <% if article.photo.attached? %>
-                        <%= image_tag article.photo, class: "card-img-top", alt: article.title %>
+                                              <% if article.photo.attached? %>
+                          <% if Rails.env.production? %>
+                            <%= cl_image_tag article.photo.key, class: "card-img-top", alt: article.title, width: 400, height: 250, crop: :fill, gravity: :auto %>
+                          <% else %>
+                            <%= image_tag article.photo, class: "card-img-top", alt: article.title %>
+                          <% end %>
                       <% elsif article.youtube_embed.present? %>
                         <div class="video-thumbnail">
                           <i class="fab fa-youtube"></i>

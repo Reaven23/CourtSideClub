@@ -48,7 +48,11 @@
             <!-- Photo de l'article (format paysage) -->
             <% if @article.photo.attached? %>
               <div class="article-image">
-                <%= image_tag @article.photo, class: "img-fluid", alt: @article.title %>
+                <% if Rails.env.production? %>
+                  <%= cl_image_tag @article.photo.key, class: "img-fluid", alt: @article.title, width: 800, height: 400, crop: :fill, gravity: :auto %>
+                <% else %>
+                  <%= image_tag @article.photo, class: "img-fluid", alt: @article.title %>
+                <% end %>
               </div>
             <% end %>
 
@@ -125,7 +129,11 @@
                   <%= link_to article_path(related_article), class: "related-article-link" do %>
                     <div class="related-article-image">
                       <% if related_article.photo.attached? %>
-                        <%= image_tag related_article.photo, alt: related_article.title %>
+                        <% if Rails.env.production? %>
+                          <%= cl_image_tag related_article.photo.key, alt: related_article.title, width: 200, height: 120, crop: :fill, gravity: :auto %>
+                        <% else %>
+                          <%= image_tag related_article.photo, alt: related_article.title %>
+                        <% end %>
                       <% elsif related_article.youtube_embed.present? %>
                         <div class="video-thumbnail">
                           <i class="fab fa-youtube"></i>

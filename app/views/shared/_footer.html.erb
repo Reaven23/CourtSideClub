@@ -3,7 +3,11 @@
     <div class="row g-4 align-items-start">
       <div class="col-12 col-lg-4">
         <div class="footer-brand d-flex align-items-center mb-3">
-          <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "footer-logo me-2" %>
+          <% if Rails.env.production? %>
+            <%= cl_image_tag "logo.png", alt: "CourtSideClub Logo", class: "footer-logo me-2" %>
+          <% else %>
+            <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "footer-logo me-2" %>
+          <% end %>
           <span class="brand-text">CourtSideClub</span>
         </div>
         <p class="text-muted mb-4">Donnons le pouvoir aux fans de basket!</p>
