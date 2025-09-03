@@ -1,0 +1,7 @@
+<%= simple_form_for player, url: admin_players_path, html: { data: { turbo_frame: 'admin_content' } } do |f| %>
+  <%= f.input :first_name, label: 'Prénom', required: true %>
+  <%= f.input :last_name, label: 'Nom', required: true %>
+  <%= f.input :tournament_played, as: :integer, label: 'Tournois joués', input_html: { min: 0, value: 0 }, required: true %>
+  <%= f.input :photo, as: :file, label: 'Photo', input_html: { accept: 'image/*' } %>
+  <%= f.button :submit, 'Créer', class: 'btn btn-primary' %>
+<% end %>

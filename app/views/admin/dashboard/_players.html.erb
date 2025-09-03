@@ -11,13 +11,7 @@
       <div class="card-header fw-semibold">Nouveau joueur</div>
       <div id="admin_new_player_form" class="collapse border-bottom">
         <div class="card-body">
-          <%= simple_form_for Player.new, url: admin_players_path, html: { data: { turbo_frame: 'admin_content' } } do |f| %>
-            <%= f.input :first_name, label: 'Prénom', required: true %>
-            <%= f.input :last_name, label: 'Nom', required: true %>
-            <%= f.input :tournaments_played, as: :integer, label: 'Tournois joués', input_html: { min: 0, value: 0 }, required: true %>
-            <%= f.input :photo, as: :file, label: 'Photo', input_html: { accept: 'image/*' } %>
-            <%= f.button :submit, 'Créer', class: 'btn btn-primary' %>
-          <% end %>
+          <%= render 'admin/players/form', player: Player.new %>
         </div>
       </div>
     </div>
@@ -28,33 +22,9 @@
       <div class="card-header fw-semibold d-flex justify-content-between align-items-center">
         <span>Joueurs existants</span>
       </div>
-      <ul class="list-group list-group-flush">
+      <ul class="list-group list-group-flush" id="players">
         <% @players.each do |player| %>
-          <li class="list-group-item">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex align-items-center">
-                <% if player.photo.attached? %>
-                  <% if Rails.env.production? %>
-                    <%= cl_image_tag player.photo.key, class: 'rounded-circle me-3', style: 'width: 40px; height: 40px; object-fit: cover;', width: 40, height: 40, crop: :fill, gravity: :face %>
-                  <% else %>
-                    <%= image_tag player.photo, class: 'rounded-circle me-3', style: 'width: 40px; height: 40px; object-fit: cover;' %>
-                  <% end %>
-                <% else %>
-                  <div class="rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: linear-gradient(45deg, #EE53A8, #8a2be2); color: white; font-weight: bold;">
-                    <%= player.first_name[0] %>
-                  </div>
-                <% end %>
-                <div>
-                  <div class="fw-semibold"><%= player.full_name %></div>
-                  <div class="text-muted small">Tournois joués: <%= player.tournament_played %></div>
-                </div>
-              </div>
-              <div class="d-flex gap-2">
-                <%= link_to 'Modifier', edit_admin_player_path(player), class: 'btn btn-outline-primary btn-sm', data: { turbo_frame: 'admin_content' } %>
-                <%= link_to 'Supprimer', admin_player_path(player), data: { turbo_method: :delete, turbo_confirm: 'Supprimer ce joueur ?' }, class: 'btn btn-danger btn-sm' %>
-              </div>
-            </div>
-          </li>
+          <%= render 'admin/players/player', player: player %>
         <% end %>
         <% if @players.blank? %>
           <li class="list-group-item text-muted">Aucun joueur</li>
