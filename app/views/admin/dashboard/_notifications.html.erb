@@ -35,8 +35,14 @@
               </td>
               <td>
                 <div class="user-info">
-                  <strong><%= notification.user.full_name %></strong><br>
-                  <small class="text-muted"><%= notification.user.email %></small>
+                  <% if notification.user.present? %>
+                    <strong><%= notification.user.full_name %></strong><br>
+                    <small class="text-muted"><%= notification.user.email %></small>
+                  <% else %>
+                    <strong><%= notification.full_name %></strong><br>
+                    <small class="text-muted"><%= notification.email %></small>
+                    <br><small class="badge bg-info">Visiteur</small>
+                  <% end %>
                 </div>
               </td>
               <td>
@@ -128,12 +134,34 @@
             <div class="notification-details">
               <div class="row mb-3">
                 <div class="col-md-6">
-                  <strong>De :</strong> <%= notification.user.full_name %>
+                  <strong>De :</strong>
+                  <% if notification.user.present? %>
+                    <%= notification.user.full_name %>
+                    <small class="badge bg-primary ms-1">Membre</small>
+                  <% else %>
+                    <%= notification.full_name %>
+                    <small class="badge bg-info ms-1">Visiteur</small>
+                  <% end %>
                 </div>
                 <div class="col-md-6">
-                  <strong>Email :</strong> <%= notification.user.email %>
+                  <strong>Email :</strong> <%= notification.contact_email %>
                 </div>
               </div>
+              <% if notification.object == 'partnership' && notification.company.present? %>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <strong>Entreprise :</strong> <%= notification.company %>
+                  </div>
+                  <div class="col-md-6">
+                    <strong>Téléphone :</strong>
+                    <% if notification.phone.present? %>
+                      <%= notification.phone %>
+                    <% else %>
+                      <span class="text-muted">Non renseigné</span>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
               <div class="row mb-3">
                 <div class="col-md-6">
                   <strong>Date :</strong> <%= notification.created_at.strftime("%d/%m/%Y à %H:%M") %>
