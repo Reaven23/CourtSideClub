@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CourtSideClub</title>
+    <title><%= content_for?(:title) ? "#{content_for(:title)} - CourtSideClub" : "CourtSideClub - La communauté des fans de basket" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? content_for(:description) : 'Rejoignez CourtSideClub, la communauté des fans de basket. Votez pour vos joueurs favoris, gagnez des points, débloquez des récompenses exclusives et participez aux événements de votre équipe.' %>">
+    <meta name="keywords" content="basket, basketball, communauté, fans, vote, points, récompenses, CourtSideClub">
+    <meta name="author" content="CourtSideClub">
+    <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:title" content="<%= content_for?(:title) ? "#{content_for(:title)} - CourtSideClub" : "CourtSideClub - La communauté des fans de basket" %>">
+    <meta property="og:description" content="<%= content_for?(:description) ? content_for(:description) : 'Rejoignez CourtSideClub, la communauté des fans de basket. Votez pour vos joueurs favoris, gagnez des points, débloquez des récompenses exclusives et participez aux événements de votre équipe.' %>">
+    <meta property="og:image" content="<%= asset_url('logo.png') %>">
+    <meta property="og:site_name" content="CourtSideClub">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<%= request.original_url %>">
+    <meta property="twitter:title" content="<%= content_for?(:title) ? "#{content_for(:title)} - CourtSideClub" : "CourtSideClub - La communauté des fans de basket" %>">
+    <meta property="twitter:description" content="<%= content_for?(:description) ? content_for(:description) : 'Rejoignez CourtSideClub, la communauté des fans de basket. Votez pour vos joueurs favoris, gagnez des points, débloquez des récompenses exclusives et participez aux événements de votre équipe.' %>">
+    <meta property="twitter:image" content="<%= asset_url('logo.png') %>">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

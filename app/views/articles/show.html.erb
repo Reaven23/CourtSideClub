@@ -1,5 +1,6 @@
 
 <% content_for :title, @article.title %>
+<% content_for :description, truncate(strip_tags(@article.content), length: 160) %>
 
 <div class="article-show-page">
   <div class="container-fluid">
