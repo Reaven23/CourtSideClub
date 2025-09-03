@@ -108,13 +108,6 @@ class User < ApplicationRecord
     admin == true
   end
 
-  def profile_photo
-    if photo.attached?
-      photo
-    else
-      nil # Retourner nil pour utiliser une icône par défaut
-    end
-  end
 
   private
 

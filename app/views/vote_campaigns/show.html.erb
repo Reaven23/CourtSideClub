@@ -53,7 +53,11 @@
           <% @players.each do |player| %>
             <div class="player-vote-card <%= 'voted' if @user_vote&.player == player %>">
               <div class="player-photo">
-                <%= image_tag player.photo_url, alt: player.full_name, class: "player-image" %>
+                <% if player.photo.attached? && Rails.env.production? %>
+                  <%= cl_image_tag player.photo.key, alt: player.full_name, class: "player-image", width: 200, height: 200, crop: :fill, gravity: :face %>
+                <% else %>
+                  <%= image_tag player.photo_url, alt: player.full_name, class: "player-image" %>
+                <% end %>
                 <% if @user_vote&.player == player %>
                   <div class="vote-badge">
                     <i class="fas fa-check"></i>

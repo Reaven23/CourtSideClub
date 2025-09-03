@@ -18,8 +18,12 @@
           <div class="welcome-section">
             <div class="user-profile-header text-center mb-4">
               <div class="user-avatar-large mb-3">
-                <% if @user.profile_photo %>
-                  <%= image_tag @user.profile_photo, class: "avatar-img-large", alt: @user.full_name %>
+                <% if @user.photo.attached? %>
+                  <% if Rails.env.production? %>
+                    <%= cl_image_tag @user.photo.key, class: "avatar-img-large", alt: @user.full_name, width: 120, height: 120, crop: :fill, gravity: :face %>
+                  <% else %>
+                    <%= image_tag @user.photo, class: "avatar-img-large", alt: @user.full_name %>
+                  <% end %>
                 <% else %>
                   <i class="fas fa-user-circle avatar-icon-large"></i>
                 <% end %>
