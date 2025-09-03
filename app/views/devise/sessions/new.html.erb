@@ -5,11 +5,7 @@
         <div class="auth-card">
           <div class="auth-header">
             <%= link_to root_path, class: "auth-logo-link" do %>
-              <% if Rails.env.production? %>
-                <%= cl_image_tag "aux6aniclywdsqtxalhn", alt: "CourtSideClub Logo", class: "auth-logo" %>
-              <% else %>
-                <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "auth-logo" %>
-              <% end %>
+              <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "auth-logo" %>
               <span class="auth-brand-text">CourtSideClub</span>
             <% end %>
             <h2 class="auth-title">Connexion</h2>
