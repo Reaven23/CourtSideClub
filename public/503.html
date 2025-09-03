@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Erreur serveur - CourtSideClub</title>
+  <title>Service indisponible - CourtSideClub</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     * {
@@ -91,13 +91,13 @@
     .basketball-icon {
       font-size: 4rem;
       margin-bottom: 1rem;
-      animation: shake 1s infinite;
+      animation: pulse 2s infinite;
     }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
     .btn-home {
@@ -146,13 +146,20 @@
       margin-top: 2rem;
     }
 
-    .contact-info {
+    .maintenance-info {
       margin-top: 2rem;
       padding: 1rem;
-      background: rgba(238, 83, 168, 0.1);
+      background: rgba(255, 193, 7, 0.1);
       border-radius: 10px;
       font-size: 0.9rem;
-      color: #666;
+      color: #856404;
+    }
+
+    .countdown {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ee53a8;
     }
 
     @media (max-width: 768px) {
@@ -185,11 +192,11 @@
     </div>
 
     <div class="basketball-icon">🏀</div>
-    <h1 class="error-code">500</h1>
-    <h2 class="error-title">Erreur serveur</h2>
+    <h1 class="error-code">503</h1>
+    <h2 class="error-title">Service indisponible</h2>
     <p class="error-message">
-      Oups ! Notre équipe technique a fait une faute.
-      Nous travaillons déjà sur le problème pour que vous puissiez reprendre le jeu !
+      Notre équipe technique effectue actuellement une maintenance.
+      Nous serons de retour très bientôt pour continuer le match !
     </p>
 
     <div class="actions">
@@ -197,15 +204,20 @@
         <i class="fas fa-home me-2"></i>
         Retour à l'accueil
       </a>
-      <a href="javascript:history.back()" class="btn-secondary">
-        <i class="fas fa-arrow-left me-2"></i>
-        Page précédente
+      <a href="javascript:location.reload()" class="btn-secondary">
+        <i class="fas fa-refresh me-2"></i>
+        Actualiser
       </a>
     </div>
 
-    <div class="contact-info">
-      <i class="fas fa-info-circle me-2"></i>
-      Si le problème persiste, contactez notre support technique.
+    <div class="maintenance-info">
+      <i class="fas fa-tools me-2"></i>
+      Maintenance en cours. Merci de votre patience.
+    </div>
+
+    <div class="countdown">
+      <i class="fas fa-clock me-2"></i>
+      Retour prévu dans quelques minutes
     </div>
   </div>
 </body>

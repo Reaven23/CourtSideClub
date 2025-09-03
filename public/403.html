@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Erreur serveur - CourtSideClub</title>
+  <title>Accès interdit - CourtSideClub</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     * {
@@ -91,13 +91,13 @@
     .basketball-icon {
       font-size: 4rem;
       margin-bottom: 1rem;
-      animation: shake 1s infinite;
+      animation: forbidden 2s infinite;
     }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
+    @keyframes forbidden {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      25% { transform: scale(1.1) rotate(-5deg); }
+      75% { transform: scale(1.1) rotate(5deg); }
     }
 
     .btn-home {
@@ -146,13 +146,13 @@
       margin-top: 2rem;
     }
 
-    .contact-info {
+    .access-info {
       margin-top: 2rem;
       padding: 1rem;
-      background: rgba(238, 83, 168, 0.1);
+      background: rgba(220, 53, 69, 0.1);
       border-radius: 10px;
       font-size: 0.9rem;
-      color: #666;
+      color: #721c24;
     }
 
     @media (max-width: 768px) {
@@ -185,11 +185,11 @@
     </div>
 
     <div class="basketball-icon">🏀</div>
-    <h1 class="error-code">500</h1>
-    <h2 class="error-title">Erreur serveur</h2>
+    <h1 class="error-code">403</h1>
+    <h2 class="error-title">Accès interdit</h2>
     <p class="error-message">
-      Oups ! Notre équipe technique a fait une faute.
-      Nous travaillons déjà sur le problème pour que vous puissiez reprendre le jeu !
+      Oops ! Vous n'avez pas l'autorisation d'accéder à cette zone.
+      Il faut être membre de l'équipe pour entrer sur ce terrain !
     </p>
 
     <div class="actions">
@@ -197,15 +197,15 @@
         <i class="fas fa-home me-2"></i>
         Retour à l'accueil
       </a>
-      <a href="javascript:history.back()" class="btn-secondary">
-        <i class="fas fa-arrow-left me-2"></i>
-        Page précédente
+      <a href="/users/sign_in" class="btn-secondary">
+        <i class="fas fa-sign-in-alt me-2"></i>
+        Se connecter
       </a>
     </div>
 
-    <div class="contact-info">
-      <i class="fas fa-info-circle me-2"></i>
-      Si le problème persiste, contactez notre support technique.
+    <div class="access-info">
+      <i class="fas fa-lock me-2"></i>
+      Cette page nécessite une authentification ou des permissions spéciales.
     </div>
   </div>
 </body>

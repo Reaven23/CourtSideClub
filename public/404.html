@@ -1,67 +1,204 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Page non trouvée - CourtSideClub</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8f4ff 0%, #f0e8ff 50%, #e8d5ff 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    .error-container {
+      text-align: center;
+      max-width: 600px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(238, 83, 168, 0.1);
+      backdrop-filter: blur(10px);
+    }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+    .logo-section {
+      margin-bottom: 2rem;
+    }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #ee53a8, #ff6b9d);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      box-shadow: 0 10px 30px rgba(238, 83, 168, 0.3);
+    }
+
+    .logo i {
+      font-size: 2rem;
+      color: white;
+    }
+
+    .brand-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ee53a8;
+      margin-bottom: 0.5rem;
+    }
+
+    .error-code {
+      font-size: 8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ee53a8, #ff6b9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 1rem 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .error-title {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .error-message {
+      color: #666;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .basketball-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .btn-home {
+      background: linear-gradient(135deg, #ee53a8, #ff6b9d);
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(238, 83, 168, 0.3);
+      margin: 0.5rem;
+    }
+
+    .btn-home:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(238, 83, 168, 0.4);
+      color: white;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ee53a8;
+      border: 2px solid #ee53a8;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+      background: #ee53a8;
+      color: white;
+      text-decoration: none;
+    }
+
+    .actions {
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .error-container {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .error-code {
+        font-size: 6rem;
+      }
+
+      .error-title {
+        font-size: 2rem;
+      }
+
+      .error-message {
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+<body>
+  <div class="error-container">
+    <div class="logo-section">
+      <div class="logo">
+        <i class="fas fa-basketball-ball"></i>
+      </div>
+      <div class="brand-text">CourtSideClub</div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+
+    <div class="basketball-icon">🏀</div>
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Page non trouvée</h2>
+    <p class="error-message">
+      Oops ! Cette page semble avoir disparu comme un ballon qui s'échappe du terrain.
+      Mais ne vous inquiétez pas, on va la retrouver !
+    </p>
+
+    <div class="actions">
+      <a href="/" class="btn-home">
+        <i class="fas fa-home me-2"></i>
+        Retour à l'accueil
+      </a>
+      <a href="javascript:history.back()" class="btn-secondary">
+        <i class="fas fa-arrow-left me-2"></i>
+        Page précédente
+      </a>
+    </div>
   </div>
 </body>
 </html>
