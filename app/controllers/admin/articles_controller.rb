@@ -64,7 +64,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :youtube_embed, :instagram_embed, :photo, :tag_names)
+    params.require(:article).permit(:title, :content, :youtube_embed, :instagram_embed, :photo, :tag_names, :published_at)
   end
 
   def handle_tags

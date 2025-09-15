@@ -14,6 +14,8 @@
           <%= simple_form_for @new_article, url: admin_articles_path, html: { data: { turbo_frame: 'admin_content' } } do |f| %>
             <%= f.input :title, label: 'Titre' %>
             <%= f.input :content, as: :text, label: 'Contenu', input_html: { rows: 4 } %>
+            <%= f.input :published_at, as: :datetime, label: 'Date de publication (optionnel)', input_html: { value: f.object.published_at&.strftime('%Y-%m-%dT%H:%M') } %>
+            <%= f.input :photo, as: :file, label: 'Photo' %>
             <%= f.input :tag_names, as: :string, label: 'Tags (séparés par des virgules)', input_html: { placeholder: 'basketball, match, victoire', data: { tags: @available_tags.pluck(:name).to_json } } %>
             <div class="form-text">
               <% if @available_tags.any? %>
