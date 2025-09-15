@@ -4,6 +4,7 @@
     <%= simple_form_for [:admin, @article] do |f| %>
       <%= f.input :title, label: 'Titre' %>
       <%= f.input :content, as: :text, label: 'Contenu', input_html: { rows: 6 } %>
+      <%= f.input :published_at, as: :datetime, label: 'Date de publication', input_html: { value: @article.published_at&.strftime('%Y-%m-%dT%H:%M') } %>
       <%= f.input :tag_names, as: :string, label: 'Tags (séparés par des virgules)', input_html: { value: @article.tag_names.join(', '), placeholder: 'basketball, match, victoire' } %>
       <div class="row g-2 mb-2">
         <div class="col">
