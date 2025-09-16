@@ -44,14 +44,15 @@
 <section class="news-section home-news-section text-center">
   <h1 class="mb-5">Nos dernières actualités</h1>
   <div class="container">
-    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <!-- Desktop: 4 articles per slide, Tablet: 2 articles per slide, Mobile: 1 article per slide -->
-        <% @latest_articles.in_groups_of(4, false).each_with_index do |group, index| %>
-          <div class="carousel-item <%= 'active' if index == 0 %>">
-            <div class="row g-3">
-              <% group.each do |article| %>
-                <div class="col-12 col-sm-6 col-lg-3">
+    <!-- Desktop Layout: Carousel Bootstrap avec 4 articles par slide -->
+    <div class="d-none d-lg-block">
+      <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% @latest_articles.in_groups_of(4, false).each_with_index do |group, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <div class="row g-3">
+                <% group.each do |article| %>
+                  <div class="col-lg-3">
                   <div class="article-card h-100">
                     <!-- Image -->
                     <%= link_to article, class: "text-decoration-none" do %>
@@ -153,6 +154,101 @@
           <% end %>
         </div>
       <% end %>
+      </div>
+    </div>
+
+    <!-- Mobile Layout: Carousel Bootstrap avec 1 article par slide -->
+    <div class="d-lg-none">
+      <div id="mobileNewsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% @latest_articles.each_with_index do |article, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="article-card h-100">
+                    <!-- Image -->
+                    <%= link_to article, class: "text-decoration-none" do %>
+                    <div class="article-card-image">
+                      <% if article.photo.attached? %>
+                        <% if Rails.env.production? %>
+                          <%= cl_image_tag article.photo.key, class: "card-img-top", alt: article.title, width: 400, height: 250, crop: :fill, gravity: :auto %>
+                        <% else %>
+                          <%= image_tag article.photo, class: "card-img-top", alt: article.title %>
+                        <% end %>
+                      <% elsif article.youtube_embed.present? %>
+                        <div class="video-thumbnail">
+                          <i class="fab fa-youtube"></i>
+                          <span>Vidéo</span>
+                        </div>
+                      <% elsif article.instagram_embed.present? %>
+                        <div class="video-thumbnail">
+                          <i class="fab fa-instagram"></i>
+                          <span>Instagram</span>
+                        </div>
+                      <% else %>
+                        <div class="default-thumbnail">
+                          <i class="fas fa-newspaper"></i>
+                          <span>Article</span>
+                        </div>
+                      <% end %>
+                    </div>
+                    <% end %>
+
+                    <div class="card-body">
+                      <!-- Tags -->
+                      <% if article.tags.any? %>
+                        <div class="article-tags">
+                          <% article.tags.limit(3).each do |tag| %>
+                            <span class="tag-badge" style="background-color: <%= tag.color %>;"><%= tag.name %></span>
+                          <% end %>
+                        </div>
+                      <% end %>
+
+                      <!-- Title -->
+                      <div class="card-title">
+                        <%= link_to article.title, article, class: "text-decoration-none" %>
+                      </div>
+
+                      <!-- Content -->
+                      <div class="card-text">
+                        <%= truncate(strip_tags(article.content), length: 100) %>
+                      </div>
+
+                      <!-- Date -->
+                      <div class="article-meta">
+                        <small class="text-muted">
+                          <%= l(article.published_at || article.created_at, format: :short) %>
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- Carousel Controls -->
+        <% if @latest_articles.count > 1 %>
+          <button class="carousel-control-prev" type="button" data-bs-target="#mobileNewsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Précédent</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#mobileNewsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Suivant</span>
+          </button>
+
+          <!-- Carousel Indicators -->
+          <div class="carousel-indicators">
+            <% @latest_articles.each_with_index do |article, index| %>
+              <button type="button" data-bs-target="#mobileNewsCarousel" data-bs-slide-to="<%= index %>"
+                      class="<%= 'active' if index == 0 %>" aria-current="<%= index == 0 ? 'true' : 'false' %>"
+                      aria-label="Slide <%= index + 1 %>"></button>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <%= link_to articles_path, class: "advantages-button" do %>
