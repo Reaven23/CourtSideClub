@@ -336,16 +336,42 @@
         }
       }
 
+      // Title styling
+      .card-title {
+        color: #111;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
       // Title link color and hover
       .card-title a {
         color: #111;
         text-decoration: none;
         transition: color 0.2s ease;
+        font-weight: 600;
       }
 
       .card-title a:hover {
         color: #EE53A8;
         text-decoration: none;
+      }
+
+      // Date styling
+      .article-meta {
+        small {
+          color: #666 !important; // Override text-muted
+          font-weight: 500;
+          font-size: 0.85rem;
+          text-decoration: none !important; // Supprime tout soulignement
+          border: none !important; // Supprime toute bordure
+          background: none !important; // Supprime tout background
+
+          i {
+            color: #666 !important; // Même couleur pour l'icône
+            text-decoration: none !important;
+          }
+        }
       }
     }
   }
@@ -753,7 +779,7 @@
   .advantages-button {
     padding: 0.9rem 1.3rem !important;
     font-size: $font-size-sm !important;
-    margin-top: 1.5rem; // Space after cards on mobile
+    margin-top: 50px; // Space after cards on mobile
   }
 
   .advantages-card-container {
@@ -865,10 +891,41 @@
     left: -25px !important;
   }
 
-  .carousel-control-next {
-    right: -25px !important;
+    .carousel-control-next {
+      right: -25px !important;
+    }
+
+    // Mobile carousel indicators - adjust position and size
+    .carousel-indicators {
+      bottom: -30px !important; // Plus proche du carousel
+
+      button {
+        width: 8px !important; // Plus petits
+        height: 8px !important;
+        border-radius: 50%;
+        background-color: rgba(238, 83, 168, 0.3);
+        border: 1px solid rgba(238, 83, 168, 0.5);
+        margin: 0 3px; // Moins d'espace entre eux
+        transition: all 0.3s ease;
+
+        &.active {
+          background-color: #EE53A8;
+          border-color: #EE53A8;
+          transform: scale(1.2);
+        }
+
+        &:hover {
+          background-color: rgba(238, 83, 168, 0.6);
+          border-color: #EE53A8;
+        }
+      }
+    }
+
+    // Marge entre carousel mobile et bouton "Toutes les actualités"
+    + .advantages-button {
+      margin-top: 3rem !important; // Plus d'espace sur mobile
+    }
   }
-}
 
 // Home news section - specific styles to avoid conflicts
 .home-news-section {

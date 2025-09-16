@@ -193,9 +193,9 @@
       width: 100%;
     }
 
-    .nav-link {
+    .navbar-nav .nav-link {
       color: #333 !important;
-      padding: 0rem !important; // Réduit de 1rem à 0.75rem
+      padding: 0.5rem !important; // Padding minimal pour la navbar
       border-radius: 8px;
       margin: 0.1rem 0; // Réduit de 0.25rem à 0.1rem
       transition: all 0.3s ease;
