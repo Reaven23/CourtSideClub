@@ -66,13 +66,13 @@
               class: "flag-link #{'active' if I18n.locale == :fr}",
               title: t('language.french'),
               data: { turbo_method: :get } do %>
-            <span class="flag flag-fr"></span>
+            <span class="flag">🇫🇷</span>
           <% end %>
           <%= link_to switch_locale_path(:en),
               class: "flag-link #{'active' if I18n.locale == :en}",
               title: t('language.english'),
               data: { turbo_method: :get } do %>
-            <span class="flag flag-gb"></span>
+            <span class="flag">🇺🇸</span>
           <% end %>
         </div>
         <div class="social d-flex align-items-center gap-3">
