@@ -3,9 +3,9 @@
   <div class="quiz-header">
     <div class="container">
       <div class="breadcrumb">
-        <%= link_to "Mon vestiaire", dashboard_path, class: "breadcrumb-link" %>
+        <%= link_to t('quiz_game.breadcrumb.dashboard'), dashboard_path, class: "breadcrumb-link" %>
         <i class="fas fa-chevron-right"></i>
-        <%= link_to "Mini-jeux", mini_games_path, class: "breadcrumb-link" %>
+        <%= link_to t('quiz_game.breadcrumb.mini_games'), mini_games_path, class: "breadcrumb-link" %>
         <i class="fas fa-chevron-right"></i>
         <span><%= @quiz_game.title %></span>
       </div>
@@ -25,7 +25,7 @@
           <i class="fas fa-brain"></i>
         </div>
 
-      <h2>Prêt à commencer ?</h2>
+      <h2><%= t('quiz_game.start_screen.ready_title') %></h2>
 
       <div class="quiz-info-grid">
         <div class="info-item">
@@ -33,8 +33,8 @@
             <i class="fas fa-question-circle"></i>
           </div>
           <div class="info-content">
-            <h4><%= @selected_questions_count %> questions</h4>
-            <p>Sélectionnées aléatoirement</p>
+            <h4><%= @selected_questions_count %> <%= t('quiz_game.start_screen.info.questions') %></h4>
+            <p><%= t('quiz_game.start_screen.info.selected_randomly') %></p>
           </div>
         </div>
 
@@ -43,8 +43,8 @@
             <i class="fas fa-clock"></i>
           </div>
           <div class="info-content">
-            <h4>24 secondes</h4>
-            <p>Par question (possession basket)</p>
+            <h4><%= t('quiz_game.start_screen.info.time_per_question') %></h4>
+            <p><%= t('quiz_game.start_screen.info.time_description') %></p>
           </div>
         </div>
 
@@ -53,8 +53,8 @@
             <i class="fas fa-trophy"></i>
           </div>
           <div class="info-content">
-            <h4><%= @quiz_game.points_per_question * @quiz_game.questions.count %> points</h4>
-            <p>Maximum possible</p>
+            <h4><%= @quiz_game.points_per_question * @quiz_game.questions.count %> <%= t('quiz_game.start_screen.info.max_points') %></h4>
+            <p><%= t('quiz_game.start_screen.info.max_points_description') %></p>
           </div>
         </div>
 
@@ -62,7 +62,7 @@
 
       <button class="btn-start-quiz" data-action="click->quiz#startQuiz">
         <i class="fas fa-play"></i>
-        Commencer le Quiz
+        <%= t('quiz_game.start_screen.start_button') %>
       </button>
     </div>
   </div>
@@ -77,10 +77,10 @@
     <div class="quiz-progress">
       <div class="progress-info">
         <span class="question-counter">
-          Question <span data-quiz-target="currentQuestion">1</span> sur <span data-quiz-target="totalQuestions">10</span>
+          <%= t('quiz_game.game_screen.question_counter', current: '<span data-quiz-target="currentQuestion">1</span>', total: '<span data-quiz-target="totalQuestions">10</span>').html_safe %>
         </span>
         <span class="score-display">
-          Score: <span data-quiz-target="currentScore">0</span> pts
+          <%= t('quiz_game.game_screen.score_display', score: '<span data-quiz-target="currentScore">0</span>').html_safe %>
         </span>
       </div>
       <div class="progress-bar">
@@ -93,7 +93,7 @@
       <div class="timer-circle">
         <div class="timer-text" data-quiz-target="timerText">24</div>
       </div>
-      <div class="timer-label">secondes restantes</div>
+      <div class="timer-label"><%= t('quiz_game.game_screen.timer_label') %></div>
     </div>
 
     <!-- Question Card -->
@@ -140,23 +140,23 @@
         <div class="results-icon">
           <i class="fas fa-trophy"></i>
         </div>
-        <h2>Quiz Terminé !</h2>
+        <h2><%= t('quiz_game.results_screen.title') %></h2>
       </div>
 
       <div class="results-stats">
         <div class="stat-item">
           <div class="stat-number" data-quiz-target="finalScore">0</div>
-          <div class="stat-label">Points gagnés</div>
+          <div class="stat-label"><%= t('quiz_game.results_screen.stats.points_earned') %></div>
         </div>
 
         <div class="stat-item">
           <div class="stat-number" data-quiz-target="correctAnswers">0</div>
-          <div class="stat-label">Bonnes réponses</div>
+          <div class="stat-label"><%= t('quiz_game.results_screen.stats.correct_answers') %></div>
         </div>
 
         <div class="stat-item">
           <div class="stat-number" data-quiz-target="totalAnswered">0</div>
-          <div class="stat-label">Questions</div>
+          <div class="stat-label"><%= t('quiz_game.results_screen.stats.questions') %></div>
         </div>
       </div>
 
@@ -165,19 +165,19 @@
         <div class="level-up-icon">
           <i class="fas fa-star"></i>
         </div>
-        <h3>Félicitations !</h3>
-        <p>Vous êtes passé au niveau <span data-quiz-target="newLevel">0</span> !</p>
+        <h3><%= t('quiz_game.results_screen.level_up.congratulations') %></h3>
+        <p><%= t('quiz_game.results_screen.level_up.new_level', level: '<span data-quiz-target="newLevel">0</span>').html_safe %></p>
       </div>
 
       <div class="results-actions">
         <%= link_to mini_games_path, class: "btn-secondary" do %>
           <i class="fas fa-arrow-left"></i>
-          Retour aux Mini-jeux
+          <%= t('quiz_game.results_screen.actions.back_to_mini_games') %>
         <% end %>
 
         <%= link_to dashboard_path, class: "btn-primary" do %>
           <i class="fas fa-home"></i>
-          Mon Vestiaire
+          <%= t('quiz_game.results_screen.actions.my_locker') %>
         <% end %>
       </div>
     </div>
@@ -188,7 +188,7 @@
       <div class="loading-spinner">
         <div class="spinner"></div>
       </div>
-      <p>Préparation du quiz...</p>
+      <p><%= t('quiz_game.loading.preparing') %></p>
     </div>
   </div>
 </div>

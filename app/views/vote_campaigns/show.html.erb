@@ -7,7 +7,7 @@
           <div class="campaign-breadcrumb">
             <%= link_to vote_campaigns_path, class: "breadcrumb-link" do %>
               <i class="fas fa-arrow-left"></i>
-              Retour aux votes
+              <%= t('vote_campaigns.show.back_to_votes') %>
             <% end %>
           </div>
 
@@ -16,16 +16,16 @@
             <div class="campaign-meta">
               <span class="campaign-status <%= @vote_campaign.current? ? 'active' : (@vote_campaign.upcoming? ? 'upcoming' : 'past') %>">
                 <% if @vote_campaign.current? %>
-                  🔥 Vote en cours
+                  🔥 <%= t('vote_campaigns.show.status.active') %>
                 <% elsif @vote_campaign.upcoming? %>
-                  🟡 Bientôt disponible
+                  🟡 <%= t('vote_campaigns.show.status.upcoming') %>
                 <% else %>
-                  🔴 Vote terminé
+                  🔴 <%= t('vote_campaigns.show.status.past') %>
                 <% end %>
               </span>
               <span class="campaign-dates">
                 <i class="fas fa-calendar"></i>
-                Du <%= @vote_campaign.start_date.strftime("%d/%m/%Y") %> au <%= @vote_campaign.end_date.strftime("%d/%m/%Y") %>
+                <%= t('vote_campaigns.show.dates', start_date: @vote_campaign.start_date.strftime("%d/%m/%Y"), end_date: @vote_campaign.end_date.strftime("%d/%m/%Y")) %>
               </span>
             </div>
           </div>
@@ -47,7 +47,7 @@
       <div class="col-12">
         <h2 class="players-section-title">
           <i class="fas fa-basketball-ball me-2"></i>
-          Joueurs disponibles
+          <%= t('vote_campaigns.show.players_available') %>
         </h2>
         <div class="players-grid">
           <% @players.each do |player| %>
@@ -69,12 +69,12 @@
                 <h4 class="player-name"><%= player.full_name %></h4>
                 <p class="player-stats">
                   <i class="fas fa-trophy"></i>
-                  <%= player.tournament_played %> tournois
+                  <%= player.tournament_played %> <%= t('vote_campaigns.show.tournaments') %>
                 </p>
 
                 <div class="vote-count">
                   <i class="fas fa-vote-yea"></i>
-                  <span><%= @vote_counts[player.id] || 0 %> votes</span>
+                  <span><%= @vote_counts[player.id] || 0 %> <%= t('vote_campaigns.show.votes') %></span>
                 </div>
               </div>
 
@@ -83,16 +83,16 @@
                   <%= link_to vote_vote_campaign_path(@vote_campaign, player_id: player.id),
                       class: "btn-vote",
                       data: {
-                        confirm: "Êtes-vous sûr de vouloir voter pour #{player.full_name} ? Ce choix est définitif.",
+                        confirm: t('vote_campaigns.show.vote_confirm', player_name: player.full_name),
                         turbo_method: :post
                       } do %>
                     <i class="fas fa-hand-point-up"></i>
-                    Voter
+                    <%= t('vote_campaigns.show.vote_button') %>
                   <% end %>
                 <% elsif @user_vote&.player == player %>
                   <span class="vote-confirmed">
                     <i class="fas fa-check-circle"></i>
-                    Votre choix
+                    <%= t('vote_campaigns.show.your_choice') %>
                   </span>
                 <% elsif @vote_campaign.past? %>
                   <div class="vote-results">
@@ -117,7 +117,7 @@
           </div>
           <div class="stat-content">
             <h3><%= @vote_campaign.players.count %></h3>
-            <p>Joueurs disponibles</p>
+            <p><%= t('vote_campaigns.show.stats.players_available') %></p>
           </div>
         </div>
       </div>
@@ -128,7 +128,7 @@
           </div>
           <div class="stat-content">
             <h3><%= @vote_campaign.vote_count %></h3>
-            <p>Votes exprimés</p>
+            <p><%= t('vote_campaigns.show.stats.votes_cast') %></p>
           </div>
         </div>
       </div>
@@ -140,13 +140,13 @@
           <div class="stat-content">
             <% if @vote_campaign.current? %>
               <h3><%= distance_of_time_in_words(Time.current, @vote_campaign.end_date) %></h3>
-              <p>Temps restant</p>
+              <p><%= t('vote_campaigns.show.stats.time_remaining') %></p>
             <% elsif @vote_campaign.upcoming? %>
               <h3><%= distance_of_time_in_words(Time.current, @vote_campaign.start_date) %></h3>
-              <p>Avant le début</p>
+              <p><%= t('vote_campaigns.show.stats.before_start') %></p>
             <% else %>
-              <h3>Terminé</h3>
-              <p>Vote clos</p>
+              <h3><%= t('vote_campaigns.show.stats.finished') %></h3>
+              <p><%= t('vote_campaigns.show.stats.vote_closed') %></p>
             <% end %>
           </div>
         </div>
@@ -162,8 +162,8 @@
               <i class="fas fa-check-circle"></i>
             </div>
             <div class="vote-status-content">
-              <h4>Merci pour votre vote !</h4>
-              <p>Vous avez voté pour <strong><%= @user_vote.player.full_name %></strong> le <%= @user_vote.created_at.strftime("%d/%m/%Y à %H:%M") %></p>
+              <h4><%= t('vote_campaigns.show.messages.thank_you') %></h4>
+              <p><%= t('vote_campaigns.show.messages.voted_for', player_name: @user_vote.player.full_name, date: @user_vote.created_at.strftime("%d/%m/%Y à %H:%M")) %></p>
             </div>
           </div>
         </div>
@@ -176,8 +176,8 @@
               <i class="fas fa-hand-point-down"></i>
             </div>
             <div class="vote-status-content">
-              <h4>Votez pour votre joueur préféré !</h4>
-              <p>Cliquez sur le joueur de votre choix pour voter. Vous gagnerez <strong>10 points</strong> !</p>
+              <h4><%= t('vote_campaigns.show.messages.vote_for_player') %></h4>
+              <p><%= t('vote_campaigns.show.messages.vote_description') %></p>
             </div>
           </div>
         </div>
@@ -190,9 +190,9 @@
               <i class="fas fa-sign-in-alt"></i>
             </div>
             <div class="vote-status-content">
-              <h4>Connectez-vous pour voter</h4>
-              <p>Vous devez être connecté pour participer au vote.</p>
-              <%= link_to "Se connecter", new_user_session_path, class: "auth-btn-primary" %>
+              <h4><%= t('vote_campaigns.show.messages.login_required') %></h4>
+              <p><%= t('vote_campaigns.show.messages.login_description') %></p>
+              <%= link_to t('vote_campaigns.show.messages.sign_in'), new_user_session_path, class: "auth-btn-primary" %>
             </div>
           </div>
         </div>

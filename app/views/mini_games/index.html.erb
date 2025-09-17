@@ -3,15 +3,15 @@
   <div class="mini-games-header">
     <div class="container">
       <div class="breadcrumb">
-        <%= link_to "Mon vestiaire", dashboard_path, class: "breadcrumb-link" %>
+        <%= link_to t('mini_games.breadcrumb.dashboard'), dashboard_path, class: "breadcrumb-link" %>
         <i class="fas fa-chevron-right"></i>
-        <span>Mini-jeux</span>
+        <span><%= t('mini_games.breadcrumb.mini_games') %></span>
       </div>
 
       <div class="mini-games-title-section">
-        <h1 class="mini-games-title">Mini-jeux CourtSideClub</h1>
+        <h1 class="mini-games-title"><%= t('mini_games.hero.title') %></h1>
         <p class="mini-games-subtitle">
-          Participez à nos mini-jeux et gagnez des points pour avancer dans la communauté CourtSideClub! Vous pourrez ici découvrir des jeux en partenariat avec nos sponsors et en apprendre un peu plus sur votre club, son histoire, ses joueurs, ses soutiens et bien plus encore!
+          <%= t('mini_games.hero.subtitle') %>
         </p>
       </div>
     </div>
@@ -24,10 +24,10 @@
         <div class="section-header">
           <h2 class="section-title">
             <i class="fas fa-question-circle"></i>
-            Quiz disponibles
+            <%= t('mini_games.quiz_section.title') %>
           </h2>
           <p class="section-subtitle">
-            <%= pluralize(@quiz_games.count, 'quiz') %> disponible<%= 's' if @quiz_games.count > 1 %>
+            <%= t('mini_games.quiz_section.subtitle', count: @quiz_games.count) %>
           </p>
         </div>
 
@@ -44,7 +44,7 @@
                   <% if user_completed %>
                     <div class="completed-badge">
                       <i class="fas fa-check"></i>
-                      Terminé
+                      <%= t('mini_games.quiz_section.actions.completed_badge') %>
                     </div>
                   <% end %>
                 </div>
@@ -56,16 +56,16 @@
                   <div class="game-stats">
                     <div class="stat">
                       <i class="fas fa-question"></i>
-                      <span><%= pluralize(quiz_game.questions.count, 'question') %></span>
+                      <span><%= pluralize(quiz_game.questions.count, t('mini_games.quiz_section.stats.questions'), t('mini_games.quiz_section.stats.questions_plural')) %></span>
                     </div>
                     <div class="stat">
                       <i class="fas fa-trophy"></i>
-                      <span><%= quiz_game.points_per_question * quiz_game.questions.count %> points max</span>
+                      <span><%= quiz_game.points_per_question * quiz_game.questions.count %> <%= t('mini_games.quiz_section.stats.max_points') %></span>
                     </div>
                     <% if user_completed %>
                       <div class="stat">
                         <i class="fas fa-star"></i>
-                        <span><%= user_completed.score %>/<%= quiz_game.points_per_question * quiz_game.questions.count %> pts</span>
+                        <span><%= t('mini_games.quiz_section.stats.points_earned', score: user_completed.score, max: quiz_game.points_per_question * quiz_game.questions.count) %></span>
                       </div>
                     <% end %>
                   </div>
@@ -75,16 +75,16 @@
                   <% if user_completed %>
                     <button class="btn-game completed" disabled>
                       <i class="fas fa-check"></i>
-                      Déjà joué
+                      <%= t('mini_games.quiz_section.actions.completed') %>
                     </button>
                     <small class="replay-text">
-                      Points gagnés: <%= user_completed.score %>/<%= quiz_game.points_per_question * quiz_game.questions.count %>
+                      <%= t('mini_games.quiz_section.stats.points_earned', score: user_completed.score, max: quiz_game.points_per_question * quiz_game.questions.count) %>
 
                     </small>
                   <% else %>
                     <%= link_to quiz_game_path(quiz_game), class: "btn-game play" do %>
                       <i class="fas fa-play"></i>
-                      Jouer maintenant
+                      <%= t('mini_games.quiz_section.actions.play_now') %>
                     <% end %>
                   <% end %>
                 </div>
@@ -96,8 +96,8 @@
             <div class="empty-icon">
               <i class="fas fa-gamepad"></i>
             </div>
-            <h3>Aucun jeu disponible</h3>
-            <p>Les mini-jeux seront bientôt disponibles !</p>
+            <h3><%= t('mini_games.quiz_section.empty_state.title') %></h3>
+            <p><%= t('mini_games.quiz_section.empty_state.description') %></p>
           </div>
         <% end %>
       </div>
@@ -107,10 +107,10 @@
         <div class="section-header">
           <h2 class="section-title">
             <i class="fas fa-rocket"></i>
-            Prochainement
+            <%= t('mini_games.coming_soon.title') %>
           </h2>
           <p class="section-subtitle">
-            D'autres mini-jeux arrivent bientôt !
+            <%= t('mini_games.coming_soon.subtitle') %>
           </p>
         </div>
 
@@ -119,27 +119,27 @@
             <div class="coming-soon-icon">
               <i class="fas fa-puzzle-piece"></i>
             </div>
-            <h4>Puzzle CourtSideClub</h4>
-            <p>Reconstituez les photos des joueurs</p>
-            <span class="coming-soon-badge">Bientôt</span>
+            <h4><%= t('mini_games.coming_soon.games.puzzle.title') %></h4>
+            <p><%= t('mini_games.coming_soon.games.puzzle.description') %></p>
+            <span class="coming-soon-badge"><%= t('mini_games.coming_soon.badge') %></span>
           </div>
 
           <div class="coming-soon-card">
             <div class="coming-soon-icon">
               <i class="fas fa-stopwatch"></i>
             </div>
-            <h4>Quiz Chrono</h4>
-            <p>Répondez le plus vite possible</p>
-            <span class="coming-soon-badge">Bientôt</span>
+            <h4><%= t('mini_games.coming_soon.games.quiz_chrono.title') %></h4>
+            <p><%= t('mini_games.coming_soon.games.quiz_chrono.description') %></p>
+            <span class="coming-soon-badge"><%= t('mini_games.coming_soon.badge') %></span>
           </div>
 
           <div class="coming-soon-card">
             <div class="coming-soon-icon">
               <i class="fas fa-basketball-ball"></i>
             </div>
-            <h4>Shoot Challenge</h4>
-            <p>Visez et marquez des paniers</p>
-            <span class="coming-soon-badge">Bientôt</span>
+            <h4><%= t('mini_games.coming_soon.games.shoot_challenge.title') %></h4>
+            <p><%= t('mini_games.coming_soon.games.shoot_challenge.description') %></p>
+            <span class="coming-soon-badge"><%= t('mini_games.coming_soon.badge') %></span>
           </div>
         </div>
       </div>

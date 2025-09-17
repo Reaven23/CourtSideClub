@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'notifications/create'
   devise_for :users
 
+  # Language switching
+  get '/switch_locale/:locale', to: 'locales#switch', as: :switch_locale
+
   namespace :admin do
     # Dashboard
     get 'dashboard/index'

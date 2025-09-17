@@ -1,5 +1,5 @@
-<% content_for :title, "Avantages et Récompenses" %>
-<% content_for :description, "Découvrez comment gagner des points sur CourtSideClub et débloquer des récompenses exclusives. Votez pour vos joueurs, participez aux événements et montez de niveau dans la communauté." %>
+<% content_for :title, t('pages.advantages.title') %>
+<% content_for :description, t('pages.advantages.description') %>
 
 <!-- Hero Section -->
 <section class="advantages-hero">
@@ -8,13 +8,13 @@
       <div class="col-12">
         <div class="advantages-hero-content text-center">
           <h1 class="advantages-hero-title">
-            Vos <span class="hero-title-highlight">Avantages</span>
+            <%= t('pages.advantages.hero.title') %> <span class="hero-title-highlight"><%= t('pages.advantages.hero.subtitle') %></span>
           </h1>
-          <p class="advantages-hero-subtitle">Découvrez comment gagner des points et débloquer des récompenses exclusives</p>
+          <p class="advantages-hero-subtitle"><%= t('pages.advantages.hero.description') %></p>
 
           <div class="hero-intro-text">
-            <p>Chez CourtSideClub, chaque interaction compte ! Votez, jouez, participez et montez en niveau pour accéder à des avantages uniques.</p>
-            <p>Plus vous êtes actif, plus vous progressez dans la hiérarchie de la communauté et plus vous débloquez de privilèges exclusifs.</p>
+            <p><%= t('pages.advantages.hero.intro1') %></p>
+            <p><%= t('pages.advantages.hero.intro2') %></p>
           </div>
         </div>
       </div>
@@ -27,8 +27,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Comment <span class="hero-title-highlight">gagner des points</span></h2>
-        <p class="section-subtitle">Plusieurs façons d'accumuler des points et de progresser</p>
+        <h2 class="section-title"><%= t('pages.advantages.points.title') %> <span class="hero-title-highlight"><%= t('pages.advantages.points.subtitle') %></span></h2>
+        <p class="section-subtitle"><%= t('pages.advantages.points.description') %></p>
       </div>
     </div>
 
@@ -38,11 +38,11 @@
           <div class="points-icon">
             <i class="fas fa-vote-yea"></i>
           </div>
-          <h3>Voter</h3>
-          <div class="points-amount">+10 points</div>
-          <p>Participez aux campagnes de vote pour choisir les joueurs et influencer les décisions du club.</p>
+          <h3><%= t('pages.advantages.points.vote.title') %></h3>
+          <div class="points-amount"><%= t('pages.advantages.points.vote.points') %></div>
+          <p><%= t('pages.advantages.points.vote.description') %></p>
           <div class="points-details">
-            <span class="badge bg-primary">Vote unique par campagne</span>
+            <span class="badge bg-primary"><%= t('pages.advantages.points.vote.badge') %></span>
           </div>
         </div>
       </div>
@@ -52,11 +52,11 @@
           <div class="points-icon">
             <i class="fas fa-gamepad"></i>
           </div>
-          <h3>Quiz & Jeux</h3>
-          <div class="points-amount">+5 à +20 points</div>
-          <p>Testez vos connaissances sur le basket et nos partenaires. Plus vous réussissez, plus vous gagnez !</p>
+          <h3><%= t('pages.advantages.points.quiz.title') %></h3>
+          <div class="points-amount"><%= t('pages.advantages.points.quiz.points') %></div>
+          <p><%= t('pages.advantages.points.quiz.description') %></p>
           <div class="points-details">
-            <span class="badge bg-success">Points par question</span>
+            <span class="badge bg-success"><%= t('pages.advantages.points.quiz.badge') %></span>
           </div>
         </div>
       </div>
@@ -66,11 +66,11 @@
           <div class="points-icon">
             <i class="fas fa-newspaper"></i>
           </div>
-          <h3>Articles</h3>
-          <div class="points-amount">+25 points</div>
-          <p>Partagez votre passion en écrivant des articles sur le basket et la communauté CourtSideClub.</p>
+          <h3><%= t('pages.advantages.points.articles.title') %></h3>
+          <div class="points-amount"><%= t('pages.advantages.points.articles.points') %></div>
+          <p><%= t('pages.advantages.points.articles.description') %></p>
           <div class="points-details">
-            <span class="badge bg-info">Article publié</span>
+            <span class="badge bg-info"><%= t('pages.advantages.points.articles.badge') %></span>
           </div>
         </div>
       </div>
@@ -80,11 +80,11 @@
           <div class="points-icon">
             <i class="fas fa-calendar-check"></i>
           </div>
-          <h3>Événements</h3>
-          <div class="points-amount">+50 points</div>
-          <p>Participez aux événements organisés par le club et nos partenaires pour des points bonus.</p>
+          <h3><%= t('pages.advantages.points.events.title') %></h3>
+          <div class="points-amount"><%= t('pages.advantages.points.events.points') %></div>
+          <p><%= t('pages.advantages.points.events.description') %></p>
           <div class="points-details">
-            <span class="badge bg-warning">Participation</span>
+            <span class="badge bg-warning"><%= t('pages.advantages.points.events.badge') %></span>
           </div>
         </div>
       </div>
@@ -94,11 +94,11 @@
           <div class="points-icon">
             <i class="fas fa-shopping-bag"></i>
           </div>
-          <h3>Boutique</h3>
-          <div class="points-amount">+1 point/€</div>
-          <p>Chaque euro dépensé dans notre boutique vous rapporte des points pour progresser.</p>
+          <h3><%= t('pages.advantages.points.shop.title') %></h3>
+          <div class="points-amount"><%= t('pages.advantages.points.shop.points') %></div>
+          <p><%= t('pages.advantages.points.shop.description') %></p>
           <div class="points-details">
-            <span class="badge bg-secondary">1€ = 1 point</span>
+            <span class="badge bg-secondary"><%= t('pages.advantages.points.shop.badge') %></span>
           </div>
         </div>
       </div>
@@ -108,11 +108,11 @@
           <div class="points-icon">
             <i class="fas fa-users"></i>
           </div>
-          <h3>Parrainage</h3>
-          <div class="points-amount">+100 points</div>
-          <p>Invitez vos amis à rejoindre CourtSideClub et recevez des points bonus pour chaque parrainage.</p>
+          <h3><%= t('pages.advantages.points.referral.title') %></h3>
+          <div class="points-amount"><%= t('pages.advantages.points.referral.points') %></div>
+          <p><%= t('pages.advantages.points.referral.description') %></p>
           <div class="points-details">
-            <span class="badge bg-success">Parrainage réussi</span>
+            <span class="badge bg-success"><%= t('pages.advantages.points.referral.badge') %></span>
           </div>
         </div>
       </div>
@@ -125,8 +125,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Système de <span class="hero-title-highlight">niveaux</span></h2>
-        <p class="section-subtitle">Progressez dans la hiérarchie et débloquez des avantages exclusifs</p>
+        <h2 class="section-title"><%= t('pages.advantages.levels.title') %> <span class="hero-title-highlight"><%= t('pages.advantages.levels.subtitle') %></span></h2>
+        <p class="section-subtitle"><%= t('pages.advantages.levels.description') %></p>
       </div>
     </div>
 
@@ -135,14 +135,14 @@
         <!-- Rookie Tier -->
         <div class="level-tier rookie-tier">
           <div class="tier-header">
-            <h3>🏀 Rookie</h3>
-            <p>Niveaux 1-5</p>
+            <h3><%= t('pages.advantages.levels.tiers.rookie.name') %></h3>
+            <p><%= t('pages.advantages.levels.tiers.rookie.levels') %></p>
           </div>
           <div class="tier-benefits">
             <ul>
-              <li>Accès aux campagnes de vote</li>
-              <li>Participation aux quiz</li>
-              <li>Accès à la boutique</li>
+              <% t('pages.advantages.levels.tiers.rookie.benefits').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -150,14 +150,14 @@
         <!-- Fan Tier -->
         <div class="level-tier fan-tier">
           <div class="tier-header">
-            <h3>⭐ Fan</h3>
-            <p>Niveaux 6-15</p>
+            <h3><%= t('pages.advantages.levels.tiers.fan.name') %></h3>
+            <p><%= t('pages.advantages.levels.tiers.fan.levels') %></p>
           </div>
           <div class="tier-benefits">
             <ul>
-              <li>Accès aux articles premium</li>
-              <li>Notifications en avant-première</li>
-              <li>Réduction de 5% en boutique</li>
+              <% t('pages.advantages.levels.tiers.fan.benefits').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -165,14 +165,14 @@
         <!-- Super Fan Tier -->
         <div class="level-tier super-fan-tier">
           <div class="tier-header">
-            <h3>🔥 Super Fan</h3>
-            <p>Niveaux 16-30</p>
+            <h3><%= t('pages.advantages.levels.tiers.super_fan.name') %></h3>
+            <p><%= t('pages.advantages.levels.tiers.super_fan.levels') %></p>
           </div>
           <div class="tier-benefits">
             <ul>
-              <li>Accès aux événements exclusifs</li>
-              <li>Réduction de 10% en boutique</li>
-              <li>Contenu exclusif des partenaires</li>
+              <% t('pages.advantages.levels.tiers.super_fan.benefits').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -180,14 +180,14 @@
         <!-- MVP Fan Tier -->
         <div class="level-tier mvp-fan-tier">
           <div class="tier-header">
-            <h3>💎 MVP Fan</h3>
-            <p>Niveaux 31-50</p>
+            <h3><%= t('pages.advantages.levels.tiers.mvp_fan.name') %></h3>
+            <p><%= t('pages.advantages.levels.tiers.mvp_fan.levels') %></p>
           </div>
           <div class="tier-benefits">
             <ul>
-              <li>Rencontres avec les joueurs</li>
-              <li>Réduction de 15% en boutique</li>
-              <li>Accès aux coulisses</li>
+              <% t('pages.advantages.levels.tiers.mvp_fan.benefits').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -195,14 +195,14 @@
         <!-- Legend Tier -->
         <div class="level-tier legend-tier">
           <div class="tier-header">
-            <h3>🏆 Legend</h3>
-            <p>Niveaux 51-75</p>
+            <h3><%= t('pages.advantages.levels.tiers.legend.name') %></h3>
+            <p><%= t('pages.advantages.levels.tiers.legend.levels') %></p>
           </div>
           <div class="tier-benefits">
             <ul>
-              <li>Places VIP aux matchs</li>
-              <li>Réduction de 20% en boutique</li>
-              <li>Influence sur les décisions du club</li>
+              <% t('pages.advantages.levels.tiers.legend.benefits').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -210,14 +210,14 @@
         <!-- Elite Tier -->
         <div class="level-tier elite-tier">
           <div class="tier-header">
-            <h3>👑 Elite</h3>
-            <p>Niveaux 76-90</p>
+            <h3><%= t('pages.advantages.levels.tiers.elite.name') %></h3>
+            <p><%= t('pages.advantages.levels.tiers.elite.levels') %></p>
           </div>
           <div class="tier-benefits">
             <ul>
-              <li>Accès aux réunions du conseil</li>
-              <li>Réduction de 25% en boutique</li>
-              <li>Statut de membre d'honneur</li>
+              <% t('pages.advantages.levels.tiers.elite.benefits').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -225,14 +225,14 @@
         <!-- Master Tier -->
         <div class="level-tier master-tier">
           <div class="tier-header">
-            <h3>🌟 Master</h3>
-            <p>Niveaux 91-99</p>
+            <h3><%= t('pages.advantages.levels.tiers.master.name') %></h3>
+            <p><%= t('pages.advantages.levels.tiers.master.levels') %></p>
           </div>
           <div class="tier-benefits">
             <ul>
-              <li>Droit de veto sur certaines décisions</li>
-              <li>Réduction de 30% en boutique</li>
-              <li>Statut de légende vivante</li>
+              <% t('pages.advantages.levels.tiers.master.benefits').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -240,15 +240,14 @@
         <!-- GOAT Tier -->
         <div class="level-tier goat-tier">
           <div class="tier-header">
-            <h3>🐐 GOAT</h3>
-            <p>Niveau 100</p>
+            <h3><%= t('pages.advantages.levels.tiers.goat.name') %></h3>
+            <p><%= t('pages.advantages.levels.tiers.goat.levels') %></p>
           </div>
           <div class="tier-benefits">
             <ul>
-              <li>Statut de membre fondateur</li>
-              <li>Réduction de 50% en boutique</li>
-              <li>Influence maximale sur le club</li>
-              <li>Accès à tous les événements</li>
+              <% t('pages.advantages.levels.tiers.goat.benefits').each do |benefit| %>
+                <li><%= benefit %></li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -262,81 +261,61 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Récompenses <span class="hero-title-highlight">exclusives</span></h2>
-        <p class="section-subtitle">Des avantages uniques pour chaque niveau de la communauté</p>
+        <h2 class="section-title"><%= t('pages.advantages.rewards.title') %> <span class="hero-title-highlight"><%= t('pages.advantages.rewards.subtitle') %></span></h2>
+        <p class="section-subtitle"><%= t('pages.advantages.rewards.description') %></p>
       </div>
     </div>
 
     <div class="rewards-grid mt-5">
       <div class="reward-category">
-        <h3>Accès aux événements</h3>
+        <h3><%= t('pages.advantages.rewards.categories.events.title') %></h3>
         <div class="reward-items">
-          <div class="reward-item">
-            <i class="fas fa-ticket-alt"></i>
-            <span>Places aux matchs à domicile</span>
-          </div>
-          <div class="reward-item">
-            <i class="fas fa-calendar-star"></i>
-            <span>Événements exclusifs avec les joueurs</span>
-          </div>
-          <div class="reward-item">
-            <i class="fas fa-trophy"></i>
-            <span>Accès aux coulisses des matchs</span>
-          </div>
+          <% t('pages.advantages.rewards.categories.events.items').each_with_index do |item, index| %>
+            <div class="reward-item">
+              <% icons = ['fas fa-ticket-alt', 'fas fa-calendar-star', 'fas fa-trophy'] %>
+              <i class="<%= icons[index] %>"></i>
+              <span><%= item %></span>
+            </div>
+          <% end %>
         </div>
       </div>
 
       <div class="reward-category">
-        <h3>Avantages boutique</h3>
+        <h3><%= t('pages.advantages.rewards.categories.shop.title') %></h3>
         <div class="reward-items">
-          <div class="reward-item">
-            <i class="fas fa-percentage"></i>
-            <span>Réductions progressives selon le niveau</span>
-          </div>
-          <div class="reward-item">
-            <i class="fas fa-gift"></i>
-            <span>Produits exclusifs en avant-première</span>
-          </div>
-          <div class="reward-item">
-            <i class="fas fa-shipping-fast"></i>
-            <span>Livraison gratuite à partir du niveau 30</span>
-          </div>
+          <% t('pages.advantages.rewards.categories.shop.items').each_with_index do |item, index| %>
+            <div class="reward-item">
+              <% icons = ['fas fa-percentage', 'fas fa-gift', 'fas fa-shipping-fast'] %>
+              <i class="<%= icons[index] %>"></i>
+              <span><%= item %></span>
+            </div>
+          <% end %>
         </div>
       </div>
 
       <div class="reward-category">
-        <h3>Influence communautaire</h3>
+        <h3><%= t('pages.advantages.rewards.categories.community.title') %></h3>
         <div class="reward-items">
-          <div class="reward-item">
-            <i class="fas fa-comments"></i>
-            <span>Accès aux sondages exclusifs</span>
-          </div>
-          <div class="reward-item">
-            <i class="fas fa-lightbulb"></i>
-            <span>Proposer des idées pour le club</span>
-          </div>
-          <div class="reward-item">
-            <i class="fas fa-users-cog"></i>
-            <span>Participer aux décisions importantes</span>
-          </div>
+          <% t('pages.advantages.rewards.categories.community.items').each_with_index do |item, index| %>
+            <div class="reward-item">
+              <% icons = ['fas fa-comments', 'fas fa-lightbulb', 'fas fa-users-cog'] %>
+              <i class="<%= icons[index] %>"></i>
+              <span><%= item %></span>
+            </div>
+          <% end %>
         </div>
       </div>
 
       <div class="reward-category">
-        <h3>Contenu premium</h3>
+        <h3><%= t('pages.advantages.rewards.categories.content.title') %></h3>
         <div class="reward-items">
-          <div class="reward-item">
-            <i class="fas fa-video"></i>
-            <span>Vidéos exclusives des entraînements</span>
-          </div>
-          <div class="reward-item">
-            <i class="fas fa-camera"></i>
-            <span>Photos en coulisses</span>
-          </div>
-          <div class="reward-item">
-            <i class="fas fa-microphone"></i>
-            <span>Interviews exclusives des joueurs</span>
-          </div>
+          <% t('pages.advantages.rewards.categories.content.items').each_with_index do |item, index| %>
+            <div class="reward-item">
+              <% icons = ['fas fa-video', 'fas fa-camera', 'fas fa-microphone'] %>
+              <i class="<%= icons[index] %>"></i>
+              <span><%= item %></span>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -348,8 +327,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Votre <span class="hero-title-highlight">progression</span></h2>
-        <p class="section-subtitle">Suivez votre évolution dans la communauté</p>
+        <h2 class="section-title"><%= t('pages.advantages.progression.title') %> <span class="hero-title-highlight"><%= t('pages.advantages.progression.subtitle') %></span></h2>
+        <p class="section-subtitle"><%= t('pages.advantages.progression.description') %></p>
       </div>
     </div>
 
@@ -357,38 +336,36 @@
       <div class="row g-4">
         <div class="col-lg-6">
           <div class="progression-card">
-            <h3>Statistiques personnelles</h3>
+            <h3><%= t('pages.advantages.progression.personal_stats.title') %></h3>
             <ul class="progression-list">
-              <li>Points totaux accumulés</li>
-              <li>Niveau actuel et progression</li>
-              <li>Activités complétées</li>
-              <li>Récompenses débloquées</li>
+              <% t('pages.advantages.progression.personal_stats.items').each do |item| %>
+                <li><%= item %></li>
+              <% end %>
             </ul>
           </div>
         </div>
 
         <div class="col-lg-6">
           <div class="progression-card">
-            <h3>Objectifs à atteindre</h3>
+            <h3><%= t('pages.advantages.progression.objectives.title') %></h3>
             <ul class="progression-list">
-              <li>Prochain niveau à débloquer</li>
-              <li>Points nécessaires</li>
-              <li>Nouvelles récompenses</li>
-              <li>Défis communautaires</li>
+              <% t('pages.advantages.progression.objectives.items').each do |item| %>
+                <li><%= item %></li>
+              <% end %>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="progression-cta text-center mt-5">
-        <h4>Prêt à commencer votre aventure ?</h4>
-        <p>Rejoignez CourtSideClub et commencez à accumuler des points dès aujourd'hui !</p>
+        <h4><%= t('pages.advantages.progression.cta.title') %></h4>
+        <p><%= t('pages.advantages.progression.cta.description') %></p>
         <div class="cta-buttons">
           <% if user_signed_in? %>
-            <%= link_to "Mon Dashboard", dashboard_path, class: "button-hero-link" %>
+            <%= link_to t('pages.advantages.progression.cta.dashboard'), dashboard_path, class: "button-hero-link" %>
           <% else %>
-            <%= link_to "Rejoindre CourtSideClub", new_user_registration_path, class: "button-hero-link" %>
-            <%= link_to "Se connecter", new_user_session_path, class: "button-hero-link-secondary" %>
+            <%= link_to t('pages.advantages.progression.cta.join'), new_user_registration_path, class: "button-hero-link" %>
+            <%= link_to t('pages.advantages.progression.cta.login'), new_user_session_path, class: "button-hero-link-secondary" %>
           <% end %>
         </div>
       </div>

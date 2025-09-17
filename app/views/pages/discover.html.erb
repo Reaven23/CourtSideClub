@@ -1,3 +1,6 @@
+<% content_for :title, t('pages.discover.title') %>
+<% content_for :description, t('pages.discover.description') %>
+
 <!-- Hero Section -->
 <section class="discover-hero">
   <div class="container">
@@ -5,13 +8,13 @@
       <div class="col-12">
         <div class="discover-hero-content text-center">
           <h1 class="discover-hero-title">
-            <span class="hero-title-highlight">Courtside Club</span>
+            <span class="hero-title-highlight"><%= t('pages.discover.hero.title') %></span>
           </h1>
-          <p class="discover-hero-subtitle">Vivre le basket 3X3 autrement</p>
+          <p class="discover-hero-subtitle"><%= t('pages.discover.hero.subtitle') %></p>
 
           <div class="hero-intro-text">
-            <p>Courtside Club est bien plus qu'une équipe de basket 3X3 : c'est un projet novateur qui place les supporters au cœur de l'aventure.</p>
-            <p>Nous croyons que les fans méritent plus que de regarder un match depuis les tribunes ou derrière un écran. Avec Courtside Club, chacun pourra participer activement à la vie de l’équipe et devenir un véritable acteur de son développement.</p>
+            <p><%= t('pages.discover.hero.description1') %></p>
+            <p><%= t('pages.discover.hero.description2') %></p>
           </div>
         </div>
       </div>
@@ -24,7 +27,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Une expérience unique pour les <span class="hero-title-highlight">supporters</span></h2>
+        <h2 class="section-title"><%= t('pages.discover.experience.title') %> <span class="hero-title-highlight"><%= t('pages.discover.experience.subtitle') %></span></h2>
       </div>
     </div>
     <div class="row">
@@ -35,8 +38,8 @@
               <i class="fas fa-vote-yea"></i>
             </div>
             <div class="experience-content">
-              <h3>Influencez les décisions</h3>
-              <p>Grâce à vos votes, vous prenez part à certains choix autour de l'équipe.</p>
+              <h3><%= t('pages.discover.experience.cards.influence.title') %></h3>
+              <p><%= t('pages.discover.experience.cards.influence.description') %></p>
             </div>
           </div>
 
@@ -45,8 +48,8 @@
               <i class="fas fa-gamepad"></i>
             </div>
             <div class="experience-content">
-              <h3>Participez à des jeux exclusifs</h3>
-              <p>Autour des joueurs, du club et de nos partenaires.</p>
+              <h3><%= t('pages.discover.experience.cards.games.title') %></h3>
+              <p><%= t('pages.discover.experience.cards.games.description') %></p>
             </div>
           </div>
 
@@ -55,8 +58,8 @@
               <i class="fas fa-star"></i>
             </div>
             <div class="experience-content">
-              <h3>Accumulez des points</h3>
-              <p>Chaque interaction – vote, jeu, achat en boutique ou participation à un évènement – vous rapporte des points.</p>
+              <h3><%= t('pages.discover.experience.cards.points.title') %></h3>
+              <p><%= t('pages.discover.experience.cards.points.description') %></p>
             </div>
           </div>
 
@@ -65,8 +68,8 @@
               <i class="fas fa-trophy"></i>
             </div>
             <div class="experience-content">
-              <h3>Progressez dans la communauté</h3>
-              <p>Débloquez différents statuts et niveaux, avec des avantages et récompenses exclusives.</p>
+              <h3><%= t('pages.discover.experience.cards.progress.title') %></h3>
+              <p><%= t('pages.discover.experience.cards.progress.description') %></p>
             </div>
           </div>
         </div>
@@ -80,26 +83,26 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Un lien fort entre <span class="hero-title-highlight">supporters et sponsors</span></h2>
+        <h2 class="section-title"><%= t('pages.discover.sponsors.title') %> <span class="hero-title-highlight"><%= t('pages.discover.sponsors.subtitle') %></span></h2>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <div class="sponsors-content">
-          <p class="sponsors-text">Courtside Club ne se limite pas à l'expérience sportive. Grâce à la gamification, nous créons aussi un pont entre sponsors et supporters :</p>
+          <p class="sponsors-text"><%= t('pages.discover.sponsors.description') %></p>
 
           <div class="sponsors-features">
             <div class="sponsor-feature">
               <i class="fas fa-calendar-check"></i>
-              <span>des évènements et activations qui permettent de gagner des points</span>
+              <span><%= t('pages.discover.sponsors.features.events') %></span>
             </div>
             <div class="sponsor-feature">
               <i class="fas fa-gift"></i>
-              <span>des expériences uniques pour découvrir les partenaires</span>
+              <span><%= t('pages.discover.sponsors.features.experiences') %></span>
             </div>
             <div class="sponsor-feature">
               <i class="fas fa-users"></i>
-              <span>un écosystème vivant autour du basketball, où chacun – club, fans et sponsors – trouve sa place et bénéficie de cette proximité</span>
+              <span><%= t('pages.discover.sponsors.features.ecosystem') %></span>
             </div>
           </div>
         </div>
@@ -113,17 +116,17 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Pourquoi Courtside Club est <span class="hero-title-highlight">   différent ?</span></h2>
+        <h2 class="section-title"><%= t('pages.discover.why_different.title') %> <span class="hero-title-highlight"><%= t('pages.discover.why_different.subtitle') %></span></h2>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <div class="why-different-content">
-          <p class="why-different-text">Notre ambition est de créer une nouvelle relation entre le sport de haut niveau et les supporters, fondée sur l'interaction, la proximité et le jeu.</p>
-          <p class="why-different-text">En intégrant des mécanismes de gamification, nous transformons le soutien à une équipe en une véritable expérience, dynamique et gratifiante.</p>
+          <p class="why-different-text"><%= t('pages.discover.why_different.description1') %></p>
+          <p class="why-different-text"><%= t('pages.discover.why_different.description2') %></p>
 
           <div class="ambition-section">
-            <h3>Courtside Club veut devenir une référence dans le sport de demain :</h3>
+            <h3><%= t('pages.discover.why_different.ambition_title') %></h3>
 
             <div class="ambition-grid">
               <div class="ambition-item">
@@ -131,7 +134,7 @@
                   <i class="fas fa-wifi"></i>
                 </div>
                 <div class="ambition-content">
-                  <h4>un club connecté à ses fans</h4>
+                  <h4><%= t('pages.discover.why_different.goals.connected') %></h4>
                 </div>
               </div>
 
@@ -140,7 +143,7 @@
                   <i class="fas fa-heart"></i>
                 </div>
                 <div class="ambition-content">
-                  <h4>une communauté soudée et engagée</h4>
+                  <h4><%= t('pages.discover.why_different.goals.community') %></h4>
                 </div>
               </div>
 
@@ -149,7 +152,7 @@
                   <i class="fas fa-lightbulb"></i>
                 </div>
                 <div class="ambition-content">
-                  <h4>un modèle innovant de l'expérience supporter et sponsor</h4>
+                  <h4><%= t('pages.discover.why_different.goals.innovation') %></h4>
                 </div>
               </div>
             </div>
@@ -165,8 +168,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Notre <span class="hero-title-highlight">   Vision</span></h2>
-        <p class="section-subtitle">Transformer le basket 3X3 en France et créer une nouvelle ère de l'engagement des fans</p>
+        <h2 class="section-title"><%= t('pages.discover.vision.title') %> <span class="hero-title-highlight"><%= t('pages.discover.vision.subtitle') %></span></h2>
+        <p class="section-subtitle"><%= t('pages.discover.vision.description') %></p>
       </div>
     </div>
     <div class="row g-4 mt-4">
@@ -175,8 +178,8 @@
           <div class="vision-icon">
             <i class="fas fa-basketball-ball"></i>
           </div>
-          <h3>Basket 3X3 international</h3>
-          <p>Lancer une équipe de basket 3X3 pour atteindre le FIBA World Tour et représenter la France sur la scène internationale.</p>
+          <h3><%= t('pages.discover.vision.cards.international.title') %></h3>
+          <p><%= t('pages.discover.vision.cards.international.description') %></p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
@@ -184,8 +187,8 @@
           <div class="vision-icon">
             <i class="fas fa-users"></i>
           </div>
-          <h3>Communauté de Fans</h3>
-          <p>Placer les fans au cœur de l'action en leur donnant un véritable pouvoir de décision sur la gestion de l'équipe et des joueurs.</p>
+          <h3><%= t('pages.discover.vision.cards.fans.title') %></h3>
+          <p><%= t('pages.discover.vision.cards.fans.description') %></p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
@@ -193,8 +196,8 @@
           <div class="vision-icon">
             <i class="fas fa-chart-line"></i>
           </div>
-          <h3>Innovation Sportive</h3>
-          <p>Réinventer le concept des socios et rendre accessible à tous la propriété du sport business et la gestion d'équipe de basket 3X3.</p>
+          <h3><%= t('pages.discover.vision.cards.innovation.title') %></h3>
+          <p><%= t('pages.discover.vision.cards.innovation.description') %></p>
         </div>
       </div>
     </div>
@@ -207,8 +210,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Comment ça <span class="hero-title-highlight">   Marche?</span></h2>
-        <p class="section-subtitle">Devenez un véritable acteur de CourtSideClub en quelques étapes simples</p>
+        <h2 class="section-title"><%= t('pages.discover.how_it_works.title') %> <span class="hero-title-highlight"><%= t('pages.discover.how_it_works.subtitle') %></span></h2>
+        <p class="section-subtitle"><%= t('pages.discover.how_it_works.description') %></p>
       </div>
     </div>
     <div class="row g-4 mt-5">
@@ -218,8 +221,8 @@
           <div class="step-icon">
             <i class="fas fa-user-plus"></i>
           </div>
-          <h3>Adhérez</h3>
-          <p>Rejoignez la communauté CourtSideClub et obtenez votre statut de membre avec droit de vote.</p>
+          <h3><%= t('pages.discover.how_it_works.steps.join.title') %></h3>
+          <p><%= t('pages.discover.how_it_works.steps.join.description') %></p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6">
@@ -228,8 +231,8 @@
           <div class="step-icon">
             <i class="fas fa-vote-yea"></i>
           </div>
-          <h3>Votez</h3>
-          <p>Participez aux décisions importantes : choix des joueurs, stratégies d'équipe, événements.</p>
+          <h3><%= t('pages.discover.how_it_works.steps.vote.title') %></h3>
+          <p><%= t('pages.discover.how_it_works.steps.vote.description') %></p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6">
@@ -238,8 +241,8 @@
           <div class="step-icon">
             <i class="fas fa-trophy"></i>
           </div>
-          <h3>Gagnez</h3>
-          <p>Profitez des avantages exclusifs : places de match, rencontres avec les joueurs, coaching.</p>
+          <h3><%= t('pages.discover.how_it_works.steps.win.title') %></h3>
+          <p><%= t('pages.discover.how_it_works.steps.win.description') %></p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6">
@@ -248,8 +251,8 @@
           <div class="step-icon">
             <i class="fas fa-star"></i>
           </div>
-          <h3>Évoluez</h3>
-          <p>Montez en niveau et débloquez de nouveaux privilèges et responsabilités au sein du club.</p>
+          <h3><%= t('pages.discover.how_it_works.steps.evolve.title') %></h3>
+          <p><%= t('pages.discover.how_it_works.steps.evolve.description') %></p>
         </div>
       </div>
     </div>
@@ -261,7 +264,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h2 class="section-title">Nos <span class="hero-title-highlight">   Valeurs</span></h2>
+        <h2 class="section-title"><%= t('pages.discover.values.title') %> <span class="hero-title-highlight"><%= t('pages.discover.values.subtitle') %></span></h2>
       </div>
     </div>
     <div class="row g-4 mt-4">
@@ -271,8 +274,8 @@
             <i class="fas fa-heart"></i>
           </div>
           <div class="value-content">
-            <h3>Passion</h3>
-            <p>Le basket est plus qu'un sport, c'est une passion qui nous unit tous. Nous croyons en la force de cette passion pour créer quelque chose d'extraordinaire.</p>
+            <h3><%= t('pages.discover.values.passion.title') %></h3>
+            <p><%= t('pages.discover.values.passion.description') %></p>
           </div>
         </div>
       </div>
@@ -282,8 +285,8 @@
             <i class="fas fa-handshake"></i>
           </div>
           <div class="value-content">
-            <h3>Transparence</h3>
-            <p>Chaque décision, chaque vote, chaque action est transparente. Les membres savent exactement ce qui se passe dans leur club.</p>
+            <h3><%= t('pages.discover.values.transparency.title') %></h3>
+            <p><%= t('pages.discover.values.transparency.description') %></p>
           </div>
         </div>
       </div>
@@ -293,8 +296,8 @@
             <i class="fas fa-users"></i>
           </div>
           <div class="value-content">
-            <h3>Communauté</h3>
-            <p>Nous construisons ensemble. Chaque membre apporte sa voix, ses idées et sa passion pour faire grandir CourtSideClub.</p>
+            <h3><%= t('pages.discover.values.community.title') %></h3>
+            <p><%= t('pages.discover.values.community.description') %></p>
           </div>
         </div>
       </div>
@@ -304,8 +307,8 @@
             <i class="fas fa-rocket"></i>
           </div>
           <div class="value-content">
-            <h3>Innovation</h3>
-            <p>Nous repensons le modèle sportif traditionnel pour créer quelque chose de nouveau, d'inclusif et d'excitant.</p>
+            <h3><%= t('pages.discover.values.innovation.title') %></h3>
+            <p><%= t('pages.discover.values.innovation.description') %></p>
           </div>
         </div>
       </div>
@@ -316,12 +319,12 @@
 <!-- CTA Section -->
 <section class="discover-cta-section">
   <div class="container text-center">
-    <h2 class="cta-title">Rejoignez l'<span class="hero-title-highlight">aventure</span></h2>
-    <p class="cta-text">Que vous soyez passionné de basket, amateur de 3X3 ou simple curieux, Courtside Club vous ouvre ses portes.</p>
-    <p class="cta-text">Venez vibrer avec nous, gagnez des points, débloquez vos statuts, vivez des moments exclusifs et surtout… faites partie de l'équipe.</p>
+    <h2 class="cta-title"><%= t('pages.discover.cta.title') %><span class="hero-title-highlight"><%= t('pages.discover.cta.subtitle') %></span></h2>
+    <p class="cta-text"><%= t('pages.discover.cta.description1') %></p>
+    <p class="cta-text"><%= t('pages.discover.cta.description2') %></p>
     <div class="cta-buttons">
-      <%= link_to "Rejoindre CourtSideClub", new_user_registration_path, class: "cta-button-primary" %>
-      <%= link_to "En savoir plus", "#", class: "cta-button-secondary" %>
+      <%= link_to t('pages.discover.cta.join_button'), new_user_registration_path, class: "cta-button-primary" %>
+      <%= link_to t('pages.discover.cta.learn_more_button'), "#", class: "cta-button-secondary" %>
     </div>
   </div>
 </section>

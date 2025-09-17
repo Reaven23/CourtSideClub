@@ -1,31 +1,1127 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  # Navigation and menu
+  navigation:
+    home: "Home"
+    discover: "Discover"
+    team: "Team"
+    partnership: "Become a partner"
+    blog: "Blog"
+    contact: "Contact"
+    faq: "FAQ"
+    advantages: "My advantages"
+    dashboard: "My locker"
+    profile: "My profile"
+    legal: "Legal Notice"
+    about: "About"
+    join_us: "Join us"
+    project: "The project"
+    votes: "Votes"
+    partners: "Our partners"
+    news: "News"
+    user_dropdown:
+      my_locker: "My locker"
+      my_profile: "My profile"
+      votes: "Votes"
+      logout: "Logout"
+      new: "New"
+      admin: "Admin"
+      connect: "Connect"
+
+  # Footer
+  footer:
+    tagline: "Let's give power to basketball fans!"
+    newsletter:
+      title: "Receive the latest information"
+      placeholder: "Email address"
+      button: "Subscribe"
+    sections:
+      courtsideclub: "CourtSideClub.io"
+      my_account: "My account"
+      resources: "Resources"
+      company: "The company"
+    copyright: "Copyright © %{year}. All Rights Reserved"
+
+  # Homepage
+  home:
+    title: "Home"
+    description: "Discover CourtSideClub, the platform that gives power to basketball fans. Vote for your favorite players, earn points, unlock exclusive rewards and join the community."
+    hero:
+      intro: "By hoopers for hoopers"
+      title: "Let's give power to fans"
+      title_highlight: "of"
+      description: "Join CourtSideClub and impact the 3X3 basketball world. Unleash your potential and embark on an epic adventure to conquer 3X3 basketball, where we aspire to become the Mark Cuban 3.0! Our vision: launch a pro 3X3 basketball team to reach the FIBA World Tour, while allowing CourtSideClub members to manage the team and players. Let's make high-level sports accessible to everyone."
+      join_button: "Join"
+      login_button: "Already a member?"
+    youtube:
+      description: "Dive into the CourtSideClub universe and discover our vision of 3X3 basketball"
+    news:
+      title: "News"
+      all_news: "All news"
+      previous: "Previous"
+      next: "Next"
+    discover:
+      title: "Discover"
+      subtitle: "CourtSideClub"
+      description: "At CourtSideClub, we aim to give you the power to actively participate in managing an international-level 3X3 basketball team! We want to put fans at the heart of the action and reinvent the concept of socios!"
+    advantages:
+      title: "Member benefits"
+      subtitle: "of CourtSideClub"
+      discover_advantages: "Discover the benefits"
+      cards:
+        boss:
+          title: "Become the boss of a 3X3 basketball team"
+          description: "CourtSideClub members will have the opportunity to influence the management of our 3X3 team through their voting rights."
+        tickets:
+          title: "Win tickets for games"
+          description: "Tickets for your favorite teams' games will be offered throughout the year to members."
+        meetings:
+          title: "Privileged meetings"
+          description: "CourtSideClub members will benefit from unique opportunities to meet professional players and exchange with them after games or during video conferences."
+        advice:
+          title: "Get pro advice"
+          description: "Access exclusive advice from professional players and experienced coaches to improve your game and achieve your goals on the court."
+
+  # Authentication
+  auth:
+    sign_up: "Sign up"
+    sign_in: "Sign in"
+    sign_out: "Sign out"
+    already_member: "Already a member?"
+    not_member: "Not a member yet?"
+
+  # Common actions
+  actions:
+    edit: "Edit"
+    delete: "Delete"
+    save: "Save"
+    cancel: "Cancel"
+    back: "Back"
+    next: "Next"
+    previous: "Previous"
+    confirm: "Confirm"
+    publish: "Publish"
+    draft: "Draft"
+    view: "View"
+
+  # Articles
+  articles:
+    title: "Articles"
+    new: "New article"
+    edit: "Edit article"
+    published: "Published articles"
+    drafts: "Drafts"
+    no_articles: "No articles"
+    no_drafts: "No drafts"
+    created_on: "Created on"
+    published_on: "Published on"
+    by: "by"
+
+  # Forms
+  forms:
+    title: "Title"
+    content: "Content"
+    photo: "Photo"
+    tags: "Tags (comma separated)"
+    youtube_url: "YouTube URL"
+    instagram_url: "Instagram URL"
+    publish_date: "Publication date"
+    optional: "(optional)"
+
+  # Messages
+  messages:
+    success:
+      article_created: "Article created successfully!"
+      article_updated: "Article updated successfully!"
+      article_published: "Article published successfully!"
+      article_deleted: "Article deleted successfully!"
+    errors:
+      access_denied: "You don't have the necessary permissions."
+      article_not_found: "This article is not available."
+      cannot_edit: "You cannot edit this article."
+      cannot_publish: "You cannot publish this article."
+      complete_fields: "Please complete the title and content before publishing."
+
+  # Language switcher
+  language:
+    french: "Français"
+    english: "English"
+    switch_to: "Change language"
+
+  # Vote campaigns
+  vote_campaigns:
+    title: "Vote Campaigns"
+    subtitle: "Participate in CourtSideClub community votes and earn points!"
+    sections:
+      active:
+        title: "Ongoing votes"
+        status: "Ongoing"
+        until: "Until"
+        action: "View and vote"
+        voted: "You have voted"
+      upcoming:
+        title: "Upcoming votes"
+        status: "Coming soon"
+        starts: "Starts on"
+        action: "View details"
+      past:
+        title: "Completed votes"
+        status: "Completed"
+        ended: "Ended on"
+        action: "View results"
+    stats:
+      players: "players"
+      votes: "votes"
+    empty_state:
+      title: "No vote campaigns"
+      description: "There are currently no vote campaigns available."
+      back_to_dashboard: "Back to dashboard"
+    show:
+      back_to_votes: "Back to votes"
+      status:
+        active: "Vote in progress"
+        upcoming: "Coming soon"
+        past: "Vote ended"
+      dates: "From %{start_date} to %{end_date}"
+      players_available: "Available players"
+      tournaments: "tournaments"
+      votes: "votes"
+      vote_button: "Vote"
+      vote_confirm: "Are you sure you want to vote for %{player_name}? This choice is final."
+      your_choice: "Your choice"
+      stats:
+        players_available: "Available players"
+        votes_cast: "Votes cast"
+        time_remaining: "Time remaining"
+        before_start: "Before start"
+        finished: "Finished"
+        vote_closed: "Vote closed"
+      messages:
+        thank_you: "Thank you for your vote!"
+        voted_for: "You voted for %{player_name} on %{date}"
+        vote_for_player: "Vote for your favorite player!"
+        vote_description: "Click on the player of your choice to vote. You will earn 10 points!"
+        login_required: "Sign in to vote"
+        login_description: "You must be logged in to participate in the vote."
+        sign_in: "Sign in"
+    admin:
+      campaign_details: "Campaign details: %{title}"
+      back_to_dashboard: "← Back to dashboard"
+      general_info: "General information"
+      title: "Title"
+      description: "Description"
+      start_date: "Start date"
+      end_date: "End date"
+      status: "Status"
+      total_votes: "Total votes"
+      active: "Active"
+      inactive: "Inactive"
+      participating_players: "Participating players (%{count})"
+      tournaments_played: "Tournaments played: %{count}"
+      no_players: "No players have been added to this campaign."
+      edit: "Edit"
+      delete: "Delete"
+      delete_confirm: "Are you sure you want to delete this campaign?"
+
+  # Static pages
+  pages:
+    discover:
+      title: "Discover CourtSideClub"
+      description: "Discover CourtSideClub, the project that revolutionizes 3X3 basketball by placing fans at the heart of the action."
+      hero:
+        title: "Courtside Club"
+        subtitle: "Experience 3X3 basketball differently"
+        description1: "Courtside Club is much more than a 3X3 basketball team: it's an innovative project that places supporters at the heart of the adventure."
+        description2: "We believe that fans deserve more than watching a game from the stands or behind a screen. With Courtside Club, everyone will be able to actively participate in the team's life and become a real actor in its development."
+      experience:
+        title: "A unique experience for"
+        subtitle: "supporters"
+        cards:
+          influence:
+            title: "Influence decisions"
+            description: "Through your votes, you take part in certain choices around the team."
+          games:
+            title: "Participate in exclusive games"
+            description: "Around players, the club and our partners."
+          community:
+            title: "Join a community"
+            description: "Of passionate people and share your love of basketball."
+          rewards:
+            title: "Unlock rewards"
+            description: "Exclusive and unique benefits."
+          points:
+            title: "Accumulate points"
+            description: "Every interaction – vote, game, shop purchase or event participation – earns you points."
+          progress:
+            title: "Progress in the community"
+            description: "Unlock different statuses and levels, with exclusive benefits and rewards."
+      sponsors:
+        title: "A strong link between"
+        subtitle: "supporters and sponsors"
+        description: "Courtside Club is not limited to the sports experience. Through gamification, we also create a bridge between sponsors and supporters:"
+        features:
+          events: "events and activations that allow you to earn points"
+          experiences: "unique experiences to discover partners"
+          ecosystem: "a living ecosystem around basketball, where everyone – club, fans and sponsors – finds their place and benefits from this proximity"
+      why_different:
+        title: "Why Courtside Club is"
+        subtitle: "different?"
+        description1: "Our ambition is to create a new relationship between high-level sport and supporters, based on interaction, proximity and play."
+        description2: "By integrating gamification mechanisms, we transform team support into a real, dynamic and rewarding experience."
+        ambition_title: "Courtside Club wants to become a reference in tomorrow's sport:"
+        goals:
+          connected: "a club connected to its fans"
+          community: "a united and engaged community"
+          innovation: "an innovative model of supporter and sponsor experience"
+      vision:
+        title: "Our"
+        subtitle: "Vision"
+        description: "Transform 3X3 basketball in France and create a new era of fan engagement"
+        cards:
+          international:
+            title: "International 3X3 basketball"
+            description: "Launch a 3X3 basketball team to reach the FIBA World Tour and represent France on the international stage."
+          fans:
+            title: "Fan Community"
+            description: "Place fans at the heart of the action by giving them real decision-making power over team and player management."
+          innovation:
+            title: "Sports Innovation"
+            description: "Reinvent the concept of socios and make sports business ownership and 3X3 basketball team management accessible to everyone."
+      how_it_works:
+        title: "How it"
+        subtitle: "Works?"
+        description: "Become a real CourtSideClub player in a few simple steps"
+        steps:
+          join:
+            title: "Join"
+            description: "Join the CourtSideClub community and get your member status with voting rights."
+          vote:
+            title: "Vote"
+            description: "Participate in important decisions: player choices, team strategies, events."
+          win:
+            title: "Win"
+            description: "Enjoy exclusive benefits: match tickets, player meetings, coaching."
+          evolve:
+            title: "Evolve"
+            description: "Level up and unlock new privileges and responsibilities within the club."
+      values:
+        title: "Our"
+        subtitle: "Values"
+        passion:
+          title: "Passion"
+          description: "Basketball is more than a sport, it's a passion that unites us all. We believe in the power of this passion to create something extraordinary."
+        transparency:
+          title: "Transparency"
+          description: "Every decision, every vote, every action is transparent. Members know exactly what's happening in their club."
+        community:
+          title: "Community"
+          description: "We build together. Each member brings their voice, ideas and passion to grow CourtSideClub."
+        innovation:
+          title: "Innovation"
+          description: "We rethink the traditional sports model to create something new, inclusive and exciting."
+      cta:
+        title: "Join the"
+        subtitle: "adventure"
+        description1: "Whether you're a basketball enthusiast, 3X3 amateur or simply curious, Courtside Club opens its doors to you."
+        description2: "Come vibrate with us, earn points, unlock your statuses, live exclusive moments and above all... be part of the team."
+        join_button: "Join CourtSideClub"
+        learn_more_button: "Learn more"
+
+    advantages:
+      title: "Benefits and Rewards"
+      description: "Discover how to earn points on CourtSideClub and unlock exclusive rewards. Vote for your players, participate in events and level up in the community."
+      hero:
+        title: "Your"
+        subtitle: "Benefits"
+        description: "Discover how to earn points and unlock exclusive rewards"
+        intro1: "At CourtSideClub, every interaction counts! Vote, play, participate and level up to access unique benefits."
+        intro2: "The more active you are, the more you progress in the community hierarchy and the more exclusive privileges you unlock."
+      points:
+        title: "How to"
+        subtitle: "earn points"
+        description: "Several ways to accumulate points and progress"
+        vote:
+          title: "Vote"
+          points: "+10 points"
+          description: "Participate in voting campaigns to choose players and influence club decisions."
+          badge: "One vote per campaign"
+        play:
+          title: "Play"
+          points: "+5 points"
+          description: "Participate in mini-games and challenges to earn additional points."
+          badge: "Per game"
+        share:
+          title: "Share"
+          points: "+3 points"
+          description: "Share content on social networks and invite your friends."
+          badge: "Per share"
+        quiz:
+          title: "Quiz & Games"
+          points: "+5 to +20 points"
+          description: "Test your knowledge about basketball and our partners. The more you succeed, the more you earn!"
+          badge: "Points per question"
+        articles:
+          title: "Articles"
+          points: "+25 points"
+          description: "Share your passion by writing articles about basketball and the CourtSideClub community."
+          badge: "Published article"
+        events:
+          title: "Events"
+          points: "+50 points"
+          description: "Participate in events organized by the club and our partners for bonus points."
+          badge: "Participation"
+        shop:
+          title: "Shop"
+          points: "+1 point/€"
+          description: "Every euro spent in our shop earns you points to progress."
+          badge: "1€ = 1 point"
+        referral:
+          title: "Referral"
+          points: "+100 points"
+          description: "Invite your friends to join CourtSideClub and receive bonus points for each referral."
+          badge: "Successful referral"
+      levels:
+        title: "Level"
+        subtitle: "system"
+        description: "Progress through the hierarchy and unlock exclusive benefits"
+        tiers:
+          rookie:
+            name: "🏀 Rookie"
+            levels: "Levels 1-5"
+            benefits:
+              - "Access to voting campaigns"
+              - "Quiz participation"
+              - "Shop access"
+          fan:
+            name: "⭐ Fan"
+            levels: "Levels 6-15"
+            benefits:
+              - "Access to premium articles"
+              - "Early notifications"
+              - "5% shop discount"
+          super_fan:
+            name: "🔥 Super Fan"
+            levels: "Levels 16-30"
+            benefits:
+              - "Access to exclusive events"
+              - "10% shop discount"
+              - "Exclusive partner content"
+          mvp_fan:
+            name: "💎 MVP Fan"
+            levels: "Levels 31-50"
+            benefits:
+              - "Player meetings"
+              - "15% shop discount"
+              - "Behind-the-scenes access"
+          legend:
+            name: "🏆 Legend"
+            levels: "Levels 51-75"
+            benefits:
+              - "VIP match tickets"
+              - "20% shop discount"
+              - "Influence on club decisions"
+          elite:
+            name: "👑 Elite"
+            levels: "Levels 76-90"
+            benefits:
+              - "Access to board meetings"
+              - "25% shop discount"
+              - "Honorary member status"
+          master:
+            name: "🌟 Master"
+            levels: "Levels 91-99"
+            benefits:
+              - "Veto right on certain decisions"
+              - "30% shop discount"
+              - "Living legend status"
+          goat:
+            name: "🐐 GOAT"
+            levels: "Level 100"
+            benefits:
+              - "Founding member status"
+              - "50% shop discount"
+              - "Maximum influence on the club"
+              - "Access to all events"
+      rewards:
+        title: "Exclusive"
+        subtitle: "rewards"
+        description: "Unique benefits for each community level"
+        categories:
+          events:
+            title: "Event access"
+            items:
+              - "Home match tickets"
+              - "Exclusive events with players"
+              - "Behind-the-scenes match access"
+          shop:
+            title: "Shop benefits"
+            items:
+              - "Progressive discounts by level"
+              - "Exclusive products in advance"
+              - "Free shipping from level 30"
+          community:
+            title: "Community influence"
+            items:
+              - "Access to exclusive polls"
+              - "Propose ideas for the club"
+              - "Participate in important decisions"
+          content:
+            title: "Premium content"
+            items:
+              - "Exclusive training videos"
+              - "Behind-the-scenes photos"
+              - "Exclusive player interviews"
+      progression:
+        title: "Your"
+        subtitle: "progress"
+        description: "Track your evolution in the community"
+        personal_stats:
+          title: "Personal statistics"
+          items:
+            - "Total accumulated points"
+            - "Current level and progress"
+            - "Completed activities"
+            - "Unlocked rewards"
+        objectives:
+          title: "Goals to achieve"
+          items:
+            - "Next level to unlock"
+            - "Points needed"
+            - "New rewards"
+            - "Community challenges"
+        cta:
+          title: "Ready to start your adventure?"
+          description: "Join CourtSideClub and start accumulating points today!"
+          dashboard: "My Dashboard"
+          join: "Join CourtSideClub"
+          login: "Sign in"
+
+    contact:
+      title: "Contact"
+      description: "Contact the CourtSideClub team for any questions, suggestions or partnership requests. We're here to support you in your basketball experience."
+      hero:
+        title: "Contact us"
+        subtitle: "A question, a problem?"
+      form:
+        title: "Send us a message"
+        description: "We will respond as soon as possible."
+        message_label: "Your message"
+        submit: "Send message"
+      info:
+        email:
+          title: "Email"
+          address: "contact@courtsideclub.io"
+        phone:
+          title: "Phone"
+          number: "+33 1 23 45 67 89"
+        address:
+          title: "Address"
+          location: "123 Basketball Street, 75001 Paris, France"
+
+    faq:
+      title: "FAQ"
+      description: "Find answers to your questions about CourtSideClub. How to earn points, use rewards, become a partner and much more."
+      hero:
+        title: "FAQ"
+        subtitle: "Quickly find answers to your questions"
+      users_section:
+        title: "User Questions"
+        subtitle: "Everything you need to know as a CourtSideClub member"
+        questions:
+          membership:
+            question: "How to join CourtSideClub?"
+            answer:
+              intro: "Joining CourtSideClub is simple and quick:"
+              steps:
+                - "Go to our registration page"
+                - "Fill out the form with your personal information"
+                - "Confirm your email address"
+                - "Choose your membership plan"
+          points_system:
+            question: "How does the points system work?"
+            answer:
+              intro: "The CourtSideClub points system rewards your engagement:"
+              points:
+                - "Votes: 10 points per vote in campaigns"
+                - "Quizzes: Points based on your score and difficulty"
+                - "Participation: Bonus points for community engagement"
+                - "Levels: Rookie → Fan → Super Fan → MVP → Legend → Elite → Master → GOAT"
+              conclusion: "The more you participate, the more you level up and unlock exclusive benefits!"
+          voting:
+            question: "How to participate in votes?"
+            answer:
+              intro: "Participating in votes is very simple:"
+              steps:
+                - "Log in to your account"
+                - "Go to the \"Votes\" section"
+                - "Choose an active voting campaign"
+                - "Select your favorite player"
+                - "Confirm your vote"
+              note: "Important: You can only vote once per campaign. Each vote earns you 10 points!"
+          minigames:
+            question: "What mini-games are available?"
+            answer:
+              intro: "CourtSideClub offers a variety of educational mini-games:"
+              games:
+                - "Basketball Quiz: Test your knowledge of 3X3 basketball"
+                - "History Quiz: Discover basketball history"
+                - "Players Quiz: Do you know the 3X3 stars?"
+                - "Memory games: Train your brain"
+              conclusion: "All games allow you to earn points and learn while having fun!"
+          benefits:
+            question: "What benefits can I get?"
+            answer:
+              intro: "CourtSideClub benefits evolve with your level:"
+              levels:
+                - "Beginner levels: Access to exclusive content, premium newsletter"
+                - "Intermediate levels: Event invitations, partner discounts"
+                - "Advanced levels: Player meetings, VIP at matches"
+                - "Expert levels: Participation in team decisions, exclusive merchandise"
+              link: "Check our Advantages page for more details!"
+      partners_section:
+        title: "Partner Questions"
+        subtitle: "Discover how CourtSideClub can enhance your brand and engage your audience"
+        questions:
+          visibility:
+            question: "How can CourtSideClub increase my brand visibility?"
+            answer:
+              intro: "CourtSideClub offers multiple visibility opportunities for your brand:"
+              opportunities:
+                - "Sponsored quizzes: Create personalized quizzes about your industry"
+                - "Exclusive events: Organize events with our community"
+                - "Co-branded content: Articles and videos featuring your products/services"
+                - "Integration in mini-games: Your brands appear in our educational games"
+                - "Partner newsletter: Direct communication with our members"
+                - "Social networks: Sharing your news on our channels"
+              conclusion: "Every interaction with our community is an opportunity to introduce your brand to a passionate and engaged audience."
+          sponsored_quizzes:
+            question: "How do sponsored quizzes work?"
+            answer:
+              intro: "Sponsored quizzes are an excellent way to engage our community while showcasing your expertise:"
+              features:
+                - "Complete customization: You choose the theme, questions and answers"
+                - "Brand integration: Custom logo, colors and messages"
+                - "Redirect to your activities: Direct links to your site or offers"
+                - "Gamification: Players earn points and discover your universe"
+                - "Detailed analytics: Performance and engagement tracking"
+                - "Targeted community: Access to sports and innovation enthusiasts"
+              conclusion: "Our members love learning while having fun, and your quizzes become a vector for education and brand discovery."
+          events:
+            question: "What types of events can you organize?"
+            answer:
+              intro: "CourtSideClub offers a variety of events to showcase your partners:"
+              event_types:
+                - "Sports events: Tournaments, demonstrations, player meetings"
+                - "Workshops and training: Share your expertise with our community"
+                - "Product launches: Present your new products in advance"
+                - "Conferences and webinars: Exchange on current topics"
+                - "Networking events: Meet enthusiasts and professionals"
+                - "Challenges and contests: Create engaging competitions"
+              conclusion: "Each event is an opportunity to create authentic connections with our community and position your brand as an innovative player in the sector."
+          community_value:
+            question: "What is the added value of your community?"
+            answer:
+              intro: "Our CourtSideClub community represents unique capital for your partnerships:"
+              values:
+                - "Authentic engagement: Active members who participate daily"
+                - "Sports passion: Audience naturally receptive to innovations"
+                - "Demographic diversity: 18-45 years old, urban, connected and informed consumers"
+                - "Community influence: Our members actively share and recommend"
+                - "Technology appetite: Open to new digital experiences"
+                - "Brand loyalty: Trust relationship established with CourtSideClub"
+              conclusion: "This community is not just an audience, it's an ecosystem of potential ambassadors for your brand."
+          custom_partnership:
+            question: "How to create an innovative and personalized partnership?"
+            answer:
+              intro: "Each CourtSideClub partnership is unique and adapted to your objectives:"
+              features:
+                - "Personalized audit: Analysis of your needs and industry sector"
+                - "Tailored proposal: Combination of several engagement levers"
+                - "Continuous innovation: Testing new approaches and real-time optimization"
+                - "Flexibility: Partnership adaptation according to your evolution"
+              conclusion: "We believe that the best partnerships are born from creativity and adaptation. Contact us to explore the possibilities together!"
+      contact_section:
+        title: "Didn't find your answer?"
+        subtitle: "Our team is here to help you!"
+        contact_button: "Contact us"
+
+    equipe:
+      title: "The team"
+      description: "Discover the team behind CourtSideClub, our values and our vision to revolutionize 3X3 basketball."
+      hero:
+        title: "Meet the team"
+        subtitle: "CourtSideClub is a concentration of excellence and expertise."
+        description: "Composed of high-level basketball players, a recognized professional coach, experts in technological innovation and retail experts, it embodies the perfect combination of expertise to create a unique experience around basketball."
+        cta: "Join us to benefit from our common passion and our commitment to offer the best to our members."
+      members:
+        nicolas:
+          name: "Nicolas"
+          title: "Co-founder & CEO"
+          description: "Nico has been working in the world of new technologies for more than 15 years and has played basketball for 25 years as an amateur."
+          expertise:
+            - "Tech"
+            - "Basketball"
+            - "Leadership"
+        julien:
+          name: "Julien"
+          title: "Chief Basketball Officer & Associate"
+          description: "Professional assistant coach for more than 5 years, in Betclic Elite and NBA Summer League, he regularly trains NBA and Euroleague players."
+          expertise:
+            - "Coaching"
+            - "Pro"
+            - "NBA"
+        valentin:
+          name: "Valentin"
+          title: "Chief Technical Officer & Associate"
+          description: "Web3 expert, Sport Lover, IT Ninja. Serial Entrepreneur, this project allows me to combine my passions for web3 & sport."
+          expertise:
+            - "Web3"
+            - "Tech"
+            - "Innovation"
+        adrien:
+          name: "Adrien"
+          title: "Gamification Product Developer"
+          description: "Amateur basketball player and coach for more than 20 years, tech lover converted to web developer. He combines his passion for sport with tech to create engaging experiences."
+          expertise:
+            - "Tech"
+            - "Gamification"
+            - "Basketball"
+
+    partenariat:
+      title: "Become a partner"
+      description: "Join CourtSideClub as a partner and participate in the 3X3 basketball revolution."
+      hero:
+        title: "Become a Partner"
+        subtitle: "Join the CourtSideClub adventure and enhance your brand with a passionate community"
+      advantages:
+        title: "Why become a CourtSideClub partner?"
+        subtitle: "Discover the unique opportunities we offer our partners"
+        cards:
+          visibility:
+            title: "Premium Visibility"
+            description: "Expose your brand to an engaged community of basketball and sports innovation enthusiasts."
+          quizzes:
+            title: "Sponsored Quizzes"
+            description: "Create personalized quizzes that redirect to your activities and engage our community in a fun way."
+          events:
+            title: "Exclusive Events"
+            description: "Organize unique events with our community and create authentic connections with your audience."
+          community:
+            title: "Engaged Community"
+            description: "Access an audience of 18-45 year olds, urban, connected and passionate about sport and innovation."
+          innovation:
+            title: "Continuous Innovation"
+            description: "Test new marketing approaches and stay at the forefront of innovation in sports business."
+          customization:
+            title: "Customized Personalization"
+            description: "Each partnership is unique and adapted to your specific objectives, with personalized support."
+      process:
+        title: "How does it work?"
+        subtitle: "A simple and personalized process to create a tailor-made partnership"
+        steps:
+          contact:
+            title: "Initial Contact"
+            description: "Send us a message via the form below to present your project and objectives."
+          study:
+            title: "Personalized Study"
+            description: "We analyze your needs and create a tailor-made proposal that combines several engagement levers."
+          presentation:
+            title: "Presentation Meeting"
+            description: "We present our proposal and discuss together the terms of the partnership."
+          launch:
+            title: "Launch & Follow-up"
+            description: "Partnership implementation with personalized support and performance monitoring."
+      partners:
+        title: "They trust us"
+        subtitle: "Discover the partners who have joined the CourtSideClub adventure"
+        cta:
+          title: "Join this prestigious list!"
+          description: "Become the next partner to trust us"
+      contact:
+        title: "Interested in a partnership?"
+        subtitle: "Contact us to discuss your projects and discover our opportunities"
+        form:
+          company: "Your company name"
+          first_name: "Contact first name"
+          last_name: "Contact last name"
+          email: "Professional email"
+          phone: "Phone (optional)"
+          content: "Describe your project and objectives"
+          submit: "Send my partnership request"
+
+    historique:
+      title: "History"
+      description: "Discover the history of CourtSideClub and the important milestones in our development."
+
+  # Articles/News
+  articles:
+    index:
+      title: "Articles"
+      description: "Discover all CourtSideClub articles about basketball, news, tips and community fan analysis."
+      breadcrumb:
+        home: "Home"
+        articles: "Articles"
+      hero:
+        title: "CourtSideClub News"
+        subtitle: "Discover all the news from your favorite basketball club"
+      sections:
+        published:
+          title: "Published articles"
+          count: "%{count} published article(s)"
+        stats:
+          info: "published article"
+          info_plural: "published articles"
+      empty_state:
+        title: "No published articles"
+        description: "Be the first to share news with the CourtSideClub community!"
+        first_article: "Write the first article"
+      thumbnails:
+        video: "Video"
+        instagram: "Instagram"
+        article: "Article"
+    show:
+      breadcrumb:
+        home: "Home"
+        articles: "Articles"
+      meta:
+        published: "Published on %{date}"
+        draft: "Draft"
+        author: "CourtSideClub"
+      video:
+        title: "Associated video"
+        youtube_title: "YouTube video"
+      instagram:
+        view_on_instagram: "View on Instagram"
+      actions:
+        back_to_articles: "Back to articles"
+        draft_badge: "Draft"
+      sidebar:
+        other_articles: "Other articles"
+        no_articles: "No other articles available at the moment."
+        view_all: "View all articles"
+
+  # User dashboard
+  dashboard:
+    title: "My locker"
+    breadcrumb:
+      home: "Home"
+      dashboard: "My locker"
+    welcome:
+      greeting: "Hi %{first_name}!"
+      subtitle: "Welcome to your CourtSideClub dashboard"
+    level:
+      points: "points"
+      progress_text: "%{points} more points until level %{level_name}"
+    votes:
+      pending:
+        title: "Pending votes"
+        description: "You have ongoing votes"
+      up_to_date:
+        title: "Votes up to date"
+        description: "No ongoing votes"
+    actions:
+      history:
+        title: "History"
+        subtitle: "My CourtSide commitments"
+      earn_points:
+        title: "Earn points"
+        subtitle: "Get involved in the CourtSideClub community and earn points!"
+      rewards:
+        title: "Rewards"
+        subtitle: "My available benefits"
+    quick_actions:
+      title: "Quick actions"
+      vote_community: "Vote for your community"
+      my_profile: "My profile"
+      mini_games: "Mini-games"
+
+  # History page
+  historique:
+    title: "My history"
+    breadcrumb:
+      dashboard: "My locker"
+      historique: "History"
+    hero:
+      title: "My History"
+      subtitle: "Track all your interactions with the CourtSideClub community"
+    stats:
+      votes_completed: "Votes completed"
+      quizzes_completed: "Quizzes completed"
+      points_earned: "Points earned"
+    activities:
+      points: "points"
+      vote: "Vote"
+      quiz: "Quiz"
+    empty_state:
+      title: "No activity yet"
+      description: "Start interacting with the community to see your history fill up!"
+      actions:
+        participate_votes: "Participate in votes"
+        play_mini_games: "Play mini-games"
+    pagination:
+      previous: "Previous"
+      next: "Next"
+      navigation: "History navigation"
+
+  # Mini-games page
+  mini_games:
+    title: "Mini-games"
+    breadcrumb:
+      dashboard: "My locker"
+      mini_games: "Mini-games"
+    hero:
+      title: "CourtSideClub Mini-games"
+      subtitle: "Participate in our mini-games and earn points to advance in the CourtSideClub community! Here you can discover games in partnership with our sponsors and learn more about your club, its history, its players, its supporters and much more!"
+    quiz_section:
+      title: "Available quizzes"
+      subtitle: "%{count} quiz available"
+      stats:
+        questions: "question"
+        questions_plural: "questions"
+        max_points: "max points"
+        points_earned: "Points earned: %{score}/%{max}"
+      actions:
+        completed: "Already played"
+        play_now: "Play now"
+        completed_badge: "Completed"
+      empty_state:
+        title: "No games available"
+        description: "Mini-games will be available soon!"
+    coming_soon:
+      title: "Coming soon"
+      subtitle: "Other mini-games are coming soon!"
+      badge: "Soon"
+      games:
+        puzzle:
+          title: "CourtSideClub Puzzle"
+          description: "Reconstruct player photos"
+        quiz_chrono:
+          title: "Chrono Quiz"
+          description: "Answer as fast as possible"
+        shoot_challenge:
+          title: "Shoot Challenge"
+          description: "Aim and score baskets"
+
+  # Quiz game page
+  quiz_game:
+    breadcrumb:
+      dashboard: "My locker"
+      mini_games: "Mini-games"
+    start_screen:
+      ready_title: "Ready to start?"
+      info:
+        questions: "questions"
+        selected_randomly: "Selected randomly"
+        time_per_question: "24 seconds"
+        time_description: "Per question (basketball possession)"
+        max_points: "points"
+        max_points_description: "Maximum possible"
+      start_button: "Start Quiz"
+    game_screen:
+      question_counter: "Question %{current} of %{total}"
+      score_display: "Score: %{score} pts"
+      timer_label: "seconds remaining"
+    results_screen:
+      title: "Quiz Completed!"
+      stats:
+        points_earned: "Points earned"
+        correct_answers: "Correct answers"
+        questions: "Questions"
+      level_up:
+        congratulations: "Congratulations!"
+        new_level: "You've reached level %{level}!"
+      actions:
+        back_to_mini_games: "Back to Mini-games"
+        my_locker: "My Locker"
+    loading:
+      preparing: "Preparing quiz..."
+
+  # Admin quiz games
+  admin_quiz_games:
+    edit:
+      title: "Edit game"
+      form:
+        title: "Title"
+        description: "Description"
+        points_per_question: "Points per correct answer"
+        active: "Active"
+      actions:
+        save: "Save"
+        back: "Back"
+
+  # Devise pages (Authentication)
+  devise:
+    sessions:
+      title: "Sign in"
+      subtitle: "Access your member space"
+      email_label: "Email"
+      email_placeholder: "your@email.com"
+      password_label: "Password"
+      password_placeholder: "••••••••"
+      remember_me: "Remember me"
+      forgot_password: "Forgot password?"
+      submit: "Sign in"
+      error_message: "Invalid email or password"
+      divider: "or"
+      signup_text: "Not a member yet?"
+      signup_link: "Join CourtSideClub"
+    registrations:
+      new:
+        title: "Join CourtSideClub"
+        subtitle: "Create your account to access member benefits"
+        first_name_label: "First name"
+        first_name_placeholder: "Your first name"
+        last_name_label: "Last name"
+        last_name_placeholder: "Your last name"
+        email_label: "Email"
+        email_placeholder: "your@email.com"
+        birthdate_label: "Date of birth"
+        photo_label: "Profile photo"
+        photo_hint: "JPG, PNG or GIF format (max 5MB)"
+        password_label: "Password"
+        password_placeholder: "••••••••"
+        password_hint: "%{count} characters minimum"
+        password_confirmation_label: "Confirm password"
+        password_confirmation_placeholder: "••••••••"
+        submit: "Create my account"
+        divider: "or"
+        login_text: "Already a member?"
+        login_link: "Sign in"
+      edit:
+        title: "My profile"
+        subtitle: "Modify your personal information"
+        first_name_label: "First name"
+        first_name_placeholder: "Your first name"
+        last_name_label: "Last name"
+        last_name_placeholder: "Your last name"
+        email_label: "Email"
+        email_placeholder: "your@email.com"
+        pending_confirmation: "Currently waiting confirmation for:"
+        birthdate_label: "Date of birth"
+        photo_section:
+          title: "Profile photo"
+          subtitle: "Add a photo to personalize your profile"
+          current_photo: "Current photo:"
+          no_photo: "No profile photo"
+          no_photo_text: "No photo"
+          change_label: "Change photo"
+          change_hint: "JPG, PNG or GIF format (max 5MB). Leave empty to keep current one."
+          current_photo_alt: "Current profile photo"
+        password_section:
+          title: "Change password"
+          subtitle: "Leave empty if you don't want to change it"
+          new_password_label: "New password"
+          new_password_placeholder: "••••••••"
+          new_password_hint: "Leave empty to not change"
+          password_confirmation_label: "Confirm password"
+          password_confirmation_placeholder: "••••••••"
+          current_password_label: "Current password"
+          current_password_placeholder: "••••••••"
+          current_password_hint: "Required to confirm changes"
+        submit: "Update"
+        divider: "or"
+        danger_zone:
+          title: "Danger zone"
+          text: "This action is irreversible and will permanently delete your account."
+          delete_button: "Delete my account"
+          delete_confirm: "Are you sure you want to delete your account? This action is irreversible."
+        back_link: "Back to dashboard"
+
+    nos_partenaires:
+      title: "Our partners"
+      description: "Discover our partners who accompany us in this 3X3 basketball adventure."
+      hero:
+        title: "Our Partners"
+        subtitle: "Discover the companies that trust us and support us in our mission"
+      grid:
+        title: "They trust us"
+        subtitle: "A community of partners committed to French basketball"
+        partners:
+          premium:
+            name: "Premium Partner"
+            category: "Main Sponsor"
+            description: "A trusted partner who has been supporting us in our development from the beginning."
+            since: "Since 2024"
+          sport:
+            name: "Sports Partner"
+            category: "Equipment"
+            description: "Sports equipment specialist who shares our passion for basketball."
+            since: "Since 2024"
+          tech:
+            name: "Tech Partner"
+            category: "Innovation"
+            description: "Technology leader helping us create unique digital experiences."
+            since: "Since 2024"
+          health:
+            name: "Health Partner"
+            category: "Wellness"
+            description: "Wellness expert who supports our members in their health and fitness."
+            since: "Since 2024"
+      cta:
+        title: "Would you like to become a partner?"
+        subtitle: "Join our community and benefit from our expertise in French basketball"
+        become_partner: "Become a partner"
+        contact_us: "Contact us"
+
+
+  # Date and time formats
+  date:
+    formats:
+      default: "%m/%d/%Y"
+      short: "%b %d, %Y"
+      long: "%B %d, %Y"
+    day_names:
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+    abbr_day_names:
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
+    month_names:
+      - ~
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+    abbr_month_names:
+      - ~
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
+    order:
+      - :month
+      - :day
+      - :year
+
+  time:
+    formats:
+      default: "%m/%d/%Y %I:%M %p"
+      short: "%b %d, %I:%M %p"
+      long: "%B %d, %Y at %I:%M %p"
+    am: "AM"
+    pm: "PM"

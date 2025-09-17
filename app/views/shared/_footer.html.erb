@@ -6,63 +6,74 @@
           <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "footer-logo me-2" %>
           <span class="brand-text">CourtSideClub</span>
         </div>
-        <p class="text-muted mb-4">Donnons le pouvoir aux fans de basket!</p>
+        <p class="text-muted mb-4"><%= t('footer.tagline') %></p>
 
-        <h6 class="mb-2">Recevoir les dernières informations</h6>
+        <h6 class="mb-2"><%= t('footer.newsletter.title') %></h6>
         <%= simple_form_for Notification.new, url: notifications_path, html: { class: "newsletter-form d-flex" } do |f| %>
           <%= f.hidden_field :object, value: "news" %>
           <%= f.input :email,
               label: false,
-              placeholder: "Adresse email",
-              input_html: { class: "form-control", "aria-label": "Adresse email" },
+              placeholder: t('footer.newsletter.placeholder'),
+              input_html: { class: "form-control", "aria-label": t('footer.newsletter.placeholder') },
               wrapper: false %>
-          <%= f.submit "S'inscrire", class: "btn btn-primary ms-2" %>
+          <%= f.submit t('footer.newsletter.button'), class: "btn btn-primary ms-2" %>
         <% end %>
       </div>
 
       <div class="col-6 col-lg-2">
-        <h6 class="footer-title">CourtSideClub.io</h6>
+        <h6 class="footer-title"><%= t('footer.sections.courtsideclub') %></h6>
         <ul class="list-unstyled footer-links">
-          <li><%= link_to 'Le projet', discover_path %></li>
-          <li><%= link_to 'L\'équipe', equipe_path %></li>
-          <li><%= link_to 'Devenir partenaire', partenariat_path %></li>
+          <li><%= link_to t('navigation.discover'), discover_path %></li>
+          <li><%= link_to t('navigation.team'), equipe_path %></li>
+          <li><%= link_to t('navigation.partnership'), partenariat_path %></li>
         </ul>
       </div>
 
       <div class="col-6 col-lg-2">
-        <h6 class="footer-title">Mon compte</h6>
+        <h6 class="footer-title"><%= t('footer.sections.my_account') %></h6>
         <ul class="list-unstyled footer-links">
-          <li><%= link_to 'Mon profil', user_signed_in? ? edit_user_registration_path : new_user_session_path %></li>
-          <li><%= link_to 'Mon vestiaire', dashboard_path %></li>
-          <li><%= link_to 'Mes avantages', advantages_path %></li>
+          <li><%= link_to t('navigation.profile'), user_signed_in? ? edit_user_registration_path : new_user_session_path %></li>
+          <li><%= link_to t('navigation.dashboard'), dashboard_path %></li>
+          <li><%= link_to t('navigation.advantages'), advantages_path %></li>
         </ul>
       </div>
 
       <div class="col-6 col-lg-2">
-        <h6 class="footer-title">Ressources</h6>
+        <h6 class="footer-title"><%= t('footer.sections.resources') %></h6>
         <ul class="list-unstyled footer-links">
-          <li><%= link_to 'Blog', articles_path %></li>
-          <li><%= link_to 'Contact', contact_path %></li>
-          <li><%= link_to 'FAQ', faq_path %></li>
-          <li><%= link_to 'Mentions Légales', root_path %></li>
+          <li><%= link_to t('navigation.blog'), articles_path %></li>
+          <li><%= link_to t('navigation.contact'), contact_path %></li>
+          <li><%= link_to t('navigation.faq'), faq_path %></li>
+          <li><%= link_to t('navigation.legal'), root_path %></li>
         </ul>
       </div>
 
       <div class="col-6 col-lg-2">
-        <h6 class="footer-title">La société</h6>
+        <h6 class="footer-title"><%= t('footer.sections.company') %></h6>
         <ul class="list-unstyled footer-links">
-          <li><%= link_to 'À propos', root_path %></li>
+          <li><%= link_to t('navigation.about'), root_path %></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom d-flex flex-column flex-lg-row justify-content-between align-items-center mt-4">
       <div class="text-muted small mb-3 mb-lg-0">
-        Copyright © <%= Time.current.year %>. All Rights Reserved
+        <%= t('footer.copyright', year: Time.current.year) %>
       </div>
       <div class="social-langs d-flex align-items-center gap-3">
         <div class="langs d-flex align-items-center gap-2">
-          <span class="flag flag-fr" title="Français"></span>
+          <%= link_to switch_locale_path(:fr),
+              class: "flag-link #{'active' if I18n.locale == :fr}",
+              title: t('language.french'),
+              data: { turbo_method: :get } do %>
+            <span class="flag flag-fr"></span>
+          <% end %>
+          <%= link_to switch_locale_path(:en),
+              class: "flag-link #{'active' if I18n.locale == :en}",
+              title: t('language.english'),
+              data: { turbo_method: :get } do %>
+            <span class="flag flag-gb"></span>
+          <% end %>
         </div>
         <div class="social d-flex align-items-center gap-3">
           <a href="https://x.com/courtside_io?lang=fr" aria-label="Twitter" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>

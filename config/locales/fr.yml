@@ -1,0 +1,1127 @@
+fr:
+  # Navigation et menu
+  navigation:
+    home: "Accueil"
+    discover: "Découvrir"
+    team: "L'équipe"
+    partnership: "Devenir partenaire"
+    blog: "Blog"
+    contact: "Contact"
+    faq: "FAQ"
+    advantages: "Mes avantages"
+    dashboard: "Mon vestiaire"
+    profile: "Mon profil"
+    legal: "Mentions Légales"
+    about: "À propos"
+    join_us: "Rejoignez nous"
+    project: "Le projet"
+    votes: "Les votes"
+    partners: "Nos partenaires"
+    news: "Actualités"
+    user_dropdown:
+      my_locker: "Mon vestiaire"
+      my_profile: "Mon profil"
+      votes: "Votes"
+      logout: "Déconnexion"
+      new: "Nouveau"
+      admin: "Admin"
+      connect: "Se connecter"
+
+  # Footer
+  footer:
+    tagline: "Donnons le pouvoir aux fans de basket!"
+    newsletter:
+      title: "Recevoir les dernières informations"
+      placeholder: "Adresse email"
+      button: "S'inscrire"
+    sections:
+      courtsideclub: "CourtSideClub.io"
+      my_account: "Mon compte"
+      resources: "Ressources"
+      company: "La société"
+    copyright: "Copyright © %{year}. All Rights Reserved"
+
+  # Homepage
+  home:
+    title: "Accueil"
+    description: "Découvrez CourtSideClub, la plateforme qui donne le pouvoir aux fans de basket. Votez pour vos joueurs favoris, gagnez des points, débloquez des récompenses exclusives et participez à la communauté."
+    hero:
+      intro: "By hoopers for hoopers"
+      title: "Donnons le pouvoir aux fans"
+      title_highlight: "de"
+      description: "Rejoignez CourtSideClub et impacter le monde du basket 3X3. Libérez votre potentiel et embarquez dans une aventure épique à la conquête du basket 3X3, où nous aspirons à devenir les Mark Cuban 3.0 ! Notre vision: lancer une équipe pro de basket 3X3 pour atteindre le FIBA World Tour, tout en permettant aux membres de CourtSideClub de manager la team et les joueurs. Rendons accessible à tous le sport de haut niveau."
+      join_button: "Rejoindre"
+      login_button: "Déjà membre ?"
+    youtube:
+      description: "Plongez dans l'univers CourtSideClub et découvrez notre vision du basket 3X3"
+    news:
+      title: "Actualités"
+      all_news: "Toutes les actualités"
+      previous: "Précédent"
+      next: "Suivant"
+    discover:
+      title: "Découvrez"
+      subtitle: "CourtSideClub"
+      description: "Chez CourtSideClub, nous visons à vous donner le pouvoir afin de participer activement à la gestion d'une équipe de basket 3X3 de niveau international! Nous voulons placer les fans au cœur de l'action et réinventer le concept des socios!"
+    advantages:
+      title: "Les avantages pour les membres"
+      subtitle: "de CourtSideClub"
+      discover_advantages: "Découvrir les avantages"
+      cards:
+        boss:
+          title: "Deviens le boss d'une équipe de basket 3X3"
+          description: "Les adhérents du CourtSideClub auront la possibilité d'influencer la gestion de notre équipe 3X3, grâce à leur droit de vote."
+        tickets:
+          title: "Gagne tes places pour des matchs"
+          description: "Des billets pour les matchs de vos équipes préférées seront offerts tout au long de l'année aux membres."
+        meetings:
+          title: "Rencontres privilégiées"
+          description: "Les membres du CourtSideClub bénéficieront d'occasions uniques de rencontrer des joueurs professionnels et d'échanger avec eux après les matchs ou lors de visioconférences."
+        advice:
+          title: "Bénéficie de conseils de pros"
+          description: "Accède à des conseils exclusifs de joueurs professionnels et d'entraîneurs expérimentés pour perfectionner ton jeu et atteindre tes objectifs sur le terrain."
+
+  # Authentication
+  auth:
+    sign_up: "S'inscrire"
+    sign_in: "Se connecter"
+    sign_out: "Se déconnecter"
+    already_member: "Déjà membre ?"
+    not_member: "Pas encore membre ?"
+
+  # Common actions
+  actions:
+    edit: "Modifier"
+    delete: "Supprimer"
+    save: "Enregistrer"
+    cancel: "Annuler"
+    back: "Retour"
+    next: "Suivant"
+    previous: "Précédent"
+    confirm: "Confirmer"
+    publish: "Publier"
+    draft: "Brouillon"
+    view: "Voir"
+
+  # Articles
+  articles:
+    title: "Articles"
+    new: "Nouvel article"
+    edit: "Modifier l'article"
+    published: "Articles publiés"
+    drafts: "Brouillons"
+    no_articles: "Aucun article"
+    no_drafts: "Aucun brouillon"
+    created_on: "Créé le"
+    published_on: "Publié le"
+    by: "par"
+
+  # Forms
+  forms:
+    title: "Titre"
+    content: "Contenu"
+    photo: "Photo"
+    tags: "Tags (séparés par des virgules)"
+    youtube_url: "URL YouTube"
+    instagram_url: "URL Instagram"
+    publish_date: "Date de publication"
+    optional: "(optionnel)"
+
+  # Messages
+  messages:
+    success:
+      article_created: "Article créé avec succès !"
+      article_updated: "Article mis à jour avec succès !"
+      article_published: "Article publié avec succès !"
+      article_deleted: "Article supprimé avec succès !"
+    errors:
+      access_denied: "Vous n'avez pas les permissions nécessaires."
+      article_not_found: "Cet article n'est pas disponible."
+      cannot_edit: "Vous ne pouvez pas modifier cet article."
+      cannot_publish: "Vous ne pouvez pas publier cet article."
+      complete_fields: "Veuillez compléter le titre et le contenu avant de publier."
+
+  # Language switcher
+  language:
+    french: "Français"
+    english: "English"
+    switch_to: "Changer la langue"
+
+  # Vote campaigns
+  vote_campaigns:
+    title: "Campagnes de Vote"
+    subtitle: "Participez aux votes de la communauté CourtSideClub et gagnez des points !"
+    sections:
+      active:
+        title: "Votes en cours"
+        status: "En cours"
+        until: "Jusqu'au"
+        action: "Voir et voter"
+        voted: "Vous avez voté"
+      upcoming:
+        title: "Votes à venir"
+        status: "Bientôt"
+        starts: "Débute le"
+        action: "Voir les détails"
+      past:
+        title: "Votes terminés"
+        status: "Terminé"
+        ended: "Terminé le"
+        action: "Voir les résultats"
+    stats:
+      players: "joueurs"
+      votes: "votes"
+    empty_state:
+      title: "Aucune campagne de vote"
+      description: "Il n'y a actuellement aucune campagne de vote disponible."
+      back_to_dashboard: "Retour au dashboard"
+    show:
+      back_to_votes: "Retour aux votes"
+      status:
+        active: "Vote en cours"
+        upcoming: "Bientôt disponible"
+        past: "Vote terminé"
+      dates: "Du %{start_date} au %{end_date}"
+      players_available: "Joueurs disponibles"
+      tournaments: "tournois"
+      votes: "votes"
+      vote_button: "Voter"
+      vote_confirm: "Êtes-vous sûr de vouloir voter pour %{player_name} ? Ce choix est définitif."
+      your_choice: "Votre choix"
+      stats:
+        players_available: "Joueurs disponibles"
+        votes_cast: "Votes exprimés"
+        time_remaining: "Temps restant"
+        before_start: "Avant le début"
+        finished: "Terminé"
+        vote_closed: "Vote clos"
+      messages:
+        thank_you: "Merci pour votre vote !"
+        voted_for: "Vous avez voté pour %{player_name} le %{date}"
+        vote_for_player: "Votez pour votre joueur préféré !"
+        vote_description: "Cliquez sur le joueur de votre choix pour voter. Vous gagnerez 10 points !"
+        login_required: "Connectez-vous pour voter"
+        login_description: "Vous devez être connecté pour participer au vote."
+        sign_in: "Se connecter"
+    admin:
+      campaign_details: "Détails de la campagne : %{title}"
+      back_to_dashboard: "← Retour au dashboard"
+      general_info: "Informations générales"
+      title: "Titre"
+      description: "Description"
+      start_date: "Date de début"
+      end_date: "Date de fin"
+      status: "Statut"
+      total_votes: "Total des votes"
+      active: "Actif"
+      inactive: "Inactif"
+      participating_players: "Joueurs participants (%{count})"
+      tournaments_played: "Tournois joués: %{count}"
+      no_players: "Aucun joueur n'a été ajouté à cette campagne."
+      edit: "Modifier"
+      delete: "Supprimer"
+      delete_confirm: "Êtes-vous sûr de vouloir supprimer cette campagne ?"
+
+  # Static pages
+  pages:
+    discover:
+      title: "Découvrir CourtSideClub"
+      description: "Découvrez CourtSideClub, le projet qui révolutionne le basket 3X3 en plaçant les fans au cœur de l'action."
+      hero:
+        title: "Courtside Club"
+        subtitle: "Vivre le basket 3X3 autrement"
+        description1: "Courtside Club est bien plus qu'une équipe de basket 3X3 : c'est un projet novateur qui place les supporters au cœur de l'aventure."
+        description2: "Nous croyons que les fans méritent plus que de regarder un match depuis les tribunes ou derrière un écran. Avec Courtside Club, chacun pourra participer activement à la vie de l'équipe et devenir un véritable acteur de son développement."
+      experience:
+        title: "Une expérience unique pour les"
+        subtitle: "supporters"
+        cards:
+          influence:
+            title: "Influencez les décisions"
+            description: "Grâce à vos votes, vous prenez part à certains choix autour de l'équipe."
+          games:
+            title: "Participez à des jeux exclusifs"
+            description: "Autour des joueurs, du club et de nos partenaires."
+          community:
+            title: "Rejoignez une communauté"
+            description: "De passionnés et partagez votre amour du basket."
+          rewards:
+            title: "Débloquez des récompenses"
+            description: "Exclusives et des avantages uniques."
+          points:
+            title: "Accumulez des points"
+            description: "Chaque interaction – vote, jeu, achat en boutique ou participation à un évènement – vous rapporte des points."
+          progress:
+            title: "Progressez dans la communauté"
+            description: "Débloquez différents statuts et niveaux, avec des avantages et récompenses exclusives."
+      sponsors:
+        title: "Un lien fort entre"
+        subtitle: "supporters et sponsors"
+        description: "Courtside Club ne se limite pas à l'expérience sportive. Grâce à la gamification, nous créons aussi un pont entre sponsors et supporters :"
+        features:
+          events: "des évènements et activations qui permettent de gagner des points"
+          experiences: "des expériences uniques pour découvrir les partenaires"
+          ecosystem: "un écosystème vivant autour du basketball, où chacun – club, fans et sponsors – trouve sa place et bénéficie de cette proximité"
+      why_different:
+        title: "Pourquoi Courtside Club est"
+        subtitle: "différent ?"
+        description1: "Notre ambition est de créer une nouvelle relation entre le sport de haut niveau et les supporters, fondée sur l'interaction, la proximité et le jeu."
+        description2: "En intégrant des mécanismes de gamification, nous transformons le soutien à une équipe en une véritable expérience, dynamique et gratifiante."
+        ambition_title: "Courtside Club veut devenir une référence dans le sport de demain :"
+        goals:
+          connected: "un club connecté à ses fans"
+          community: "une communauté soudée et engagée"
+          innovation: "un modèle innovant de l'expérience supporter et sponsor"
+      vision:
+        title: "Notre"
+        subtitle: "Vision"
+        description: "Transformer le basket 3X3 en France et créer une nouvelle ère de l'engagement des fans"
+        cards:
+          international:
+            title: "Basket 3X3 international"
+            description: "Lancer une équipe de basket 3X3 pour atteindre le FIBA World Tour et représenter la France sur la scène internationale."
+          fans:
+            title: "Communauté de Fans"
+            description: "Placer les fans au cœur de l'action en leur donnant un véritable pouvoir de décision sur la gestion de l'équipe et des joueurs."
+          innovation:
+            title: "Innovation Sportive"
+            description: "Réinventer le concept des socios et rendre accessible à tous la propriété du sport business et la gestion d'équipe de basket 3X3."
+      how_it_works:
+        title: "Comment ça"
+        subtitle: "Marche?"
+        description: "Devenez un véritable acteur de CourtSideClub en quelques étapes simples"
+        steps:
+          join:
+            title: "Adhérez"
+            description: "Rejoignez la communauté CourtSideClub et obtenez votre statut de membre avec droit de vote."
+          vote:
+            title: "Votez"
+            description: "Participez aux décisions importantes : choix des joueurs, stratégies d'équipe, événements."
+          win:
+            title: "Gagnez"
+            description: "Profitez des avantages exclusifs : places de match, rencontres avec les joueurs, coaching."
+          evolve:
+            title: "Évoluez"
+            description: "Montez en niveau et débloquez de nouveaux privilèges et responsabilités au sein du club."
+      values:
+        title: "Nos"
+        subtitle: "Valeurs"
+        passion:
+          title: "Passion"
+          description: "Le basket est plus qu'un sport, c'est une passion qui nous unit tous. Nous croyons en la force de cette passion pour créer quelque chose d'extraordinaire."
+        transparency:
+          title: "Transparence"
+          description: "Chaque décision, chaque vote, chaque action est transparente. Les membres savent exactement ce qui se passe dans leur club."
+        community:
+          title: "Communauté"
+          description: "Nous construisons ensemble. Chaque membre apporte sa voix, ses idées et sa passion pour faire grandir CourtSideClub."
+        innovation:
+          title: "Innovation"
+          description: "Nous repensons le modèle sportif traditionnel pour créer quelque chose de nouveau, d'inclusif et d'excitant."
+      cta:
+        title: "Rejoignez l'"
+        subtitle: "aventure"
+        description1: "Que vous soyez passionné de basket, amateur de 3X3 ou simple curieux, Courtside Club vous ouvre ses portes."
+        description2: "Venez vibrer avec nous, gagnez des points, débloquez vos statuts, vivez des moments exclusifs et surtout… faites partie de l'équipe."
+        join_button: "Rejoindre CourtSideClub"
+        learn_more_button: "En savoir plus"
+
+    advantages:
+      title: "Avantages et Récompenses"
+      description: "Découvrez comment gagner des points sur CourtSideClub et débloquer des récompenses exclusives. Votez pour vos joueurs, participez aux événements et montez de niveau dans la communauté."
+      hero:
+        title: "Vos"
+        subtitle: "Avantages"
+        description: "Découvrez comment gagner des points et débloquer des récompenses exclusives"
+        intro1: "Chez CourtSideClub, chaque interaction compte ! Votez, jouez, participez et montez en niveau pour accéder à des avantages uniques."
+        intro2: "Plus vous êtes actif, plus vous progressez dans la hiérarchie de la communauté et plus vous débloquez de privilèges exclusifs."
+      points:
+        title: "Comment"
+        subtitle: "gagner des points"
+        description: "Plusieurs façons d'accumuler des points et de progresser"
+        vote:
+          title: "Voter"
+          points: "+10 points"
+          description: "Participez aux campagnes de vote pour choisir les joueurs et influencer les décisions du club."
+          badge: "Vote unique par campagne"
+        play:
+          title: "Jouer"
+          points: "+5 points"
+          description: "Participez aux mini-jeux et défis pour gagner des points supplémentaires."
+          badge: "Par partie"
+        share:
+          title: "Partager"
+          points: "+3 points"
+          description: "Partagez du contenu sur les réseaux sociaux et invitez vos amis."
+          badge: "Par partage"
+        quiz:
+          title: "Quiz & Jeux"
+          points: "+5 à +20 points"
+          description: "Testez vos connaissances sur le basket et nos partenaires. Plus vous réussissez, plus vous gagnez !"
+          badge: "Points par question"
+        articles:
+          title: "Articles"
+          points: "+25 points"
+          description: "Partagez votre passion en écrivant des articles sur le basket et la communauté CourtSideClub."
+          badge: "Article publié"
+        events:
+          title: "Événements"
+          points: "+50 points"
+          description: "Participez aux événements organisés par le club et nos partenaires pour des points bonus."
+          badge: "Participation"
+        shop:
+          title: "Boutique"
+          points: "+1 point/€"
+          description: "Chaque euro dépensé dans notre boutique vous rapporte des points pour progresser."
+          badge: "1€ = 1 point"
+        referral:
+          title: "Parrainage"
+          points: "+100 points"
+          description: "Invitez vos amis à rejoindre CourtSideClub et recevez des points bonus pour chaque parrainage."
+          badge: "Parrainage réussi"
+      levels:
+        title: "Système de"
+        subtitle: "niveaux"
+        description: "Progressez dans la hiérarchie et débloquez des avantages exclusifs"
+        tiers:
+          rookie:
+            name: "🏀 Rookie"
+            levels: "Niveaux 1-5"
+            benefits:
+              - "Accès aux campagnes de vote"
+              - "Participation aux quiz"
+              - "Accès à la boutique"
+          fan:
+            name: "⭐ Fan"
+            levels: "Niveaux 6-15"
+            benefits:
+              - "Accès aux articles premium"
+              - "Notifications en avant-première"
+              - "Réduction de 5% en boutique"
+          super_fan:
+            name: "🔥 Super Fan"
+            levels: "Niveaux 16-30"
+            benefits:
+              - "Accès aux événements exclusifs"
+              - "Réduction de 10% en boutique"
+              - "Contenu exclusif des partenaires"
+          mvp_fan:
+            name: "💎 MVP Fan"
+            levels: "Niveaux 31-50"
+            benefits:
+              - "Rencontres avec les joueurs"
+              - "Réduction de 15% en boutique"
+              - "Accès aux coulisses"
+          legend:
+            name: "🏆 Legend"
+            levels: "Niveaux 51-75"
+            benefits:
+              - "Places VIP aux matchs"
+              - "Réduction de 20% en boutique"
+              - "Influence sur les décisions du club"
+          elite:
+            name: "👑 Elite"
+            levels: "Niveaux 76-90"
+            benefits:
+              - "Accès aux réunions du conseil"
+              - "Réduction de 25% en boutique"
+              - "Statut de membre d'honneur"
+          master:
+            name: "🌟 Master"
+            levels: "Niveaux 91-99"
+            benefits:
+              - "Droit de veto sur certaines décisions"
+              - "Réduction de 30% en boutique"
+              - "Statut de légende vivante"
+          goat:
+            name: "🐐 GOAT"
+            levels: "Niveau 100"
+            benefits:
+              - "Statut de membre fondateur"
+              - "Réduction de 50% en boutique"
+              - "Influence maximale sur le club"
+              - "Accès à tous les événements"
+      rewards:
+        title: "Récompenses"
+        subtitle: "exclusives"
+        description: "Des avantages uniques pour chaque niveau de la communauté"
+        categories:
+          events:
+            title: "Accès aux événements"
+            items:
+              - "Places aux matchs à domicile"
+              - "Événements exclusifs avec les joueurs"
+              - "Accès aux coulisses des matchs"
+          shop:
+            title: "Avantages boutique"
+            items:
+              - "Réductions progressives selon le niveau"
+              - "Produits exclusifs en avant-première"
+              - "Livraison gratuite à partir du niveau 30"
+          community:
+            title: "Influence communautaire"
+            items:
+              - "Accès aux sondages exclusifs"
+              - "Proposer des idées pour le club"
+              - "Participer aux décisions importantes"
+          content:
+            title: "Contenu premium"
+            items:
+              - "Vidéos exclusives des entraînements"
+              - "Photos en coulisses"
+              - "Interviews exclusives des joueurs"
+      progression:
+        title: "Votre"
+        subtitle: "progression"
+        description: "Suivez votre évolution dans la communauté"
+        personal_stats:
+          title: "Statistiques personnelles"
+          items:
+            - "Points totaux accumulés"
+            - "Niveau actuel et progression"
+            - "Activités complétées"
+            - "Récompenses débloquées"
+        objectives:
+          title: "Objectifs à atteindre"
+          items:
+            - "Prochain niveau à débloquer"
+            - "Points nécessaires"
+            - "Nouvelles récompenses"
+            - "Défis communautaires"
+        cta:
+          title: "Prêt à commencer votre aventure ?"
+          description: "Rejoignez CourtSideClub et commencez à accumuler des points dès aujourd'hui !"
+          dashboard: "Mon Dashboard"
+          join: "Rejoindre CourtSideClub"
+          login: "Se connecter"
+
+    contact:
+      title: "Contact"
+      description: "Contactez l'équipe CourtSideClub pour toute question, suggestion ou demande de partenariat. Nous sommes là pour vous accompagner dans votre expérience basket."
+      hero:
+        title: "Contactez-nous"
+        subtitle: "Une question, un problème ?"
+      form:
+        title: "Envoyez-nous un message"
+        description: "Nous vous répondrons dans les plus brefs délais."
+        message_label: "Votre message"
+        submit: "Envoyer le message"
+      info:
+        email:
+          title: "Email"
+          address: "contact@courtsideclub.io"
+        phone:
+          title: "Téléphone"
+          number: "+33 1 23 45 67 89"
+        address:
+          title: "Adresse"
+          location: "123 Rue du Basket, 75001 Paris, France"
+
+    faq:
+      title: "FAQ"
+      description: "Trouvez les réponses à vos questions sur CourtSideClub. Comment gagner des points, utiliser les récompenses, devenir partenaire et bien plus encore."
+      hero:
+        title: "FAQ"
+        subtitle: "Trouvez rapidement les réponses à vos questions"
+      users_section:
+        title: "Questions des Utilisateurs"
+        subtitle: "Tout ce que vous devez savoir en tant que membre CourtSideClub"
+        questions:
+          membership:
+            question: "Comment adhérer à CourtSideClub ?"
+            answer:
+              intro: "L'adhésion à CourtSideClub est simple et rapide :"
+              steps:
+                - "Rendez-vous sur notre page d'inscription"
+                - "Remplissez le formulaire avec vos informations personnelles"
+                - "Confirmez votre adresse email"
+                - "Choisissez votre formule d'adhésion"
+          points_system:
+            question: "Comment fonctionne le système de points ?"
+            answer:
+              intro: "Le système de points CourtSideClub récompense votre engagement :"
+              points:
+                - "Votes : 10 points par vote dans les campagnes"
+                - "Quiz : Points selon votre score et la difficulté"
+                - "Participation : Points bonus pour l'engagement communautaire"
+                - "Niveaux : Rookie → Fan → Super Fan → MVP → Legend → Elite → Master → GOAT"
+              conclusion: "Plus vous participez, plus vous montez en niveau et débloquez des avantages exclusifs !"
+          voting:
+            question: "Comment participer aux votes ?"
+            answer:
+              intro: "Participer aux votes est très simple :"
+              steps:
+                - "Connectez-vous à votre compte"
+                - "Allez dans la section \"Votes\""
+                - "Choisissez une campagne de vote active"
+                - "Sélectionnez votre joueur préféré"
+                - "Confirmez votre vote"
+              note: "Important : Vous ne pouvez voter qu'une seule fois par campagne. Chaque vote vous rapporte 10 points !"
+          minigames:
+            question: "Quels sont les mini-jeux disponibles ?"
+            answer:
+              intro: "CourtSideClub propose une variété de mini-jeux éducatifs :"
+              games:
+                - "Quiz Basketball : Testez vos connaissances sur le basket 3X3"
+                - "Quiz Histoire : Découvrez l'histoire du basketball"
+                - "Quiz Joueurs : Connaissez-vous les stars du 3X3 ?"
+                - "Jeux de mémoire : Entraînez votre cerveau"
+              conclusion: "Tous les jeux vous permettent de gagner des points et d'apprendre en vous amusant !"
+          benefits:
+            question: "Quels avantages puis-je obtenir ?"
+            answer:
+              intro: "Les avantages CourtSideClub évoluent avec votre niveau :"
+              levels:
+                - "Niveaux débutants : Accès aux contenus exclusifs, newsletter premium"
+                - "Niveaux intermédiaires : Invitations aux événements, réductions partenaires"
+                - "Niveaux avancés : Rencontres avec les joueurs, VIP aux matchs"
+                - "Niveaux experts : Participation aux décisions de l'équipe, merchandising exclusif"
+              link: "Consultez notre page Avantages pour plus de détails !"
+      partners_section:
+        title: "Questions des Partenaires"
+        subtitle: "Découvrez comment CourtSideClub peut valoriser votre marque et engager votre audience"
+        questions:
+          visibility:
+            question: "Comment CourtSideClub peut-il augmenter la visibilité de ma marque ?"
+            answer:
+              intro: "CourtSideClub offre de multiples opportunités de visibilité pour votre marque :"
+              opportunities:
+                - "Quiz sponsorisés : Créez des quiz personnalisés sur votre secteur d'activité"
+                - "Événements exclusifs : Organisez des événements avec notre communauté"
+                - "Contenus co-brandés : Articles et vidéos présentant vos produits/services"
+                - "Intégration dans les mini-jeux : Vos marques apparaissent dans nos jeux éducatifs"
+                - "Newsletter partenaire : Communication directe avec nos membres"
+                - "Réseaux sociaux : Partage de vos actualités sur nos canaux"
+              conclusion: "Chaque interaction avec notre communauté est une opportunité de faire découvrir votre marque à un public passionné et engagé."
+          sponsored_quizzes:
+            question: "Comment fonctionnent les quiz sponsorisés ?"
+            answer:
+              intro: "Les quiz sponsorisés sont un excellent moyen d'engager notre communauté tout en valorisant votre expertise :"
+              features:
+                - "Personnalisation complète : Vous choisissez le thème, les questions et les réponses"
+                - "Intégration de votre marque : Logo, couleurs et messages personnalisés"
+                - "Redirection vers vos activités : Liens directs vers votre site ou vos offres"
+                - "Gamification : Les joueurs gagnent des points et découvrent votre univers"
+                - "Analytics détaillés : Suivi des performances et de l'engagement"
+                - "Communauté ciblée : Accès à des passionnés de sport et d'innovation"
+              conclusion: "Nos membres adorent apprendre en s'amusant, et vos quiz deviennent un vecteur d'éducation et de découverte de votre marque."
+          events:
+            question: "Quels types d'événements pouvez-vous organiser ?"
+            answer:
+              intro: "CourtSideClub propose une variété d'événements pour mettre en valeur vos partenaires :"
+              event_types:
+                - "Événements sportifs : Tournois, démonstrations, rencontres avec des joueurs"
+                - "Ateliers et formations : Partagez votre expertise avec notre communauté"
+                - "Lancements de produits : Présentez vos nouveautés en avant-première"
+                - "Conférences et webinaires : Échangez sur des sujets d'actualité"
+                - "Événements networking : Rencontrez des passionnés et des professionnels"
+                - "Challenges et défis : Créez des compétitions engageantes"
+              conclusion: "Chaque événement est une occasion de créer des liens authentiques avec notre communauté et de positionner votre marque comme un acteur innovant du secteur."
+          community_value:
+            question: "Quelle est la valeur ajoutée de votre communauté ?"
+            answer:
+              intro: "Notre communauté CourtSideClub représente un capital unique pour vos partenariats :"
+              values:
+                - "Engagement authentique : Des membres actifs qui participent quotidiennement"
+                - "Passion sportive : Audience naturellement réceptive aux innovations"
+                - "Diversité démographique : 18-45 ans, urbains, connectés et consommateurs avertis"
+                - "Influence communautaire : Nos membres partagent et recommandent activement"
+                - "Appétence technologique : Ouverts aux nouvelles expériences digitales"
+                - "Fidélité à la marque : Relation de confiance établie avec CourtSideClub"
+              conclusion: "Cette communauté n'est pas seulement une audience, c'est un écosystème d'ambassadeurs potentiels pour votre marque."
+          custom_partnership:
+            question: "Comment créer un partenariat innovant et personnalisé ?"
+            answer:
+              intro: "Chaque partenariat CourtSideClub est unique et adapté à vos objectifs :"
+              features:
+                - "Audit personnalisé : Analyse de vos besoins et de votre secteur d'activité"
+                - "Proposition sur mesure : Combinaison de plusieurs leviers d'engagement"
+                - "Innovation continue : Test de nouvelles approches et optimisation en temps réel"
+                - "Flexibilité : Adaptation du partenariat selon vos évolutions"
+              conclusion: "Nous croyons que les meilleurs partenariats naissent de la créativité et de l'adaptation. Contactez-nous pour explorer ensemble les possibilités !"
+      contact_section:
+        title: "Vous n'avez pas trouvé votre réponse ?"
+        subtitle: "Notre équipe est là pour vous aider !"
+        contact_button: "Nous contacter"
+
+    equipe:
+      title: "L'équipe"
+      description: "Découvrez l'équipe derrière CourtSideClub, nos valeurs et notre vision pour révolutionner le basket 3X3."
+      hero:
+        title: "Découvrez l'équipe"
+        subtitle: "CourtSideClub est un condensé d'excellence et de savoir-faire."
+        description: "Composée de joueurs de basket de haut niveau, d'un coach professionnel reconnu, d'experts en innovation technologique et d'experts en retail, elle incarne la combinaison parfaite d'expertises pour créer une expérience unique autour du basket."
+        cta: "Rejoignez-nous pour profiter de notre passion commune et de notre engagement à offrir le meilleur à nos membres."
+      members:
+        nicolas:
+          name: "Nicolas"
+          title: "Co-founder & CEO"
+          description: "Nico travaille depuis plus de 15 ans dans le monde des nouvelles technologies et a joué 25 ans au basket en tant qu'amateur."
+          expertise:
+            - "Tech"
+            - "Basket"
+            - "Leadership"
+        julien:
+          name: "Julien"
+          title: "Chief Basketball Officer & Associate"
+          description: "Assistant coach au niveau professionnel depuis plus de 5 ans, en Betclic Elite et NBA Summer League, il entraîne régulièrement des joueurs NBA et Euroleague."
+          expertise:
+            - "Coaching"
+            - "Pro"
+            - "NBA"
+        valentin:
+          name: "Valentin"
+          title: "Chief Technical Officer & Associate"
+          description: "Web3 expert, Sport Lover, IT Ninja. Serial Entrepreneur, ce projet permet de réunir mes passions pour le web3 & le sport."
+          expertise:
+            - "Web3"
+            - "Tech"
+            - "Innovation"
+        adrien:
+          name: "Adrien"
+          title: "Gamification Product Developer"
+          description: "Joueur et entraîneur amateur de basket depuis plus de 20 ans, tech lover reconverti développeur web. Il allie sa passion du sport à la tech pour créer des expériences engageantes."
+          expertise:
+            - "Tech"
+            - "Gamification"
+            - "Basketball"
+
+    partenariat:
+      title: "Devenir partenaire"
+      description: "Rejoignez CourtSideClub en tant que partenaire et participez à la révolution du basket 3X3."
+      hero:
+        title: "Devenir Partenaire"
+        subtitle: "Rejoignez l'aventure CourtSideClub et valorisez votre marque auprès d'une communauté passionnée"
+      advantages:
+        title: "Pourquoi devenir partenaire de CourtSideClub ?"
+        subtitle: "Découvrez les opportunités uniques que nous offrons à nos partenaires"
+        cards:
+          visibility:
+            title: "Visibilité Premium"
+            description: "Exposez votre marque auprès d'une communauté engagée de passionnés de basketball et d'innovation sportive."
+          quizzes:
+            title: "Quiz Sponsorisés"
+            description: "Créez des quiz personnalisés qui redirigent vers vos activités et engagent notre communauté de manière ludique."
+          events:
+            title: "Événements Exclusifs"
+            description: "Organisez des événements uniques avec notre communauté et créez des liens authentiques avec votre audience."
+          community:
+            title: "Communauté Engagée"
+            description: "Accédez à une audience de 18-45 ans, urbaine, connectée et passionnée par le sport et l'innovation."
+          innovation:
+            title: "Innovation Continue"
+            description: "Testez de nouvelles approches marketing et restez à la pointe de l'innovation dans le sport business."
+          customization:
+            title: "Personnalisation Sur Mesure"
+            description: "Chaque partenariat est unique et adapté à vos objectifs spécifiques, avec un accompagnement personnalisé."
+      process:
+        title: "Comment ça marche ?"
+        subtitle: "Un processus simple et personnalisé pour créer un partenariat sur mesure"
+        steps:
+          contact:
+            title: "Contact Initial"
+            description: "Envoyez-nous un message via le formulaire ci-dessous pour nous présenter votre projet et vos objectifs."
+          study:
+            title: "Étude Personnalisée"
+            description: "Nous analysons vos besoins et créons une proposition sur mesure qui combine plusieurs leviers d'engagement."
+          presentation:
+            title: "Réunion de Présentation"
+            description: "Nous vous présentons notre proposition et discutons ensemble des modalités du partenariat."
+          launch:
+            title: "Lancement & Suivi"
+            description: "Mise en place du partenariat avec un accompagnement personnalisé et un suivi des performances."
+      partners:
+        title: "Ils nous font confiance"
+        subtitle: "Découvrez les partenaires qui ont rejoint l'aventure CourtSideClub"
+        cta:
+          title: "Rejoignez cette liste prestigieuse !"
+          description: "Devenez le prochain partenaire à nous faire confiance"
+      contact:
+        title: "Intéressé par un partenariat ?"
+        subtitle: "Contactez-nous pour discuter de vos projets et découvrir nos opportunités"
+        form:
+          company: "Nom de votre entreprise"
+          first_name: "Prénom du contact"
+          last_name: "Nom du contact"
+          email: "Email professionnel"
+          phone: "Téléphone (optionnel)"
+          content: "Décrivez votre projet et vos objectifs"
+          submit: "Envoyer ma demande de partenariat"
+
+    historique:
+      title: "Historique"
+      description: "Découvrez l'histoire de CourtSideClub et les étapes importantes de notre développement."
+
+  # Articles/Actualités
+  articles:
+    index:
+      title: "Articles"
+      description: "Découvrez tous les articles CourtSideClub sur le basket, les actualités, les conseils et les analyses de la communauté des fans."
+      breadcrumb:
+        home: "Accueil"
+        articles: "Articles"
+      hero:
+        title: "Actualités CourtSideClub"
+        subtitle: "Découvrez toutes les actualités de votre club de basket préféré"
+      sections:
+        published:
+          title: "Articles publiés"
+          count: "%{count} article(s) publié(s)"
+        stats:
+          info: "article publié"
+          info_plural: "articles publiés"
+      empty_state:
+        title: "Aucun article publié"
+        description: "Soyez le premier à partager une actualité avec la communauté CourtSideClub !"
+        first_article: "Écrire le premier article"
+      thumbnails:
+        video: "Vidéo"
+        instagram: "Instagram"
+        article: "Article"
+    show:
+      breadcrumb:
+        home: "Accueil"
+        articles: "Articles"
+      meta:
+        published: "Publié le %{date}"
+        draft: "Brouillon"
+        author: "CourtSideClub"
+      video:
+        title: "Vidéo associée"
+        youtube_title: "Vidéo YouTube"
+      instagram:
+        view_on_instagram: "Voir sur Instagram"
+      actions:
+        back_to_articles: "Retour aux articles"
+        draft_badge: "Brouillon"
+      sidebar:
+        other_articles: "Autres articles"
+        no_articles: "Aucun autre article disponible pour le moment."
+        view_all: "Voir tous les articles"
+
+  # Dashboard utilisateur
+  dashboard:
+    title: "Mon vestiaire"
+    breadcrumb:
+      home: "Accueil"
+      dashboard: "Mon vestiaire"
+    welcome:
+      greeting: "Salut %{first_name} !"
+      subtitle: "Bienvenue sur ton dashboard CourtSideClub"
+    level:
+      points: "points"
+      progress_text: "Encore %{points} points avant le niveau %{level_name}"
+    votes:
+      pending:
+        title: "Votes en attente"
+        description: "Vous avez des votes en cours"
+      up_to_date:
+        title: "Votes à jour"
+        description: "Aucun vote en cours"
+    actions:
+      history:
+        title: "Historique"
+        subtitle: "Mes engagements CourtSide"
+      earn_points:
+        title: "Gagner des points"
+        subtitle: "S'investir dans la communauté CourtSideClub et gagner des points !"
+      rewards:
+        title: "Récompenses"
+        subtitle: "Mes avantages disponibles"
+    quick_actions:
+      title: "Actions rapides"
+      vote_community: "Voter pour votre communauté"
+      my_profile: "Mon profil"
+      mini_games: "Mini-jeux"
+
+  # Page historique
+  historique:
+    title: "Mon historique"
+    breadcrumb:
+      dashboard: "Mon vestiaire"
+      historique: "Historique"
+    hero:
+      title: "Mon Historique"
+      subtitle: "Retracez toutes vos interactions avec la communauté CourtSideClub"
+    stats:
+      votes_completed: "Votes effectués"
+      quizzes_completed: "Quiz complétés"
+      points_earned: "Points gagnés"
+    activities:
+      points: "points"
+      vote: "Vote"
+      quiz: "Quiz"
+    empty_state:
+      title: "Aucune activité pour le moment"
+      description: "Commencez à interagir avec la communauté pour voir votre historique se remplir !"
+      actions:
+        participate_votes: "Participer aux votes"
+        play_mini_games: "Jouer aux mini-jeux"
+    pagination:
+      previous: "Précédent"
+      next: "Suivant"
+      navigation: "Navigation de l'historique"
+
+  # Page mini-games
+  mini_games:
+    title: "Mini-jeux"
+    breadcrumb:
+      dashboard: "Mon vestiaire"
+      mini_games: "Mini-jeux"
+    hero:
+      title: "Mini-jeux CourtSideClub"
+      subtitle: "Participez à nos mini-jeux et gagnez des points pour avancer dans la communauté CourtSideClub! Vous pourrez ici découvrir des jeux en partenariat avec nos sponsors et en apprendre un peu plus sur votre club, son histoire, ses joueurs, ses soutiens et bien plus encore!"
+    quiz_section:
+      title: "Quiz disponibles"
+      subtitle: "%{count} quiz disponible(s)"
+      stats:
+        questions: "question"
+        questions_plural: "questions"
+        max_points: "points max"
+        points_earned: "Points gagnés: %{score}/%{max}"
+      actions:
+        completed: "Déjà joué"
+        play_now: "Jouer maintenant"
+        completed_badge: "Terminé"
+      empty_state:
+        title: "Aucun jeu disponible"
+        description: "Les mini-jeux seront bientôt disponibles !"
+    coming_soon:
+      title: "Prochainement"
+      subtitle: "D'autres mini-jeux arrivent bientôt !"
+      badge: "Bientôt"
+      games:
+        puzzle:
+          title: "Puzzle CourtSideClub"
+          description: "Reconstituez les photos des joueurs"
+        quiz_chrono:
+          title: "Quiz Chrono"
+          description: "Répondez le plus vite possible"
+        shoot_challenge:
+          title: "Shoot Challenge"
+          description: "Visez et marquez des paniers"
+
+  # Page quiz game
+  quiz_game:
+    breadcrumb:
+      dashboard: "Mon vestiaire"
+      mini_games: "Mini-jeux"
+    start_screen:
+      ready_title: "Prêt à commencer ?"
+      info:
+        questions: "questions"
+        selected_randomly: "Sélectionnées aléatoirement"
+        time_per_question: "24 secondes"
+        time_description: "Par question (possession basket)"
+        max_points: "points"
+        max_points_description: "Maximum possible"
+      start_button: "Commencer le Quiz"
+    game_screen:
+      question_counter: "Question %{current} sur %{total}"
+      score_display: "Score: %{score} pts"
+      timer_label: "secondes restantes"
+    results_screen:
+      title: "Quiz Terminé !"
+      stats:
+        points_earned: "Points gagnés"
+        correct_answers: "Bonnes réponses"
+        questions: "Questions"
+      level_up:
+        congratulations: "Félicitations !"
+        new_level: "Vous êtes passé au niveau %{level} !"
+      actions:
+        back_to_mini_games: "Retour aux Mini-jeux"
+        my_locker: "Mon Vestiaire"
+    loading:
+      preparing: "Préparation du quiz..."
+
+  # Admin quiz games
+  admin_quiz_games:
+    edit:
+      title: "Modifier le jeu"
+      form:
+        title: "Titre"
+        description: "Description"
+        points_per_question: "Points par bonne réponse"
+        active: "Actif"
+      actions:
+        save: "Enregistrer"
+        back: "Retour"
+
+  # Pages Devise (Authentification)
+  devise:
+    sessions:
+      title: "Connexion"
+      subtitle: "Accédez à votre espace membre"
+      email_label: "Email"
+      email_placeholder: "votre@email.com"
+      password_label: "Mot de passe"
+      password_placeholder: "••••••••"
+      remember_me: "Se souvenir de moi"
+      forgot_password: "Mot de passe oublié ?"
+      submit: "Se connecter"
+      error_message: "Email ou mot de passe incorrect"
+      divider: "ou"
+      signup_text: "Pas encore membre ?"
+      signup_link: "Rejoindre CourtSideClub"
+    registrations:
+      new:
+        title: "Rejoindre CourtSideClub"
+        subtitle: "Créez votre compte pour accéder aux avantages membres"
+        first_name_label: "Prénom"
+        first_name_placeholder: "Votre prénom"
+        last_name_label: "Nom"
+        last_name_placeholder: "Votre nom"
+        email_label: "Email"
+        email_placeholder: "votre@email.com"
+        birthdate_label: "Date de naissance"
+        photo_label: "Photo de profil"
+        photo_hint: "Format JPG, PNG ou GIF (max 5MB)"
+        password_label: "Mot de passe"
+        password_placeholder: "••••••••"
+        password_hint: "%{count} caractères minimum"
+        password_confirmation_label: "Confirmer le mot de passe"
+        password_confirmation_placeholder: "••••••••"
+        submit: "Créer mon compte"
+        divider: "ou"
+        login_text: "Déjà membre ?"
+        login_link: "Se connecter"
+      edit:
+        title: "Mon profil"
+        subtitle: "Modifiez vos informations personnelles"
+        first_name_label: "Prénom"
+        first_name_placeholder: "Votre prénom"
+        last_name_label: "Nom"
+        last_name_placeholder: "Votre nom"
+        email_label: "Email"
+        email_placeholder: "votre@email.com"
+        pending_confirmation: "En attente de confirmation pour :"
+        birthdate_label: "Date de naissance"
+        photo_section:
+          title: "Photo de profil"
+          subtitle: "Ajoutez une photo pour personnaliser votre profil"
+          current_photo: "Photo actuelle :"
+          no_photo: "Aucune photo de profil"
+          no_photo_text: "Aucune photo"
+          change_label: "Changer la photo"
+          change_hint: "Format JPG, PNG ou GIF (max 5MB). Laissez vide pour conserver l'actuelle."
+          current_photo_alt: "Photo de profil actuelle"
+        password_section:
+          title: "Changer le mot de passe"
+          subtitle: "Laissez vide si vous ne souhaitez pas le modifier"
+          new_password_label: "Nouveau mot de passe"
+          new_password_placeholder: "••••••••"
+          new_password_hint: "Laissez vide pour ne pas changer"
+          password_confirmation_label: "Confirmer le mot de passe"
+          password_confirmation_placeholder: "••••••••"
+          current_password_label: "Mot de passe actuel"
+          current_password_placeholder: "••••••••"
+          current_password_hint: "Requis pour confirmer les modifications"
+        submit: "Mettre à jour"
+        divider: "ou"
+        danger_zone:
+          title: "Zone de danger"
+          text: "Cette action est irréversible et supprimera définitivement votre compte."
+          delete_button: "Supprimer mon compte"
+          delete_confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible."
+        back_link: "Retour au dashboard"
+
+    nos_partenaires:
+      title: "Nos partenaires"
+      description: "Découvrez nos partenaires qui nous accompagnent dans cette aventure du basket 3X3."
+      hero:
+        title: "Nos Partenaires"
+        subtitle: "Découvrez les entreprises qui nous font confiance et nous accompagnent dans notre mission"
+      grid:
+        title: "Ils nous font confiance"
+        subtitle: "Une communauté de partenaires engagés pour le basketball français"
+        partners:
+          premium:
+            name: "Partenaire Premium"
+            category: "Sponsor Principal"
+            description: "Un partenaire de confiance qui nous accompagne dans notre développement depuis le début."
+            since: "Depuis 2024"
+          sport:
+            name: "Partenaire Sport"
+            category: "Équipementier"
+            description: "Spécialiste de l'équipement sportif qui partage notre passion pour le basketball."
+            since: "Depuis 2024"
+          tech:
+            name: "Partenaire Tech"
+            category: "Innovation"
+            description: "Leader technologique qui nous aide à créer des expériences digitales uniques."
+            since: "Depuis 2024"
+          health:
+            name: "Partenaire Santé"
+            category: "Bien-être"
+            description: "Expert du bien-être qui accompagne nos membres dans leur santé et leur forme."
+            since: "Depuis 2024"
+      cta:
+        title: "Vous souhaitez devenir partenaire ?"
+        subtitle: "Rejoignez notre communauté et bénéficiez de notre expertise dans le basketball français"
+        become_partner: "Devenir partenaire"
+        contact_us: "Nous contacter"
+
+
+  # Date and time formats
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d %b %Y"
+      long: "%d %B %Y"
+    day_names:
+      - dimanche
+      - lundi
+      - mardi
+      - mercredi
+      - jeudi
+      - vendredi
+      - samedi
+    abbr_day_names:
+      - dim
+      - lun
+      - mar
+      - mer
+      - jeu
+      - ven
+      - sam
+    month_names:
+      - ~
+      - janvier
+      - février
+      - mars
+      - avril
+      - mai
+      - juin
+      - juillet
+      - août
+      - septembre
+      - octobre
+      - novembre
+      - décembre
+    abbr_month_names:
+      - ~
+      - jan
+      - fév
+      - mar
+      - avr
+      - mai
+      - juin
+      - juil
+      - août
+      - sep
+      - oct
+      - nov
+      - déc
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short: "%d %b %H:%M"
+      long: "%d %B %Y à %H:%M"
+    am: "AM"
+    pm: "PM"
