@@ -1,32 +1,32 @@
-<% content_for :title, "Contact" %>
-<% content_for :description, "Contactez l'équipe CourtSideClub pour toute question, suggestion ou demande de partenariat. Nous sommes là pour vous accompagner dans votre expérience basket." %>
+<% content_for :title, t('pages.contact.title') %>
+<% content_for :description, t('pages.contact.description') %>
 
 <!-- Hero Section -->
 <section class="contact-section">
   <div class="container">
     <div class="contact-header text-center mb-5">
-      <h1 class="contact-title">Contactez-nous</h1>
-      <p class="contact-subtitle">Une question, un problème ?</p>
+      <h1 class="contact-title"><%= t('pages.contact.hero.title') %></h1>
+      <p class="contact-subtitle"><%= t('pages.contact.hero.subtitle') %></p>
     </div>
 
     <% if user_signed_in? %>
       <!-- Formulaire de contact pour utilisateurs connectés -->
       <div class="contact-form-container">
         <div class="contact-form-card">
-          <h3 class="form-title">Envoyez-nous un message</h3>
-          <p class="form-description">Nous vous répondrons dans les plus brefs délais.</p>
+          <h3 class="form-title"><%= t('pages.contact.form.title') %></h3>
+          <p class="form-description"><%= t('pages.contact.form.description') %></p>
 
           <%= simple_form_for @notification, html: { class: "contact-form" } do |f| %>
             <%= f.hidden_field :object, value: "contact" %>
             <div class="form-group">
               <%= f.input :content,
-                          label: "Votre message",
+                          label: t('pages.contact.form.message_label'),
                           input_html: { class: "form-control contact-textarea", rows: 6 },
                           wrapper: false %>
             </div>
 
             <div class="form-actions">
-              <%= f.submit "Envoyer le message", class: "button-hero-link contact-submit" %>
+              <%= f.submit t('pages.contact.form.submit'), class: "button-hero-link contact-submit" %>
             </div>
           <% end %>
         </div>

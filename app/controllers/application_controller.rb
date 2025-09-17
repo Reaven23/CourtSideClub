@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_unread_notifications_count, if: :user_signed_in?
+  before_action :set_locale
   include Pundit::Authorization
 
   private
@@ -15,5 +16,9 @@ class ApplicationController < ActionController::Base
 
   def set_unread_notifications_count
     @unread_notifications_count = Notification.where(status: false).count
+  end
+
+  def set_locale
+    I18n.locale = session[:locale] || I18n.default_locale
   end
 end

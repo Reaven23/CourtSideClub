@@ -1,5 +1,5 @@
-<% content_for :title, "Accueil" %>
-<% content_for :description, "Découvrez CourtSideClub, la plateforme qui donne le pouvoir aux fans de basket. Votez pour vos joueurs favoris, gagnez des points, débloquez des récompenses exclusives et participez à la communauté." %>
+<% content_for :title, t('home.title') %>
+<% content_for :description, t('home.description') %>
 
 <section class="hero-section">
   <div class="container">
@@ -7,13 +7,13 @@
       <!-- Hero Section - Left on desktop, top on mobile -->
       <div class="col-lg-6 col-12">
         <div class="hero-section">
-          <p id="hero-intro">By hoopers for hoopers</p>
-          <h1 class="hero-title">Donnons le pouvoir aux fans</h1>
-          <h1 class="hero-title">de <span class="hero-title-highlight">Basketball</span>.</h1>
-          <p class="intro-text">Rejoignez CourtSideClub et impacter le monde du basket 3X3. Libérez votre potentiel et embarquez dans une aventure épique à la conquête du basket 3X3, où nous aspirons à devenir les Mark Cuban 3.0 ! Notre vision: lancer une équipe pro de basket 3X3 pour atteindre le FIBA World Tour, tout en permettant aux membres de CourtSideClub de manager la team et les joueurs. Rendons accessible à tous le sport de haut niveau.</p>
+          <p id="hero-intro"><%= t('home.hero.intro') %></p>
+          <h1 class="hero-title"><%= t('home.hero.title') %></h1>
+          <h1 class="hero-title"><%= t('home.hero.title_highlight') %> <span class="hero-title-highlight">Basketball</span>.</h1>
+          <p class="intro-text"><%= t('home.hero.description') %></p>
           <div class="button-hero">
-            <%= link_to "Rejoindre", new_user_registration_path, class: "button-hero-link" %>
-            <%= link_to "Déjà membre ?", new_user_session_path, class: "button-hero-link-secondary" %>
+            <%= link_to t('home.hero.join_button'), new_user_registration_path, class: "button-hero-link" %>
+            <%= link_to t('home.hero.login_button'), new_user_session_path, class: "button-hero-link-secondary" %>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
       <div class="col-lg-6 col-12">
         <div class="youtube-section">
           <div class="youtube-container">
-            <p class="youtube-description">Plongez dans l'univers CourtSideClub et découvrez notre vision du basket 3X3</p>
+            <p class="youtube-description"><%= t('home.youtube.description') %></p>
             <div class="video-wrapper">
               <iframe
                 width="100%"
@@ -232,11 +232,11 @@
         <% if @latest_articles.count > 1 %>
           <button class="carousel-control-prev" type="button" data-bs-target="#mobileNewsCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Précédent</span>
+            <span class="visually-hidden"><%= t('home.news.previous') %></span>
           </button>
           <button class="carousel-control-next" type="button" data-bs-target="#mobileNewsCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Suivant</span>
+            <span class="visually-hidden"><%= t('home.news.next') %></span>
           </button>
 
           <!-- Carousel Indicators -->
@@ -252,7 +252,7 @@
     </div>
 
     <%= link_to articles_path, class: "advantages-button" do %>
-      Toutes les actualités <i class="fas fa-arrow-right"></i>
+      <%= t('home.news.all_news') %> <i class="fas fa-arrow-right"></i>
     <% end %>
   </div>
 </section>
@@ -260,10 +260,10 @@
 <section class="second-section">
   <%= link_to discover_path, class: "discover-link" do %>
     <div class="discover-courtsideclub">
-      Découvrez <br> CourtSideClub
+      <%= t('home.discover.title') %> <br> <%= t('home.discover.subtitle') %>
     </div>
     <div class="discover-text">
-      Chez CourtSideClub, nous visons à vous donner le pouvoir afin de participer activement à la gestion d'une équipe de basket 3X3 de niveau international! Nous voulons placer les fans au cœur de l'action et réinventer le concept des socios!
+      <%= t('home.discover.description') %>
     </div>
   <% end %>
 
@@ -276,14 +276,14 @@
 </section>
 
 <section class="advantages-section">
-  <h1><span class="hero-title-highlight">Les avantages pour les membres </span>de CourtSideClub</h1>
+  <h1><span class="hero-title-highlight"><%= t('home.advantages.title') %> </span><%= t('home.advantages.subtitle') %></h1>
   <div class="advantages-card-container">
     <%= link_to  advantages_path, class: "advantages-card" do %>
       <div class="icon">
         <i class="fas fa-crown"></i>
       </div>
-      <h2>Deviens le boss d'une équipe de basket 3X3</h2>
-      <p>Les adhérents du CourtSideClub auront la possibilité d'influencer la gestion de notre équipe 3X3, grâce à leur droit de vote.</p>
+      <h2><%= t('home.advantages.cards.boss.title') %></h2>
+      <p><%= t('home.advantages.cards.boss.description') %></p>
       <div class="icon-bis">
         <i class="fas fa-arrow-right"></i>
       </div>
@@ -293,8 +293,8 @@
       <div class="icon">
         <i class="fas fa-ticket-alt"></i>
       </div>
-      <h2>Gagne tes places pour des matchs</h2>
-      <p>Des billets pour les matchs de vos équipes préférées seront offerts tout au long de l'année aux membres.</p>
+      <h2><%= t('home.advantages.cards.tickets.title') %></h2>
+      <p><%= t('home.advantages.cards.tickets.description') %></p>
       <div class="icon-bis">
         <i class="fas fa-arrow-right"></i>
       </div>
@@ -304,8 +304,8 @@
       <div class="icon">
         <i class="fas fa-handshake"></i>
       </div>
-      <h2>Rencontres privilégiées</h2>
-      <p>Les membres du CourtSideClub bénéficieront d'occasions uniques de rencontrer des joueurs professionnels et d'échanger avec eux après les matchs ou lors de visioconférences.</p>
+      <h2><%= t('home.advantages.cards.meetings.title') %></h2>
+      <p><%= t('home.advantages.cards.meetings.description') %></p>
       <div class="icon-bis">
         <i class="fas fa-arrow-right"></i>
       </div>
@@ -315,14 +315,14 @@
       <div class="icon">
         <i class="fas fa-basketball-ball"></i>
       </div>
-      <h2>Bénéficie de conseils de pros</h2>
-      <p>Accède à des conseils exclusifs de joueurs professionnels et d'entraîneurs expérimentés pour perfectionner ton jeu et atteindre tes objectifs sur le terrain.</p>
+      <h2><%= t('home.advantages.cards.advice.title') %></h2>
+      <p><%= t('home.advantages.cards.advice.description') %></p>
       <div class="icon-bis">
         <i class="fas fa-arrow-right"></i>
       </div>
     <% end %>
   </div>
   <%= link_to advantages_path, class: "advantages-button" do %>
-    Découvrir les avantages <i class="fas fa-arrow-right"></i>
+    <%= t('home.advantages.discover_advantages') %> <i class="fas fa-arrow-right"></i>
   <% end %>
 </section>

@@ -3,15 +3,15 @@
     <!-- Header Section -->
     <section class="equipe-hero-section text-center mb-5">
       <div class="hero-content">
-        <h1 class="hero-title">Découvrez l'équipe</h1>
+        <h1 class="hero-title"><%= t('pages.equipe.hero.title') %></h1>
         <p class="hero-subtitle">
-          CourtSideClub est un condensé d'excellence et de savoir-faire.
+          <%= t('pages.equipe.hero.subtitle') %>
         </p>
         <p class="hero-description">
-          Composée de joueurs de basket de haut niveau, d'un coach professionnel reconnu, d'experts en innovation technologique et d'experts en retail, elle incarne la combinaison parfaite d'expertises pour créer une expérience unique autour du basket.
+          <%= t('pages.equipe.hero.description') %>
         </p>
         <p class="hero-cta">
-          Rejoignez-nous pour profiter de notre passion commune et de notre engagement à offrir le meilleur à nos membres.
+          <%= t('pages.equipe.hero.cta') %>
         </p>
       </div>
     </section>
@@ -27,15 +27,15 @@
             </div>
           </div>
           <div class="member-info">
-            <h3 class="member-name">Nicolas</h3>
-            <p class="member-title">Co-founder & CEO</p>
+            <h3 class="member-name"><%= t('pages.equipe.members.nicolas.name') %></h3>
+            <p class="member-title"><%= t('pages.equipe.members.nicolas.title') %></p>
             <p class="member-description">
-              Nico travaille depuis plus de 15 ans dans le monde des nouvelles technologies et a joué 25 ans au basket en tant qu'amateur.
+              <%= t('pages.equipe.members.nicolas.description') %>
             </p>
             <div class="member-expertise">
-              <span class="expertise-tag">Tech</span>
-              <span class="expertise-tag">Basket</span>
-              <span class="expertise-tag">Leadership</span>
+              <% t('pages.equipe.members.nicolas.expertise').each do |expertise| %>
+                <span class="expertise-tag"><%= expertise %></span>
+              <% end %>
             </div>
           </div>
         </div>
@@ -48,15 +48,15 @@
             </div>
           </div>
           <div class="member-info">
-            <h3 class="member-name">Julien</h3>
-            <p class="member-title">Chief Basketball Officer & Associate</p>
+            <h3 class="member-name"><%= t('pages.equipe.members.julien.name') %></h3>
+            <p class="member-title"><%= t('pages.equipe.members.julien.title') %></p>
             <p class="member-description">
-              Assistant coach au niveau professionnel depuis plus de 5 ans, en Betclic Elite et NBA Summer League, il entraîne régulièrement des joueurs NBA et Euroleague.
+              <%= t('pages.equipe.members.julien.description') %>
             </p>
             <div class="member-expertise">
-              <span class="expertise-tag">Coaching</span>
-              <span class="expertise-tag">Pro</span>
-              <span class="expertise-tag">NBA</span>
+              <% t('pages.equipe.members.julien.expertise').each do |expertise| %>
+                <span class="expertise-tag"><%= expertise %></span>
+              <% end %>
             </div>
           </div>
         </div>
@@ -69,15 +69,15 @@
             </div>
           </div>
           <div class="member-info">
-            <h3 class="member-name">Valentin</h3>
-            <p class="member-title">Chief Technical Officer & Associate</p>
+            <h3 class="member-name"><%= t('pages.equipe.members.valentin.name') %></h3>
+            <p class="member-title"><%= t('pages.equipe.members.valentin.title') %></p>
             <p class="member-description">
-              Web3 expert, Sport Lover, IT Ninja. Serial Entrepreneur, ce projet permet de réunir mes passions pour le web3 & le sport.
+              <%= t('pages.equipe.members.valentin.description') %>
             </p>
             <div class="member-expertise">
-              <span class="expertise-tag">Web3</span>
-              <span class="expertise-tag">Tech</span>
-              <span class="expertise-tag">Innovation</span>
+              <% t('pages.equipe.members.valentin.expertise').each do |expertise| %>
+                <span class="expertise-tag"><%= expertise %></span>
+              <% end %>
             </div>
           </div>
         </div>
@@ -90,15 +90,15 @@
             </div>
           </div>
           <div class="member-info">
-            <h3 class="member-name">Adrien</h3>
-            <p class="member-title">Gamification Product Developer</p>
+            <h3 class="member-name"><%= t('pages.equipe.members.adrien.name') %></h3>
+            <p class="member-title"><%= t('pages.equipe.members.adrien.title') %></p>
             <p class="member-description">
-              Joueur et entraîneur amateur de basket depuis plus de 20 ans, tech lover reconverti développeur web. Il allie sa passion du sport à la tech pour créer des expériences engageantes.
+              <%= t('pages.equipe.members.adrien.description') %>
             </p>
             <div class="member-expertise">
-              <span class="expertise-tag">Tech</span>
-              <span class="expertise-tag">Gamification</span>
-              <span class="expertise-tag">Basketball</span>
+              <% t('pages.equipe.members.adrien.expertise').each do |expertise| %>
+                <span class="expertise-tag"><%= expertise %></span>
+              <% end %>
             </div>
           </div>
         </div>

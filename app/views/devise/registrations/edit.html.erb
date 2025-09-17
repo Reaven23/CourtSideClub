@@ -8,8 +8,8 @@
               <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "auth-logo" %>
               <span class="auth-brand-text">CourtSideClub</span>
             <% end %>
-            <h2 class="auth-title">Mon profil</h2>
-            <p class="auth-subtitle">Modifiez vos informations personnelles</p>
+            <h2 class="auth-title"><%= t('devise.registrations.edit.title') %></h2>
+            <p class="auth-subtitle"><%= t('devise.registrations.edit.subtitle') %></p>
           </div>
 
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "auth-form" }) do |f| %>
@@ -21,8 +21,8 @@
                   <%= f.input :first_name,
                               required: true,
                               autofocus: true,
-                              label: "Prénom",
-                              placeholder: "Votre prénom",
+                              label: t('devise.registrations.edit.first_name_label'),
+                              placeholder: t('devise.registrations.edit.first_name_placeholder'),
                               wrapper_class: "auth-input-wrapper",
                               input_html: {
                                 autocomplete: "given-name",
@@ -32,8 +32,8 @@
                 <div class="col-md-6">
                   <%= f.input :last_name,
                               required: true,
-                              label: "Nom",
-                              placeholder: "Votre nom",
+                              label: t('devise.registrations.edit.last_name_label'),
+                              placeholder: t('devise.registrations.edit.last_name_placeholder'),
                               wrapper_class: "auth-input-wrapper",
                               input_html: {
                                 autocomplete: "family-name",
@@ -44,8 +44,8 @@
 
               <%= f.input :email,
                           required: true,
-                          label: "Email",
-                          placeholder: "votre@email.com",
+                          label: t('devise.registrations.edit.email_label'),
+                          placeholder: t('devise.registrations.edit.email_placeholder'),
                           wrapper_class: "auth-input-wrapper",
                           input_html: {
                             autocomplete: "email",
@@ -55,13 +55,13 @@
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                 <div class="auth-info-message">
                   <i class="fas fa-clock me-2"></i>
-                  En attente de confirmation pour : <strong><%= resource.unconfirmed_email %></strong>
+                  <%= t('devise.registrations.edit.pending_confirmation') %> <strong><%= resource.unconfirmed_email %></strong>
                 </div>
               <% end %>
 
               <%= f.input :birthdate,
                           required: true,
-                          label: "Date de naissance",
+                          label: t('devise.registrations.edit.birthdate_label'),
                           as: :date,
                           start_year: Date.current.year - 80,
                           end_year: Date.current.year - 13,
@@ -75,33 +75,33 @@
               <div class="auth-photo-section">
                 <h4 class="auth-section-title">
                   <i class="fas fa-camera me-2"></i>
-                  Photo de profil
+                  <%= t('devise.registrations.edit.photo_section.title') %>
                 </h4>
-                <p class="auth-section-subtitle">Ajoutez une photo pour personnaliser votre profil</p>
+                <p class="auth-section-subtitle"><%= t('devise.registrations.edit.photo_section.subtitle') %></p>
 
                 <% if resource.photo.attached? && resource.persisted? %>
                   <div class="current-photo mb-3">
-                    <p class="current-photo-label">Photo actuelle :</p>
+                    <p class="current-photo-label"><%= t('devise.registrations.edit.photo_section.current_photo') %></p>
                     <% if Rails.env.production? %>
-                      <%= cl_image_tag resource.photo.key, class: "current-photo-img", alt: "Photo de profil actuelle", width: 100, height: 100, crop: :fill, gravity: :face %>
+                      <%= cl_image_tag resource.photo.key, class: "current-photo-img", alt: t('devise.registrations.edit.photo_section.current_photo_alt'), width: 100, height: 100, crop: :fill, gravity: :face %>
                     <% else %>
-                      <%= image_tag resource.photo, class: "current-photo-img", alt: "Photo de profil actuelle" %>
+                      <%= image_tag resource.photo, class: "current-photo-img", alt: t('devise.registrations.edit.photo_section.current_photo_alt') %>
                     <% end %>
                   </div>
                 <% else %>
                   <div class="current-photo mb-3">
-                    <p class="current-photo-label">Aucune photo de profil</p>
+                    <p class="current-photo-label"><%= t('devise.registrations.edit.photo_section.no_photo') %></p>
                     <div class="no-photo-placeholder">
                       <i class="fas fa-user-circle"></i>
-                      <span>Aucune photo</span>
+                      <span><%= t('devise.registrations.edit.photo_section.no_photo_text') %></span>
                     </div>
                   </div>
                 <% end %>
 
                 <%= f.input :photo,
                             required: false,
-                            label: "Changer la photo",
-                            hint: "Format JPG, PNG ou GIF (max 5MB). Laissez vide pour conserver l'actuelle.",
+                            label: t('devise.registrations.edit.photo_section.change_label'),
+                            hint: t('devise.registrations.edit.photo_section.change_hint'),
                             wrapper_class: "auth-input-wrapper",
                             input_html: {
                               class: "auth-input",
@@ -112,17 +112,17 @@
               <div class="auth-password-section">
                 <h4 class="auth-section-title">
                   <i class="fas fa-lock me-2"></i>
-                  Changer le mot de passe
+                  <%= t('devise.registrations.edit.password_section.title') %>
                 </h4>
-                <p class="auth-section-subtitle">Laissez vide si vous ne souhaitez pas le modifier</p>
+                <p class="auth-section-subtitle"><%= t('devise.registrations.edit.password_section.subtitle') %></p>
 
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.input :password,
                                 required: false,
-                                label: "Nouveau mot de passe",
-                                placeholder: "••••••••",
-                                hint: "Laissez vide pour ne pas changer",
+                                label: t('devise.registrations.edit.password_section.new_password_label'),
+                                placeholder: t('devise.registrations.edit.password_section.new_password_placeholder'),
+                                hint: t('devise.registrations.edit.password_section.new_password_hint'),
                                 wrapper_class: "auth-input-wrapper",
                                 input_html: {
                                   autocomplete: "new-password",
@@ -132,8 +132,8 @@
                   <div class="col-md-6">
                     <%= f.input :password_confirmation,
                                 required: false,
-                                label: "Confirmer le mot de passe",
-                                placeholder: "••••••••",
+                                label: t('devise.registrations.edit.password_section.password_confirmation_label'),
+                                placeholder: t('devise.registrations.edit.password_section.password_confirmation_placeholder'),
                                 wrapper_class: "auth-input-wrapper",
                                 input_html: {
                                   autocomplete: "new-password",
@@ -144,9 +144,9 @@
 
                 <%= f.input :current_password,
                             required: true,
-                            label: "Mot de passe actuel",
-                            placeholder: "••••••••",
-                            hint: "Requis pour confirmer les modifications",
+                            label: t('devise.registrations.edit.password_section.current_password_label'),
+                            placeholder: t('devise.registrations.edit.password_section.current_password_placeholder'),
+                            hint: t('devise.registrations.edit.password_section.current_password_hint'),
                             wrapper_class: "auth-input-wrapper",
                             input_html: {
                               autocomplete: "current-password",
@@ -156,37 +156,37 @@
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, "Mettre à jour", class: "auth-btn-primary" %>
+              <%= f.button :submit, t('devise.registrations.edit.submit'), class: "auth-btn-primary" %>
             </div>
           <% end %>
 
           <div class="auth-divider">
-            <span>ou</span>
+            <span><%= t('devise.registrations.edit.divider') %></span>
           </div>
 
           <div class="auth-links">
             <div class="auth-danger-zone">
               <h4 class="auth-danger-title">
                 <i class="fas fa-exclamation-triangle me-2"></i>
-                Zone de danger
+                <%= t('devise.registrations.edit.danger_zone.title') %>
               </h4>
               <p class="auth-danger-text">
-                Cette action est irréversible et supprimera définitivement votre compte.
+                <%= t('devise.registrations.edit.danger_zone.text') %>
               </p>
-              <%= button_to "Supprimer mon compte",
+              <%= button_to t('devise.registrations.edit.danger_zone.delete_button'),
                             registration_path(resource_name),
                             method: :delete,
                             class: "auth-btn-danger",
                             data: {
-                              confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.",
-                              turbo_confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible."
+                              confirm: t('devise.registrations.edit.danger_zone.delete_confirm'),
+                              turbo_confirm: t('devise.registrations.edit.danger_zone.delete_confirm')
                             } %>
             </div>
 
             <div class="auth-back-link">
               <%= link_to dashboard_path, class: "auth-back-btn" do %>
                 <i class="fas fa-arrow-left me-2"></i>
-                Retour au dashboard
+                <%= t('devise.registrations.edit.back_link') %>
               <% end %>
             </div>
           </div>

@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-12">
         <div class="campaigns-header">
-          <h1 class="campaigns-title">🗳️ Campagnes de Vote</h1>
-          <p class="campaigns-subtitle">Participez aux votes de la communauté CourtSideClub et gagnez des points !</p>
+          <h1 class="campaigns-title">🗳️ <%= t('vote_campaigns.title') %></h1>
+          <p class="campaigns-subtitle"><%= t('vote_campaigns.subtitle') %></p>
         </div>
       </div>
     </div>
@@ -15,34 +15,34 @@
         <div class="col-12">
           <h2 class="section-title">
             <i class="fas fa-fire me-2"></i>
-            Votes en cours
+            <%= t('vote_campaigns.sections.active.title') %>
           </h2>
           <div class="campaigns-grid">
             <% @active_campaigns.each do |campaign| %>
               <div class="campaign-card active">
                 <div class="campaign-header">
                   <h3 class="campaign-title"><%= campaign.title %></h3>
-                  <span class="campaign-status active">🔥 En cours</span>
+                  <span class="campaign-status active">🔥 <%= t('vote_campaigns.sections.active.status') %></span>
                 </div>
                 <p class="campaign-description"><%= truncate(campaign.description, length: 120) %></p>
                 <div class="campaign-stats">
                   <div class="stat">
                     <i class="fas fa-users"></i>
-                    <span><%= campaign.players.count %> joueurs</span>
+                    <span><%= campaign.players.count %> <%= t('vote_campaigns.stats.players') %></span>
                   </div>
                   <div class="stat">
                     <i class="fas fa-vote-yea"></i>
-                    <span><%= campaign.vote_count %> votes</span>
+                    <span><%= campaign.vote_count %> <%= t('vote_campaigns.stats.votes') %></span>
                   </div>
                   <div class="stat">
                     <i class="fas fa-clock"></i>
-                    <span>Jusqu'au <%= campaign.end_date.strftime("%d/%m/%Y") %></span>
+                    <span><%= t('vote_campaigns.sections.active.until') %> <%= campaign.end_date.strftime("%d/%m/%Y") %></span>
                   </div>
                 </div>
                 <div class="campaign-actions">
-                  <%= link_to "Voir et voter", campaign, class: "button-hero-link" %>
+                  <%= link_to t('vote_campaigns.sections.active.action'), campaign, class: "button-hero-link" %>
                   <% if user_signed_in? && campaign.user_voted?(current_user) %>
-                    <span class="voted-badge">✅ Vous avez voté</span>
+                    <span class="voted-badge">✅ <%= t('vote_campaigns.sections.active.voted') %></span>
                   <% end %>
                 </div>
               </div>
@@ -58,28 +58,28 @@
         <div class="col-12">
           <h2 class="section-title">
             <i class="fas fa-calendar-alt me-2"></i>
-            Votes à venir
+            <%= t('vote_campaigns.sections.upcoming.title') %>
           </h2>
           <div class="campaigns-grid">
             <% @upcoming_campaigns.each do |campaign| %>
               <div class="campaign-card upcoming">
                 <div class="campaign-header">
                   <h3 class="campaign-title"><%= campaign.title %></h3>
-                  <span class="campaign-status upcoming">🟡 Bientôt</span>
+                  <span class="campaign-status upcoming">🟡 <%= t('vote_campaigns.sections.upcoming.status') %></span>
                 </div>
                 <p class="campaign-description"><%= truncate(campaign.description, length: 120) %></p>
                 <div class="campaign-stats">
                   <div class="stat">
                     <i class="fas fa-users"></i>
-                    <span><%= campaign.players.count %> joueurs</span>
+                    <span><%= campaign.players.count %> <%= t('vote_campaigns.stats.players') %></span>
                   </div>
                   <div class="stat">
                     <i class="fas fa-calendar-start"></i>
-                    <span>Débute le <%= campaign.start_date.strftime("%d/%m/%Y") %></span>
+                    <span><%= t('vote_campaigns.sections.upcoming.starts') %> <%= campaign.start_date.strftime("%d/%m/%Y") %></span>
                   </div>
                 </div>
                 <div class="campaign-actions">
-                  <%= link_to "Voir les détails", campaign, class: "button-hero-link-secondary" %>
+                  <%= link_to t('vote_campaigns.sections.upcoming.action'), campaign, class: "button-hero-link-secondary" %>
                 </div>
               </div>
             <% end %>
@@ -94,32 +94,32 @@
         <div class="col-12">
           <h2 class="section-title">
             <i class="fas fa-history me-2"></i>
-            Votes terminés
+            <%= t('vote_campaigns.sections.past.title') %>
           </h2>
           <div class="campaigns-grid">
             <% @past_campaigns.each do |campaign| %>
               <div class="campaign-card past">
                 <div class="campaign-header">
                   <h3 class="campaign-title"><%= campaign.title %></h3>
-                  <span class="campaign-status past">🔴 Terminé</span>
+                  <span class="campaign-status past">🔴 <%= t('vote_campaigns.sections.past.status') %></span>
                 </div>
                 <p class="campaign-description"><%= truncate(campaign.description, length: 120) %></p>
                 <div class="campaign-stats">
                   <div class="stat">
                     <i class="fas fa-users"></i>
-                    <span><%= campaign.players.count %> joueurs</span>
+                    <span><%= campaign.players.count %> <%= t('vote_campaigns.stats.players') %></span>
                   </div>
                   <div class="stat">
                     <i class="fas fa-vote-yea"></i>
-                    <span><%= campaign.vote_count %> votes</span>
+                    <span><%= campaign.vote_count %> <%= t('vote_campaigns.stats.votes') %></span>
                   </div>
                   <div class="stat">
                     <i class="fas fa-calendar-times"></i>
-                    <span>Terminé le <%= campaign.end_date.strftime("%d/%m/%Y") %></span>
+                    <span><%= t('vote_campaigns.sections.past.ended') %> <%= campaign.end_date.strftime("%d/%m/%Y") %></span>
                   </div>
                 </div>
                 <div class="campaign-actions">
-                  <%= link_to "Voir les résultats", campaign, class: "button-hero-link-secondary" %>
+                  <%= link_to t('vote_campaigns.sections.past.action'), campaign, class: "button-hero-link-secondary" %>
                 </div>
               </div>
             <% end %>
@@ -134,9 +134,9 @@
         <div class="col-12">
           <div class="empty-state">
             <i class="fas fa-vote-yea"></i>
-            <h3>Aucune campagne de vote</h3>
-            <p>Il n'y a actuellement aucune campagne de vote disponible.</p>
-            <%= link_to "Retour au dashboard", dashboard_path, class: "button-hero-link-secondary" %>
+            <h3><%= t('vote_campaigns.empty_state.title') %></h3>
+            <p><%= t('vote_campaigns.empty_state.description') %></p>
+            <%= link_to t('vote_campaigns.empty_state.back_to_dashboard'), dashboard_path, class: "button-hero-link-secondary" %>
           </div>
         </div>
       </div>

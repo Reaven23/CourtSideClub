@@ -7,9 +7,9 @@
     <div class="page-header mb-5">
       <div class="text-center">
         <h1 class="page-title">
-          <i class="fas fa-question-circle me-3"></i>FAQ
+          <i class="fas fa-question-circle me-3"></i><%= t('pages.faq.hero.title') %>
         </h1>
-        <p class="page-subtitle">Trouvez rapidement les réponses à vos questions</p>
+        <p class="page-subtitle"><%= t('pages.faq.hero.subtitle') %></p>
       </div>
     </div>
 
@@ -17,9 +17,9 @@
     <section id="utilisateurs" class="faq-section mb-5">
       <div class="section-header">
         <h2 class="section-title">
-          <i class="fas fa-users me-3"></i>Questions des Utilisateurs
+          <i class="fas fa-users me-3"></i><%= t('pages.faq.users_section.title') %>
         </h2>
-        <p class="section-subtitle">Tout ce que vous devez savoir en tant que membre CourtSideClub</p>
+        <p class="section-subtitle"><%= t('pages.faq.users_section.subtitle') %></p>
       </div>
 
       <div class="accordion" id="faqUsers">
@@ -27,17 +27,16 @@
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading1">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-              <i class="fas fa-user-plus me-3"></i>Comment adhérer à CourtSideClub ?
+              <i class="fas fa-user-plus me-3"></i><%= t('pages.faq.users_section.questions.membership.question') %>
             </button>
           </h3>
           <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqUsers">
             <div class="accordion-body">
-              <p>L'adhésion à CourtSideClub est simple et rapide :</p>
+              <p><%= t('pages.faq.users_section.questions.membership.answer.intro') %></p>
               <ul>
-                <li>Rendez-vous sur notre page d'inscription</li>
-                <li>Remplissez le formulaire avec vos informations personnelles</li>
-                <li>Confirmez votre adresse email</li>
-                <li>Choisissez votre formule d'adhésion</li>
+                <% t('pages.faq.users_section.questions.membership.answer.steps').each do |step| %>
+                  <li><%= step %></li>
+                <% end %>
               </ul>
             </div>
           </div>
@@ -46,19 +45,18 @@
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading2">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-              <i class="fas fa-coins me-3"></i>Comment fonctionne le système de points ?
+              <i class="fas fa-coins me-3"></i><%= t('pages.faq.users_section.questions.points_system.question') %>
             </button>
           </h3>
           <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqUsers">
             <div class="accordion-body">
-              <p>Le système de points CourtSideClub récompense votre engagement :</p>
+              <p><%= t('pages.faq.users_section.questions.points_system.answer.intro') %></p>
               <ul>
-                <li><strong>Votes :</strong> 10 points par vote dans les campagnes</li>
-                <li><strong>Quiz :</strong> Points selon votre score et la difficulté</li>
-                <li><strong>Participation :</strong> Points bonus pour l'engagement communautaire</li>
-                <li><strong>Niveaux :</strong> Rookie → Fan → Super Fan → MVP → Legend → Elite → Master → GOAT</li>
+                <% t('pages.faq.users_section.questions.points_system.answer.points').each do |point| %>
+                  <li><strong><%= point.split(':').first %> :</strong> <%= point.split(':').last.strip %></li>
+                <% end %>
               </ul>
-              <p>Plus vous participez, plus vous montez en niveau et débloquez des avantages exclusifs !</p>
+              <p><%= t('pages.faq.users_section.questions.points_system.answer.conclusion') %></p>
             </div>
           </div>
         </div>
@@ -66,20 +64,18 @@
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading3">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-              <i class="fas fa-vote-yea me-3"></i>Comment participer aux votes ?
+              <i class="fas fa-vote-yea me-3"></i><%= t('pages.faq.users_section.questions.voting.question') %>
             </button>
           </h3>
           <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#faqUsers">
             <div class="accordion-body">
-              <p>Participer aux votes est très simple :</p>
+              <p><%= t('pages.faq.users_section.questions.voting.answer.intro') %></p>
               <ol>
-                <li>Connectez-vous à votre compte</li>
-                <li>Allez dans la section "Votes"</li>
-                <li>Choisissez une campagne de vote active</li>
-                <li>Sélectionnez votre joueur préféré</li>
-                <li>Confirmez votre vote</li>
+                <% t('pages.faq.users_section.questions.voting.answer.steps').each do |step| %>
+                  <li><%= step %></li>
+                <% end %>
               </ol>
-              <p><strong>Important :</strong> Vous ne pouvez voter qu'une seule fois par campagne. Chaque vote vous rapporte 10 points !</p>
+              <p><strong><%= t('pages.faq.users_section.questions.voting.answer.note') %></strong></p>
             </div>
           </div>
         </div>
@@ -87,19 +83,18 @@
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading4">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-              <i class="fas fa-gamepad me-3"></i>Quels sont les mini-jeux disponibles ?
+              <i class="fas fa-gamepad me-3"></i><%= t('pages.faq.users_section.questions.minigames.question') %>
             </button>
           </h3>
           <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqUsers">
             <div class="accordion-body">
-              <p>CourtSideClub propose une variété de mini-jeux éducatifs :</p>
+              <p><%= t('pages.faq.users_section.questions.minigames.answer.intro') %></p>
               <ul>
-                <li><strong>Quiz Basketball :</strong> Testez vos connaissances sur le basket 3X3</li>
-                <li><strong>Quiz Histoire :</strong> Découvrez l'histoire du basketball</li>
-                <li><strong>Quiz Joueurs :</strong> Connaissez-vous les stars du 3X3 ?</li>
-                <li><strong>Jeux de mémoire :</strong> Entraînez votre cerveau</li>
+                <% t('pages.faq.users_section.questions.minigames.answer.games').each do |game| %>
+                  <li><strong><%= game.split(':').first %> :</strong> <%= game.split(':').last.strip %></li>
+                <% end %>
               </ul>
-              <p>Tous les jeux vous permettent de gagner des points et d'apprendre en vous amusant !</p>
+              <p><%= t('pages.faq.users_section.questions.minigames.answer.conclusion') %></p>
             </div>
           </div>
         </div>
@@ -107,19 +102,18 @@
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading5">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-              <i class="fas fa-gift me-3"></i>Quels avantages puis-je obtenir ?
+              <i class="fas fa-gift me-3"></i><%= t('pages.faq.users_section.questions.benefits.question') %>
             </button>
           </h3>
           <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqUsers">
             <div class="accordion-body">
-              <p>Les avantages CourtSideClub évoluent avec votre niveau :</p>
+              <p><%= t('pages.faq.users_section.questions.benefits.answer.intro') %></p>
               <ul>
-                <li><strong>Niveaux débutants :</strong> Accès aux contenus exclusifs, newsletter premium</li>
-                <li><strong>Niveaux intermédiaires :</strong> Invitations aux événements, réductions partenaires</li>
-                <li><strong>Niveaux avancés :</strong> Rencontres avec les joueurs, VIP aux matchs</li>
-                <li><strong>Niveaux experts :</strong> Participation aux décisions de l'équipe, merchandising exclusif</li>
+                <% t('pages.faq.users_section.questions.benefits.answer.levels').each do |level| %>
+                  <li><strong><%= level.split(':').first %> :</strong> <%= level.split(':').last.strip %></li>
+                <% end %>
               </ul>
-              <p>Consultez notre page <a href="<%= advantages_path %>">Avantages</a> pour plus de détails !</p>
+              <p><%= t('pages.faq.users_section.questions.benefits.answer.link') %></p>
             </div>
           </div>
         </div>
@@ -130,30 +124,27 @@
     <section id="partenaires" class="faq-section mb-5">
       <div class="section-header">
         <h2 class="section-title">
-          <i class="fas fa-handshake me-3"></i>Questions des Partenaires
+          <i class="fas fa-handshake me-3"></i><%= t('pages.faq.partners_section.title') %>
         </h2>
-        <p class="section-subtitle">Découvrez comment CourtSideClub peut valoriser votre marque et engager votre audience</p>
+        <p class="section-subtitle"><%= t('pages.faq.partners_section.subtitle') %></p>
       </div>
 
       <div class="accordion" id="faqPartners">
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading6">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-              <i class="fas fa-eye me-3"></i>Comment CourtSideClub peut-il augmenter la visibilité de ma marque ?
+              <i class="fas fa-eye me-3"></i><%= t('pages.faq.partners_section.questions.visibility.question') %>
             </button>
           </h3>
           <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#faqPartners">
             <div class="accordion-body">
-              <p>CourtSideClub offre de multiples opportunités de visibilité pour votre marque :</p>
+              <p><%= t('pages.faq.partners_section.questions.visibility.answer.intro') %></p>
               <ul>
-                <li><strong>Quiz sponsorisés :</strong> Créez des quiz personnalisés sur votre secteur d'activité</li>
-                <li><strong>Événements exclusifs :</strong> Organisez des événements avec notre communauté</li>
-                <li><strong>Contenus co-brandés :</strong> Articles et vidéos présentant vos produits/services</li>
-                <li><strong>Intégration dans les mini-jeux :</strong> Vos marques apparaissent dans nos jeux éducatifs</li>
-                <li><strong>Newsletter partenaire :</strong> Communication directe avec nos membres</li>
-                <li><strong>Réseaux sociaux :</strong> Partage de vos actualités sur nos canaux</li>
+                <% t('pages.faq.partners_section.questions.visibility.answer.opportunities').each do |opportunity| %>
+                  <li><strong><%= opportunity.split(':').first %> :</strong> <%= opportunity.split(':').last.strip %></li>
+                <% end %>
               </ul>
-              <p>Chaque interaction avec notre communauté est une opportunité de faire découvrir votre marque à un public passionné et engagé.</p>
+              <p><%= t('pages.faq.partners_section.questions.visibility.answer.conclusion') %></p>
             </div>
           </div>
         </div>
@@ -161,21 +152,18 @@
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading7">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-              <i class="fas fa-gamepad me-3"></i>Comment fonctionnent les quiz sponsorisés ?
+              <i class="fas fa-gamepad me-3"></i><%= t('pages.faq.partners_section.questions.sponsored_quizzes.question') %>
             </button>
           </h3>
           <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#faqPartners">
             <div class="accordion-body">
-              <p>Les quiz sponsorisés sont un excellent moyen d'engager notre communauté tout en valorisant votre expertise :</p>
+              <p><%= t('pages.faq.partners_section.questions.sponsored_quizzes.answer.intro') %></p>
               <ul>
-                <li><strong>Personnalisation complète :</strong> Vous choisissez le thème, les questions et les réponses</li>
-                <li><strong>Intégration de votre marque :</strong> Logo, couleurs et messages personnalisés</li>
-                <li><strong>Redirection vers vos activités :</strong> Liens directs vers votre site ou vos offres</li>
-                <li><strong>Gamification :</strong> Les joueurs gagnent des points et découvrent votre univers</li>
-                <li><strong>Analytics détaillés :</strong> Suivi des performances et de l'engagement</li>
-                <li><strong>Communauté ciblée :</strong> Accès à des passionnés de sport et d'innovation</li>
+                <% t('pages.faq.partners_section.questions.sponsored_quizzes.answer.features').each do |feature| %>
+                  <li><strong><%= feature.split(':').first %> :</strong> <%= feature.split(':').last.strip %></li>
+                <% end %>
               </ul>
-              <p>Nos membres adorent apprendre en s'amusant, et vos quiz deviennent un vecteur d'éducation et de découverte de votre marque.</p>
+              <p><%= t('pages.faq.partners_section.questions.sponsored_quizzes.answer.conclusion') %></p>
             </div>
           </div>
         </div>
@@ -183,21 +171,18 @@
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading8">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
-              <i class="fas fa-calendar-alt me-3"></i>Quels types d'événements pouvez-vous organiser ?
+              <i class="fas fa-calendar-alt me-3"></i><%= t('pages.faq.partners_section.questions.events.question') %>
             </button>
           </h3>
           <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#faqPartners">
             <div class="accordion-body">
-              <p>CourtSideClub propose une variété d'événements pour mettre en valeur vos partenaires :</p>
+              <p><%= t('pages.faq.partners_section.questions.events.answer.intro') %></p>
               <ul>
-                <li><strong>Événements sportifs :</strong> Tournois, démonstrations, rencontres avec des joueurs</li>
-                <li><strong>Ateliers et formations :</strong> Partagez votre expertise avec notre communauté</li>
-                <li><strong>Lancements de produits :</strong> Présentez vos nouveautés en avant-première</li>
-                <li><strong>Conférences et webinaires :</strong> Échangez sur des sujets d'actualité</li>
-                <li><strong>Événements networking :</strong> Rencontrez des passionnés et des professionnels</li>
-                <li><strong>Challenges et défis :</strong> Créez des compétitions engageantes</li>
+                <% t('pages.faq.partners_section.questions.events.answer.event_types').each do |event_type| %>
+                  <li><strong><%= event_type.split(':').first %> :</strong> <%= event_type.split(':').last.strip %></li>
+                <% end %>
               </ul>
-              <p>Chaque événement est une occasion de créer des liens authentiques avec notre communauté et de positionner votre marque comme un acteur innovant du secteur.</p>
+              <p><%= t('pages.faq.partners_section.questions.events.answer.conclusion') %></p>
             </div>
           </div>
         </div>
@@ -205,21 +190,18 @@
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading9">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
-              <i class="fas fa-users me-3"></i>Quelle est la valeur ajoutée de votre communauté ?
+              <i class="fas fa-users me-3"></i><%= t('pages.faq.partners_section.questions.community_value.question') %>
             </button>
           </h3>
           <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#faqPartners">
             <div class="accordion-body">
-              <p>Notre communauté CourtSideClub représente un capital unique pour vos partenariats :</p>
+              <p><%= t('pages.faq.partners_section.questions.community_value.answer.intro') %></p>
               <ul>
-                <li><strong>Engagement authentique :</strong> Des membres actifs qui participent quotidiennement</li>
-                <li><strong>Passion sportive :</strong> Audience naturellement réceptive aux innovations</li>
-                <li><strong>Diversité démographique :</strong> 18-45 ans, urbains, connectés et consommateurs avertis</li>
-                <li><strong>Influence communautaire :</strong> Nos membres partagent et recommandent activement</li>
-                <li><strong>Appétence technologique :</strong> Ouverts aux nouvelles expériences digitales</li>
-                <li><strong>Fidélité à la marque :</strong> Relation de confiance établie avec CourtSideClub</li>
+                <% t('pages.faq.partners_section.questions.community_value.answer.values').each do |value| %>
+                  <li><strong><%= value.split(':').first %> :</strong> <%= value.split(':').last.strip %></li>
+                <% end %>
               </ul>
-              <p>Cette communauté n'est pas seulement une audience, c'est un écosystème d'ambassadeurs potentiels pour votre marque.</p>
+              <p><%= t('pages.faq.partners_section.questions.community_value.answer.conclusion') %></p>
             </div>
           </div>
         </div>
@@ -227,19 +209,18 @@
         <div class="accordion-item">
           <h3 class="accordion-header" id="heading10">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
-              <i class="fas fa-lightbulb me-3"></i>Comment créer un partenariat innovant et personnalisé ?
+              <i class="fas fa-lightbulb me-3"></i><%= t('pages.faq.partners_section.questions.custom_partnership.question') %>
             </button>
           </h3>
           <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqPartners">
             <div class="accordion-body">
-              <p>Chaque partenariat CourtSideClub est unique et adapté à vos objectifs :</p>
+              <p><%= t('pages.faq.partners_section.questions.custom_partnership.answer.intro') %></p>
               <ul>
-                <li><strong>Audit personnalisé :</strong> Analyse de vos besoins et de votre secteur d'activité</li>
-                <li><strong>Proposition sur mesure :</strong> Combinaison de plusieurs leviers d'engagement</li>
-                <li><strong>Innovation continue :</strong> Test de nouvelles approches et optimisation en temps réel</li>
-                <li><strong>Flexibilité :</strong> Adaptation du partenariat selon vos évolutions</li>
+                <% t('pages.faq.partners_section.questions.custom_partnership.answer.features').each do |feature| %>
+                  <li><strong><%= feature.split(':').first %> :</strong> <%= feature.split(':').last.strip %></li>
+                <% end %>
               </ul>
-              <p>Nous croyons que les meilleurs partenariats naissent de la créativité et de l'adaptation. Contactez-nous pour explorer ensemble les possibilités !</p>
+              <p><%= t('pages.faq.partners_section.questions.custom_partnership.answer.conclusion') %></p>
             </div>
           </div>
         </div>
@@ -250,11 +231,11 @@
     <!-- Section Contact -->
     <section class="faq-contact-section text-center">
       <div class="contact-card">
-        <h3>Vous n'avez pas trouvé votre réponse ?</h3>
-        <p class="text-muted mb-4">Notre équipe est là pour vous aider !</p>
+        <h3><%= t('pages.faq.contact_section.title') %></h3>
+        <p class="text-muted mb-4"><%= t('pages.faq.contact_section.subtitle') %></p>
         <div class="contact-actions">
           <%= link_to contact_path, class: "btn btn-primary btn-lg me-3" do %>
-            <i class="fas fa-envelope me-2"></i>Nous contacter
+            <i class="fas fa-envelope me-2"></i><%= t('pages.faq.contact_section.contact_button') %>
           <% end %>
         </div>
       </div>

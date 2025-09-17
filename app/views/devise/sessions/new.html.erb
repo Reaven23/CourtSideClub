@@ -8,19 +8,19 @@
               <%= image_tag "logo.png", alt: "CourtSideClub Logo", class: "auth-logo" %>
               <span class="auth-brand-text">CourtSideClub</span>
             <% end %>
-            <h2 class="auth-title">Connexion</h2>
-            <p class="auth-subtitle">Accédez à votre espace membre</p>
+            <h2 class="auth-title"><%= t('devise.sessions.title') %></h2>
+            <p class="auth-subtitle"><%= t('devise.sessions.subtitle') %></p>
           </div>
 
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f| %>
-            <%= f.error_notification message: "Email ou mot de passe incorrect", class: "auth-error" %>
+            <%= f.error_notification message: t('devise.sessions.error_message'), class: "auth-error" %>
 
             <div class="form-inputs">
               <%= f.input :email,
                           required: false,
                           autofocus: true,
-                          label: "Email",
-                          placeholder: "votre@email.com",
+                          label: t('devise.sessions.email_label'),
+                          placeholder: t('devise.sessions.email_placeholder'),
                           wrapper_class: "auth-input-wrapper",
                           input_html: {
                             autocomplete: "email",
@@ -29,8 +29,8 @@
 
               <%= f.input :password,
                           required: false,
-                          label: "Mot de passe",
-                          placeholder: "••••••••",
+                          label: t('devise.sessions.password_label'),
+                          placeholder: t('devise.sessions.password_placeholder'),
                           wrapper_class: "auth-input-wrapper",
                           input_html: {
                             autocomplete: "current-password",
@@ -41,28 +41,28 @@
                 <% if devise_mapping.rememberable? %>
                   <%= f.input :remember_me,
                               as: :boolean,
-                              label: "Se souvenir de moi",
+                              label: t('devise.sessions.remember_me'),
                               wrapper_class: "auth-checkbox-wrapper",
                               input_html: { class: "auth-checkbox" } %>
                 <% end %>
 
-                <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "auth-forgot-link" %>
+                <%= link_to t('devise.sessions.forgot_password'), new_password_path(resource_name), class: "auth-forgot-link" %>
               </div>
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, "Se connecter", class: "auth-btn-primary" %>
+              <%= f.button :submit, t('devise.sessions.submit'), class: "auth-btn-primary" %>
             </div>
           <% end %>
 
           <div class="auth-divider">
-            <span>ou</span>
+            <span><%= t('devise.sessions.divider') %></span>
           </div>
 
           <div class="auth-links">
             <p class="auth-signup-text">
-              Pas encore membre ?
-              <%= link_to "Rejoindre CourtSideClub", new_registration_path(resource_name), class: "auth-signup-link" %>
+              <%= t('devise.sessions.signup_text') %>
+              <%= link_to t('devise.sessions.signup_link'), new_registration_path(resource_name), class: "auth-signup-link" %>
             </p>
           </div>
         </div>

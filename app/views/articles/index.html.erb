@@ -7,17 +7,17 @@
     <div class="page-header mb-4">
       <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><%= link_to "Accueil", root_path %></li>
-          <li class="breadcrumb-item active" aria-current="page">Articles</li>
+          <li class="breadcrumb-item"><%= link_to t('articles.index.breadcrumb.home'), root_path %></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= t('articles.index.breadcrumb.articles') %></li>
         </ol>
       </nav>
 
       <div class="d-flex justify-content-center align-items-center flex-wrap">
         <div>
           <h1 class="page-title mb-1 ">
-            <i class="fas fa-newspaper me-2"></i>Actualités CourtSideClub
+            <i class="fas fa-newspaper me-2"></i><%= t('articles.index.hero.title') %>
           </h1>
-          <p class="text-muted mb-0 ">Découvrez toutes les actualités de votre club de basket préféré</p>
+          <p class="text-muted mb-0 "><%= t('articles.index.hero.subtitle') %></p>
         </div>
 
       </div>
@@ -33,7 +33,7 @@
         <div class="published-section">
           <div class="section-header mb-3">
             <h3 class="section-title">
-              <i class="fas fa-newspaper me-2"></i>Articles publiés
+              <i class="fas fa-newspaper me-2"></i><%= t('articles.index.sections.published.title') %>
               <span class="badge bg-success ms-2"><%= @published_articles.count %></span>
             </h3>
           </div>
@@ -54,17 +54,17 @@
                     <% elsif article.youtube_embed.present? %>
                       <div class="video-thumbnail">
                         <i class="fab fa-youtube"></i>
-                        <span>Vidéo</span>
+                        <span><%= t('articles.index.thumbnails.video') %></span>
                       </div>
                     <% elsif article.instagram_embed.present? %>
                       <div class="instagram-thumbnail">
                         <i class="fab fa-instagram"></i>
-                        <span>Instagram</span>
+                        <span><%= t('articles.index.thumbnails.instagram') %></span>
                       </div>
                     <% else %>
                       <div class="default-thumbnail">
                         <i class="fas fa-newspaper"></i>
-                        <span>Article</span>
+                        <span><%= t('articles.index.thumbnails.article') %></span>
                       </div>
                     <% end %>
                   </div>
@@ -101,7 +101,7 @@
                         <div class="author-info">
                           <small class="text-muted">
                             <i class="fas fa-user me-1"></i>
-                            <strong>CourtSideClub</strong>
+                            <strong><%= t('articles.show.meta.author') %></strong>
                           </small>
                         </div>
                         <div class="date-info">
@@ -125,7 +125,7 @@
       <div class="text-center mt-5">
         <p class="text-muted">
           <i class="fas fa-info-circle me-2"></i>
-          <%= pluralize(@published_articles.count, 'article publié', 'articles publiés') %>
+          <%= @published_articles.count %> <%= @published_articles.count == 1 ? t('articles.index.sections.stats.info') : t('articles.index.sections.stats.info_plural') %>
         </p>
       </div>
     <% else %>
@@ -133,13 +133,13 @@
       <div class="no-articles text-center">
         <div class="empty-state">
           <i class="fas fa-newspaper fa-4x text-muted mb-4"></i>
-          <h3 class="text-muted mb-3">Aucun article publié</h3>
+          <h3 class="text-muted mb-3"><%= t('articles.index.empty_state.title') %></h3>
           <p class="text-muted mb-4">
-            Soyez le premier à partager une actualité avec la communauté CourtSideClub !
+            <%= t('articles.index.empty_state.description') %>
           </p>
           <% if user_signed_in? %>
             <%= link_to new_article_path, class: "btn btn-primary btn-lg" do %>
-              <i class="fas fa-plus me-2"></i>Écrire le premier article
+              <i class="fas fa-plus me-2"></i><%= t('articles.index.empty_state.first_article') %>
             <% end %>
           <% end %>
         </div>

@@ -13,8 +13,8 @@
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb" class="mb-3">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><%= link_to "Accueil", root_path %></li>
-                <li class="breadcrumb-item"><%= link_to "Articles", articles_path %></li>
+                <li class="breadcrumb-item"><%= link_to t('articles.show.breadcrumb.home'), root_path %></li>
+                <li class="breadcrumb-item"><%= link_to t('articles.show.breadcrumb.articles'), articles_path %></li>
                 <li class="breadcrumb-item active" aria-current="page"><%= truncate(@article.title, length: 30) %></li>
               </ol>
             </nav>
@@ -25,9 +25,9 @@
             <div class="article-meta">
               <div class="author-info">
                 <i class="fas fa-user-circle text-primary me-2"></i>
-                <strong>CourtSideClub</strong>
+                <strong><%= t('articles.show.meta.author') %></strong>
                 <span class="text-muted ms-2">
-                  <%= @article.published? ? "• Publié le #{@article.published_at.strftime('%d/%m/%Y')}" : "• Brouillon" %>
+                  <%= @article.published? ? "• #{t('articles.show.meta.published', date: @article.published_at.strftime('%d/%m/%Y'))}" : "• #{t('articles.show.meta.draft')}" %>
                 </span>
               </div>
 
@@ -66,7 +66,7 @@
                               data-instgrm-version="14">
                     <div class="instagram-placeholder">
                       <a href="<%= @article.instagram_embed_url %>" target="_blank" class="btn btn-outline-primary">
-                        <i class="fab fa-instagram me-2"></i>Voir sur Instagram
+                        <i class="fab fa-instagram me-2"></i><%= t('articles.show.instagram.view_on_instagram') %>
                       </a>
                     </div>
                   </blockquote>
@@ -83,11 +83,11 @@
             <% if @article.youtube_embed.present? %>
               <div class="article-video">
                 <h4 class="video-title">
-                  <i class="fab fa-youtube text-danger me-2"></i>Vidéo associée
+                  <i class="fab fa-youtube text-danger me-2"></i><%= t('articles.show.video.title') %>
                 </h4>
                 <div class="ratio ratio-16x9">
                   <iframe src="<%= @article.youtube_embed_url %>"
-                          title="Vidéo YouTube"
+                          title="#{t('articles.show.video.youtube_title')}"
                           allowfullscreen>
                   </iframe>
                 </div>
@@ -99,14 +99,14 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <%= link_to articles_path, class: "btn button-hero-link-secondary" do %>
-                    <i class="fas fa-arrow-left me-2"></i>Retour aux articles
+                    <i class="fas fa-arrow-left me-2"></i><%= t('articles.show.actions.back_to_articles') %>
                   <% end %>
                 </div>
 
                 <% if user_signed_in? && @article.user == current_user %>
                   <div>
                     <% unless @article.published? %>
-                      <span class="badge bg-warning">Brouillon</span>
+                      <span class="badge bg-warning"><%= t('articles.show.actions.draft_badge') %></span>
                     <% end %>
                   </div>
                 <% end %>
@@ -121,7 +121,7 @@
         <div class="article-sidebar">
           <div class="sidebar-content">
             <h5 class="sidebar-title">
-              <i class="fas fa-newspaper me-2"></i>Autres articles
+              <i class="fas fa-newspaper me-2"></i><%= t('articles.show.sidebar.other_articles') %>
             </h5>
 
             <div class="related-articles">
@@ -138,17 +138,17 @@
                       <% elsif related_article.youtube_embed.present? %>
                         <div class="video-thumbnail">
                           <i class="fab fa-youtube"></i>
-                          <span>Vidéo</span>
+                          <span><%= t('articles.index.thumbnails.video') %></span>
                         </div>
                       <% elsif related_article.instagram_embed.present? %>
                         <div class="instagram-thumbnail">
                           <i class="fab fa-instagram"></i>
-                          <span>Instagram</span>
+                          <span><%= t('articles.index.thumbnails.instagram') %></span>
                         </div>
                       <% else %>
                         <div class="default-thumbnail">
                           <i class="fas fa-newspaper"></i>
-                          <span>Article</span>
+                          <span><%= t('articles.index.thumbnails.article') %></span>
                         </div>
                       <% end %>
                     </div>
@@ -167,7 +167,7 @@
                 <div class="no-related-articles">
                   <p class="text-muted text-center">
                     <i class="fas fa-info-circle me-2"></i>
-                    Aucun autre article disponible pour le moment.
+                    <%= t('articles.show.sidebar.no_articles') %>
                   </p>
                 </div>
               <% end %>
@@ -176,7 +176,7 @@
             <!-- Lien vers tous les articles -->
             <div class="sidebar-footer">
               <%= link_to articles_path, class: "btn button-hero-link-secondary" do %>
-                <i class="fas fa-th-list me-2"></i>Voir tous les articles
+                <i class="fas fa-th-list me-2"></i><%= t('articles.show.sidebar.view_all') %>
               <% end %>
             </div>
           </div>
