@@ -86,9 +86,7 @@
               <div class="text-muted small">Publié le <%= l(article.published_at, format: :short) %> — par <%= article.user.full_name %></div>
             </div>
             <div class="d-flex gap-2">
-              <% if article.user == current_user %>
-                <%= link_to 'Modifier', edit_admin_article_path(article), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: 'admin_content' } %>
-              <% end %>
+              <%= link_to 'Modifier', edit_admin_article_path(article), class: 'btn btn-outline-secondary btn-sm', data: { turbo_frame: 'admin_content' } %>
               <%= link_to 'Voir', article_path(article), class: 'btn btn-outline-primary btn-sm', data: { turbo_frame: '_top' } %>
               <%= link_to 'Supprimer', admin_article_path(article),
                   class: 'btn btn-outline-danger btn-sm',
