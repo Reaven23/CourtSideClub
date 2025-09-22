@@ -44,12 +44,19 @@ puts "✅ #{campaign_players.count} joueurs dans la campagne"
 puts "\n🏀 Attribution de 25 votes à Valentin Chery..."
 
 users.each_with_index do |user, index|
-  UserVote.create!(
-    user: user,
-    player: valentin,
-    vote_campaign: lite_quest_campaign
-  )
-  puts "✅ Vote #{index + 1}/25 pour #{valentin.full_name} par #{user.first_name} #{user.last_name}"
+  # Vérifier si l'utilisateur a déjà voté dans cette campagne
+  existing_vote = UserVote.find_by(user: user, vote_campaign: lite_quest_campaign)
+
+  if existing_vote
+    puts "⚠️  #{user.first_name} #{user.last_name} a déjà voté pour #{existing_vote.player.full_name}"
+  else
+    UserVote.create!(
+      user: user,
+      player: valentin,
+      vote_campaign: lite_quest_campaign
+    )
+    puts "✅ Vote #{index + 1}/25 pour #{valentin.full_name} par #{user.first_name} #{user.last_name}"
+  end
 end
 
 # 2. Créer des votes aléatoires pour les autres utilisateurs
@@ -60,16 +67,23 @@ additional_users = User.offset(25).limit(127).to_a
 
 if additional_users.any?
   additional_users.each_with_index do |user, index|
-    # Choisir un joueur aléatoire (y compris Valentin)
-    random_player = campaign_players.sample
+    # Vérifier si l'utilisateur a déjà voté dans cette campagne
+    existing_vote = UserVote.find_by(user: user, vote_campaign: lite_quest_campaign)
 
-    UserVote.create!(
-      user: user,
-      player: random_player,
-      vote_campaign: lite_quest_campaign
-    )
+    if existing_vote
+      puts "⚠️  #{user.first_name} #{user.last_name} a déjà voté pour #{existing_vote.player.full_name}"
+    else
+      # Choisir un joueur aléatoire (y compris Valentin)
+      random_player = campaign_players.sample
 
-    puts "✅ Vote aléatoire #{index + 1}/#{additional_users.count}: #{user.first_name} #{user.last_name} vote pour #{random_player.full_name}"
+      UserVote.create!(
+        user: user,
+        player: random_player,
+        vote_campaign: lite_quest_campaign
+      )
+
+      puts "✅ Vote aléatoire #{index + 1}/#{additional_users.count}: #{user.first_name} #{user.last_name} vote pour #{random_player.full_name}"
+    end
   end
 else
   puts "⚠️  Aucun utilisateur supplémentaire trouvé pour les votes aléatoires"

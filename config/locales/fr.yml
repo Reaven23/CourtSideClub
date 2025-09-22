@@ -1126,6 +1126,33 @@ fr:
     am: "AM"
     pm: "PM"
 
+  # Traductions ActiveRecord
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "La validation a échoué: %{errors}"
+        taken: "est déjà pris"
+        blank: "ne peut pas être vide"
+        too_short: "est trop court (minimum %{count} caractères)"
+        too_long: "est trop long (maximum %{count} caractères)"
+        inclusion: "n'est pas inclus dans la liste"
+        exclusion: "est réservé"
+        invalid: "n'est pas valide"
+        confirmation: "ne correspond pas à la confirmation"
+        accepted: "doit être accepté"
+        empty: "ne peut pas être vide"
+        equal_to: "doit être égal à %{count}"
+        even: "doit être pair"
+        greater_than: "doit être supérieur à %{count}"
+        greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
+        less_than: "doit être inférieur à %{count}"
+        less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
+        other_than: "doit être différent de %{count}"
+        odd: "doit être impair"
+        present: "doit être vide"
+        required: "doit être présent"
+        uniqueness: "doit être unique"
+
   # Traductions pour distance_of_time_in_words
   datetime:
     distance_in_words:
