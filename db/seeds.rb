@@ -23,46 +23,38 @@
 
 # puts "✅ #{Level.count} niveaux créés!"
 
-# Création des joueurs
-# puts "🏀 Création des joueurs..."
-# players_data = [
-#   { first_name: "Valentin", last_name: "Chery", tournament_played: 15, photo: "chery.png" },
-#   { first_name: "Kevin", last_name: "Thalien", tournament_played: 12, photo: "thalien.webp" },
-#   { first_name: "Fabien", last_name: "Bondron", tournament_played: 14, photo: "bondron.jpg" },
-#   { first_name: "Aya", last_name: "Jallier", tournament_played: 8, photo: "jallier.png" },
-# ]
+# Vérification des joueurs existants
+puts "🏀 Vérification des joueurs existants..."
+puts "🎯 #{Player.count} joueurs disponibles dans la base de données"
 
-# players_data.each do |player_data|
-#   player = Player.create!(
-#     first_name: player_data[:first_name],
-#     last_name: player_data[:last_name],
-#     tournament_played: player_data[:tournament_played]
-#   )
+# Création de la campagne de vote pour le Lite Quest de Versailles
+puts "\n🗳️ Création de la campagne de vote pour le Lite Quest de Versailles..."
 
-#   # Attacher la photo si elle existe
-#   photo_path = Rails.root.join('app', 'assets', 'images', 'players', player_data[:photo])
-#   if File.exist?(photo_path)
-#     content_type = case File.extname(player_data[:photo]).downcase
-#                    when '.jpg', '.jpeg' then 'image/jpeg'
-#                    when '.png' then 'image/png'
-#                    when '.webp' then 'image/webp'
-#                    else 'image/jpeg'
-#                    end
+# D'abord, récupérer tous les joueurs
+players = Player.all
+puts "🏀 #{players.count} joueurs disponibles:"
 
-#     player.photo.attach(
-#       io: File.open(photo_path),
-#       filename: player_data[:photo],
-#       content_type: content_type
-#     )
-#     puts "✅ #{player.full_name} créé avec photo"
-#   else
-#     puts "⚠️  Photo non trouvée pour #{player.full_name}: #{player_data[:photo]}"
-#   end
-# end
+# Créer la campagne de vote en utilisant skip_validation temporairement
+lite_quest_campaign = VoteCampaign.new(
+  title: "Sélection pour le Lite Quest de Versailles",
+  description: "Votez pour le joueur qui sera obligatoirement sélectionné dans l'équipe pour participer au Lite Quest de Versailles du 30/08/2025. Parmi tous les joueurs CourtSideClub, choisissez celui qui mérite le plus de représenter notre équipe lors de cet événement prestigieux. À vos votes !",
+  start_date: Date.new(2025, 6, 1),
+  end_date: Date.new(2025, 7, 1),
+  active: true
+)
 
-# puts "🎯 #{Level.count} niveaux créés (1-100)!"
-# puts "🎯 #{Player.count} joueurs créés au total!"
-# puts "🏀 Données de test prêtes pour les votes MVP!"
+# Sauvegarder sans validation
+lite_quest_campaign.save!(validate: false)
+
+# Ajouter tous les joueurs CourtSideClub à la campagne
+players.each do |player|
+  lite_quest_campaign.vote_campaign_players.create!(player: player)
+end
+
+puts "✅ Campagne créée: #{lite_quest_campaign.title}"
+puts "📅 Du #{lite_quest_campaign.start_date.strftime('%d/%m/%Y')} au #{lite_quest_campaign.end_date.strftime('%d/%m/%Y')}"
+puts "🏀 #{lite_quest_campaign.players.count} joueurs disponibles:"
+lite_quest_campaign.players.each { |p| puts "   - #{p.full_name} (#{p.tournament_played} tournois)" }
 
 # Création de la campagne "Vote pour l'Open de France"
 # puts "🗳️ Création de la campagne de vote..."
@@ -135,119 +127,119 @@
 # load Rails.root.join('db', 'seeds_quiz_games.rb')
 
 # Génération de 150 utilisateurs multi-ethniques
-puts "\n" + "="*50
-puts "👥 GÉNÉRATION DE 150 UTILISATEURS..."
-puts "="*50
+# puts "\n" + "="*50
+# puts "👥 GÉNÉRATION DE 150 UTILISATEURS..."
+# puts "="*50
 
-# Nettoyage des utilisateurs existants (sauf admin)
+# # Nettoyage des utilisateurs existants (sauf admin)
 
-# Données multi-ethniques pour les noms et prénoms
-first_names = {
-  # Prénoms français
-  french: ["Alexandre", "Camille", "Lucas", "Emma", "Hugo", "Léa", "Thomas", "Chloé", "Nathan", "Manon", "Antoine", "Sarah", "Maxime", "Julie", "Romain", "Laura", "Julien", "Marine", "Baptiste", "Pauline", "Nicolas", "Claire", "Pierre", "Céline", "Sébastien", "Audrey", "Vincent", "Nathalie", "Guillaume", "Sophie", "Cédric", "Isabelle", "David", "Valérie", "Fabien", "Sandrine", "Jérémy", "Catherine", "Florian", "Patricia"],
+# # Données multi-ethniques pour les noms et prénoms
+# first_names = {
+#   # Prénoms français
+#   french: ["Alexandre", "Camille", "Lucas", "Emma", "Hugo", "Léa", "Thomas", "Chloé", "Nathan", "Manon", "Antoine", "Sarah", "Maxime", "Julie", "Romain", "Laura", "Julien", "Marine", "Baptiste", "Pauline", "Nicolas", "Claire", "Pierre", "Céline", "Sébastien", "Audrey", "Vincent", "Nathalie", "Guillaume", "Sophie", "Cédric", "Isabelle", "David", "Valérie", "Fabien", "Sandrine", "Jérémy", "Catherine", "Florian", "Patricia"],
 
-  # Prénoms africains
-  african: ["Aïcha", "Moussa", "Fatou", "Ibrahim", "Aminata", "Ousmane", "Kadiatou", "Mamadou", "Mariama", "Sékou", "Aissatou", "Boubacar", "Nafissatou", "Cheikh", "Aïssata", "Modou", "Ramatou", "Moussa", "Aïda", "Amadou", "Kadidia", "Bakary", "Aïssa", "Mamadou", "Fatima", "Ibrahima", "Aïcha", "Souleymane", "Mariam", "Abdoulaye", "Aminata", "Moussa", "Kadiatou", "Cheikh", "Aïssatou", "Boubacar", "Mariama", "Ousmane", "Aïda", "Amadou"],
+#   # Prénoms africains
+#   african: ["Aïcha", "Moussa", "Fatou", "Ibrahim", "Aminata", "Ousmane", "Kadiatou", "Mamadou", "Mariama", "Sékou", "Aissatou", "Boubacar", "Nafissatou", "Cheikh", "Aïssata", "Modou", "Ramatou", "Moussa", "Aïda", "Amadou", "Kadidia", "Bakary", "Aïssa", "Mamadou", "Fatima", "Ibrahima", "Aïcha", "Souleymane", "Mariam", "Abdoulaye", "Aminata", "Moussa", "Kadiatou", "Cheikh", "Aïssatou", "Boubacar", "Mariama", "Ousmane", "Aïda", "Amadou"],
 
-  # Prénoms arabes
-  arabic: ["Ahmed", "Fatima", "Mohamed", "Aïcha", "Omar", "Khadija", "Hassan", "Zainab", "Ali", "Mariam", "Youssef", "Amina", "Ibrahim", "Hafsa", "Khalid", "Safiya", "Tariq", "Layla", "Rachid", "Nour", "Said", "Yasmina", "Karim", "Salma", "Nabil", "Dounia", "Fouad", "Hiba", "Walid", "Rania", "Adel", "Nadia", "Tarek", "Samira", "Hicham", "Farida", "Reda", "Malika", "Yassine", "Khadija"],
+#   # Prénoms arabes
+#   arabic: ["Ahmed", "Fatima", "Mohamed", "Aïcha", "Omar", "Khadija", "Hassan", "Zainab", "Ali", "Mariam", "Youssef", "Amina", "Ibrahim", "Hafsa", "Khalid", "Safiya", "Tariq", "Layla", "Rachid", "Nour", "Said", "Yasmina", "Karim", "Salma", "Nabil", "Dounia", "Fouad", "Hiba", "Walid", "Rania", "Adel", "Nadia", "Tarek", "Samira", "Hicham", "Farida", "Reda", "Malika", "Yassine", "Khadija"],
 
-  # Prénoms asiatiques
-  asian: ["Wei", "Li", "Chen", "Wang", "Zhang", "Liu", "Yang", "Huang", "Zhao", "Wu", "Zhou", "Xu", "Sun", "Ma", "Zhu", "Hu", "Guo", "He", "Gao", "Lin", "Luo", "Zeng", "Peng", "Lu", "Jiang", "Cai", "Deng", "Xie", "Tang", "Shen", "Han", "Xiao", "Feng", "Zeng", "Cao", "Fang", "Cheng", "Ding", "Ren", "Yao"],
+#   # Prénoms asiatiques
+#   asian: ["Wei", "Li", "Chen", "Wang", "Zhang", "Liu", "Yang", "Huang", "Zhao", "Wu", "Zhou", "Xu", "Sun", "Ma", "Zhu", "Hu", "Guo", "He", "Gao", "Lin", "Luo", "Zeng", "Peng", "Lu", "Jiang", "Cai", "Deng", "Xie", "Tang", "Shen", "Han", "Xiao", "Feng", "Zeng", "Cao", "Fang", "Cheng", "Ding", "Ren", "Yao"],
 
-  # Prénoms hispaniques
-  hispanic: ["Carlos", "Maria", "Jose", "Ana", "Luis", "Carmen", "Antonio", "Isabel", "Francisco", "Rosa", "Manuel", "Pilar", "David", "Teresa", "Daniel", "Cristina", "Miguel", "Dolores", "Rafael", "Mercedes", "Javier", "Josefa", "Fernando", "Francisca", "Angel", "Antonia", "Alejandro", "Dolores", "Ramon", "Pilar", "Sergio", "Concepcion", "Alberto", "Rosario", "Roberto", "Encarnacion", "Eduardo", "Esperanza", "Victor", "Soledad"],
+#   # Prénoms hispaniques
+#   hispanic: ["Carlos", "Maria", "Jose", "Ana", "Luis", "Carmen", "Antonio", "Isabel", "Francisco", "Rosa", "Manuel", "Pilar", "David", "Teresa", "Daniel", "Cristina", "Miguel", "Dolores", "Rafael", "Mercedes", "Javier", "Josefa", "Fernando", "Francisca", "Angel", "Antonia", "Alejandro", "Dolores", "Ramon", "Pilar", "Sergio", "Concepcion", "Alberto", "Rosario", "Roberto", "Encarnacion", "Eduardo", "Esperanza", "Victor", "Soledad"],
 
-  # Prénoms anglo-saxons
-  anglo_saxon: ["James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "William", "Elizabeth", "David", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Sarah", "Christopher", "Karen", "Charles", "Nancy", "Daniel", "Lisa", "Matthew", "Betty", "Anthony", "Helen", "Mark", "Sandra", "Donald", "Donna", "Steven", "Carol", "Paul", "Ruth", "Andrew", "Sharon", "Joshua", "Michelle"],
+#   # Prénoms anglo-saxons
+#   anglo_saxon: ["James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "William", "Elizabeth", "David", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Sarah", "Christopher", "Karen", "Charles", "Nancy", "Daniel", "Lisa", "Matthew", "Betty", "Anthony", "Helen", "Mark", "Sandra", "Donald", "Donna", "Steven", "Carol", "Paul", "Ruth", "Andrew", "Sharon", "Joshua", "Michelle"],
 
-  # Prénoms slaves
-  slavic: ["Ivan", "Anna", "Sergey", "Elena", "Dmitri", "Olga", "Vladimir", "Tatiana", "Alexei", "Natalia", "Andrei", "Svetlana", "Mikhail", "Irina", "Nikolai", "Ludmila", "Pavel", "Galina", "Roman", "Valentina", "Oleg", "Nina", "Viktor", "Raisa", "Yuri", "Vera", "Anatoly", "Lyudmila", "Boris", "Tamara", "Gennady", "Zinaida", "Vladislav", "Larisa", "Stanislav", "Nadezhda", "Vyacheslav", "Valentina", "Grigory", "Raisa"]
-}
+#   # Prénoms slaves
+#   slavic: ["Ivan", "Anna", "Sergey", "Elena", "Dmitri", "Olga", "Vladimir", "Tatiana", "Alexei", "Natalia", "Andrei", "Svetlana", "Mikhail", "Irina", "Nikolai", "Ludmila", "Pavel", "Galina", "Roman", "Valentina", "Oleg", "Nina", "Viktor", "Raisa", "Yuri", "Vera", "Anatoly", "Lyudmila", "Boris", "Tamara", "Gennady", "Zinaida", "Vladislav", "Larisa", "Stanislav", "Nadezhda", "Vyacheslav", "Valentina", "Grigory", "Raisa"]
+# }
 
-last_names = {
-  # Noms français
-  french: ["Martin", "Bernard", "Thomas", "Petit", "Robert", "Richard", "Durand", "Dubois", "Moreau", "Laurent", "Simon", "Michel", "Lefebvre", "Leroy", "Roux", "David", "Bertrand", "Morel", "Fournier", "Girard", "Bonnet", "Dupont", "Lambert", "Fontaine", "Rousseau", "Vincent", "Muller", "Lefevre", "Faure", "Andre", "Mercier", "Blanc", "Guerin", "Boyer", "Garnier", "Chevalier", "Francois", "Legrand", "Gauthier", "Garcia"],
+# last_names = {
+#   # Noms français
+#   french: ["Martin", "Bernard", "Thomas", "Petit", "Robert", "Richard", "Durand", "Dubois", "Moreau", "Laurent", "Simon", "Michel", "Lefebvre", "Leroy", "Roux", "David", "Bertrand", "Morel", "Fournier", "Girard", "Bonnet", "Dupont", "Lambert", "Fontaine", "Rousseau", "Vincent", "Muller", "Lefevre", "Faure", "Andre", "Mercier", "Blanc", "Guerin", "Boyer", "Garnier", "Chevalier", "Francois", "Legrand", "Gauthier", "Garcia"],
 
-  # Noms africains
-  african: ["Traore", "Diallo", "Sangare", "Coulibaly", "Keita", "Kone", "Diop", "Ba", "Ndiaye", "Fall", "Diagne", "Sarr", "Thiam", "Gueye", "Faye", "Diouf", "Niang", "Sy", "Camara", "Sow", "Mane", "Dia", "Beye", "Ndao", "Diatta", "Sene", "Diouf", "Mbaye", "Seck", "Ndiaye", "Diagne", "Sarr", "Fall", "Ba", "Diop", "Kone", "Keita", "Coulibaly", "Sangare", "Diallo"],
+#   # Noms africains
+#   african: ["Traore", "Diallo", "Sangare", "Coulibaly", "Keita", "Kone", "Diop", "Ba", "Ndiaye", "Fall", "Diagne", "Sarr", "Thiam", "Gueye", "Faye", "Diouf", "Niang", "Sy", "Camara", "Sow", "Mane", "Dia", "Beye", "Ndao", "Diatta", "Sene", "Diouf", "Mbaye", "Seck", "Ndiaye", "Diagne", "Sarr", "Fall", "Ba", "Diop", "Kone", "Keita", "Coulibaly", "Sangare", "Diallo"],
 
-  # Noms arabes
-  arabic: ["Alami", "Benali", "Cherif", "Hassani", "Idrissi", "Kabbaj", "Lahlou", "Mansouri", "Naciri", "Ouali", "Rahmani", "Saadi", "Tazi", "Zerouali", "Ait", "Bennani", "Chraibi", "Dahmani", "El", "Fassi", "Gharbi", "Hajji", "Iraqi", "Jabri", "Khattabi", "Lahlou", "Mansouri", "Naciri", "Ouali", "Rahmani", "Saadi", "Tazi", "Zerouali", "Ait", "Bennani", "Chraibi", "Dahmani", "El", "Fassi", "Gharbi"],
+#   # Noms arabes
+#   arabic: ["Alami", "Benali", "Cherif", "Hassani", "Idrissi", "Kabbaj", "Lahlou", "Mansouri", "Naciri", "Ouali", "Rahmani", "Saadi", "Tazi", "Zerouali", "Ait", "Bennani", "Chraibi", "Dahmani", "El", "Fassi", "Gharbi", "Hajji", "Iraqi", "Jabri", "Khattabi", "Lahlou", "Mansouri", "Naciri", "Ouali", "Rahmani", "Saadi", "Tazi", "Zerouali", "Ait", "Bennani", "Chraibi", "Dahmani", "El", "Fassi", "Gharbi"],
 
-  # Noms asiatiques
-  asian: ["Wang", "Li", "Zhang", "Liu", "Chen", "Yang", "Huang", "Zhao", "Wu", "Zhou", "Xu", "Sun", "Ma", "Zhu", "Hu", "Guo", "He", "Gao", "Lin", "Luo", "Zeng", "Peng", "Lu", "Jiang", "Cai", "Deng", "Xie", "Tang", "Shen", "Han", "Xiao", "Feng", "Zeng", "Cao", "Fang", "Cheng", "Ding", "Ren", "Yao", "Liang"],
+#   # Noms asiatiques
+#   asian: ["Wang", "Li", "Zhang", "Liu", "Chen", "Yang", "Huang", "Zhao", "Wu", "Zhou", "Xu", "Sun", "Ma", "Zhu", "Hu", "Guo", "He", "Gao", "Lin", "Luo", "Zeng", "Peng", "Lu", "Jiang", "Cai", "Deng", "Xie", "Tang", "Shen", "Han", "Xiao", "Feng", "Zeng", "Cao", "Fang", "Cheng", "Ding", "Ren", "Yao", "Liang"],
 
-  # Noms hispaniques
-  hispanic: ["Garcia", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Perez", "Sanchez", "Ramirez", "Cruz", "Flores", "Gomez", "Diaz", "Reyes", "Morales", "Jimenez", "Ruiz", "Torres", "Vargas", "Ramos", "Mendoza", "Castillo", "Moreno", "Herrera", "Medina", "Aguilar", "Rivera", "Silva", "Vega", "Rojas", "Espinoza", "Castro", "Romero", "Alvarez", "Mendez", "Gutierrez", "Ortiz", "Chavez", "Ramos", "Mendoza"],
+#   # Noms hispaniques
+#   hispanic: ["Garcia", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Perez", "Sanchez", "Ramirez", "Cruz", "Flores", "Gomez", "Diaz", "Reyes", "Morales", "Jimenez", "Ruiz", "Torres", "Vargas", "Ramos", "Mendoza", "Castillo", "Moreno", "Herrera", "Medina", "Aguilar", "Rivera", "Silva", "Vega", "Rojas", "Espinoza", "Castro", "Romero", "Alvarez", "Mendez", "Gutierrez", "Ortiz", "Chavez", "Ramos", "Mendoza"],
 
-  # Noms anglo-saxons
-  anglo_saxon: ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores"],
+#   # Noms anglo-saxons
+#   anglo_saxon: ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores"],
 
-  # Noms slaves
-  slavic: ["Ivanov", "Petrov", "Sidorov", "Kozlov", "Morozov", "Volkov", "Alekseev", "Lebedev", "Semenov", "Egorov", "Pavlov", "Kozlov", "Stepanov", "Nikolaev", "Orlov", "Andreev", "Makarov", "Nikitin", "Zakharov", "Zaitsev", "Popov", "Sokolov", "Lebedev", "Kozlov", "Novikov", "Morozov", "Petrov", "Volkov", "Sokolov", "Kozlov", "Lebedev", "Morozov", "Petrov", "Volkov", "Sokolov", "Kozlov", "Lebedev", "Morozov", "Petrov", "Volkov"]
-}
+#   # Noms slaves
+#   slavic: ["Ivanov", "Petrov", "Sidorov", "Kozlov", "Morozov", "Volkov", "Alekseev", "Lebedev", "Semenov", "Egorov", "Pavlov", "Kozlov", "Stepanov", "Nikolaev", "Orlov", "Andreev", "Makarov", "Nikitin", "Zakharov", "Zaitsev", "Popov", "Sokolov", "Lebedev", "Kozlov", "Novikov", "Morozov", "Petrov", "Volkov", "Sokolov", "Kozlov", "Lebedev", "Morozov", "Petrov", "Volkov", "Sokolov", "Kozlov", "Lebedev", "Morozov", "Petrov", "Volkov"]
+# }
 
-# Domaines email variés
-email_domains = [
-  "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "live.com",
-  "icloud.com", "protonmail.com", "yandex.com", "mail.com", "zoho.com",
-  "aol.com", "msn.com", "orange.fr", "free.fr", "wanadoo.fr",
-  "laposte.net", "sfr.fr", "bouyguestelecom.fr", "numericable.fr", "aliceadsl.fr"
-]
+# # Domaines email variés
+# email_domains = [
+#   "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "live.com",
+#   "icloud.com", "protonmail.com", "yandex.com", "mail.com", "zoho.com",
+#   "aol.com", "msn.com", "orange.fr", "free.fr", "wanadoo.fr",
+#   "laposte.net", "sfr.fr", "bouyguestelecom.fr", "numericable.fr", "aliceadsl.fr"
+# ]
 
-# Génération des utilisateurs
-puts "👤 Création de 150 utilisateurs..."
+# # Génération des utilisateurs
+# puts "👤 Création de 150 utilisateurs..."
 
-150.times do |i|
-  # Sélection aléatoire d'une origine ethnique
-  ethnicities = first_names.keys
-  selected_ethnicity = ethnicities.sample
+# 150.times do |i|
+#   # Sélection aléatoire d'une origine ethnique
+#   ethnicities = first_names.keys
+#   selected_ethnicity = ethnicities.sample
 
-  # Sélection aléatoire des noms
-  first_name = first_names[selected_ethnicity].sample
-  last_name = last_names[selected_ethnicity].sample
+#   # Sélection aléatoire des noms
+#   first_name = first_names[selected_ethnicity].sample
+#   last_name = last_names[selected_ethnicity].sample
 
-  # Génération de l'email
-  email_prefix = "#{first_name.downcase}.#{last_name.downcase}#{rand(1..999)}"
-  email_domain = email_domains.sample
-  email = "#{email_prefix}@#{email_domain}"
+#   # Génération de l'email
+#   email_prefix = "#{first_name.downcase}.#{last_name.downcase}#{rand(1..999)}"
+#   email_domain = email_domains.sample
+#   email = "#{email_prefix}@#{email_domain}"
 
-  # Génération de la date de naissance (13-65 ans)
-  age = rand(14..65)
-  birthdate = (age.years.ago + rand(0..365).days).to_date
+#   # Génération de la date de naissance (13-65 ans)
+#   age = rand(14..65)
+#   birthdate = (age.years.ago + rand(0..365).days).to_date
 
-  # Génération des points (0-5000)
-  points = rand(0..5000)
+#   # Génération des points (0-5000)
+#   points = rand(0..5000)
 
-  # Création de l'utilisateur
-  user = User.create!(
-    first_name: first_name,
-    last_name: last_name,
-    email: email,
-    password: "password123", # Mot de passe par défaut
-    password_confirmation: "password123",
-    birthdate: birthdate,
-    points: points,
-    admin: false
-  )
+#   # Création de l'utilisateur
+#   user = User.create!(
+#     first_name: first_name,
+#     last_name: last_name,
+#     email: email,
+#     password: "password123", # Mot de passe par défaut
+#     password_confirmation: "password123",
+#     birthdate: birthdate,
+#     points: points,
+#     admin: false
+#   )
 
-  # Affichage du progrès
-  if (i + 1) % 25 == 0
-    puts "✅ #{i + 1}/150 utilisateurs créés..."
-  end
-end
+#   # Affichage du progrès
+#   if (i + 1) % 25 == 0
+#     puts "✅ #{i + 1}/150 utilisateurs créés..."
+#   end
+# end
 
-puts "🎉 #{User.count} utilisateurs créés au total!"
-puts "📊 Répartition par origine:"
-ethnicities = first_names.keys
-ethnicities.each do |ethnicity|
-  count = User.joins("LEFT JOIN levels ON users.level_id = levels.id")
-              .where("users.first_name IN (?)", first_names[ethnicity])
-              .count
-  puts "   - #{ethnicity.to_s.capitalize}: #{count} utilisateurs"
-end
+# puts "🎉 #{User.count} utilisateurs créés au total!"
+# puts "📊 Répartition par origine:"
+# ethnicities = first_names.keys
+# ethnicities.each do |ethnicity|
+#   count = User.joins("LEFT JOIN levels ON users.level_id = levels.id")
+#               .where("users.first_name IN (?)", first_names[ethnicity])
+#               .count
+#   puts "   - #{ethnicity.to_s.capitalize}: #{count} utilisateurs"
+# end
 
-puts "🏆 Niveaux assignés automatiquement selon les points!"
-puts "📧 Emails générés avec des domaines variés!"
-puts "🎂 Âges compris entre 13 et 65 ans!"
+# puts "🏆 Niveaux assignés automatiquement selon les points!"
+# puts "📧 Emails générés avec des domaines variés!"
+# puts "🎂 Âges compris entre 13 et 65 ans!"

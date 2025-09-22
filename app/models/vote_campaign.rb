@@ -53,7 +53,8 @@ class VoteCampaign < ApplicationRecord
   end
 
   def at_least_one_player
-    if players.empty?
+    # Vérifier les associations construites ET persistées
+    if vote_campaign_players.empty? && players.empty?
       errors.add(:players, "doit inclure au moins un joueur")
     end
   end
