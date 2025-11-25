@@ -7,8 +7,14 @@
       <div class="col-lg-6 col-12">
         <div class="hero-section">
           <p id="hero-intro"><%= t('home.hero.intro') %></p>
-          <h1 class="hero-title"><%= t('home.hero.title') %></h1>
-          <h1 class="hero-title"><%= t('home.hero.title_highlight') %> <span class="hero-title-highlight">CourtSideClub</span>! 🏀</h1>
+          <h1 class="hero-title">
+            <%= t('home.hero.title_before') %>
+            <span class="hero-title-highlight"><%= t('home.hero.title_highlight') %></span>
+            <% if t('home.hero.title_after').present? %>
+              <%= t('home.hero.title_after') %>
+            <% end %>
+            ! 🏀
+          </h1>
           <p class="intro-text"><%= t('home.hero.description') %></p>
           <div class="button-hero">
             <%= link_to t('home.hero.join_button'), new_user_registration_path, class: "button-hero-link" %>

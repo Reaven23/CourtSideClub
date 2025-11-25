@@ -48,8 +48,9 @@ en:
     description: "Discover CourtSideClub, the platform that gives power to basketball fans. Vote for your favorite players, earn points, unlock exclusive rewards and join the community."
     hero:
       intro: "By hoopers for hoopers"
-      title: "Let's give power to fans"
-      title_highlight: "of"
+      title_before: "Join the"
+      title_highlight: "CourtSideClub"
+      title_after: "family"
       description: "Basketball is something to be experienced together. We have a vision: to prove that a fan club can shake up the global hierarchy. Joining CourtSideClub means embarking on a unique sporting adventure. Our goal? To reach the FIBA World Tour. Our strength? You. We want to break the mold: here, every member is an essential link in the chain of success. It's not just a sport, it's a shared project where we learn, exchange ideas, and make decisions together. /nJoin the adventure!"
       join_button: "Join"
       login_button: "Already a member?"

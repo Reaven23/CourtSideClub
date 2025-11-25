@@ -48,8 +48,9 @@ fr:
     description: "Découvrez CourtSideClub, la plateforme qui donne le pouvoir aux fans de basket. Votez pour vos joueurs favoris, gagnez des points, débloquez des récompenses exclusives et participez à la communauté."
     hero:
       intro: "By hoopers for hoopers"
-      title: "Rejoins la famille"
-      title_highlight: "de"
+      title_before: "Rejoins la famille"
+      title_highlight: "CourtSideClub"
+      title_after: ""
       description: "Le basket, ça se vit ensemble. Nous avons une vision : prouver qu'une association de fans peut bousculer la hiérarchie mondiale. Rejoindre CourtSideClub, c'est embarquer dans une épopée sportive unique. Notre but ? Atteindre le FIBA World Tour. Notre force ? Vous. Nous voulons casser les codes : ici, chaque membre est un maillon essentiel de la réussite. Ce n'est pas juste du sport, c'est un projet commun où l'on apprend, on échange et on décide ensemble. \nRejoignez l'aventure !"
       join_button: "Rejoindre"
       login_button: "Déjà membre ?"
