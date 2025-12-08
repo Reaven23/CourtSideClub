@@ -6,8 +6,7 @@
     <meta name="keywords" content="basket, basketball, communauté, fans, vote, points, récompenses, CourtSideClub">
     <meta name="author" content="CourtSideClub">
     <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.original_url %>">
@@ -23,7 +22,13 @@
     <meta property="twitter:description" content="<%= content_for?(:description) ? content_for(:description) : 'Rejoignez CourtSideClub, la communauté des fans de basket. Votez pour vos joueurs favoris, gagnez des points, débloquez des récompenses exclusives et participez aux événements de votre équipe.' %>">
     <meta property="twitter:image" content="<%= asset_url('logo.png') %>">
 
-    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<%= tag.link rel: "manifest", href: webmanifest_path(format: :json) %>
+<%= tag.link rel: "icon", href: image_url("app-icon-512.png"), type: "image/png" %>
+<%= tag.link rel: "apple-touch-icon", href: image_url("app-icon-512.png") %>
+
+<%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <!-- Favicon -->

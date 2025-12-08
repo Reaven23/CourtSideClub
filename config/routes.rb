@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "webmanifest"    => "pwa#manifest"
+  get "service-worker" => "pwa#service_worker"
+
   get 'notifications/create'
   devise_for :users
 
