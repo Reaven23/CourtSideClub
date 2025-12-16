@@ -6,7 +6,7 @@
     <meta name="keywords" content="basket, basketball, communauté, fans, vote, points, récompenses, CourtSideClub">
     <meta name="author" content="CourtSideClub">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.original_url %>">
@@ -25,8 +25,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
 <meta name="mobile-web-app-capable" content="yes">
 <%= tag.link rel: "manifest", href: webmanifest_path(format: :json) %>
-<%= tag.link rel: "icon", href: image_url("app-icon-512.png"), type: "image/png" %>
-<%= tag.link rel: "apple-touch-icon", href: image_url("app-icon-512.png") %>
+<%= tag.link rel: "icon", href: image_url("icon-512x512-black-xlarge.png"), type: "image/png" %>
+<%= tag.link rel: "apple-touch-icon", href: image_url("icon-512x512-black-xlarge.png") %>
 
 <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
