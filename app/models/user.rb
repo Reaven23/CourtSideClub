@@ -2,49 +2,32 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # Associations
   belongs_to :level, optional: true
   has_one_attached :photo
-
-  # Anciennes associations (à conserver pour compatibilité)
   has_many :votes, dependent: :destroy
   has_many :voted_players, through: :votes, source: :player
-
-  # Nouvelles associations pour les campagnes
   has_many :user_votes, dependent: :destroy
   has_many :vote_campaigns, through: :user_votes
   has_many :voted_campaign_players, through: :user_votes, source: :player
-
-  # Associations pour les notifications
   has_many :notifications, dependent: :destroy
-
-  # Associations pour les quiz games
   has_many :user_quiz_games, dependent: :destroy
   has_many :quiz_games, through: :user_quiz_games
-
-  # Associations pour les articles
   has_many :articles, dependent: :destroy
 
-  # Callbacks
   before_save :update_level_if_needed
   after_create :assign_initial_level
 
-  # Validations
   validates :first_name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :last_name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :birthdate, presence: true
   validates :points, presence: true, numericality: { greater_than_or_equal_to: 0 }
-
-  # Custom validations
   validate :birthdate_cannot_be_in_future
   validate :user_must_be_at_least_13_years_old
 
-  # Instance methods
   def full_name
     "#{first_name} #{last_name}"
   end
 
-  # Anciennes méthodes (à conserver)
   def has_voted_for?(player)
     votes.exists?(player: player)
   end
@@ -57,7 +40,6 @@ class User < ApplicationRecord
     true
   end
 
-  # Nouvelles méthodes pour les campagnes
   def has_voted_in_campaign?(vote_campaign)
     user_votes.exists?(vote_campaign: vote_campaign)
   end
@@ -74,17 +56,13 @@ class User < ApplicationRecord
     user_votes.find_by(vote_campaign: vote_campaign)
   end
 
-  # Points management
   def add_points!(amount)
     old_level = level
     self.points = (points || 0) + amount
     save!
-
-    # Retourner true si le niveau a changé
     reload.level != old_level
   end
 
-  # Level system methods
   def current_level_name
     level&.name || "🏀 Rookie 1"
   end

@@ -15,7 +15,6 @@ class Admin::DashboardController < ApplicationController
     when 'games'
       load_quiz_games
     when 'rewards'
-      # placeholders
     when 'notifications'
       load_notifications
     when 'votes'
@@ -23,7 +22,6 @@ class Admin::DashboardController < ApplicationController
     when 'players'
       load_players
     else
-      # default tab
       @tab = 'users'
       load_users
     end

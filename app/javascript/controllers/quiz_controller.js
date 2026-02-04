@@ -92,19 +92,14 @@ export default class extends Controller {
     this.isAnswered = false
     const question = this.questions[index]
 
-    // Mettre à jour l'interface
     this.currentQuestionTarget.textContent = index + 1
     this.questionImageTarget.src = question.image_url || this.logoPathValue
     this.questionTextTarget.textContent = question.content
 
-    // Mettre à jour la barre de progression
     const progress = ((index) / this.questions.length) * 100
     this.progressBarTarget.style.width = `${progress}%`
 
-    // Créer les boutons de réponse
     this.createAnswerButtons(question.answers)
-
-    // Démarrer le timer
     this.startTimer()
   }
 
@@ -128,14 +123,11 @@ export default class extends Controller {
     this.isAnswered = true
     this.clearTimer()
 
-    // Marquer la réponse sélectionnée
     buttonElement.classList.add('selected')
 
-    // Désactiver tous les boutons
     const allButtons = this.answersGridTarget.querySelectorAll('.answer-option')
     allButtons.forEach(btn => btn.classList.add('disabled'))
 
-    // Envoyer la réponse au serveur
     this.submitAnswer(answerId)
   }
 
@@ -170,11 +162,9 @@ export default class extends Controller {
   }
 
   handleAnswerResponse(data) {
-    // Mettre à jour le score
     this.score = data.current_score
     this.currentScoreTarget.textContent = this.score
 
-    // Colorer les boutons selon les réponses
     const allButtons = this.answersGridTarget.querySelectorAll('.answer-option')
     allButtons.forEach(button => {
       const answerId = parseInt(button.dataset.answerId)
@@ -182,24 +172,20 @@ export default class extends Controller {
       const answer = question.answers.find(a => a.id === answerId)
 
       if (button.classList.contains('selected')) {
-        // Bouton sélectionné
         if (data.correct) {
           button.classList.add('correct')
         } else {
           button.classList.add('incorrect')
         }
       } else {
-        // Montrer la bonne réponse
         if (answer && data.correct_answer === answer.content) {
           button.classList.add('correct')
         }
       }
     })
 
-    // Afficher le feedback
     this.showFeedback(data)
 
-    // Passer à la question suivante après 3 secondes
     setTimeout(() => {
       this.hideFeedback()
       this.loadQuestion(this.currentQuestionIndex + 1)
@@ -209,22 +195,18 @@ export default class extends Controller {
   showFeedback(data) {
     const isCorrect = data.correct
 
-    // Icône et couleur
     this.feedbackIconTarget.innerHTML = isCorrect
       ? '<i class="fas fa-check"></i>'
       : '<i class="fas fa-times"></i>'
     this.feedbackIconTarget.className = `feedback-icon ${isCorrect ? 'correct' : 'incorrect'}`
 
-    // Titre
     this.feedbackTitleTarget.textContent = isCorrect ? 'Bonne réponse !' : 'Mauvaise réponse'
     this.feedbackTitleTarget.className = `feedback-title ${isCorrect ? 'correct' : 'incorrect'}`
 
-    // Texte explicatif
     this.feedbackTextTarget.textContent = isCorrect
       ? data.explanation
       : `La bonne réponse était : ${data.correct_answer}`
 
-    // Points gagnés
     if (isCorrect && data.points_earned > 0) {
       this.feedbackPointsTarget.textContent = `+${data.points_earned} points !`
       this.feedbackPointsTarget.style.display = 'block'
@@ -232,7 +214,6 @@ export default class extends Controller {
       this.feedbackPointsTarget.style.display = 'none'
     }
 
-    // Afficher le modal
     this.feedbackModalTarget.style.display = 'flex'
   }
 
@@ -267,21 +248,17 @@ export default class extends Controller {
   }
 
   showResults(data) {
-    // Masquer l'écran de jeu
     this.gameScreenTarget.style.display = 'none'
 
-    // Remplir les statistiques
     this.finalScoreTarget.textContent = data.final_score
     this.correctAnswersTarget.textContent = data.correct_answers
     this.totalAnsweredTarget.textContent = data.total_questions
 
-    // Afficher notification de level up si applicable
     if (data.level_up) {
       this.newLevelTarget.textContent = data.new_level
       this.levelUpNotificationTarget.style.display = 'block'
     }
 
-    // Afficher l'écran de résultats
     this.resultsScreenTarget.style.display = 'flex'
   }
 
@@ -302,7 +279,6 @@ export default class extends Controller {
   updateTimerDisplay() {
     this.timerTextTarget.textContent = this.timeLeft
 
-    // Changer la couleur selon le temps restant
     const timerCircle = this.timerTextTarget.parentElement
     timerCircle.classList.remove('warning', 'danger')
 
@@ -319,17 +295,11 @@ export default class extends Controller {
     this.isAnswered = true
     this.clearTimer()
 
-    // Désactiver tous les boutons
     const allButtons = this.answersGridTarget.querySelectorAll('.answer-option')
     allButtons.forEach(btn => btn.classList.add('disabled'))
 
-    // Montrer la bonne réponse
     const question = this.questions[this.currentQuestionIndex]
-    const correctAnswer = question.answers.find(a =>
-      question.answers.find(answer => answer.content === question.correct_answer)
-    )
 
-    // Simuler une réponse incorrecte (temps écoulé)
     this.showFeedback({
       correct: false,
       points_earned: 0,
@@ -337,7 +307,6 @@ export default class extends Controller {
       explanation: "Temps écoulé !"
     })
 
-    // Passer à la question suivante après 3 secondes
     setTimeout(() => {
       this.hideFeedback()
       this.loadQuestion(this.currentQuestionIndex + 1)
@@ -374,7 +343,6 @@ export default class extends Controller {
       this.gameScreenTarget.style.display = 'none'
       this.startScreenTarget.style.display = 'flex'
 
-      // Reset des variables
       this.currentQuestionIndex = 0
       this.score = 0
       this.isAnswered = false

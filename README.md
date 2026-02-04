@@ -91,13 +91,14 @@ L'application sera accessible sur `https://www.courtsideclub.io`
 
 ## 📈 Développement
 
-### Contexte du Projet
-Ce projet a été développé dans un **laps de temps relativement court** pour répondre à une **demande business urgente** de reconstruction complète du site web existant. 
+### Contexte
+Reconstruction complète du site web existant avec une stack moderne et une livraison par itérations.
 
-### Approche de Développement
-- **Utilisation de l'IA** pour la génération de templates et l'optimisation du style
-- **Architecture modulaire** pour faciliter les évolutions futures
-- **Interface d'administration** complète pour l'autonomie des co-fondateurs
+### Stack et approche
+- **Architecture modulaire** (Rails 7, Hotwire, Pundit) pour faciliter les évolutions
+- **Back-office** dédié pour l’autonomie des co-fondateurs sur le contenu et les campagnes
+- **PWA** (manifest, service worker, bannière d’installation) pour l’expérience mobile
+- **IA** utilisée pour le templating et le front (responsive, styles, composants)
 
 ### Améliorations Apportées
 - **Gamification complète** de l'expérience utilisateur (inexistante sur l'ancien site)

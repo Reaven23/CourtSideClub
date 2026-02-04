@@ -47,10 +47,8 @@ class Admin::VoteCampaignsController < ApplicationController
   end
 
   def vote_campaign_params
-    # Filtrer les player_ids vides pour éviter les erreurs
     filtered_params = params.require(:vote_campaign).permit(:title, :description, :start_date, :end_date, :active, player_ids: [])
 
-    # Supprimer les player_ids vides
     if filtered_params[:player_ids]
       filtered_params[:player_ids] = filtered_params[:player_ids].reject(&:blank?)
     end

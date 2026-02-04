@@ -10,7 +10,6 @@ class LocalesController < ApplicationController
       session[:locale] = I18n.default_locale
     end
 
-    # Rediriger vers la page précédente ou l'accueil
     redirect_back(fallback_location: root_path)
   end
 end

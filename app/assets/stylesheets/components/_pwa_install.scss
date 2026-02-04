@@ -104,7 +104,6 @@
   }
 }
 
-// Adjust for very small screens
 @media (max-width: 360px) {
   .pwa-install-banner {
     padding: 10px 12px;
@@ -131,7 +130,6 @@
   }
 }
 
-// Add safe area padding for devices with notch
 @supports (padding-top: env(safe-area-inset-top)) {
   .pwa-install-banner {
     padding-top: calc(12px + env(safe-area-inset-top));

@@ -4,25 +4,19 @@ class QuizGamesController < ApplicationController
   before_action :set_user_quiz_game, only: [:answer, :complete]
 
   def show
-    # Vérifier si l'utilisateur a déjà terminé ce quiz
     @user_completed_game = current_user.user_quiz_games.completed.find_by(quiz_game: @quiz_game)
 
     if @user_completed_game
-      # Rediriger vers les résultats si déjà terminé
       redirect_to mini_games_path, alert: "Vous avez déjà terminé ce quiz !"
       return
     end
 
-    # Récupérer ou créer une session en cours
     @user_quiz_game = current_user.user_quiz_games.find_by(quiz_game: @quiz_game, completed: false)
-
-    # Préparer les données pour le quiz
     @total_questions = @quiz_game.questions.count
     @selected_questions_count = [@total_questions, 10].min # Maximum 10 questions
   end
 
   def start
-    # Créer une nouvelle session de quiz
     @user_quiz_game = current_user.user_quiz_games.create!(
       quiz_game: @quiz_game,
       score: 0,
@@ -30,7 +24,6 @@ class QuizGamesController < ApplicationController
       points_earned: 0
     )
 
-    # Sélectionner 10 questions aléatoires (ou moins si le quiz n'en a pas assez)
     selected_questions = @quiz_game.questions.includes(:answers).sample(10)
 
     render json: {
@@ -65,28 +58,24 @@ class QuizGamesController < ApplicationController
     question = Question.find(params[:question_id])
     answer = Answer.find(params[:answer_id])
 
-    # Vérifier que la réponse appartient bien à la question
     unless question.answers.include?(answer)
       render json: { success: false, error: "Réponse invalide" }
       return
     end
 
-    # Vérifier si l'utilisateur a déjà répondu à cette question
     existing_answer = @user_quiz_game.user_question_answers.find_by(question: question)
     if existing_answer
       render json: { success: false, error: "Vous avez déjà répondu à cette question" }
       return
     end
 
-    # Enregistrer la réponse
-    user_answer = @user_quiz_game.user_question_answers.create!(
+    @user_quiz_game.user_question_answers.create!(
       question: question,
       answer: answer,
       correct: answer.correct?,
       answered_at: Time.current
     )
 
-    # Calculer les points gagnés pour cette question
     points_earned = 0
     if answer.correct?
       points_earned = @quiz_game.points_per_question
@@ -104,7 +93,6 @@ class QuizGamesController < ApplicationController
   end
 
   def complete
-    # Finaliser le quiz
     total_points = @user_quiz_game.score
 
     @user_quiz_game.update!(
@@ -112,10 +100,7 @@ class QuizGamesController < ApplicationController
       points_earned: total_points
     )
 
-    # Ajouter les points au total de l'utilisateur
     current_user.add_points!(total_points)
-
-    # Vérifier si l'utilisateur a changé de niveau
     level_up = current_user.level_id_previously_changed?
 
     render json: {

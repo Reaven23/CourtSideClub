@@ -22,21 +22,16 @@ export default class extends Controller {
   }
 
   setupInstallPrompt() {
-    // Listen for the beforeinstallprompt event
     window.addEventListener('beforeinstallprompt', (event) => {
-      // Prevent the default browser prompt
       event.preventDefault()
-      // Store the event for later use
       this.deferredPrompt = event
       console.log('[PWA] Install prompt ready')
 
-      // Only show on mobile devices and if not dismissed before
       if (this.isMobileDevice() && !this.wasPromptDismissed()) {
         this.showBanner()
       }
     })
 
-    // Listen for successful installation
     window.addEventListener('appinstalled', () => {
       console.log('[PWA] App installed successfully')
       this.hideBanner()
@@ -53,7 +48,6 @@ export default class extends Controller {
     const dismissed = localStorage.getItem('pwa-install-dismissed')
     if (!dismissed) return false
 
-    // Allow showing again after 7 days
     const dismissedDate = new Date(dismissed)
     const daysSinceDismissed = (Date.now() - dismissedDate.getTime()) / (1000 * 60 * 60 * 24)
     return daysSinceDismissed < 7
@@ -77,10 +71,7 @@ export default class extends Controller {
       return
     }
 
-    // Show the browser's install prompt
     this.deferredPrompt.prompt()
-
-    // Wait for user response
     this.deferredPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') {
         console.log('[PWA] User accepted install')

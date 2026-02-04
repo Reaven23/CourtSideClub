@@ -6,15 +6,12 @@ class Tag < ApplicationRecord
   validates :color, format: { with: /\A#[0-9a-fA-F]{6}\z/, message: "doit être un code couleur hexadécimal valide (ex: #ee53a8)" }
   validates :description, length: { maximum: 200 }
 
-  # Callbacks
   before_save :normalize_name
   before_save :normalize_color
 
-  # Scopes
   scope :popular, -> { joins(:articles).group('tags.id').order('COUNT(articles.id) DESC') }
   scope :alphabetical, -> { order(:name) }
 
-  # Méthodes d'instance
   def articles_count
     articles.published.count
   end

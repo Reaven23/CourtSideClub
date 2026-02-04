@@ -1,21 +1,16 @@
 class Level < ApplicationRecord
-  # Associations
   has_many :users, dependent: :nullify
 
-  # Validations
   validates :number, presence: true, uniqueness: true, numericality: { greater_than: 0 }
   validates :points, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  # Scopes
   scope :ordered, -> { order(:number) }
 
-  # Class methods
   def self.for_points(user_points)
     level = where('points <= ?', user_points).order(points: :desc).first
     level || find_by(number: 1) # Return level 1 as fallback
   end
 
-  # Instance methods
   def name
     case number
     when 1..5 then "🏀 Rookie #{number}"

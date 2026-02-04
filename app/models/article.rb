@@ -2,7 +2,6 @@ class Article < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
 
-  # Relations many-to-many avec les tags
   has_many :article_tags, dependent: :destroy
   has_many :tags, through: :article_tags
 
@@ -16,17 +15,15 @@ class Article < ApplicationRecord
     with: /\A(https?:\/\/)?(www\.)?instagram\.com\/.+\z/i,
     message: "doit être un lien Instagram valide"
   }, allow_blank: true
-
+  
   validate :photo_format
 
-  # Scopes
   scope :published, -> { where.not(published_at: nil) }
   scope :draft, -> { where(published_at: nil) }
   scope :recent, -> { order(published_at: :desc) }
   scope :by_user, ->(user) { where(user: user) }
   scope :with_tag, ->(tag) { joins(:tags).where(tags: { id: tag.id }) }
 
-  # Méthodes d'instance
   def published?
     published_at.present?
   end
@@ -43,7 +40,6 @@ class Article < ApplicationRecord
     update!(published_at: nil)
   end
 
-  # Méthodes pour gérer les tags
   def tag_names
     tags.pluck(:name)
   end
@@ -70,11 +66,9 @@ class Article < ApplicationRecord
     tags.delete(tag) if tag
   end
 
-  # Méthodes pour les embeds
   def youtube_video_id
     return nil unless youtube_embed.present?
 
-    # Extraire l'ID de différents formats d'URL YouTube
     if youtube_embed.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/)
       $1
     end
@@ -88,7 +82,6 @@ class Article < ApplicationRecord
   def instagram_embed_url
     return nil unless instagram_embed.present?
 
-    # Nettoyer l'URL Instagram en supprimant les paramètres de tracking
     clean_url = instagram_embed.split('?').first
     clean_url
   end

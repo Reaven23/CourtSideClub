@@ -4,11 +4,9 @@ class UserVote < ApplicationRecord
   belongs_to :vote_campaign
   belongs_to :player
 
-  # Validations
   validates :user_id, uniqueness: { scope: :vote_campaign_id, message: "Vous avez déjà voté dans cette campagne" }
   validate :player_must_be_in_campaign
 
-  # Callbacks
   after_create :award_points_to_user
 
   private

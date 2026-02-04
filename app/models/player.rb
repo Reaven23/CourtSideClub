@@ -3,11 +3,8 @@ class Player < ApplicationRecord
   has_one_attached :photo
 
   # Associations
-  # Anciennes associations (à conserver pour compatibilité)
   has_many :votes, dependent: :destroy
   has_many :voters, through: :votes, source: :user
-
-  # Nouvelles associations pour les campagnes
   has_many :vote_campaign_players, dependent: :destroy
   has_many :vote_campaigns, through: :vote_campaign_players
   has_many :user_votes, dependent: :destroy
@@ -19,12 +16,10 @@ class Player < ApplicationRecord
   validates :tournament_played, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validate :photo_format
 
-  # Instance methods
   def full_name
     "#{first_name} #{last_name}"
   end
 
-  # Anciennes méthodes (à conserver)
   def vote_count
     votes.count
   end
@@ -33,7 +28,6 @@ class Player < ApplicationRecord
     votes.exists?(user: user)
   end
 
-  # Nouvelles méthodes pour les campagnes
   def vote_count_in_campaign(vote_campaign)
     user_votes.where(vote_campaign: vote_campaign).count
   end

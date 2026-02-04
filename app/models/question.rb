@@ -12,7 +12,6 @@ class Question < ApplicationRecord
 
   scope :ordered, -> { order(:order) }
 
-  # Validation pour le format d'image
   validate :image_format, if: -> { image.attached? }
 
   private

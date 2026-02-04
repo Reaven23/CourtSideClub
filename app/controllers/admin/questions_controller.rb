@@ -26,7 +26,6 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def edit
-    # Ensure the form always shows 4 answers
     answers_needed = 4 - @question.answers.size
     answers_needed.times do
       @question.answers.build(order: (@question.answers.size + 1))
@@ -71,9 +70,7 @@ class Admin::QuestionsController < ApplicationController
     index = params.dig(:question, :correct_index)
     return if index.blank?
 
-    # Reset correctness
     @question.answers.each { |a| a.correct = false }
-    # Mark the selected as correct (index is 0-based in form)
     selected = @question.answers[index.to_i]
     selected.correct = true if selected
   end

@@ -7,12 +7,7 @@ class Admin::ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     if @article.save
       if params[:commit] == 'publish'
-        # Si une date de publication est définie, l'utiliser, sinon utiliser la date actuelle
-        if @article.published_at.present?
-          # La date est déjà définie, on ne fait rien
-        else
-          @article.publish!
-        end
+        @article.publish! unless @article.published_at.present?
       end
       handle_tags if params[:article][:tag_names].present?
       redirect_to admin_dashboard_path(tab: 'articles'), notice: 'Article enregistré.'

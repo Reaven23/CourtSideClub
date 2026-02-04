@@ -10,7 +10,6 @@ class Notification < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, unless: :user_present?
   validates :company, presence: true, if: :partnership_notification?
 
-  # Méthodes d'aide
   def user_present?
     user.present?
   end

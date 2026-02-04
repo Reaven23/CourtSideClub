@@ -1,11 +1,9 @@
 class VoteCampaign < ApplicationRecord
-  # Associations
   has_many :vote_campaign_players, dependent: :destroy
   has_many :players, through: :vote_campaign_players
   has_many :user_votes, dependent: :destroy
   has_many :users, through: :user_votes
 
-  # Validations
   validates :title, presence: true, length: { minimum: 3, maximum: 100 }
   validates :description, presence: true, length: { minimum: 10 }
   validates :start_date, presence: true
@@ -13,13 +11,11 @@ class VoteCampaign < ApplicationRecord
   validate :end_date_after_start_date
   validate :at_least_one_player
 
-  # Scopes
   scope :active, -> { where(active: true) }
   scope :current, -> { where('start_date <= ? AND end_date >= ?', Time.current, Time.current) }
   scope :upcoming, -> { where('start_date > ?', Time.current) }
   scope :past, -> { where('end_date < ?', Time.current) }
 
-  # Instance methods
   def current?
     start_date <= Time.current && end_date >= Time.current
   end
@@ -53,9 +49,7 @@ class VoteCampaign < ApplicationRecord
   end
 
   def at_least_one_player
-    # Vérifier les associations construites ET persistées
-    if vote_campaign_players.empty? && players.empty?
-      errors.add(:players, "doit inclure au moins un joueur")
-    end
+    return unless vote_campaign_players.empty? && players.empty?
+    errors.add(:players, "doit inclure au moins un joueur")
   end
 end

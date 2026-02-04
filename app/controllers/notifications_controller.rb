@@ -32,7 +32,6 @@ class NotificationsController < ApplicationController
   private
 
   def guest_notification?
-    # Permettre les notifications sans authentification pour certains types
     %w[partnership news].include?(params[:notification][:object])
   end
 
