@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_09_03_130122) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_04_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -124,6 +124,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_03_130122) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "points_per_question", default: 1, null: false
+  end
+
+  create_table "roll_call_entries", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|

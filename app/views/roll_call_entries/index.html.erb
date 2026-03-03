@@ -1,0 +1,34 @@
+<div class="container my-5">
+  <h1 class="mb-4">Liste des présences</h1>
+
+  <p class="text-muted">
+    URL de la feuille d'appel à mettre dans le QR code :
+    <code><%= appel_url %></code>
+  </p>
+
+  <% if @roll_call_entries.any? %>
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Date / heure</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @roll_call_entries.each_with_index do |entry, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= entry.first_name %></td>
+            <td><%= entry.last_name %></td>
+            <td><%= l(entry.created_at, format: :short) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p class="mt-4">Aucune présence enregistrée pour le moment.</p>
+  <% end %>
+</div>
+

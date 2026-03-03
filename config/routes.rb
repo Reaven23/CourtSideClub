@@ -67,6 +67,10 @@ Rails.application.routes.draw do
     end
   end
 
+  # Appel rapide pour tes étudiants (page publique)
+  resources :roll_call_entries, only: [:new, :create, :index]
+  get "appel", to: "roll_call_entries#new", as: :appel
+
   resources :articles, only: [:index, :show, :new, :create, :edit, :update] do
     member do
       patch :publish
