@@ -8,7 +8,7 @@ class Level < ApplicationRecord
 
   def self.for_points(user_points)
     level = where('points <= ?', user_points).order(points: :desc).first
-    level || find_by(number: 1) # Return level 1 as fallback
+    level || find_by(number: 1) 
   end
 
   def name

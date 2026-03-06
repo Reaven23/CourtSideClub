@@ -54,7 +54,7 @@ class QuizGamesController < ApplicationController
     }
   end
 
-    def answer
+  def answer
     question = Question.find(params[:question_id])
     answer = Answer.find(params[:answer_id])
 

@@ -189,7 +189,7 @@ export default class extends Controller {
     setTimeout(() => {
       this.hideFeedback()
       this.loadQuestion(this.currentQuestionIndex + 1)
-    }, 3000)
+    }, 2000)
   }
 
   showFeedback(data) {

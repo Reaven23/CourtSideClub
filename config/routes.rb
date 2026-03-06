@@ -5,25 +5,21 @@ Rails.application.routes.draw do
   get 'notifications/create'
   devise_for :users
 
-  # Language switching
+
   get '/switch_locale/:locale', to: 'locales#switch', as: :switch_locale
 
   namespace :admin do
-    # Dashboard
     get 'dashboard/index'
     get 'dashboard', to: 'dashboard#index', as: :dashboard
 
-    # Admin actions
     patch 'dashboard/users/:id/toggle_admin', to: 'dashboard#toggle_user_admin', as: :toggle_user_admin
     patch 'dashboard', to: 'dashboard#mark_notification_read', as: :mark_notification_read
     delete 'dashboard', to: 'dashboard#delete_notification', as: :delete_notification
 
-    # Quiz games management
     resources :quiz_games do
       resources :questions
     end
 
-    # Articles management in dashboard
     resources :articles, only: [:create, :edit, :update, :destroy] do
       member do
         patch :publish
@@ -67,7 +63,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # Appel rapide pour tes étudiants (page publique)
   resources :roll_call_entries, only: [:new, :create, :index]
   get "appel", to: "roll_call_entries#new", as: :appel
 
