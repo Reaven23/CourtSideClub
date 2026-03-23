@@ -13,8 +13,8 @@
           <p class="discover-hero-subtitle"><%= t('pages.discover.hero.subtitle') %></p>
 
           <div class="hero-intro-text">
-            <p><%= t('pages.discover.hero.description1') %></p>
-            <p><%= t('pages.discover.hero.description2') %></p>
+            <%= simple_format(t('pages.discover.hero.description1'), {}, sanitize: false) %>
+            <%= simple_format(t('pages.discover.hero.description2'), {}, sanitize: false) %>
           </div>
         </div>
       </div>

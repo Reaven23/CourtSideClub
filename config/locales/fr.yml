@@ -51,7 +51,7 @@ fr:
       title_before: "Rejoins la famille"
       title_highlight: "CourtSideClub"
       title_after: ""
-      description: "Le basket, ça se vit ensemble. Nous avons une vision : prouver qu'une association de fans peut bousculer la hiérarchie mondiale. Rejoindre CourtSideClub, c'est embarquer dans une épopée sportive unique. Notre but ? Atteindre le FIBA World Tour. Notre force ? Vous. Nous voulons casser les codes : ici, chaque membre est un maillon essentiel de la réussite. Ce n'est pas juste du sport, c'est un projet commun où l'on apprend, on échange et on décide ensemble. \nRejoignez l'aventure !"
+      description: "<strong>CourtSideClub 3x3</strong>, ce n'est pas une équipe. C'est un mouvement. Ici, le fan ne regarde pas. Il agit. Chaque adhésion transforme ton engagement en impact direct sur la performance de l'équipe 3x3, avec un objectif clair : atteindre le FIBA World Tour.\n<strong>Tu veux plus qu'un simple rôle de spectateur ?</strong> Entre dans un modèle où ton implication est récompensée et valorisée."
       join_button: "Rejoindre"
       login_button: "Déjà membre ?"
     youtube:
@@ -230,10 +230,10 @@ fr:
       title: "Découvrir CourtSideClub"
       description: "Découvrez CourtSideClub, le projet qui révolutionne le basket 3X3 en plaçant les fans au cœur de l'action."
       hero:
-        title: "Courtside Club"
+        title: "CourtSideClub"
         subtitle: "Vivre le basket 3X3 autrement"
-        description1: "Courtside Club est bien plus qu'une équipe de basket 3X3 : c'est un projet novateur qui place les supporters au cœur de l'aventure."
-        description2: "Nous croyons que les fans méritent plus que de regarder un match depuis les tribunes ou derrière un écran. Avec Courtside Club, chacun pourra participer activement à la vie de l'équipe et devenir un véritable acteur de son développement."
+        description1: "CourtSideClub 3x3, ce n'est pas une équipe. C'est un mouvement. Ici, le fan ne regarde pas. Il agit. Chaque adhésion transforme ton engagement en impact direct sur la performance du club, avec un objectif clair : atteindre le FIBA World Tour.\nTu veux plus qu'un simple rôle de spectateur ? Entre dans un modèle où ton implication est récompensée et valorisée."
+        description2: "En rejoignant CourtSideClub, tu accèdes à :<ul><li>des expériences exclusives (coulisses, événements, rencontres joueurs)</li><li>des récompenses concrètes (maillots, ballons, objets signés)</li><li>des mécaniques de gamification (challenges, parrainage, avantages membres)</li><li>une communauté engagée où chaque voix compte</li></ul>Ici, chaque action crée de la valeur. Plus tu participes, plus tu gagnes. Plus tu t'impliques, plus le club avance. CourtSideClub, c'est le sport version nouvelle génération : participatif, communautaire, orienté expérience. Rejoins l'aventure. Deviens un acteur du game !"
       experience:
         title: "Une expérience unique pour les"
         subtitle: "supporters"

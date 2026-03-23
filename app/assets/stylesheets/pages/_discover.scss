@@ -29,6 +29,8 @@
   .hero-intro-text {
     max-width: 800px;
     margin: 0 auto;
+    text-align: left;
+    color: #666;
 
     p {
       font-size: $font-size-lg;
@@ -36,6 +38,20 @@
       color: #666;
       margin-bottom: 1.5rem;
       text-align: justify;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 1.5rem 1.25rem;
+      padding-left: 1rem;
+      text-align: left;
+      color: #666;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+      line-height: 1.6;
+      text-align: left;
     }
   }
 }
