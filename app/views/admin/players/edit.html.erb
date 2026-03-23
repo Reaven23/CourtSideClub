@@ -9,7 +9,7 @@
       <%= simple_form_for [:admin, @player], html: { data: { turbo_frame: 'admin_content' } } do |f| %>
         <%= f.input :first_name, label: 'Prénom', required: true %>
         <%= f.input :last_name, label: 'Nom', required: true %>
-        <%= f.input :tournaments_played, as: :integer, label: 'Tournois joués', input_html: { min: 0 }, required: true %>
+        <%= f.input :tournament_played, as: :integer, label: 'Tournois joués', input_html: { min: 0 }, required: true %>
         <%= f.input :photo, as: :file, label: 'Photo', input_html: { accept: 'image/*' } %>
 
         <% if @player.photo.attached? %>
