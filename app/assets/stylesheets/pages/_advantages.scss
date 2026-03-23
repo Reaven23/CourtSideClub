@@ -127,7 +127,8 @@ section[id] {
       align-items: center;
       justify-content: center;
       font-size: 2rem;
-      color: white;
+      color: #EE53A8;
+      // background: rgba(238, 83, 168, 0.12);
       margin: 0 auto 1.5rem auto;
       transition: transform 0.3s ease;
 
@@ -162,10 +163,17 @@ section[id] {
     }
 
     .points-details {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border-radius: 16px;
+
       .badge {
         font-size: 0.875rem;
         padding: 0.5rem 1rem;
         border-radius: 15px;
+        background: rgba(238, 83, 168, 0.1) !important;
+        color: #EE53A8 !important;
+        border: 1px solid rgba(238, 83, 168, 0.25);
       }
     }
   }
