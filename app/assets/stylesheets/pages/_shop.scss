@@ -1,0 +1,545 @@
+// ── Shop Hero ──
+.shop-hero {
+  padding: 5rem 0 3rem;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+
+  .shop-hero-badge {
+    display: inline-block;
+    background: rgba(238, 83, 168, 0.15);
+    color: #EE53A8;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+  }
+
+  .shop-hero-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+
+    .highlight {
+      color: #EE53A8;
+    }
+  }
+
+  .shop-hero-description {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+// ── Section Titles ──
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a2e;
+
+  .highlight {
+    color: #EE53A8;
+  }
+}
+
+.section-description {
+  font-size: 1.05rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0.75rem auto 0;
+  line-height: 1.6;
+}
+
+// ── Exclusive Perks ──
+.shop-perks {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.perk-card {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    border-color: rgba(238, 83, 168, 0.15);
+  }
+}
+
+.perk-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(238, 83, 168, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+
+  i {
+    font-size: 1.5rem;
+    color: #EE53A8;
+  }
+}
+
+.perk-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.perk-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+// ── Vote Power ──
+.shop-vote-power {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+
+  .vote-power-icon-wrapper {
+    text-align: center;
+
+    i {
+      font-size: 8rem;
+      color: #EE53A8;
+      opacity: 0.15;
+    }
+  }
+
+  .vote-power-text {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .vote-power-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: 0.95rem;
+      color: #333;
+      padding: 0.5rem 0;
+      font-weight: 500;
+
+      i {
+        color: #EE53A8;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+// ── Products Section ──
+.shop-products {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 2px solid #f0f0f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  &.product-card-featured {
+    border-color: #EE53A8;
+    box-shadow: 0 4px 24px rgba(238, 83, 168, 0.15);
+
+    &:hover {
+      box-shadow: 0 12px 40px rgba(238, 83, 168, 0.25);
+    }
+  }
+}
+
+.product-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #EE53A8, #d63384);
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.product-image-wrapper {
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.product-image-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 4rem;
+    color: #ccc;
+  }
+
+  &.product-image-placeholder-featured {
+    background: rgba(238, 83, 168, 0.08);
+
+    i {
+      color: #EE53A8;
+    }
+  }
+}
+
+.product-info {
+  padding: 1.5rem 2rem 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.product-description {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.product-price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+
+  .price-period {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #999;
+  }
+}
+
+// ── Bundle Highlight ──
+.bundle-highlight {
+  background: linear-gradient(135deg, rgba(238, 83, 168, 0.08), rgba(238, 83, 168, 0.04));
+  border: 1px solid rgba(238, 83, 168, 0.2);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: #EE53A8;
+  font-size: 0.95rem;
+}
+
+// ── Membership mini perks list ──
+.membership-perks-mini {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+
+  li {
+    font-size: 0.85rem;
+    color: #444;
+    padding: 0.3rem 0;
+    font-weight: 500;
+
+    i {
+      color: #1EDD88;
+      font-size: 0.75rem;
+      margin-right: 0.4rem;
+    }
+  }
+}
+
+// ── Size Selector ──
+.size-selector {
+  margin-bottom: 1.25rem;
+}
+
+.size-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.size-options {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.size-option {
+  cursor: pointer;
+
+  input[type="radio"] {
+    display: none;
+
+    &:checked + .size-btn {
+      background: #1a1a2e;
+      color: #fff;
+      border-color: #1a1a2e;
+    }
+  }
+
+  .size-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    background: #fff;
+    transition: all 0.2s ease;
+    padding: 0 0.5rem;
+
+    &:hover {
+      border-color: #1a1a2e;
+    }
+  }
+
+  &.out-of-stock {
+    cursor: not-allowed;
+
+    .size-btn {
+      opacity: 0.3;
+      text-decoration: line-through;
+
+      &:hover {
+        border-color: #ddd;
+      }
+    }
+  }
+}
+
+// ── Buttons ──
+.product-form {
+  margin-top: auto;
+}
+
+.btn-shop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+  &.btn-shop-primary {
+    background: linear-gradient(135deg, #EE53A8, #d63384);
+    color: #fff;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(238, 83, 168, 0.4);
+      color: #fff;
+    }
+  }
+
+  &.btn-shop-secondary {
+    background: #1a1a2e;
+    color: #fff;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26, 26, 46, 0.3);
+      color: #fff;
+    }
+  }
+
+  &.btn-shop-outline {
+    background: transparent;
+    color: #1a1a2e;
+    border: 2px solid #1a1a2e;
+
+    &:hover {
+      background: #1a1a2e;
+      color: #fff;
+    }
+  }
+}
+
+// ── Reassurance ──
+.shop-reassurance {
+  padding: 3rem 0;
+  background: #f8f9fa;
+}
+
+.reassurance-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  i {
+    font-size: 1.5rem;
+    color: #EE53A8;
+  }
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+  }
+}
+
+// ── Confirmation Pages ──
+.shop-confirmation {
+  padding: 6rem 0;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.confirmation-card {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.confirmation-icon {
+  font-size: 4rem;
+  color: #1EDD88;
+  margin-bottom: 1.5rem;
+
+  &.confirmation-icon-cancel {
+    color: #EE53A8;
+  }
+}
+
+.confirmation-message {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.confirmation-details {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.confirmation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+// ── Responsive ──
+@media (max-width: 768px) {
+  .shop-hero {
+    padding: 3.5rem 0 2rem;
+
+    .shop-hero-title {
+      font-size: 1.8rem;
+    }
+  }
+
+  .shop-perks,
+  .shop-vote-power,
+  .shop-products {
+    padding: 3rem 0;
+  }
+
+  .perk-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .shop-vote-power .vote-power-icon-wrapper {
+    display: none;
+  }
+
+  .product-image-wrapper {
+    min-height: 180px;
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .product-info {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  .product-price {
+    font-size: 1.6rem;
+  }
+
+  .shop-confirmation {
+    padding: 3rem 0;
+  }
+
+  .confirmation-card {
+    padding: 2rem 1.5rem;
+  }
+}

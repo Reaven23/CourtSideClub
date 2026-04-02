@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_04_120000) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_04_130004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,12 +99,65 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_04_120000) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", default: 1, null: false
+    t.integer "unit_price_cents", null: false
+    t.string "size"
+    t.boolean "bundle_free", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "stripe_checkout_session_id"
+    t.string "stripe_payment_intent_id"
+    t.string "stripe_subscription_id"
+    t.string "payment_status", default: "pending", null: false
+    t.string "fulfillment_status", default: "pending", null: false
+    t.integer "total_cents", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fulfillment_status"], name: "index_orders_on_fulfillment_status"
+    t.index ["payment_status"], name: "index_orders_on_payment_status"
+    t.index ["stripe_checkout_session_id"], name: "index_orders_on_stripe_checkout_session_id", unique: true
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.integer "tournament_played"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "product_variants", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.string "size"
+    t.integer "stock", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id", "size"], name: "index_product_variants_on_product_id_and_size", unique: true
+    t.index ["product_id"], name: "index_product_variants_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price_cents", null: false
+    t.string "product_type", null: false
+    t.string "stripe_price_id"
+    t.string "stripe_product_id"
+    t.text "description"
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_products_on_active"
+    t.index ["product_type"], name: "index_products_on_product_type"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -195,9 +248,13 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_04_120000) do
     t.integer "points", default: 0, null: false
     t.bigint "level_id"
     t.boolean "admin", default: false, null: false
+    t.string "stripe_customer_id"
+    t.string "subscription_status"
+    t.datetime "subscription_end_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["level_id"], name: "index_users_on_level_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["stripe_customer_id"], name: "index_users_on_stripe_customer_id", unique: true
   end
 
   create_table "vote_campaign_players", force: :cascade do |t|
@@ -240,6 +297,10 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_04_120000) do
   add_foreign_key "article_tags", "tags"
   add_foreign_key "articles", "users"
   add_foreign_key "notifications", "users", on_delete: :nullify
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "product_variants", "products"
   add_foreign_key "questions", "quiz_games"
   add_foreign_key "user_question_answers", "answers"
   add_foreign_key "user_question_answers", "questions"

@@ -21,6 +21,10 @@ class Admin::DashboardController < ApplicationController
       load_votes
     when 'players'
       load_players
+    when 'shop'
+      load_shop_products
+    when 'orders'
+      load_shop_orders
     else
       @tab = 'users'
       load_users
@@ -52,7 +56,7 @@ class Admin::DashboardController < ApplicationController
   end
 
   def permitted_tab
-    allowed = %w[users articles games rewards notifications votes players]
+    allowed = %w[users articles games rewards notifications votes players shop orders]
     tab = params[:tab].to_s
     allowed.include?(tab) ? tab : 'users'
   end

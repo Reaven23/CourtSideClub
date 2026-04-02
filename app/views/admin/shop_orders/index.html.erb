@@ -1,0 +1,95 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3">Gestion des commandes</h1>
+    <%= link_to "← Retour au dashboard", admin_dashboard_path, class: "btn btn-outline-secondary btn-sm" %>
+  </div>
+
+  <div class="d-flex gap-2 mb-3 flex-wrap">
+    <%= link_to "Toutes", admin_shop_orders_path, class: "btn btn-sm #{params[:payment_status].blank? && params[:fulfillment_status].blank? ? 'btn-primary' : 'btn-outline-primary'}" %>
+    <span class="text-muted align-self-center">Paiement:</span>
+    <% Order::PAYMENT_STATUSES.each do |status| %>
+      <%= link_to status.capitalize, admin_shop_orders_path(payment_status: status), class: "btn btn-sm #{params[:payment_status] == status ? 'btn-primary' : 'btn-outline-primary'}" %>
+    <% end %>
+    <span class="text-muted align-self-center ms-2">Livraison:</span>
+    <% Order::FULFILLMENT_STATUSES.each do |status| %>
+      <%= link_to status.capitalize, admin_shop_orders_path(fulfillment_status: status), class: "btn btn-sm #{params[:fulfillment_status] == status ? 'btn-primary' : 'btn-outline-primary'}" %>
+    <% end %>
+  </div>
+
+  <% if @orders.any? %>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Articles</th>
+            <th>Total</th>
+            <th>Paiement</th>
+            <th>Livraison</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><strong>#<%= order.id %></strong></td>
+              <td><%= l(order.created_at, format: :short) %></td>
+              <td>
+                <strong><%= order.user.full_name %></strong>
+                <br><small class="text-muted"><%= order.user.email %></small>
+              </td>
+              <td>
+                <% order.order_items.each do |item| %>
+                  <div>
+                    <%= item.product.name %>
+                    <% if item.size.present? %>
+                      <span class="badge bg-light text-dark"><%= item.size %></span>
+                    <% end %>
+                    <% if item.bundle_free? %>
+                      <span class="badge bg-success">Offert</span>
+                    <% end %>
+                  </div>
+                <% end %>
+              </td>
+              <td><strong><%= number_to_currency(order.total, unit: "€", format: "%n %u") %></strong></td>
+              <td>
+                <% case order.payment_status %>
+                <% when "paid" %>
+                  <span class="badge bg-success">Payé</span>
+                <% when "pending" %>
+                  <span class="badge bg-warning text-dark">En attente</span>
+                <% when "failed" %>
+                  <span class="badge bg-danger">Échoué</span>
+                <% when "refunded" %>
+                  <span class="badge bg-info">Remboursé</span>
+                <% end %>
+              </td>
+              <td>
+                <% case order.fulfillment_status %>
+                <% when "pending" %>
+                  <span class="badge bg-warning text-dark">En attente</span>
+                <% when "processing" %>
+                  <span class="badge bg-info">En cours</span>
+                <% when "shipped" %>
+                  <span class="badge bg-primary">Expédié</span>
+                <% when "delivered" %>
+                  <span class="badge bg-success">Livré</span>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "Voir", admin_shop_order_path(order), class: "btn btn-sm btn-outline-primary" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="text-center py-5">
+      <i class="fas fa-shopping-bag fa-3x text-muted mb-3"></i>
+      <p class="text-muted">Aucune commande pour le moment.</p>
+    </div>
+  <% end %>
+</div>

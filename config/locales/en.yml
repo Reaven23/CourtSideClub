@@ -19,6 +19,7 @@ en:
     votes: "Votes"
     partners: "Our partners"
     news: "News"
+    shop: "Shop"
     user_dropdown:
       my_locker: "My locker"
       my_profile: "My profile"
@@ -1064,6 +1065,89 @@ en:
         become_partner: "Become a partner"
         contact_us: "Contact us"
 
+
+  # Shop
+  shop:
+    title: "Shop"
+    description: "Join CourtSideClub and unlock exclusive experiences: NBA meetups, official jerseys, sneakers, trips with the team."
+    hero:
+      badge: "Join the movement"
+      title_line1: "More than a club."
+      title_line2: "An experience."
+      description: "Join CourtSideClub and unlock exclusive access to rewards, meetups and decision-making power over the team."
+    perks:
+      title: "What awaits you as a"
+      subtitle: "member"
+      description: "Every membership gives you access to an exclusive universe. No empty promises: real experiences."
+      items:
+        nba_meetings:
+          icon: "handshake"
+          title: "NBA meetups & autographs"
+          description: "Access private sessions with NBA players and leave with signed memorabilia."
+        jerseys:
+          icon: "shirt"
+          title: "Official NBA jerseys"
+          description: "Official jerseys to win throughout the year for the most active members."
+        basketballs:
+          icon: "basketball"
+          title: "Basketballs"
+          description: "Receive official and collector basketballs as rewards for your engagement."
+        sneakers:
+          icon: "shoe-prints"
+          title: "Sneaker drops"
+          description: "Exclusive sneaker drops reserved for CourtSideClub members."
+        trips:
+          icon: "plane"
+          title: "Trips with the team"
+          description: "Travel all-expenses-paid with the team to select tournaments."
+        vote_power:
+          icon: "check-to-slot"
+          title: "Voting rights"
+          description: "Directly influence recruitment and player selection for tournaments."
+    vote_power:
+      title: "You don't just watch. You decide."
+      description: "As a member, you play an active role in the team's life. You vote for the players who will represent CourtSideClub at tournaments. Every vote counts, every voice has a real impact."
+      features:
+        - "Secure and traceable voting for each campaign"
+        - "Choose the players selected for tournaments"
+        - "Participate in recruiting new talent"
+        - "One member = one voice, total transparency"
+    products:
+      title: "Choose your entry"
+      description: "T-shirt only or full membership with free t-shirt — your call."
+    membership_pitch: "Full access to all experiences, voting, exclusive rewards and a free official t-shirt."
+    membership_highlights:
+      - "Voting rights on players"
+      - "Access to meetups & events"
+      - "Exclusive rewards all year"
+      - "Free official t-shirt"
+    size: "Size"
+    tshirt_size: "Free t-shirt size"
+    per_year: "year"
+    best_value: "Best value"
+    bundle_tshirt_included: "Free t-shirt included!"
+    buy_button: "Buy now"
+    join_button: "Become a member"
+    reassurance:
+      secure: "Secure payment"
+      delivery: "Fast delivery"
+      returns: "14-day returns"
+      support: "Responsive support"
+    errors:
+      out_of_stock: "Sorry, this size is out of stock."
+    success:
+      title: "Confirmation"
+      heading: "Welcome to the club!"
+      message: "Thank you for your purchase! You will receive a confirmation email shortly."
+      order_ref: "Reference:"
+      dashboard: "My locker"
+      back_to_shop: "Back to shop"
+    cancel:
+      title: "Payment cancelled"
+      heading: "Payment cancelled"
+      message: "Your payment has been cancelled. No amount has been charged."
+      back_to_shop: "Back to shop"
+      contact: "Contact us"
 
   # Date and time formats
   date:

@@ -243,3 +243,30 @@ lite_quest_campaign.players.each { |p| puts "   - #{p.full_name} (#{p.tournament
 # puts "🏆 Niveaux assignés automatiquement selon les points!"
 # puts "📧 Emails générés avec des domaines variés!"
 # puts "🎂 Âges compris entre 13 et 65 ans!"
+
+# ── Shop Products ──
+puts "\n🛒 Création des produits boutique..."
+
+tshirt = Product.find_or_create_by!(name: "T-shirt CourtSideClub") do |p|
+  p.price_cents = 2000
+  p.product_type = "one_time"
+  p.description = "T-shirt officiel CourtSideClub 3x3"
+  p.active = true
+end
+
+%w[S M L XL XXL].each do |size|
+  tshirt.product_variants.find_or_create_by!(size: size) do |v|
+    v.stock = 50
+  end
+end
+
+membership = Product.find_or_create_by!(name: "Adhésion annuelle CourtSideClub") do |p|
+  p.price_cents = 4900
+  p.product_type = "subscription"
+  p.description = "Adhésion annuelle avec t-shirt offert"
+  p.active = true
+end
+
+puts "✅ #{Product.count} produits créés"
+puts "   - #{tshirt.name}: #{tshirt.price}€ (#{tshirt.product_variants.count} tailles)"
+puts "   - #{membership.name}: #{membership.price}€/an"

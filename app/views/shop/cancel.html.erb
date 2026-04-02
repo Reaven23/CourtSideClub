@@ -1,0 +1,18 @@
+<% content_for(:title) { t('shop.cancel.title') } %>
+
+<section class="shop-confirmation">
+  <div class="container">
+    <div class="confirmation-card text-center">
+      <div class="confirmation-icon confirmation-icon-cancel">
+        <i class="fas fa-times-circle"></i>
+      </div>
+      <h1><%= t('shop.cancel.heading') %></h1>
+      <p class="confirmation-message"><%= t('shop.cancel.message') %></p>
+
+      <div class="confirmation-actions">
+        <%= link_to t('shop.cancel.back_to_shop'), shop_path, class: "btn-shop btn-shop-primary" %>
+        <%= link_to t('shop.cancel.contact'), contact_path, class: "btn-shop btn-shop-outline" %>
+      </div>
+    </div>
+  </div>
+</section>

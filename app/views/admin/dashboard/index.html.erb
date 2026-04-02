@@ -17,6 +17,8 @@
       </li>
       <li class="nav-item"><%= link_to 'Votes', admin_dashboard_path(tab: 'votes'), class: "nav-link #{'active' if @tab == 'votes'}", data: { turbo_frame: 'admin_content' } %></li>
       <li class="nav-item"><%= link_to 'Joueurs', admin_dashboard_path(tab: 'players'), class: "nav-link #{'active' if @tab == 'players'}", data: { turbo_frame: 'admin_content' } %></li>
+      <li class="nav-item"><%= link_to 'Boutique', admin_dashboard_path(tab: 'shop'), class: "nav-link #{'active' if @tab == 'shop'}", data: { turbo_frame: 'admin_content' } %></li>
+      <li class="nav-item"><%= link_to 'Commandes', admin_dashboard_path(tab: 'orders'), class: "nav-link #{'active' if @tab == 'orders'}", data: { turbo_frame: 'admin_content' } %></li>
     </ul>
 
     <% case @tab
@@ -34,6 +36,10 @@
       <%= render partial: 'admin/dashboard/votes', locals: { vote_campaigns: @vote_campaigns } %>
     <% when 'players' %>
       <%= render partial: 'admin/dashboard/players', locals: { players: @players } %>
+    <% when 'shop' %>
+      <%= render partial: 'admin/dashboard/shop', locals: { products: @products } %>
+    <% when 'orders' %>
+      <%= render partial: 'admin/dashboard/orders', locals: { orders: @orders } %>
     <% end %>
   <% end %>
 </div>

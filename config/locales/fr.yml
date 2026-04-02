@@ -19,6 +19,7 @@ fr:
     votes: "Les votes"
     partners: "Nos partenaires"
     news: "Actualités"
+    shop: "Boutique"
     user_dropdown:
       my_locker: "Mon vestiaire"
       my_profile: "Mon profil"
@@ -1113,6 +1114,89 @@ fr:
         become_partner: "Devenir partenaire"
         contact_us: "Nous contacter"
 
+
+  # Shop / Boutique
+  shop:
+    title: "Boutique"
+    description: "Rejoignez CourtSideClub et accédez à des expériences exclusives : rencontres NBA, maillots officiels, sneakers, voyages avec la team."
+    hero:
+      badge: "Rejoins le mouvement"
+      title_line1: "Plus qu'un club."
+      title_line2: "Une expérience."
+      description: "Adhère à CourtSideClub et débloque un accès exclusif à des récompenses, des rencontres et un pouvoir de décision sur l'équipe."
+    perks:
+      title: "Ce qui t'attend en tant que"
+      subtitle: "membre"
+      description: "Chaque adhésion te donne accès à un univers exclusif. Pas de promesses vides : des expériences concrètes."
+      items:
+        nba_meetings:
+          icon: "handshake"
+          title: "Rencontres & autographes NBA"
+          description: "Accède à des sessions privées avec des joueurs NBA et repars avec des souvenirs signés."
+        jerseys:
+          icon: "shirt"
+          title: "Maillots officiels NBA"
+          description: "Des maillots officiels à gagner tout au long de l'année pour les membres les plus actifs."
+        basketballs:
+          icon: "basketball"
+          title: "Ballons de basket"
+          description: "Reçois des ballons officiels et collector en récompense de ton engagement."
+        sneakers:
+          icon: "shoe-prints"
+          title: "Paires de sneakers"
+          description: "Des drops exclusifs de sneakers réservés aux membres CourtSideClub."
+        trips:
+          icon: "plane"
+          title: "Voyages avec la team"
+          description: "Pars en déplacement tous frais payés avec l'équipe sur certains tournois."
+        vote_power:
+          icon: "check-to-slot"
+          title: "Droit de vote"
+          description: "Influence directement le recrutement et la sélection des joueurs pour les tournois."
+    vote_power:
+      title: "Tu ne regardes plus. Tu décides."
+      description: "En tant que membre, tu as un rôle actif dans la vie de l'équipe. Tu votes pour les joueurs qui représenteront CourtSideClub sur les tournois. Chaque vote compte, chaque voix a un impact réel."
+      features:
+        - "Vote sécurisé et traçable pour chaque campagne"
+        - "Choisis les joueurs sélectionnés pour les tournois"
+        - "Participe au recrutement de nouveaux talents"
+        - "Un membre = une voix, transparence totale"
+    products:
+      title: "Choisis ton entrée"
+      description: "T-shirt seul ou adhésion complète avec t-shirt offert — à toi de jouer."
+    membership_pitch: "Accès complet à toutes les expériences, aux votes, aux récompenses exclusives et au t-shirt officiel offert."
+    membership_highlights:
+      - "Droit de vote sur les joueurs"
+      - "Accès rencontres & événements"
+      - "Récompenses exclusives toute l'année"
+      - "T-shirt officiel offert"
+    size: "Taille"
+    tshirt_size: "Taille du t-shirt offert"
+    per_year: "an"
+    best_value: "Meilleure offre"
+    bundle_tshirt_included: "T-shirt offert inclus !"
+    buy_button: "Acheter"
+    join_button: "Devenir membre"
+    reassurance:
+      secure: "Paiement sécurisé"
+      delivery: "Livraison rapide"
+      returns: "Retours sous 14 jours"
+      support: "Support réactif"
+    errors:
+      out_of_stock: "Désolé, cette taille est en rupture de stock."
+    success:
+      title: "Confirmation"
+      heading: "Bienvenue dans le club !"
+      message: "Merci pour ton achat ! Tu recevras un email de confirmation sous peu."
+      order_ref: "Référence :"
+      dashboard: "Mon vestiaire"
+      back_to_shop: "Retour à la boutique"
+    cancel:
+      title: "Paiement annulé"
+      heading: "Paiement annulé"
+      message: "Ton paiement a été annulé. Aucun montant n'a été débité."
+      back_to_shop: "Retour à la boutique"
+      contact: "Nous contacter"
 
   # Date and time formats
   date:

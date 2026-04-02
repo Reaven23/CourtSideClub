@@ -1,0 +1,107 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3">Commande #<%= @order.id %></h1>
+    <%= link_to "← Retour aux commandes", admin_shop_orders_path, class: "btn btn-outline-secondary btn-sm" %>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-8">
+      <div class="card mb-4">
+        <div class="card-header"><h5 class="mb-0">Articles commandés</h5></div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>Produit</th>
+                  <th>Taille</th>
+                  <th>Qté</th>
+                  <th>Prix unitaire</th>
+                  <th>Sous-total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @order.order_items.includes(:product).each do |item| %>
+                  <tr>
+                    <td>
+                      <strong><%= item.product.name %></strong>
+                      <% if item.bundle_free? %>
+                        <span class="badge bg-success ms-1">Offert (bundle)</span>
+                      <% end %>
+                    </td>
+                    <td><%= item.size.present? ? item.size : "—" %></td>
+                    <td><%= item.quantity %></td>
+                    <td><%= item.bundle_free? ? "0,00 €" : number_to_currency(item.unit_price, unit: "€", format: "%n %u") %></td>
+                    <td><strong><%= item.bundle_free? ? "0,00 €" : number_to_currency(item.subtotal, unit: "€", format: "%n %u") %></strong></td>
+                  </tr>
+                <% end %>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4" class="text-end"><strong>Total</strong></td>
+                  <td><strong><%= number_to_currency(@order.total, unit: "€", format: "%n %u") %></strong></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h5 class="mb-0">Client</h5></div>
+        <div class="card-body">
+          <p><strong>Nom :</strong> <%= @order.user.full_name %></p>
+          <p><strong>Email :</strong> <%= @order.user.email %></p>
+          <p class="mb-0"><strong>Membre depuis :</strong> <%= l(@order.user.created_at, format: :short) %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-header"><h5 class="mb-0">Statut paiement</h5></div>
+        <div class="card-body">
+          <% case @order.payment_status %>
+          <% when "paid" %>
+            <span class="badge bg-success fs-6">Payé</span>
+          <% when "pending" %>
+            <span class="badge bg-warning text-dark fs-6">En attente</span>
+          <% when "failed" %>
+            <span class="badge bg-danger fs-6">Échoué</span>
+          <% when "refunded" %>
+            <span class="badge bg-info fs-6">Remboursé</span>
+          <% end %>
+          <p class="text-muted mt-2 mb-0"><small>Géré automatiquement par Stripe</small></p>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header"><h5 class="mb-0">Statut livraison</h5></div>
+        <div class="card-body">
+          <%= form_with model: @order, url: admin_shop_order_path(@order), method: :patch do |f| %>
+            <div class="mb-3">
+              <%= f.select :fulfillment_status,
+                    Order::FULFILLMENT_STATUSES.map { |s| [s.capitalize, s] },
+                    {},
+                    class: "form-select" %>
+            </div>
+            <%= f.submit "Mettre à jour", class: "btn btn-primary w-100" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h5 class="mb-0">Détails</h5></div>
+        <div class="card-body">
+          <p><strong>Date :</strong> <%= l(@order.created_at, format: :long) %></p>
+          <% if @order.stripe_checkout_session_id.present? %>
+            <p><strong>Session Stripe :</strong> <small class="text-muted"><%= @order.stripe_checkout_session_id.last(12) %></small></p>
+          <% end %>
+          <% if @order.stripe_subscription_id.present? %>
+            <p class="mb-0"><strong>Abonnement :</strong> <span class="badge bg-primary">Oui</span></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

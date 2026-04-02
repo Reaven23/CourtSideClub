@@ -1,0 +1,96 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3">Modifier : <%= @product.name %></h1>
+    <%= link_to "← Retour aux produits", admin_shop_products_path, class: "btn btn-outline-secondary btn-sm" %>
+  </div>
+
+  <%= form_with model: @product, url: admin_shop_product_path(@product), method: :patch, class: "needs-validation" do |f| %>
+    <div class="row g-4">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-header"><h5 class="mb-0">Informations générales</h5></div>
+          <div class="card-body">
+            <div class="mb-3">
+              <%= f.label :name, "Nom du produit", class: "form-label" %>
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= f.label :description, "Description", class: "form-label" %>
+              <%= f.text_area :description, class: "form-control", rows: 3 %>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <%= f.label :stripe_product_id, "Stripe Product ID", class: "form-label" %>
+                <%= f.text_field :stripe_product_id, class: "form-control", placeholder: "prod_..." %>
+              </div>
+              <div class="col-md-6 mb-3">
+                <%= f.label :stripe_price_id, "Stripe Price ID", class: "form-label" %>
+                <%= f.text_field :stripe_price_id, class: "form-control", placeholder: "price_..." %>
+              </div>
+            </div>
+            <div class="form-check form-switch">
+              <%= f.check_box :active, class: "form-check-input", role: "switch" %>
+              <%= f.label :active, "Produit actif", class: "form-check-label" %>
+            </div>
+          </div>
+        </div>
+
+        <% if @product.product_variants.any? %>
+          <div class="card">
+            <div class="card-header"><h5 class="mb-0">Stock par taille</h5></div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>Taille</th>
+                      <th>Stock actuel</th>
+                      <th>Nouveau stock</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @product.product_variants.order(:size).each do |variant| %>
+                      <tr>
+                        <td><strong><%= variant.size %></strong></td>
+                        <td>
+                          <span class="badge <%= variant.stock > 0 ? 'bg-success' : 'bg-danger' %>">
+                            <%= variant.stock %>
+                          </span>
+                        </td>
+                        <td style="max-width: 120px;">
+                          <input type="number" name="product_variants[<%= variant.id %>][stock]"
+                                 value="<%= variant.stock %>" min="0" class="form-control form-control-sm">
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header"><h5 class="mb-0">Résumé</h5></div>
+          <div class="card-body">
+            <p><strong>Type :</strong>
+              <% if @product.subscription? %>
+                <span class="badge bg-primary">Abonnement</span>
+              <% else %>
+                <span class="badge bg-secondary">Achat unique</span>
+              <% end %>
+            </p>
+            <p><strong>Prix :</strong> <%= number_to_currency(@product.price, unit: "€", format: "%n %u") %></p>
+            <% if @product.product_variants.any? %>
+              <p><strong>Stock total :</strong> <%= @product.total_stock %></p>
+            <% end %>
+            <hr>
+            <%= f.submit "Enregistrer", class: "btn btn-primary w-100" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

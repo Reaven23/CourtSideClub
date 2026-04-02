@@ -32,7 +32,15 @@ Rails.application.routes.draw do
       post :update, on: :member
     end
     resources :players, only: [:new, :create, :edit, :update, :destroy]
+    resources :shop_products, only: [:index, :new, :create, :edit, :update]
+    resources :shop_orders, only: [:index, :show, :update]
   end
+
+  get "boutique", to: "shop#index", as: :shop
+  post "boutique/checkout", to: "shop#create_checkout", as: :shop_checkout
+  get "boutique/confirmation", to: "shop#success", as: :shop_success
+  get "boutique/annulation", to: "shop#cancel", as: :shop_cancel
+  post "webhooks/stripe", to: "webhooks#stripe", as: :stripe_webhooks
 
   root "pages#home"
   get "contact", to: "pages#contact", as: :contact

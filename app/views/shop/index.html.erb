@@ -1,0 +1,178 @@
+<% content_for(:title) { t('shop.title') } %>
+<% content_for(:description) { t('shop.description') } %>
+
+<%# ── Hero ── %>
+<section class="shop-hero">
+  <div class="container">
+    <div class="text-center">
+      <span class="shop-hero-badge"><%= t('shop.hero.badge') %></span>
+      <h1 class="shop-hero-title"><%= t('shop.hero.title_line1') %><br><span class="highlight"><%= t('shop.hero.title_line2') %></span></h1>
+      <p class="shop-hero-description"><%= t('shop.hero.description') %></p>
+    </div>
+  </div>
+</section>
+
+<%# ── Exclusive Perks ── %>
+<section class="shop-perks">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title"><%= t('shop.perks.title') %> <span class="highlight"><%= t('shop.perks.subtitle') %></span></h2>
+      <p class="section-description"><%= t('shop.perks.description') %></p>
+    </div>
+    <div class="row g-4">
+      <% t('shop.perks.items').each do |key, perk| %>
+        <div class="col-6 col-lg-4">
+          <div class="perk-card">
+            <div class="perk-icon"><i class="fas fa-<%= perk[:icon] %>"></i></div>
+            <h4 class="perk-title"><%= perk[:title] %></h4>
+            <p class="perk-description"><%= perk[:description] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%# ── Vote Power ── %>
+<section class="shop-vote-power">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="vote-power-icon-wrapper">
+          <i class="fas fa-check-to-slot"></i>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-title"><%= t('shop.vote_power.title') %></h2>
+        <p class="vote-power-text"><%= t('shop.vote_power.description') %></p>
+        <ul class="vote-power-list">
+          <% t('shop.vote_power.features').each do |feature| %>
+            <li><i class="fas fa-check me-2"></i><%= feature %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ── Products ── %>
+<section class="shop-products" id="offres">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title"><%= t('shop.products.title') %></h2>
+      <p class="section-description"><%= t('shop.products.description') %></p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <%# ── T-shirt ── %>
+      <% if @tshirt %>
+        <div class="col-12 col-md-5">
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <% if @tshirt.photo.attached? %>
+                <% if Rails.env.production? %>
+                  <%= cl_image_tag @tshirt.photo.key, class: "product-image", alt: @tshirt.name, width: 400, height: 400, crop: :fill %>
+                <% else %>
+                  <%= image_tag @tshirt.photo, class: "product-image", alt: @tshirt.name %>
+                <% end %>
+              <% else %>
+                <div class="product-image-placeholder">
+                  <i class="fas fa-tshirt"></i>
+                </div>
+              <% end %>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name"><%= @tshirt.name %></h3>
+              <p class="product-description"><%= @tshirt.description %></p>
+              <div class="product-price"><%= number_to_currency(@tshirt.price, unit: "€", format: "%n %u") %></div>
+
+              <%= form_with url: shop_checkout_path, method: :post, class: "product-form" do |f| %>
+                <%= f.hidden_field :product_id, value: @tshirt.id %>
+                <div class="size-selector">
+                  <label class="size-label"><%= t('shop.size') %></label>
+                  <div class="size-options">
+                    <% %w[S M L XL XXL].each do |size| %>
+                      <% in_stock = @tshirt.in_stock?(size) %>
+                      <label class="size-option <%= 'out-of-stock' unless in_stock %>">
+                        <input type="radio" name="size" value="<%= size %>" <%= 'disabled' unless in_stock %> required>
+                        <span class="size-btn"><%= size %></span>
+                      </label>
+                    <% end %>
+                  </div>
+                </div>
+                <button type="submit" class="btn-shop btn-shop-secondary">
+                  <i class="fas fa-shopping-bag me-2"></i><%= t('shop.buy_button') %>
+                </button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <%# ── Adhésion ── %>
+      <% if @membership %>
+        <div class="col-12 col-md-5">
+          <div class="product-card product-card-featured">
+            <div class="product-badge"><%= t('shop.best_value') %></div>
+            <div class="product-image-wrapper">
+              <% if @membership.photo.attached? %>
+                <% if Rails.env.production? %>
+                  <%= cl_image_tag @membership.photo.key, class: "product-image", alt: @membership.name, width: 400, height: 400, crop: :fill %>
+                <% else %>
+                  <%= image_tag @membership.photo, class: "product-image", alt: @membership.name %>
+                <% end %>
+              <% else %>
+                <div class="product-image-placeholder product-image-placeholder-featured">
+                  <i class="fas fa-crown"></i>
+                </div>
+              <% end %>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name"><%= @membership.name %></h3>
+              <p class="product-description"><%= t('shop.membership_pitch') %></p>
+              <div class="product-price">
+                <%= number_to_currency(@membership.price, unit: "€", format: "%n %u") %>
+                <span class="price-period">/ <%= t('shop.per_year') %></span>
+              </div>
+
+              <div class="bundle-highlight">
+                <i class="fas fa-gift me-2"></i>
+                <span><%= t('shop.bundle_tshirt_included') %></span>
+              </div>
+
+              <ul class="membership-perks-mini">
+                <% t('shop.membership_highlights').each do |highlight| %>
+                  <li><i class="fas fa-check"></i> <%= highlight %></li>
+                <% end %>
+              </ul>
+
+              <%= form_with url: shop_checkout_path, method: :post, class: "product-form" do |f| %>
+                <%= f.hidden_field :product_id, value: @membership.id %>
+                <div class="size-selector">
+                  <label class="size-label"><%= t('shop.tshirt_size') %></label>
+                  <div class="size-options">
+                    <% tshirt = Product.active.one_time.first %>
+                    <% %w[S M L XL XXL].each do |size| %>
+                      <% in_stock = tshirt&.in_stock?(size) %>
+                      <label class="size-option <%= 'out-of-stock' unless in_stock %>">
+                        <input type="radio" name="size" value="<%= size %>" <%= 'disabled' unless in_stock %> required>
+                        <span class="size-btn"><%= size %></span>
+                      </label>
+                    <% end %>
+                  </div>
+                </div>
+                <button type="submit" class="btn-shop btn-shop-primary">
+                  <i class="fas fa-star me-2"></i><%= t('shop.join_button') %>
+                </button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</section>
+
+

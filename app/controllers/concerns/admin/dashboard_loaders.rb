@@ -30,5 +30,21 @@ module Admin
       @notifications = Notification.includes(:user).order(created_at: :desc)
       @unread_notifications_count = Notification.where(status: false).count
     end
+
+    def load_shop_products
+      @products = Product.includes(:product_variants).order(:created_at)
+    end
+
+    def load_shop_orders
+      @orders = Order.includes(:user, order_items: :product).recent
+
+      if params[:payment_status].present?
+        @orders = @orders.where(payment_status: params[:payment_status])
+      end
+
+      if params[:fulfillment_status].present?
+        @orders = @orders.where(fulfillment_status: params[:fulfillment_status])
+      end
+    end
   end
 end

@@ -1,0 +1,73 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3">Gestion des produits</h1>
+    <div class="d-flex gap-2">
+      <%= link_to "← Retour au dashboard", admin_dashboard_path, class: "btn btn-outline-secondary btn-sm" %>
+      <%= link_to "+ Nouveau produit", new_admin_shop_product_path, class: "btn btn-primary btn-sm" %>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Type</th>
+          <th>Prix</th>
+          <th>Stock total</th>
+          <th>Statut</th>
+          <th>Stripe</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td>
+              <strong><%= product.name %></strong>
+              <br><small class="text-muted"><%= truncate(product.description, length: 60) %></small>
+            </td>
+            <td>
+              <% if product.subscription? %>
+                <span class="badge bg-primary">Abonnement</span>
+              <% else %>
+                <span class="badge bg-secondary">Achat unique</span>
+              <% end %>
+            </td>
+            <td><strong><%= number_to_currency(product.price, unit: "€", format: "%n %u") %></strong></td>
+            <td>
+              <% if product.product_variants.any? %>
+                <div class="d-flex flex-wrap gap-1">
+                  <% product.product_variants.each do |variant| %>
+                    <span class="badge <%= variant.stock > 0 ? 'bg-success' : 'bg-danger' %>">
+                      <%= variant.size %>: <%= variant.stock %>
+                    </span>
+                  <% end %>
+                </div>
+              <% else %>
+                <span class="text-muted">N/A</span>
+              <% end %>
+            </td>
+            <td>
+              <% if product.active? %>
+                <span class="badge bg-success">Actif</span>
+              <% else %>
+                <span class="badge bg-secondary">Inactif</span>
+              <% end %>
+            </td>
+            <td>
+              <% if product.stripe_price_id.present? %>
+                <span class="badge bg-info">Configuré</span>
+              <% else %>
+                <span class="badge bg-warning text-dark">Non configuré</span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to "Modifier", edit_admin_shop_product_path(product), class: "btn btn-sm btn-outline-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

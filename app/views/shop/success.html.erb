@@ -1,0 +1,24 @@
+<% content_for(:title) { t('shop.success.title') } %>
+
+<section class="shop-confirmation">
+  <div class="container">
+    <div class="confirmation-card text-center">
+      <div class="confirmation-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h1><%= t('shop.success.heading') %></h1>
+      <p class="confirmation-message"><%= t('shop.success.message') %></p>
+
+      <% if @session %>
+        <div class="confirmation-details">
+          <p><strong><%= t('shop.success.order_ref') %></strong> <%= @session.id.last(8).upcase %></p>
+        </div>
+      <% end %>
+
+      <div class="confirmation-actions">
+        <%= link_to t('shop.success.dashboard'), dashboard_path, class: "btn-shop btn-shop-primary" %>
+        <%= link_to t('shop.success.back_to_shop'), shop_path, class: "btn-shop btn-shop-outline" %>
+      </div>
+    </div>
+  </div>
+</section>
